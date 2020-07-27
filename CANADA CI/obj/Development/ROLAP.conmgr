@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="ROLAP"
+  DTS:DTSID="{52BF168E-D637-46B9-BD08-F533C8ACBD35}"
+  DTS:CreationName="OLEDB">
+  <DTS:PropertyExpression
+    DTS:Name="ConnectionString">@[$Project::Scripts]+"\\DROP AND CREATE ROLAP TABLES.SQL"</DTS:PropertyExpression>
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectUsingManagedIdentity="True"
+      DTS:ConnectionString="Data Source=DESKTOP-SPBFOF5;Initial Catalog=CANADA_CI_ROLAP;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+  </DTS:ObjectData>
+</DTS:ConnectionManager>

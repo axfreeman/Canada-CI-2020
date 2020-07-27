@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="CREATE OLTP VIEWS.sql"
+  DTS:DTSID="{B54064BD-2F87-4904-A4C8-BBD2AF6F7305}"
+  DTS:CreationName="FILE">
+  <DTS:PropertyExpression
+    DTS:Name="ConnectionString">@[$Project::Scripts]+"\\CREATE OLTP VIEWS.SQL"</DTS:PropertyExpression>
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectionString="C:\Users\GERG\Documents\GitHub\Canada-CI\SCRIPTS\CREATE OLTP VIEWS.SQL" />
+  </DTS:ObjectData>
+</DTS:ConnectionManager>
