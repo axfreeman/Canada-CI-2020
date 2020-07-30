@@ -1,0 +1,1398 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="7/29/2020 11:57:03 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-SPBFOF5"
+  DTS:CreatorName="DESKTOP-SPBFOF5\GERG"
+  DTS:DTSID="{1CF02B4F-B9E6-4EDF-BF7A-D0D529C35173}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.121"
+  DTS:LocaleID="2057"
+  DTS:ObjectName="Package1"
+  DTS:PackageType="5"
+  DTS:VersionBuild="7"
+  DTS:VersionGUID="{7E8422EB-396D-45D5-A124-4EC1BBE2235E}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Excel Connection Manager]"
+      DTS:CreationName="EXCEL"
+      DTS:DTSID="{E14AA106-F34D-4D88-B07C-BDAF03DD36B1}"
+      DTS:ObjectName="Excel Connection Manager">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\GERG\Documents\Github\Canada-CI\SOURCE DATA\GDP 2020.xlsx;Extended Properties=&quot;EXCEL 12.0 XML;HDR=YES&quot;;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Load GDP Data Into IOICC Flat OLTP Table"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{88DC6E8B-88ED-4775-B067-1F68035F1498}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Load GDP Data Into IOICC Flat OLTP Table"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Load GDP Data Into IOICC Flat OLTP Table\Add Source, Shorten PNAICS"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Add Source, Shorten PNAICS"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Load GDP Data Into IOICC Flat OLTP Table\Add Source, Shorten PNAICS.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load GDP Data Into IOICC Flat OLTP Table\Add Source, Shorten PNAICS.Inputs[Derived Column Input].Columns[PNAICS]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="PNAICS"
+                      lineageId="Package\Load GDP Data Into IOICC Flat OLTP Table\GDP 2020.Outputs[Excel Source Output].Columns[PNAICS]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load GDP Data Into IOICC Flat OLTP Table\Add Source, Shorten PNAICS.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Load GDP Data Into IOICC Flat OLTP Table\Add Source, Shorten PNAICS.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load GDP Data Into IOICC Flat OLTP Table\Add Source, Shorten PNAICS.Outputs[Derived Column Output].Columns[ShortPNAICS]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="7"
+                      lineageId="Package\Load GDP Data Into IOICC Flat OLTP Table\Add Source, Shorten PNAICS.Outputs[Derived Column Output].Columns[ShortPNAICS]"
+                      name="ShortPNAICS"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[LEFT](#{Package\Load GDP Data Into IOICC Flat OLTP Table\GDP 2020.Outputs[Excel Source Output].Columns[PNAICS]},7)</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">LEFT(PNAICS,7)</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load GDP Data Into IOICC Flat OLTP Table\Add Source, Shorten PNAICS.Outputs[Derived Column Output].Columns[Source]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="11"
+                      lineageId="Package\Load GDP Data Into IOICC Flat OLTP Table\Add Source, Shorten PNAICS.Outputs[Derived Column Output].Columns[Source]"
+                      name="Source"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">"Statcan GDP"</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">"Statcan GDP"</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load GDP Data Into IOICC Flat OLTP Table\Add Source, Shorten PNAICS.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Load GDP Data Into IOICC Flat OLTP Table\Add Source, Shorten PNAICS.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load GDP Data Into IOICC Flat OLTP Table\Add Source, Shorten PNAICS.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load GDP Data Into IOICC Flat OLTP Table\Add Source, Shorten PNAICS.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load GDP Data Into IOICC Flat OLTP Table\Add Source, Shorten PNAICS.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load GDP Data Into IOICC Flat OLTP Table\Add Source, Shorten PNAICS.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load GDP Data Into IOICC Flat OLTP Table\GDP 2020"
+              componentClassID="Microsoft.ExcelSource"
+              contactInfo="Excel Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Excel Source"
+              name="GDP 2020"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">'Cleaned for Import$'</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mapping from parameters in the SQL command to variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load GDP Data Into IOICC Flat OLTP Table\GDP 2020.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Excel Connection Manager]"
+                  connectionManagerRefId="Package.ConnectionManagers[Excel Connection Manager]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Load GDP Data Into IOICC Flat OLTP Table\GDP 2020.Outputs[Excel Source Output]"
+                  name="Excel Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load GDP Data Into IOICC Flat OLTP Table\GDP 2020.Outputs[Excel Source Output].Columns[Year]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load GDP Data Into IOICC Flat OLTP Table\GDP 2020.Outputs[Excel Source Output].ExternalColumns[Year]"
+                      lineageId="Package\Load GDP Data Into IOICC Flat OLTP Table\GDP 2020.Outputs[Excel Source Output].Columns[Year]"
+                      name="Year"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load GDP Data Into IOICC Flat OLTP Table\GDP 2020.Outputs[Excel Source Output].Columns[Geo Name]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load GDP Data Into IOICC Flat OLTP Table\GDP 2020.Outputs[Excel Source Output].ExternalColumns[Geo Name]"
+                      length="255"
+                      lineageId="Package\Load GDP Data Into IOICC Flat OLTP Table\GDP 2020.Outputs[Excel Source Output].Columns[Geo Name]"
+                      name="Geo Name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load GDP Data Into IOICC Flat OLTP Table\GDP 2020.Outputs[Excel Source Output].Columns[Indicator]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load GDP Data Into IOICC Flat OLTP Table\GDP 2020.Outputs[Excel Source Output].ExternalColumns[Indicator]"
+                      length="255"
+                      lineageId="Package\Load GDP Data Into IOICC Flat OLTP Table\GDP 2020.Outputs[Excel Source Output].Columns[Indicator]"
+                      name="Indicator"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load GDP Data Into IOICC Flat OLTP Table\GDP 2020.Outputs[Excel Source Output].Columns[PNAICS]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load GDP Data Into IOICC Flat OLTP Table\GDP 2020.Outputs[Excel Source Output].ExternalColumns[PNAICS]"
+                      length="255"
+                      lineageId="Package\Load GDP Data Into IOICC Flat OLTP Table\GDP 2020.Outputs[Excel Source Output].Columns[PNAICS]"
+                      name="PNAICS"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load GDP Data Into IOICC Flat OLTP Table\GDP 2020.Outputs[Excel Source Output].Columns[NAICS Description]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load GDP Data Into IOICC Flat OLTP Table\GDP 2020.Outputs[Excel Source Output].ExternalColumns[NAICS Description]"
+                      length="255"
+                      lineageId="Package\Load GDP Data Into IOICC Flat OLTP Table\GDP 2020.Outputs[Excel Source Output].Columns[NAICS Description]"
+                      name="NAICS Description"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load GDP Data Into IOICC Flat OLTP Table\GDP 2020.Outputs[Excel Source Output].Columns[VALUE]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load GDP Data Into IOICC Flat OLTP Table\GDP 2020.Outputs[Excel Source Output].ExternalColumns[VALUE]"
+                      lineageId="Package\Load GDP Data Into IOICC Flat OLTP Table\GDP 2020.Outputs[Excel Source Output].Columns[VALUE]"
+                      name="VALUE"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Load GDP Data Into IOICC Flat OLTP Table\GDP 2020.Outputs[Excel Source Output].ExternalColumns[Year]"
+                      dataType="r8"
+                      name="Year" />
+                    <externalMetadataColumn
+                      refId="Package\Load GDP Data Into IOICC Flat OLTP Table\GDP 2020.Outputs[Excel Source Output].ExternalColumns[Geo Name]"
+                      dataType="wstr"
+                      length="255"
+                      name="Geo Name" />
+                    <externalMetadataColumn
+                      refId="Package\Load GDP Data Into IOICC Flat OLTP Table\GDP 2020.Outputs[Excel Source Output].ExternalColumns[Indicator]"
+                      dataType="wstr"
+                      length="255"
+                      name="Indicator" />
+                    <externalMetadataColumn
+                      refId="Package\Load GDP Data Into IOICC Flat OLTP Table\GDP 2020.Outputs[Excel Source Output].ExternalColumns[PNAICS]"
+                      dataType="wstr"
+                      length="255"
+                      name="PNAICS" />
+                    <externalMetadataColumn
+                      refId="Package\Load GDP Data Into IOICC Flat OLTP Table\GDP 2020.Outputs[Excel Source Output].ExternalColumns[NAICS Description]"
+                      dataType="wstr"
+                      length="255"
+                      name="NAICS Description" />
+                    <externalMetadataColumn
+                      refId="Package\Load GDP Data Into IOICC Flat OLTP Table\GDP 2020.Outputs[Excel Source Output].ExternalColumns[VALUE]"
+                      dataType="r8"
+                      name="VALUE" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Load GDP Data Into IOICC Flat OLTP Table\GDP 2020.Outputs[Excel Source Error Output]"
+                  isErrorOut="true"
+                  name="Excel Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load GDP Data Into IOICC Flat OLTP Table\GDP 2020.Outputs[Excel Source Error Output].Columns[Year]"
+                      dataType="r8"
+                      lineageId="Package\Load GDP Data Into IOICC Flat OLTP Table\GDP 2020.Outputs[Excel Source Error Output].Columns[Year]"
+                      name="Year" />
+                    <outputColumn
+                      refId="Package\Load GDP Data Into IOICC Flat OLTP Table\GDP 2020.Outputs[Excel Source Error Output].Columns[Geo Name]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Load GDP Data Into IOICC Flat OLTP Table\GDP 2020.Outputs[Excel Source Error Output].Columns[Geo Name]"
+                      name="Geo Name" />
+                    <outputColumn
+                      refId="Package\Load GDP Data Into IOICC Flat OLTP Table\GDP 2020.Outputs[Excel Source Error Output].Columns[Indicator]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Load GDP Data Into IOICC Flat OLTP Table\GDP 2020.Outputs[Excel Source Error Output].Columns[Indicator]"
+                      name="Indicator" />
+                    <outputColumn
+                      refId="Package\Load GDP Data Into IOICC Flat OLTP Table\GDP 2020.Outputs[Excel Source Error Output].Columns[PNAICS]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Load GDP Data Into IOICC Flat OLTP Table\GDP 2020.Outputs[Excel Source Error Output].Columns[PNAICS]"
+                      name="PNAICS" />
+                    <outputColumn
+                      refId="Package\Load GDP Data Into IOICC Flat OLTP Table\GDP 2020.Outputs[Excel Source Error Output].Columns[NAICS Description]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Load GDP Data Into IOICC Flat OLTP Table\GDP 2020.Outputs[Excel Source Error Output].Columns[NAICS Description]"
+                      name="NAICS Description" />
+                    <outputColumn
+                      refId="Package\Load GDP Data Into IOICC Flat OLTP Table\GDP 2020.Outputs[Excel Source Error Output].Columns[VALUE]"
+                      dataType="r8"
+                      lineageId="Package\Load GDP Data Into IOICC Flat OLTP Table\GDP 2020.Outputs[Excel Source Error Output].Columns[VALUE]"
+                      name="VALUE" />
+                    <outputColumn
+                      refId="Package\Load GDP Data Into IOICC Flat OLTP Table\GDP 2020.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load GDP Data Into IOICC Flat OLTP Table\GDP 2020.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load GDP Data Into IOICC Flat OLTP Table\GDP 2020.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load GDP Data Into IOICC Flat OLTP Table\GDP 2020.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load GDP Data Into IOICC Flat OLTP Table\IOICC Flat table"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="IOICC Flat table"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[IOICC flat]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load GDP Data Into IOICC Flat OLTP Table\IOICC Flat table.Connections[OleDbConnection]"
+                  connectionManagerID="{7C609DE3-B60F-43F3-9132-B532B5CB115C}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[OLTP]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Load GDP Data Into IOICC Flat OLTP Table\IOICC Flat table.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load GDP Data Into IOICC Flat OLTP Table\IOICC Flat table.Inputs[OLE DB Destination Input].Columns[Year]"
+                      cachedDataType="r8"
+                      cachedName="Year"
+                      externalMetadataColumnId="Package\Load GDP Data Into IOICC Flat OLTP Table\IOICC Flat table.Inputs[OLE DB Destination Input].ExternalColumns[Year]"
+                      lineageId="Package\Load GDP Data Into IOICC Flat OLTP Table\GDP 2020.Outputs[Excel Source Output].Columns[Year]" />
+                    <inputColumn
+                      refId="Package\Load GDP Data Into IOICC Flat OLTP Table\IOICC Flat table.Inputs[OLE DB Destination Input].Columns[Indicator]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Indicator"
+                      externalMetadataColumnId="Package\Load GDP Data Into IOICC Flat OLTP Table\IOICC Flat table.Inputs[OLE DB Destination Input].ExternalColumns[Indicator]"
+                      lineageId="Package\Load GDP Data Into IOICC Flat OLTP Table\GDP 2020.Outputs[Excel Source Output].Columns[Indicator]" />
+                    <inputColumn
+                      refId="Package\Load GDP Data Into IOICC Flat OLTP Table\IOICC Flat table.Inputs[OLE DB Destination Input].Columns[NAICS Description]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="NAICS Description"
+                      externalMetadataColumnId="Package\Load GDP Data Into IOICC Flat OLTP Table\IOICC Flat table.Inputs[OLE DB Destination Input].ExternalColumns[NAICS description]"
+                      lineageId="Package\Load GDP Data Into IOICC Flat OLTP Table\GDP 2020.Outputs[Excel Source Output].Columns[NAICS Description]" />
+                    <inputColumn
+                      refId="Package\Load GDP Data Into IOICC Flat OLTP Table\IOICC Flat table.Inputs[OLE DB Destination Input].Columns[VALUE]"
+                      cachedDataType="r8"
+                      cachedName="VALUE"
+                      externalMetadataColumnId="Package\Load GDP Data Into IOICC Flat OLTP Table\IOICC Flat table.Inputs[OLE DB Destination Input].ExternalColumns[Value]"
+                      lineageId="Package\Load GDP Data Into IOICC Flat OLTP Table\GDP 2020.Outputs[Excel Source Output].Columns[VALUE]" />
+                    <inputColumn
+                      refId="Package\Load GDP Data Into IOICC Flat OLTP Table\IOICC Flat table.Inputs[OLE DB Destination Input].Columns[Geo Name]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Geo Name"
+                      externalMetadataColumnId="Package\Load GDP Data Into IOICC Flat OLTP Table\IOICC Flat table.Inputs[OLE DB Destination Input].ExternalColumns[geoName]"
+                      lineageId="Package\Load GDP Data Into IOICC Flat OLTP Table\GDP 2020.Outputs[Excel Source Output].Columns[Geo Name]" />
+                    <inputColumn
+                      refId="Package\Load GDP Data Into IOICC Flat OLTP Table\IOICC Flat table.Inputs[OLE DB Destination Input].Columns[ShortPNAICS]"
+                      cachedDataType="wstr"
+                      cachedLength="7"
+                      cachedName="ShortPNAICS"
+                      externalMetadataColumnId="Package\Load GDP Data Into IOICC Flat OLTP Table\IOICC Flat table.Inputs[OLE DB Destination Input].ExternalColumns[PNAICS]"
+                      lineageId="Package\Load GDP Data Into IOICC Flat OLTP Table\Add Source, Shorten PNAICS.Outputs[Derived Column Output].Columns[ShortPNAICS]" />
+                    <inputColumn
+                      refId="Package\Load GDP Data Into IOICC Flat OLTP Table\IOICC Flat table.Inputs[OLE DB Destination Input].Columns[Source]"
+                      cachedDataType="wstr"
+                      cachedLength="11"
+                      cachedName="Source"
+                      externalMetadataColumnId="Package\Load GDP Data Into IOICC Flat OLTP Table\IOICC Flat table.Inputs[OLE DB Destination Input].ExternalColumns[Source]"
+                      lineageId="Package\Load GDP Data Into IOICC Flat OLTP Table\Add Source, Shorten PNAICS.Outputs[Derived Column Output].Columns[Source]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Load GDP Data Into IOICC Flat OLTP Table\IOICC Flat table.Inputs[OLE DB Destination Input].ExternalColumns[Source]"
+                      dataType="wstr"
+                      length="255"
+                      name="Source" />
+                    <externalMetadataColumn
+                      refId="Package\Load GDP Data Into IOICC Flat OLTP Table\IOICC Flat table.Inputs[OLE DB Destination Input].ExternalColumns[Indicator]"
+                      dataType="wstr"
+                      length="256"
+                      name="Indicator" />
+                    <externalMetadataColumn
+                      refId="Package\Load GDP Data Into IOICC Flat OLTP Table\IOICC Flat table.Inputs[OLE DB Destination Input].ExternalColumns[NAICS description]"
+                      dataType="wstr"
+                      length="255"
+                      name="NAICS description" />
+                    <externalMetadataColumn
+                      refId="Package\Load GDP Data Into IOICC Flat OLTP Table\IOICC Flat table.Inputs[OLE DB Destination Input].ExternalColumns[geoName]"
+                      dataType="wstr"
+                      length="255"
+                      name="geoName" />
+                    <externalMetadataColumn
+                      refId="Package\Load GDP Data Into IOICC Flat OLTP Table\IOICC Flat table.Inputs[OLE DB Destination Input].ExternalColumns[Year]"
+                      dataType="wstr"
+                      length="255"
+                      name="Year" />
+                    <externalMetadataColumn
+                      refId="Package\Load GDP Data Into IOICC Flat OLTP Table\IOICC Flat table.Inputs[OLE DB Destination Input].ExternalColumns[Value]"
+                      dataType="r8"
+                      name="Value" />
+                    <externalMetadataColumn
+                      refId="Package\Load GDP Data Into IOICC Flat OLTP Table\IOICC Flat table.Inputs[OLE DB Destination Input].ExternalColumns[PNAICS]"
+                      dataType="wstr"
+                      length="8"
+                      name="PNAICS" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load GDP Data Into IOICC Flat OLTP Table\IOICC Flat table.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Load GDP Data Into IOICC Flat OLTP Table\IOICC Flat table.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load GDP Data Into IOICC Flat OLTP Table\IOICC Flat table.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load GDP Data Into IOICC Flat OLTP Table\IOICC Flat table.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load GDP Data Into IOICC Flat OLTP Table\IOICC Flat table.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load GDP Data Into IOICC Flat OLTP Table\IOICC Flat table.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Load GDP Data Into IOICC Flat OLTP Table.Paths[Derived Column Output]"
+              endId="Package\Load GDP Data Into IOICC Flat OLTP Table\IOICC Flat table.Inputs[OLE DB Destination Input]"
+              name="Derived Column Output"
+              startId="Package\Load GDP Data Into IOICC Flat OLTP Table\Add Source, Shorten PNAICS.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Load GDP Data Into IOICC Flat OLTP Table.Paths[Excel Source Output]"
+              endId="Package\Load GDP Data Into IOICC Flat OLTP Table\Add Source, Shorten PNAICS.Inputs[Derived Column Input]"
+              name="Excel Source Output"
+              startId="Package\Load GDP Data Into IOICC Flat OLTP Table\GDP 2020.Outputs[Excel Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Transfer IOICC Flat data to Fact Table"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{4D3B99C9-163E-4BF5-9CCD-0376E1A90C8E}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Transfer IOICC Flat data to Fact Table"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Transfer IOICC Flat data to Fact Table\IOICC Flat to Fact Converter"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="IOICC Flat to Fact Converter"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[IOICC Flat to Fact converter]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Transfer IOICC Flat data to Fact Table\IOICC Flat to Fact Converter.Connections[OleDbConnection]"
+                  connectionManagerID="{7C609DE3-B60F-43F3-9132-B532B5CB115C}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[OLTP]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Transfer IOICC Flat data to Fact Table\IOICC Flat to Fact Converter.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Transfer IOICC Flat data to Fact Table\IOICC Flat to Fact Converter.Outputs[OLE DB Source Output].Columns[PNAICS]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transfer IOICC Flat data to Fact Table\IOICC Flat to Fact Converter.Outputs[OLE DB Source Output].ExternalColumns[PNAICS]"
+                      length="8"
+                      lineageId="Package\Transfer IOICC Flat data to Fact Table\IOICC Flat to Fact Converter.Outputs[OLE DB Source Output].Columns[PNAICS]"
+                      name="PNAICS"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Transfer IOICC Flat data to Fact Table\IOICC Flat to Fact Converter.Outputs[OLE DB Source Output].Columns[PNAICS TARGET]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transfer IOICC Flat data to Fact Table\IOICC Flat to Fact Converter.Outputs[OLE DB Source Output].ExternalColumns[PNAICS TARGET]"
+                      length="7"
+                      lineageId="Package\Transfer IOICC Flat data to Fact Table\IOICC Flat to Fact Converter.Outputs[OLE DB Source Output].Columns[PNAICS TARGET]"
+                      name="PNAICS TARGET"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Transfer IOICC Flat data to Fact Table\IOICC Flat to Fact Converter.Outputs[OLE DB Source Output].Columns[Source]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transfer IOICC Flat data to Fact Table\IOICC Flat to Fact Converter.Outputs[OLE DB Source Output].ExternalColumns[Source]"
+                      length="255"
+                      lineageId="Package\Transfer IOICC Flat data to Fact Table\IOICC Flat to Fact Converter.Outputs[OLE DB Source Output].Columns[Source]"
+                      name="Source"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Transfer IOICC Flat data to Fact Table\IOICC Flat to Fact Converter.Outputs[OLE DB Source Output].Columns[Indicator]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transfer IOICC Flat data to Fact Table\IOICC Flat to Fact Converter.Outputs[OLE DB Source Output].ExternalColumns[Indicator]"
+                      length="256"
+                      lineageId="Package\Transfer IOICC Flat data to Fact Table\IOICC Flat to Fact Converter.Outputs[OLE DB Source Output].Columns[Indicator]"
+                      name="Indicator"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Transfer IOICC Flat data to Fact Table\IOICC Flat to Fact Converter.Outputs[OLE DB Source Output].Columns[geoName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transfer IOICC Flat data to Fact Table\IOICC Flat to Fact Converter.Outputs[OLE DB Source Output].ExternalColumns[geoName]"
+                      length="255"
+                      lineageId="Package\Transfer IOICC Flat data to Fact Table\IOICC Flat to Fact Converter.Outputs[OLE DB Source Output].Columns[geoName]"
+                      name="geoName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Transfer IOICC Flat data to Fact Table\IOICC Flat to Fact Converter.Outputs[OLE DB Source Output].Columns[Year]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transfer IOICC Flat data to Fact Table\IOICC Flat to Fact Converter.Outputs[OLE DB Source Output].ExternalColumns[Year]"
+                      length="255"
+                      lineageId="Package\Transfer IOICC Flat data to Fact Table\IOICC Flat to Fact Converter.Outputs[OLE DB Source Output].Columns[Year]"
+                      name="Year"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Transfer IOICC Flat data to Fact Table\IOICC Flat to Fact Converter.Outputs[OLE DB Source Output].Columns[SplitValue]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transfer IOICC Flat data to Fact Table\IOICC Flat to Fact Converter.Outputs[OLE DB Source Output].ExternalColumns[SplitValue]"
+                      lineageId="Package\Transfer IOICC Flat data to Fact Table\IOICC Flat to Fact Converter.Outputs[OLE DB Source Output].Columns[SplitValue]"
+                      name="SplitValue"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Transfer IOICC Flat data to Fact Table\IOICC Flat to Fact Converter.Outputs[OLE DB Source Output].Columns[Coefficient]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transfer IOICC Flat data to Fact Table\IOICC Flat to Fact Converter.Outputs[OLE DB Source Output].ExternalColumns[Coefficient]"
+                      lineageId="Package\Transfer IOICC Flat data to Fact Table\IOICC Flat to Fact Converter.Outputs[OLE DB Source Output].Columns[Coefficient]"
+                      name="Coefficient"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Transfer IOICC Flat data to Fact Table\IOICC Flat to Fact Converter.Outputs[OLE DB Source Output].Columns[Value]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transfer IOICC Flat data to Fact Table\IOICC Flat to Fact Converter.Outputs[OLE DB Source Output].ExternalColumns[Value]"
+                      lineageId="Package\Transfer IOICC Flat data to Fact Table\IOICC Flat to Fact Converter.Outputs[OLE DB Source Output].Columns[Value]"
+                      name="Value"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Transfer IOICC Flat data to Fact Table\IOICC Flat to Fact Converter.Outputs[OLE DB Source Output].ExternalColumns[PNAICS]"
+                      dataType="wstr"
+                      length="8"
+                      name="PNAICS" />
+                    <externalMetadataColumn
+                      refId="Package\Transfer IOICC Flat data to Fact Table\IOICC Flat to Fact Converter.Outputs[OLE DB Source Output].ExternalColumns[PNAICS TARGET]"
+                      dataType="wstr"
+                      length="7"
+                      name="PNAICS TARGET" />
+                    <externalMetadataColumn
+                      refId="Package\Transfer IOICC Flat data to Fact Table\IOICC Flat to Fact Converter.Outputs[OLE DB Source Output].ExternalColumns[Source]"
+                      dataType="wstr"
+                      length="255"
+                      name="Source" />
+                    <externalMetadataColumn
+                      refId="Package\Transfer IOICC Flat data to Fact Table\IOICC Flat to Fact Converter.Outputs[OLE DB Source Output].ExternalColumns[Indicator]"
+                      dataType="wstr"
+                      length="256"
+                      name="Indicator" />
+                    <externalMetadataColumn
+                      refId="Package\Transfer IOICC Flat data to Fact Table\IOICC Flat to Fact Converter.Outputs[OLE DB Source Output].ExternalColumns[geoName]"
+                      dataType="wstr"
+                      length="255"
+                      name="geoName" />
+                    <externalMetadataColumn
+                      refId="Package\Transfer IOICC Flat data to Fact Table\IOICC Flat to Fact Converter.Outputs[OLE DB Source Output].ExternalColumns[Year]"
+                      dataType="wstr"
+                      length="255"
+                      name="Year" />
+                    <externalMetadataColumn
+                      refId="Package\Transfer IOICC Flat data to Fact Table\IOICC Flat to Fact Converter.Outputs[OLE DB Source Output].ExternalColumns[SplitValue]"
+                      dataType="r8"
+                      name="SplitValue" />
+                    <externalMetadataColumn
+                      refId="Package\Transfer IOICC Flat data to Fact Table\IOICC Flat to Fact Converter.Outputs[OLE DB Source Output].ExternalColumns[Coefficient]"
+                      dataType="r8"
+                      name="Coefficient" />
+                    <externalMetadataColumn
+                      refId="Package\Transfer IOICC Flat data to Fact Table\IOICC Flat to Fact Converter.Outputs[OLE DB Source Output].ExternalColumns[Value]"
+                      dataType="r8"
+                      name="Value" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Transfer IOICC Flat data to Fact Table\IOICC Flat to Fact Converter.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Transfer IOICC Flat data to Fact Table\IOICC Flat to Fact Converter.Outputs[OLE DB Source Error Output].Columns[PNAICS]"
+                      dataType="wstr"
+                      length="8"
+                      lineageId="Package\Transfer IOICC Flat data to Fact Table\IOICC Flat to Fact Converter.Outputs[OLE DB Source Error Output].Columns[PNAICS]"
+                      name="PNAICS" />
+                    <outputColumn
+                      refId="Package\Transfer IOICC Flat data to Fact Table\IOICC Flat to Fact Converter.Outputs[OLE DB Source Error Output].Columns[PNAICS TARGET]"
+                      dataType="wstr"
+                      length="7"
+                      lineageId="Package\Transfer IOICC Flat data to Fact Table\IOICC Flat to Fact Converter.Outputs[OLE DB Source Error Output].Columns[PNAICS TARGET]"
+                      name="PNAICS TARGET" />
+                    <outputColumn
+                      refId="Package\Transfer IOICC Flat data to Fact Table\IOICC Flat to Fact Converter.Outputs[OLE DB Source Error Output].Columns[Source]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Transfer IOICC Flat data to Fact Table\IOICC Flat to Fact Converter.Outputs[OLE DB Source Error Output].Columns[Source]"
+                      name="Source" />
+                    <outputColumn
+                      refId="Package\Transfer IOICC Flat data to Fact Table\IOICC Flat to Fact Converter.Outputs[OLE DB Source Error Output].Columns[Indicator]"
+                      dataType="wstr"
+                      length="256"
+                      lineageId="Package\Transfer IOICC Flat data to Fact Table\IOICC Flat to Fact Converter.Outputs[OLE DB Source Error Output].Columns[Indicator]"
+                      name="Indicator" />
+                    <outputColumn
+                      refId="Package\Transfer IOICC Flat data to Fact Table\IOICC Flat to Fact Converter.Outputs[OLE DB Source Error Output].Columns[geoName]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Transfer IOICC Flat data to Fact Table\IOICC Flat to Fact Converter.Outputs[OLE DB Source Error Output].Columns[geoName]"
+                      name="geoName" />
+                    <outputColumn
+                      refId="Package\Transfer IOICC Flat data to Fact Table\IOICC Flat to Fact Converter.Outputs[OLE DB Source Error Output].Columns[Year]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Transfer IOICC Flat data to Fact Table\IOICC Flat to Fact Converter.Outputs[OLE DB Source Error Output].Columns[Year]"
+                      name="Year" />
+                    <outputColumn
+                      refId="Package\Transfer IOICC Flat data to Fact Table\IOICC Flat to Fact Converter.Outputs[OLE DB Source Error Output].Columns[SplitValue]"
+                      dataType="r8"
+                      lineageId="Package\Transfer IOICC Flat data to Fact Table\IOICC Flat to Fact Converter.Outputs[OLE DB Source Error Output].Columns[SplitValue]"
+                      name="SplitValue" />
+                    <outputColumn
+                      refId="Package\Transfer IOICC Flat data to Fact Table\IOICC Flat to Fact Converter.Outputs[OLE DB Source Error Output].Columns[Coefficient]"
+                      dataType="r8"
+                      lineageId="Package\Transfer IOICC Flat data to Fact Table\IOICC Flat to Fact Converter.Outputs[OLE DB Source Error Output].Columns[Coefficient]"
+                      name="Coefficient" />
+                    <outputColumn
+                      refId="Package\Transfer IOICC Flat data to Fact Table\IOICC Flat to Fact Converter.Outputs[OLE DB Source Error Output].Columns[Value]"
+                      dataType="r8"
+                      lineageId="Package\Transfer IOICC Flat data to Fact Table\IOICC Flat to Fact Converter.Outputs[OLE DB Source Error Output].Columns[Value]"
+                      name="Value" />
+                    <outputColumn
+                      refId="Package\Transfer IOICC Flat data to Fact Table\IOICC Flat to Fact Converter.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Transfer IOICC Flat data to Fact Table\IOICC Flat to Fact Converter.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Transfer IOICC Flat data to Fact Table\IOICC Flat to Fact Converter.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Transfer IOICC Flat data to Fact Table\IOICC Flat to Fact Converter.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Transfer IOICC Flat data to Fact Table\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[Fact]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Transfer IOICC Flat data to Fact Table\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="{7C609DE3-B60F-43F3-9132-B532B5CB115C}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[OLTP]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Transfer IOICC Flat data to Fact Table\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Transfer IOICC Flat data to Fact Table\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Source]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Source"
+                      externalMetadataColumnId="Package\Transfer IOICC Flat data to Fact Table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Source]"
+                      lineageId="Package\Transfer IOICC Flat data to Fact Table\IOICC Flat to Fact Converter.Outputs[OLE DB Source Output].Columns[Source]" />
+                    <inputColumn
+                      refId="Package\Transfer IOICC Flat data to Fact Table\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Indicator]"
+                      cachedDataType="wstr"
+                      cachedLength="256"
+                      cachedName="Indicator"
+                      externalMetadataColumnId="Package\Transfer IOICC Flat data to Fact Table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Indicator]"
+                      lineageId="Package\Transfer IOICC Flat data to Fact Table\IOICC Flat to Fact Converter.Outputs[OLE DB Source Output].Columns[Indicator]" />
+                    <inputColumn
+                      refId="Package\Transfer IOICC Flat data to Fact Table\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[geoName]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="geoName"
+                      externalMetadataColumnId="Package\Transfer IOICC Flat data to Fact Table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[GeoName]"
+                      lineageId="Package\Transfer IOICC Flat data to Fact Table\IOICC Flat to Fact Converter.Outputs[OLE DB Source Output].Columns[geoName]" />
+                    <inputColumn
+                      refId="Package\Transfer IOICC Flat data to Fact Table\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Value]"
+                      cachedDataType="r8"
+                      cachedName="Value"
+                      externalMetadataColumnId="Package\Transfer IOICC Flat data to Fact Table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Value]"
+                      lineageId="Package\Transfer IOICC Flat data to Fact Table\IOICC Flat to Fact Converter.Outputs[OLE DB Source Output].Columns[Value]" />
+                    <inputColumn
+                      refId="Package\Transfer IOICC Flat data to Fact Table\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[PNAICS TARGET]"
+                      cachedDataType="wstr"
+                      cachedLength="7"
+                      cachedName="PNAICS TARGET"
+                      externalMetadataColumnId="Package\Transfer IOICC Flat data to Fact Table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[PNAICS]"
+                      lineageId="Package\Transfer IOICC Flat data to Fact Table\IOICC Flat to Fact Converter.Outputs[OLE DB Source Output].Columns[PNAICS TARGET]" />
+                    <inputColumn
+                      refId="Package\Transfer IOICC Flat data to Fact Table\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ShortYear]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="ShortYear"
+                      externalMetadataColumnId="Package\Transfer IOICC Flat data to Fact Table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Year]"
+                      lineageId="Package\Transfer IOICC Flat data to Fact Table\Shorten Year.Outputs[Derived Column Output].Columns[ShortYear]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Transfer IOICC Flat data to Fact Table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[FactPK]"
+                      dataType="i4"
+                      name="FactPK" />
+                    <externalMetadataColumn
+                      refId="Package\Transfer IOICC Flat data to Fact Table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Source]"
+                      dataType="wstr"
+                      length="255"
+                      name="Source" />
+                    <externalMetadataColumn
+                      refId="Package\Transfer IOICC Flat data to Fact Table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Indicator]"
+                      dataType="wstr"
+                      length="256"
+                      name="Indicator" />
+                    <externalMetadataColumn
+                      refId="Package\Transfer IOICC Flat data to Fact Table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[PNAICS]"
+                      dataType="wstr"
+                      length="7"
+                      name="PNAICS" />
+                    <externalMetadataColumn
+                      refId="Package\Transfer IOICC Flat data to Fact Table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[PNAICS description]"
+                      dataType="wstr"
+                      length="255"
+                      name="PNAICS description" />
+                    <externalMetadataColumn
+                      refId="Package\Transfer IOICC Flat data to Fact Table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[GeoName]"
+                      dataType="wstr"
+                      length="255"
+                      name="GeoName" />
+                    <externalMetadataColumn
+                      refId="Package\Transfer IOICC Flat data to Fact Table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Year]"
+                      dataType="wstr"
+                      length="10"
+                      name="Year" />
+                    <externalMetadataColumn
+                      refId="Package\Transfer IOICC Flat data to Fact Table\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Value]"
+                      dataType="r8"
+                      name="Value" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Transfer IOICC Flat data to Fact Table\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Transfer IOICC Flat data to Fact Table\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Transfer IOICC Flat data to Fact Table\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Transfer IOICC Flat data to Fact Table\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Transfer IOICC Flat data to Fact Table\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Transfer IOICC Flat data to Fact Table\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Transfer IOICC Flat data to Fact Table\Shorten Year"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Shorten Year"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Transfer IOICC Flat data to Fact Table\Shorten Year.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Transfer IOICC Flat data to Fact Table\Shorten Year.Inputs[Derived Column Input].Columns[Year]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Year"
+                      lineageId="Package\Transfer IOICC Flat data to Fact Table\IOICC Flat to Fact Converter.Outputs[OLE DB Source Output].Columns[Year]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Transfer IOICC Flat data to Fact Table\Shorten Year.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Transfer IOICC Flat data to Fact Table\Shorten Year.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Transfer IOICC Flat data to Fact Table\Shorten Year.Outputs[Derived Column Output].Columns[ShortYear]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="10"
+                      lineageId="Package\Transfer IOICC Flat data to Fact Table\Shorten Year.Outputs[Derived Column Output].Columns[ShortYear]"
+                      name="ShortYear"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[LEFT](#{Package\Transfer IOICC Flat data to Fact Table\IOICC Flat to Fact Converter.Outputs[OLE DB Source Output].Columns[Year]},10)</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">LEFT(Year,10)</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Transfer IOICC Flat data to Fact Table\Shorten Year.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Transfer IOICC Flat data to Fact Table\Shorten Year.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Transfer IOICC Flat data to Fact Table\Shorten Year.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Transfer IOICC Flat data to Fact Table\Shorten Year.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Transfer IOICC Flat data to Fact Table\Shorten Year.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Transfer IOICC Flat data to Fact Table\Shorten Year.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Transfer IOICC Flat data to Fact Table.Paths[Derived Column Output]"
+              endId="Package\Transfer IOICC Flat data to Fact Table\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="Derived Column Output"
+              startId="Package\Transfer IOICC Flat data to Fact Table\Shorten Year.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Transfer IOICC Flat data to Fact Table.Paths[OLE DB Source Output]"
+              endId="Package\Transfer IOICC Flat data to Fact Table\Shorten Year.Inputs[Derived Column Input]"
+              name="OLE DB Source Output"
+              startId="Package\Transfer IOICC Flat data to Fact Table\IOICC Flat to Fact Converter.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{45DB0988-672E-412C-B416-77CA9FECBFA1}"
+      DTS:From="Package\Load GDP Data Into IOICC Flat OLTP Table"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Transfer IOICC Flat data to Fact Table" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="283,42"
+          Id="Package\Load GDP Data Into IOICC Flat OLTP Table"
+          TopLeft="53,12" />
+        <NodeLayout
+          Size="259,42"
+          Id="Package\Transfer IOICC Flat data to Fact Table"
+          TopLeft="69,133" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="196.5,54">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,79"
+              Start="0,0"
+              End="0,71.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,71.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Load GDP Data Into IOICC Flat OLTP Table">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="126,42"
+          Id="Package\Load GDP Data Into IOICC Flat OLTP Table\GDP 2020"
+          TopLeft="177,20" />
+        <NodeLayout
+          Size="154,42"
+          Id="Package\Load GDP Data Into IOICC Flat OLTP Table\IOICC Flat table"
+          TopLeft="277,258" />
+        <NodeLayout
+          Size="215,42"
+          Id="Package\Load GDP Data Into IOICC Flat OLTP Table\Add Source, Shorten PNAICS"
+          TopLeft="462,117" />
+        <EdgeLayout
+          Id="Package\Load GDP Data Into IOICC Flat OLTP Table.Paths[Excel Source Output]"
+          TopLeft="240,62">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="329.5,55"
+              Start="0,0"
+              End="329.5,47.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,23.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,23.5"
+                    Point2="0,27.5"
+                    Point3="4,27.5" />
+                  <mssgle:LineSegment
+                    End="325.5,27.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="325.5,27.5"
+                    Point2="329.5,27.5"
+                    Point3="329.5,31.5" />
+                  <mssgle:LineSegment
+                    End="329.5,47.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load GDP Data Into IOICC Flat OLTP Table.Paths[Derived Column Output]"
+          TopLeft="569.5,159">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-215.5,99"
+              Start="0,0"
+              End="-215.5,91.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,45.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,45.5"
+                    Point2="0,49.5"
+                    Point3="-4,49.5" />
+                  <mssgle:LineSegment
+                    End="-211.5,49.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-211.5,49.5"
+                    Point2="-215.5,49.5"
+                    Point3="-215.5,53.5" />
+                  <mssgle:LineSegment
+                    End="-215.5,91.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load GDP Data Into IOICC Flat OLTP Table\GDP 2020">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load GDP Data Into IOICC Flat OLTP Table\IOICC Flat table">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Transfer IOICC Flat data to Fact Table">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="213,42"
+          Id="Package\Transfer IOICC Flat data to Fact Table\IOICC Flat to Fact Converter"
+          TopLeft="212,41" />
+        <NodeLayout
+          Size="171,42"
+          Id="Package\Transfer IOICC Flat data to Fact Table\OLE DB Destination"
+          TopLeft="210,213" />
+        <NodeLayout
+          Size="140,42"
+          Id="Package\Transfer IOICC Flat data to Fact Table\Shorten Year"
+          TopLeft="657,93" />
+        <EdgeLayout
+          Id="Package\Transfer IOICC Flat data to Fact Table.Paths[OLE DB Source Output]"
+          TopLeft="425,62">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="232,52"
+              Start="0,0"
+              End="224.5,52">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="112,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="112,0"
+                    Point2="116,0"
+                    Point3="116,4" />
+                  <mssgle:LineSegment
+                    End="116,48" />
+                  <mssgle:CubicBezierSegment
+                    Point1="116,48"
+                    Point2="116,52"
+                    Point3="120,52" />
+                  <mssgle:LineSegment
+                    End="224.5,52" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Transfer IOICC Flat data to Fact Table.Paths[Derived Column Output]"
+          TopLeft="727,135">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-431.5,78"
+              Start="0,0"
+              End="-431.5,70.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,35" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,35"
+                    Point2="0,39"
+                    Point3="-4,39" />
+                  <mssgle:LineSegment
+                    End="-427.5,39" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-427.5,39"
+                    Point2="-431.5,39"
+                    Point3="-431.5,43" />
+                  <mssgle:LineSegment
+                    End="-431.5,70.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Transfer IOICC Flat data to Fact Table\IOICC Flat to Fact Converter">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">View</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Transfer IOICC Flat data to Fact Table\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
