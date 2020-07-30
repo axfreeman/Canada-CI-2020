@@ -11,8 +11,8 @@
   DTS:LocaleID="2057"
   DTS:ObjectName="Import Maps"
   DTS:PackageType="5"
-  DTS:VersionBuild="138"
-  DTS:VersionGUID="{6573F0D7-7691-4042-8D94-80ACDA0AB411}">
+  DTS:VersionBuild="139"
+  DTS:VersionGUID="{01F9FD6E-41DE-4303-AF77-5BBE706E7C29}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -2267,19 +2267,41 @@
     design-time-name="Package\Import dimNewIndustry Table">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="218,42"
           Id="Package\Import dimNewIndustry Table\MAPPINGS (dimNewIndustry)"
           TopLeft="107.076924756535,18.3885921304255" />
         <NodeLayout
-          Size="193,42"
-          Id="Package\Import dimNewIndustry Table\dimIndustry OLTP Table"
-          TopLeft="119.465934003975,220.486988561576" />
-        <NodeLayout
           Size="178,42"
           Id="Package\Import dimNewIndustry Table\Shorten NAICS codes"
           TopLeft="123.615370993078,108.103030155031" />
+        <NodeLayout
+          Size="193,42"
+          Id="Package\Import dimNewIndustry Table\dimIndustry OLTP Table"
+          TopLeft="119.465934003975,220.486988561576" />
+        <EdgeLayout
+          Id="Package\Import dimNewIndustry Table.Paths[Derived Column Output]"
+          TopLeft="214.290652498526,150.103030155031">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,70.383958406545"
+              Start="0,0"
+              End="0,62.883958406545">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,62.883958406545" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <EdgeLayout
           Id="Package\Import dimNewIndustry Table.Paths[Excel Source Output]"
           TopLeft="214.346147874806,60.3885921304255">
@@ -2300,30 +2322,6 @@
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Import dimNewIndustry Table.Paths[Derived Column Output]"
-          TopLeft="214.290652498526,150.103030155031">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,70.383958406545"
-              Start="0,0"
-              End="0,62.883958406545">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,62.883958406545" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-8,23.4419792032725,16,16"
-              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>

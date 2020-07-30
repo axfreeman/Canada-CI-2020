@@ -14,7 +14,7 @@ GO
 CREATE VIEW [dbo].[Creative Industries]
 AS
 SELECT        SUM(dbo.Fact.Value) AS Value, dbo.Fact.Year, dbo.Fact.Indicator, dbo.dimGeography.[Standardised Province], dbo.Fact.Source, dbo.dimNewIndustry.[Creative Sector], dbo.Fact.PNAICS, dbo.dimNewIndustry.PNAICS AS NIPNAICS,
-                          dbo.dimNewIndustry.NAICS6, dbo.dimNewIndustry.NAICS5, dbo.dimNewIndustry.NAICS4, dbo.dimNewIndustry.NAICS3, dbo.dimNewIndustry.NAICS2, dbo.Fact.Value AS Expr1
+                          dbo.dimNewIndustry.NAICS6, dbo.dimNewIndustry.NAICS5, dbo.dimNewIndustry.NAICS4, dbo.dimNewIndustry.NAICS3, dbo.dimNewIndustry.NAICS2
 FROM            dbo.dimGeography RIGHT OUTER JOIN
                          dbo.Fact ON dbo.dimGeography.geoName_PK = dbo.Fact.GeoName RIGHT OUTER JOIN
                          dbo.dimNewIndustry ON dbo.Fact.PNAICS = dbo.dimNewIndustry.PNAICS

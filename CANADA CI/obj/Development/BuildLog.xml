@@ -2,7 +2,7 @@
 <BuildLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <ProjectInfo>
     <Name>CANADA CI</Name>
-    <LastWriteTime>2020-07-30T16:44:14.4549364Z</LastWriteTime>
+    <LastWriteTime>2020-07-30T17:33:06.0541857Z</LastWriteTime>
     <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
   </ProjectInfo>
   <LastBuildInfos>
@@ -12,28 +12,13 @@
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
-      <Name>Import Source Data.dtsx</Name>
-      <LastWriteTime>2020-07-27T10:27:08.9742624Z</LastWriteTime>
-      <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
-    </ProjectBuildItemInfo>
-    <ProjectBuildItemInfo>
       <Name>Import Maps.dtsx</Name>
-      <LastWriteTime>2020-07-30T16:35:09.6914939Z</LastWriteTime>
+      <LastWriteTime>2020-07-30T17:15:13.9431577Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
-      <Name>Complete setup.dtsx</Name>
-      <LastWriteTime>2020-07-05T12:51:39.0538879Z</LastWriteTime>
-      <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
-    </ProjectBuildItemInfo>
-    <ProjectBuildItemInfo>
-      <Name>Populate ROLAP.dtsx</Name>
-      <LastWriteTime>2020-07-03T14:21:58.8063717Z</LastWriteTime>
-      <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
-    </ProjectBuildItemInfo>
-    <ProjectBuildItemInfo>
-      <Name>NewImportSourceData.dtsx</Name>
-      <LastWriteTime>2020-07-30T16:51:54.7432916Z</LastWriteTime>
+      <Name>ImportSourceData.dtsx</Name>
+      <LastWriteTime>2020-07-30T17:34:02.984532Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
   </LastBuildInfos>
