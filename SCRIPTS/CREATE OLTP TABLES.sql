@@ -126,4 +126,13 @@ oFreeman[nvarchar](8) NULL,
 ) on [PRIMARY]
 GO
 
+DROP TABLE IF EXISTS industryDescriptions
+GO
+
+CREATE TABLE [dbo].[industryDescriptions](
+NAICS6[nvarchar](6) NULL,	
+Description[nvarchar](255) NULL,	
+) on [PRIMARY]
+GO
+
 

@@ -11,8 +11,8 @@
   DTS:LocaleID="2057"
   DTS:ObjectName="Import Maps"
   DTS:PackageType="5"
-  DTS:VersionBuild="139"
-  DTS:VersionGUID="{01F9FD6E-41DE-4303-AF77-5BBE706E7C29}">
+  DTS:VersionBuild="142"
+  DTS:VersionGUID="{9D13C167-1014-4768-89BE-FB1F587F2DD9}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -1566,6 +1566,408 @@
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
+      DTS:refId="Package\Import Industry Descriptions"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{3DFEB231-A7A1-4C00-A720-E77323212629}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Import Industry Descriptions"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Import Industry Descriptions\IndustryDescriptions OLTP Table"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="IndustryDescriptions OLTP Table"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[industryDescriptions]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Import Industry Descriptions\IndustryDescriptions OLTP Table.Connections[OleDbConnection]"
+                  connectionManagerID="{7C609DE3-B60F-43F3-9132-B532B5CB115C}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[OLTP]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Import Industry Descriptions\IndustryDescriptions OLTP Table.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Import Industry Descriptions\IndustryDescriptions OLTP Table.Inputs[OLE DB Destination Input].Columns[Description]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Description"
+                      externalMetadataColumnId="Package\Import Industry Descriptions\IndustryDescriptions OLTP Table.Inputs[OLE DB Destination Input].ExternalColumns[Description]"
+                      lineageId="Package\Import Industry Descriptions\MAPPING IndustryDescriptions.Outputs[Excel Source Output].Columns[Description]" />
+                    <inputColumn
+                      refId="Package\Import Industry Descriptions\IndustryDescriptions OLTP Table.Inputs[OLE DB Destination Input].Columns[ShortNAICS]"
+                      cachedDataType="wstr"
+                      cachedLength="6"
+                      cachedName="ShortNAICS"
+                      externalMetadataColumnId="Package\Import Industry Descriptions\IndustryDescriptions OLTP Table.Inputs[OLE DB Destination Input].ExternalColumns[NAICS6]"
+                      lineageId="Package\Import Industry Descriptions\Shorten NAICS.Outputs[Derived Column Output].Columns[ShortNAICS]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Import Industry Descriptions\IndustryDescriptions OLTP Table.Inputs[OLE DB Destination Input].ExternalColumns[NAICS6]"
+                      dataType="wstr"
+                      length="6"
+                      name="NAICS6" />
+                    <externalMetadataColumn
+                      refId="Package\Import Industry Descriptions\IndustryDescriptions OLTP Table.Inputs[OLE DB Destination Input].ExternalColumns[Description]"
+                      dataType="wstr"
+                      length="255"
+                      name="Description" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Import Industry Descriptions\IndustryDescriptions OLTP Table.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Import Industry Descriptions\IndustryDescriptions OLTP Table.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Import Industry Descriptions\IndustryDescriptions OLTP Table.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Import Industry Descriptions\IndustryDescriptions OLTP Table.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Import Industry Descriptions\IndustryDescriptions OLTP Table.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Import Industry Descriptions\IndustryDescriptions OLTP Table.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Import Industry Descriptions\MAPPING IndustryDescriptions"
+              componentClassID="Microsoft.ExcelSource"
+              contactInfo="Excel Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Excel Source"
+              name="MAPPING IndustryDescriptions"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">IndustryDescriptions$</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mapping from parameters in the SQL command to variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Import Industry Descriptions\MAPPING IndustryDescriptions.Connections[OleDbConnection]"
+                  connectionManagerID="{7A6A48E9-CEDD-40AC-8E7B-406E882F411E}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[MAPPINGS]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Import Industry Descriptions\MAPPING IndustryDescriptions.Outputs[Excel Source Output]"
+                  name="Excel Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Import Industry Descriptions\MAPPING IndustryDescriptions.Outputs[Excel Source Output].Columns[NAICS]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import Industry Descriptions\MAPPING IndustryDescriptions.Outputs[Excel Source Output].ExternalColumns[NAICS]"
+                      length="255"
+                      lineageId="Package\Import Industry Descriptions\MAPPING IndustryDescriptions.Outputs[Excel Source Output].Columns[NAICS]"
+                      name="NAICS"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import Industry Descriptions\MAPPING IndustryDescriptions.Outputs[Excel Source Output].Columns[ANAICS]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import Industry Descriptions\MAPPING IndustryDescriptions.Outputs[Excel Source Output].ExternalColumns[ANAICS]"
+                      length="255"
+                      lineageId="Package\Import Industry Descriptions\MAPPING IndustryDescriptions.Outputs[Excel Source Output].Columns[ANAICS]"
+                      name="ANAICS"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import Industry Descriptions\MAPPING IndustryDescriptions.Outputs[Excel Source Output].Columns[Description]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import Industry Descriptions\MAPPING IndustryDescriptions.Outputs[Excel Source Output].ExternalColumns[Description]"
+                      length="255"
+                      lineageId="Package\Import Industry Descriptions\MAPPING IndustryDescriptions.Outputs[Excel Source Output].Columns[Description]"
+                      name="Description"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Import Industry Descriptions\MAPPING IndustryDescriptions.Outputs[Excel Source Output].ExternalColumns[NAICS]"
+                      dataType="wstr"
+                      length="255"
+                      name="NAICS" />
+                    <externalMetadataColumn
+                      refId="Package\Import Industry Descriptions\MAPPING IndustryDescriptions.Outputs[Excel Source Output].ExternalColumns[ANAICS]"
+                      dataType="wstr"
+                      length="255"
+                      name="ANAICS" />
+                    <externalMetadataColumn
+                      refId="Package\Import Industry Descriptions\MAPPING IndustryDescriptions.Outputs[Excel Source Output].ExternalColumns[Description]"
+                      dataType="wstr"
+                      length="255"
+                      name="Description" />
+                    <externalMetadataColumn
+                      refId="Package\Import Industry Descriptions\MAPPING IndustryDescriptions.Outputs[Excel Source Output].ExternalColumns[F4]"
+                      dataType="wstr"
+                      length="255"
+                      name="F4" />
+                    <externalMetadataColumn
+                      refId="Package\Import Industry Descriptions\MAPPING IndustryDescriptions.Outputs[Excel Source Output].ExternalColumns[F5]"
+                      dataType="wstr"
+                      length="255"
+                      name="F5" />
+                    <externalMetadataColumn
+                      refId="Package\Import Industry Descriptions\MAPPING IndustryDescriptions.Outputs[Excel Source Output].ExternalColumns[F6]"
+                      dataType="wstr"
+                      length="255"
+                      name="F6" />
+                    <externalMetadataColumn
+                      refId="Package\Import Industry Descriptions\MAPPING IndustryDescriptions.Outputs[Excel Source Output].ExternalColumns[F7]"
+                      dataType="wstr"
+                      length="255"
+                      name="F7" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Import Industry Descriptions\MAPPING IndustryDescriptions.Outputs[Excel Source Error Output]"
+                  isErrorOut="true"
+                  name="Excel Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Import Industry Descriptions\MAPPING IndustryDescriptions.Outputs[Excel Source Error Output].Columns[NAICS]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Import Industry Descriptions\MAPPING IndustryDescriptions.Outputs[Excel Source Error Output].Columns[NAICS]"
+                      name="NAICS" />
+                    <outputColumn
+                      refId="Package\Import Industry Descriptions\MAPPING IndustryDescriptions.Outputs[Excel Source Error Output].Columns[ANAICS]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Import Industry Descriptions\MAPPING IndustryDescriptions.Outputs[Excel Source Error Output].Columns[ANAICS]"
+                      name="ANAICS" />
+                    <outputColumn
+                      refId="Package\Import Industry Descriptions\MAPPING IndustryDescriptions.Outputs[Excel Source Error Output].Columns[Description]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Import Industry Descriptions\MAPPING IndustryDescriptions.Outputs[Excel Source Error Output].Columns[Description]"
+                      name="Description" />
+                    <outputColumn
+                      refId="Package\Import Industry Descriptions\MAPPING IndustryDescriptions.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Import Industry Descriptions\MAPPING IndustryDescriptions.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Import Industry Descriptions\MAPPING IndustryDescriptions.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Import Industry Descriptions\MAPPING IndustryDescriptions.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Import Industry Descriptions\Shorten NAICS"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Shorten NAICS"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Import Industry Descriptions\Shorten NAICS.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Import Industry Descriptions\Shorten NAICS.Inputs[Derived Column Input].Columns[NAICS]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="NAICS"
+                      lineageId="Package\Import Industry Descriptions\MAPPING IndustryDescriptions.Outputs[Excel Source Output].Columns[NAICS]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Import Industry Descriptions\Shorten NAICS.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Import Industry Descriptions\Shorten NAICS.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Import Industry Descriptions\Shorten NAICS.Outputs[Derived Column Output].Columns[ShortNAICS]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="6"
+                      lineageId="Package\Import Industry Descriptions\Shorten NAICS.Outputs[Derived Column Output].Columns[ShortNAICS]"
+                      name="ShortNAICS"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[LEFT](#{Package\Import Industry Descriptions\MAPPING IndustryDescriptions.Outputs[Excel Source Output].Columns[NAICS]},6)</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">LEFT(NAICS,6)</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Import Industry Descriptions\Shorten NAICS.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Import Industry Descriptions\Shorten NAICS.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Import Industry Descriptions\Shorten NAICS.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Import Industry Descriptions\Shorten NAICS.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Import Industry Descriptions\Shorten NAICS.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Import Industry Descriptions\Shorten NAICS.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Import Industry Descriptions.Paths[Derived Column Output]"
+              endId="Package\Import Industry Descriptions\IndustryDescriptions OLTP Table.Inputs[OLE DB Destination Input]"
+              name="Derived Column Output"
+              startId="Package\Import Industry Descriptions\Shorten NAICS.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Import Industry Descriptions.Paths[Excel Source Output]"
+              endId="Package\Import Industry Descriptions\Shorten NAICS.Inputs[Derived Column Input]"
+              name="Excel Source Output"
+              startId="Package\Import Industry Descriptions\MAPPING IndustryDescriptions.Outputs[Excel Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
       DTS:refId="Package\Import IOICC Splitter OLTP Table"
       DTS:CreationName="Microsoft.Pipeline"
       DTS:Description="Data Flow Task"
@@ -2060,6 +2462,14 @@
       DTS:ObjectName="Constraint"
       DTS:To="Package\Import IOICC Splitter OLTP Table" />
     <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{C59807C7-2634-4A0E-8D38-497E44F63892}"
+      DTS:From="Package\Import dimGeography Table"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\Import Industry Descriptions" />
+    <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
       DTS:CreationName=""
       DTS:DTSID="{1C8A3A9E-E475-46D8-B390-15E38F5F9A58}"
@@ -2087,7 +2497,7 @@
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="211,42"
           Id="Package\Import dimGeography Table"
@@ -2194,6 +2604,44 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <NodeLayout
+          Size="214,42"
+          Id="Package\Import Industry Descriptions"
+          TopLeft="212,265" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="405.071429466715,169.435296914652">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-86.071429466715,95.564703085348"
+              Start="0,0"
+              End="-86.071429466715,88.064703085348">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,43.782351542674" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,43.782351542674"
+                    Point2="0,47.782351542674"
+                    Point3="-4,47.782351542674" />
+                  <mssgle:LineSegment
+                    End="-82.071429466715,47.782351542674" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-82.071429466715,47.782351542674"
+                    Point2="-86.071429466715,47.782351542674"
+                    Point3="-86.071429466715,51.782351542674" />
+                  <mssgle:LineSegment
+                    End="-86.071429466715,88.064703085348" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </Package>
@@ -2267,7 +2715,7 @@
     design-time-name="Package\Import dimNewIndustry Table">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="218,42"
           Id="Package\Import dimNewIndustry Table\MAPPINGS (dimNewIndustry)"
@@ -2299,7 +2747,9 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -2321,7 +2771,9 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -2578,6 +3030,96 @@
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\Import IOICC Splitter OLTP Table\MAPPINGS (IOICC Standardiser)">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Import Industry Descriptions">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="223,42"
+          Id="Package\Import Industry Descriptions\MAPPING IndustryDescriptions"
+          TopLeft="257,47" />
+        <NodeLayout
+          Size="149,42"
+          Id="Package\Import Industry Descriptions\Shorten NAICS"
+          TopLeft="295,171" />
+        <EdgeLayout
+          Id="Package\Import Industry Descriptions.Paths[Excel Source Output]"
+          TopLeft="369,89">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,82"
+              Start="0,0"
+              End="0,74.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,74.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="233,42"
+          Id="Package\Import Industry Descriptions\IndustryDescriptions OLTP Table"
+          TopLeft="250,297" />
+        <EdgeLayout
+          Id="Package\Import Industry Descriptions.Paths[Derived Column Output]"
+          TopLeft="368,213">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,84"
+              Start="0,0"
+              End="0,76.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,76.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Import Industry Descriptions\MAPPING IndustryDescriptions">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Import Industry Descriptions\IndustryDescriptions OLTP Table">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
