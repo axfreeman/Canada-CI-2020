@@ -88,12 +88,12 @@ DROP TABLE IF EXISTS [dbo].[dimNewIndustry]
 GO
 
 CREATE TABLE [dbo].[dimNewIndustry](
-	[PNAICS][nvarchar](7) NULL,
-	[NAICS6][nvarchar](7) NOT NULL,
-	[NAICS5][nvarchar](7) NOT NULL,
-	[NAICS4][nvarchar](7) NOT NULL,
-	[NAICS3][nvarchar](7) NOT NULL,
-	[NAICS2][nvarchar](7) NOT NULL,
+	[PNAICS][nvarchar](7) NOT NULL,
+	[NAICS6][nvarchar](7) NULL,
+	[NAICS5][nvarchar](7) NULL,
+	[NAICS4][nvarchar](7) NULL,
+	[NAICS3][nvarchar](7) NULL,
+	[NAICS2][nvarchar](7) NULL,
 	[Creative Sector] [nvarchar] (255) NULL,
 ) ON [PRIMARY]
 GO

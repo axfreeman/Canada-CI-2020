@@ -11,8 +11,8 @@
   DTS:LocaleID="2057"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionBuild="7"
-  DTS:VersionGUID="{7E8422EB-396D-45D5-A124-4EC1BBE2235E}">
+  DTS:VersionBuild="9"
+  DTS:VersionGUID="{300EB8A1-AFCA-49CF-8E41-DF8D2A3B6064}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -23,7 +23,7 @@
       DTS:ObjectName="Excel Connection Manager">
       <DTS:ObjectData>
         <DTS:ConnectionManager
-          DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\GERG\Documents\Github\Canada-CI\SOURCE DATA\GDP 2020.xlsx;Extended Properties=&quot;Excel 12.0 XML;HDR=YES&quot;;" />
+          DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\GERG\Documents\Github\Canada-CI\SOURCE DATA\GDP 2020.xlsx;Extended Properties=&quot;EXCEL 12.0 XML;HDR=YES&quot;;" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
   </DTS:ConnectionManagers>
@@ -544,6 +544,886 @@
               endId="Package\Load GDP Data Into IOICC Flat OLTP Table\Add Source, Shorten PNAICS.Inputs[Derived Column Input]"
               name="Excel Source Output"
               startId="Package\Load GDP Data Into IOICC Flat OLTP Table\GDP 2020.Outputs[Excel Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Load LFS Annual into Fact OLTP Table"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{40EBA736-41EB-4CCB-901A-B2B7894C77D4}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Load LFS Annual into Fact OLTP Table"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Load LFS Annual into Fact OLTP Table\Derived Column"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Derived Column"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Load LFS Annual into Fact OLTP Table\Derived Column.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load LFS Annual into Fact OLTP Table\Derived Column.Inputs[Derived Column Input].Columns[Year]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Year"
+                      lineageId="Package\Load LFS Annual into Fact OLTP Table\Unpivot.Outputs[Unpivot Output].Columns[Year]" />
+                    <inputColumn
+                      refId="Package\Load LFS Annual into Fact OLTP Table\Derived Column.Inputs[Derived Column Input].Columns[PNAICS]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="PNAICS"
+                      lineageId="Package\Load LFS Annual into Fact OLTP Table\Unpivot.Outputs[Unpivot Output].Columns[PNAICS]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load LFS Annual into Fact OLTP Table\Derived Column.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Load LFS Annual into Fact OLTP Table\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load LFS Annual into Fact OLTP Table\Derived Column.Outputs[Derived Column Output].Columns[Source]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="10"
+                      lineageId="Package\Load LFS Annual into Fact OLTP Table\Derived Column.Outputs[Derived Column Output].Columns[Source]"
+                      name="Source"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">"LFS Annual"</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">"LFS Annual"</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load LFS Annual into Fact OLTP Table\Derived Column.Outputs[Derived Column Output].Columns[Indicator]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="10"
+                      lineageId="Package\Load LFS Annual into Fact OLTP Table\Derived Column.Outputs[Derived Column Output].Columns[Indicator]"
+                      name="Indicator"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">"Total Jobs"</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">"Total Jobs"</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load LFS Annual into Fact OLTP Table\Derived Column.Outputs[Derived Column Output].Columns[ShortYear]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="4"
+                      lineageId="Package\Load LFS Annual into Fact OLTP Table\Derived Column.Outputs[Derived Column Output].Columns[ShortYear]"
+                      name="ShortYear"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[LEFT](#{Package\Load LFS Annual into Fact OLTP Table\Unpivot.Outputs[Unpivot Output].Columns[Year]},4)</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">LEFT(Year,4)</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load LFS Annual into Fact OLTP Table\Derived Column.Outputs[Derived Column Output].Columns[ShortPNAICS]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="7"
+                      lineageId="Package\Load LFS Annual into Fact OLTP Table\Derived Column.Outputs[Derived Column Output].Columns[ShortPNAICS]"
+                      name="ShortPNAICS"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[LEFT](#{Package\Load LFS Annual into Fact OLTP Table\Unpivot.Outputs[Unpivot Output].Columns[PNAICS]},7)</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">LEFT(PNAICS,7)</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Load LFS Annual into Fact OLTP Table\Derived Column.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Load LFS Annual into Fact OLTP Table\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load LFS Annual into Fact OLTP Table\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load LFS Annual into Fact OLTP Table\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load LFS Annual into Fact OLTP Table\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load LFS Annual into Fact OLTP Table\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load LFS Annual into Fact OLTP Table\Fact OLTP Table"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Fact OLTP Table"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[Fact]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load LFS Annual into Fact OLTP Table\Fact OLTP Table.Connections[OleDbConnection]"
+                  connectionManagerID="{7C609DE3-B60F-43F3-9132-B532B5CB115C}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[OLTP]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Load LFS Annual into Fact OLTP Table\Fact OLTP Table.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load LFS Annual into Fact OLTP Table\Fact OLTP Table.Inputs[OLE DB Destination Input].Columns[Value]"
+                      cachedDataType="r8"
+                      cachedName="Value"
+                      externalMetadataColumnId="Package\Load LFS Annual into Fact OLTP Table\Fact OLTP Table.Inputs[OLE DB Destination Input].ExternalColumns[Value]"
+                      lineageId="Package\Load LFS Annual into Fact OLTP Table\Unpivot.Outputs[Unpivot Output].Columns[Value]" />
+                    <inputColumn
+                      refId="Package\Load LFS Annual into Fact OLTP Table\Fact OLTP Table.Inputs[OLE DB Destination Input].Columns[Source]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="Source"
+                      externalMetadataColumnId="Package\Load LFS Annual into Fact OLTP Table\Fact OLTP Table.Inputs[OLE DB Destination Input].ExternalColumns[Source]"
+                      lineageId="Package\Load LFS Annual into Fact OLTP Table\Derived Column.Outputs[Derived Column Output].Columns[Source]" />
+                    <inputColumn
+                      refId="Package\Load LFS Annual into Fact OLTP Table\Fact OLTP Table.Inputs[OLE DB Destination Input].Columns[Indicator]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="Indicator"
+                      externalMetadataColumnId="Package\Load LFS Annual into Fact OLTP Table\Fact OLTP Table.Inputs[OLE DB Destination Input].ExternalColumns[Indicator]"
+                      lineageId="Package\Load LFS Annual into Fact OLTP Table\Derived Column.Outputs[Derived Column Output].Columns[Indicator]" />
+                    <inputColumn
+                      refId="Package\Load LFS Annual into Fact OLTP Table\Fact OLTP Table.Inputs[OLE DB Destination Input].Columns[ShortYear]"
+                      cachedDataType="wstr"
+                      cachedLength="4"
+                      cachedName="ShortYear"
+                      externalMetadataColumnId="Package\Load LFS Annual into Fact OLTP Table\Fact OLTP Table.Inputs[OLE DB Destination Input].ExternalColumns[Year]"
+                      lineageId="Package\Load LFS Annual into Fact OLTP Table\Derived Column.Outputs[Derived Column Output].Columns[ShortYear]" />
+                    <inputColumn
+                      refId="Package\Load LFS Annual into Fact OLTP Table\Fact OLTP Table.Inputs[OLE DB Destination Input].Columns[Geography]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Geography"
+                      externalMetadataColumnId="Package\Load LFS Annual into Fact OLTP Table\Fact OLTP Table.Inputs[OLE DB Destination Input].ExternalColumns[GeoName]"
+                      lineageId="Package\Load LFS Annual into Fact OLTP Table\Unpivot.Outputs[Unpivot Output].Columns[Geography]" />
+                    <inputColumn
+                      refId="Package\Load LFS Annual into Fact OLTP Table\Fact OLTP Table.Inputs[OLE DB Destination Input].Columns[ShortPNAICS]"
+                      cachedDataType="wstr"
+                      cachedLength="7"
+                      cachedName="ShortPNAICS"
+                      externalMetadataColumnId="Package\Load LFS Annual into Fact OLTP Table\Fact OLTP Table.Inputs[OLE DB Destination Input].ExternalColumns[PNAICS]"
+                      lineageId="Package\Load LFS Annual into Fact OLTP Table\Derived Column.Outputs[Derived Column Output].Columns[ShortPNAICS]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Load LFS Annual into Fact OLTP Table\Fact OLTP Table.Inputs[OLE DB Destination Input].ExternalColumns[FactPK]"
+                      dataType="i4"
+                      name="FactPK" />
+                    <externalMetadataColumn
+                      refId="Package\Load LFS Annual into Fact OLTP Table\Fact OLTP Table.Inputs[OLE DB Destination Input].ExternalColumns[Source]"
+                      dataType="wstr"
+                      length="255"
+                      name="Source" />
+                    <externalMetadataColumn
+                      refId="Package\Load LFS Annual into Fact OLTP Table\Fact OLTP Table.Inputs[OLE DB Destination Input].ExternalColumns[Indicator]"
+                      dataType="wstr"
+                      length="256"
+                      name="Indicator" />
+                    <externalMetadataColumn
+                      refId="Package\Load LFS Annual into Fact OLTP Table\Fact OLTP Table.Inputs[OLE DB Destination Input].ExternalColumns[PNAICS]"
+                      dataType="wstr"
+                      length="7"
+                      name="PNAICS" />
+                    <externalMetadataColumn
+                      refId="Package\Load LFS Annual into Fact OLTP Table\Fact OLTP Table.Inputs[OLE DB Destination Input].ExternalColumns[PNAICS description]"
+                      dataType="wstr"
+                      length="255"
+                      name="PNAICS description" />
+                    <externalMetadataColumn
+                      refId="Package\Load LFS Annual into Fact OLTP Table\Fact OLTP Table.Inputs[OLE DB Destination Input].ExternalColumns[GeoName]"
+                      dataType="wstr"
+                      length="255"
+                      name="GeoName" />
+                    <externalMetadataColumn
+                      refId="Package\Load LFS Annual into Fact OLTP Table\Fact OLTP Table.Inputs[OLE DB Destination Input].ExternalColumns[Year]"
+                      dataType="wstr"
+                      length="10"
+                      name="Year" />
+                    <externalMetadataColumn
+                      refId="Package\Load LFS Annual into Fact OLTP Table\Fact OLTP Table.Inputs[OLE DB Destination Input].ExternalColumns[Value]"
+                      dataType="r8"
+                      name="Value" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load LFS Annual into Fact OLTP Table\Fact OLTP Table.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Load LFS Annual into Fact OLTP Table\Fact OLTP Table.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load LFS Annual into Fact OLTP Table\Fact OLTP Table.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load LFS Annual into Fact OLTP Table\Fact OLTP Table.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load LFS Annual into Fact OLTP Table\Fact OLTP Table.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load LFS Annual into Fact OLTP Table\Fact OLTP Table.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load LFS Annual into Fact OLTP Table\LFS Annual"
+              componentClassID="Microsoft.ExcelSource"
+              contactInfo="Excel Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Excel Source"
+              name="LFS Annual"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">'Cleaned for import$'</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mapping from parameters in the SQL command to variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Load LFS Annual into Fact OLTP Table\LFS Annual.Connections[OleDbConnection]"
+                  connectionManagerID="{4F625E17-FD4F-44B7-B62D-8565CB929754}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[LFS Annual]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Load LFS Annual into Fact OLTP Table\LFS Annual.Outputs[Excel Source Output]"
+                  name="Excel Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load LFS Annual into Fact OLTP Table\LFS Annual.Outputs[Excel Source Output].Columns[Geography]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load LFS Annual into Fact OLTP Table\LFS Annual.Outputs[Excel Source Output].ExternalColumns[Geography]"
+                      length="255"
+                      lineageId="Package\Load LFS Annual into Fact OLTP Table\LFS Annual.Outputs[Excel Source Output].Columns[Geography]"
+                      name="Geography"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load LFS Annual into Fact OLTP Table\LFS Annual.Outputs[Excel Source Output].Columns[NAICS raw code]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load LFS Annual into Fact OLTP Table\LFS Annual.Outputs[Excel Source Output].ExternalColumns[NAICS raw code]"
+                      length="255"
+                      lineageId="Package\Load LFS Annual into Fact OLTP Table\LFS Annual.Outputs[Excel Source Output].Columns[NAICS raw code]"
+                      name="NAICS raw code"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load LFS Annual into Fact OLTP Table\LFS Annual.Outputs[Excel Source Output].Columns[PNAICS]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load LFS Annual into Fact OLTP Table\LFS Annual.Outputs[Excel Source Output].ExternalColumns[PNAICS]"
+                      length="255"
+                      lineageId="Package\Load LFS Annual into Fact OLTP Table\LFS Annual.Outputs[Excel Source Output].Columns[PNAICS]"
+                      name="PNAICS"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load LFS Annual into Fact OLTP Table\LFS Annual.Outputs[Excel Source Output].Columns[2011]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load LFS Annual into Fact OLTP Table\LFS Annual.Outputs[Excel Source Output].ExternalColumns[2011]"
+                      lineageId="Package\Load LFS Annual into Fact OLTP Table\LFS Annual.Outputs[Excel Source Output].Columns[2011]"
+                      name="2011"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load LFS Annual into Fact OLTP Table\LFS Annual.Outputs[Excel Source Output].Columns[2012]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load LFS Annual into Fact OLTP Table\LFS Annual.Outputs[Excel Source Output].ExternalColumns[2012]"
+                      lineageId="Package\Load LFS Annual into Fact OLTP Table\LFS Annual.Outputs[Excel Source Output].Columns[2012]"
+                      name="2012"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load LFS Annual into Fact OLTP Table\LFS Annual.Outputs[Excel Source Output].Columns[2013]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load LFS Annual into Fact OLTP Table\LFS Annual.Outputs[Excel Source Output].ExternalColumns[2013]"
+                      lineageId="Package\Load LFS Annual into Fact OLTP Table\LFS Annual.Outputs[Excel Source Output].Columns[2013]"
+                      name="2013"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load LFS Annual into Fact OLTP Table\LFS Annual.Outputs[Excel Source Output].Columns[2014]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load LFS Annual into Fact OLTP Table\LFS Annual.Outputs[Excel Source Output].ExternalColumns[2014]"
+                      lineageId="Package\Load LFS Annual into Fact OLTP Table\LFS Annual.Outputs[Excel Source Output].Columns[2014]"
+                      name="2014"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load LFS Annual into Fact OLTP Table\LFS Annual.Outputs[Excel Source Output].Columns[2015]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load LFS Annual into Fact OLTP Table\LFS Annual.Outputs[Excel Source Output].ExternalColumns[2015]"
+                      lineageId="Package\Load LFS Annual into Fact OLTP Table\LFS Annual.Outputs[Excel Source Output].Columns[2015]"
+                      name="2015"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Load LFS Annual into Fact OLTP Table\LFS Annual.Outputs[Excel Source Output].Columns[2016]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Load LFS Annual into Fact OLTP Table\LFS Annual.Outputs[Excel Source Output].ExternalColumns[2016]"
+                      lineageId="Package\Load LFS Annual into Fact OLTP Table\LFS Annual.Outputs[Excel Source Output].Columns[2016]"
+                      name="2016"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Load LFS Annual into Fact OLTP Table\LFS Annual.Outputs[Excel Source Output].ExternalColumns[Geography]"
+                      dataType="wstr"
+                      length="255"
+                      name="Geography" />
+                    <externalMetadataColumn
+                      refId="Package\Load LFS Annual into Fact OLTP Table\LFS Annual.Outputs[Excel Source Output].ExternalColumns[NAICS raw code]"
+                      dataType="wstr"
+                      length="255"
+                      name="NAICS raw code" />
+                    <externalMetadataColumn
+                      refId="Package\Load LFS Annual into Fact OLTP Table\LFS Annual.Outputs[Excel Source Output].ExternalColumns[PNAICS]"
+                      dataType="wstr"
+                      length="255"
+                      name="PNAICS" />
+                    <externalMetadataColumn
+                      refId="Package\Load LFS Annual into Fact OLTP Table\LFS Annual.Outputs[Excel Source Output].ExternalColumns[2011]"
+                      dataType="r8"
+                      name="2011" />
+                    <externalMetadataColumn
+                      refId="Package\Load LFS Annual into Fact OLTP Table\LFS Annual.Outputs[Excel Source Output].ExternalColumns[2012]"
+                      dataType="r8"
+                      name="2012" />
+                    <externalMetadataColumn
+                      refId="Package\Load LFS Annual into Fact OLTP Table\LFS Annual.Outputs[Excel Source Output].ExternalColumns[2013]"
+                      dataType="r8"
+                      name="2013" />
+                    <externalMetadataColumn
+                      refId="Package\Load LFS Annual into Fact OLTP Table\LFS Annual.Outputs[Excel Source Output].ExternalColumns[2014]"
+                      dataType="r8"
+                      name="2014" />
+                    <externalMetadataColumn
+                      refId="Package\Load LFS Annual into Fact OLTP Table\LFS Annual.Outputs[Excel Source Output].ExternalColumns[2015]"
+                      dataType="r8"
+                      name="2015" />
+                    <externalMetadataColumn
+                      refId="Package\Load LFS Annual into Fact OLTP Table\LFS Annual.Outputs[Excel Source Output].ExternalColumns[2016]"
+                      dataType="r8"
+                      name="2016" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Load LFS Annual into Fact OLTP Table\LFS Annual.Outputs[Excel Source Error Output]"
+                  isErrorOut="true"
+                  name="Excel Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load LFS Annual into Fact OLTP Table\LFS Annual.Outputs[Excel Source Error Output].Columns[Geography]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Load LFS Annual into Fact OLTP Table\LFS Annual.Outputs[Excel Source Error Output].Columns[Geography]"
+                      name="Geography" />
+                    <outputColumn
+                      refId="Package\Load LFS Annual into Fact OLTP Table\LFS Annual.Outputs[Excel Source Error Output].Columns[NAICS raw code]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Load LFS Annual into Fact OLTP Table\LFS Annual.Outputs[Excel Source Error Output].Columns[NAICS raw code]"
+                      name="NAICS raw code" />
+                    <outputColumn
+                      refId="Package\Load LFS Annual into Fact OLTP Table\LFS Annual.Outputs[Excel Source Error Output].Columns[PNAICS]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Load LFS Annual into Fact OLTP Table\LFS Annual.Outputs[Excel Source Error Output].Columns[PNAICS]"
+                      name="PNAICS" />
+                    <outputColumn
+                      refId="Package\Load LFS Annual into Fact OLTP Table\LFS Annual.Outputs[Excel Source Error Output].Columns[2011]"
+                      dataType="r8"
+                      lineageId="Package\Load LFS Annual into Fact OLTP Table\LFS Annual.Outputs[Excel Source Error Output].Columns[2011]"
+                      name="2011" />
+                    <outputColumn
+                      refId="Package\Load LFS Annual into Fact OLTP Table\LFS Annual.Outputs[Excel Source Error Output].Columns[2012]"
+                      dataType="r8"
+                      lineageId="Package\Load LFS Annual into Fact OLTP Table\LFS Annual.Outputs[Excel Source Error Output].Columns[2012]"
+                      name="2012" />
+                    <outputColumn
+                      refId="Package\Load LFS Annual into Fact OLTP Table\LFS Annual.Outputs[Excel Source Error Output].Columns[2013]"
+                      dataType="r8"
+                      lineageId="Package\Load LFS Annual into Fact OLTP Table\LFS Annual.Outputs[Excel Source Error Output].Columns[2013]"
+                      name="2013" />
+                    <outputColumn
+                      refId="Package\Load LFS Annual into Fact OLTP Table\LFS Annual.Outputs[Excel Source Error Output].Columns[2014]"
+                      dataType="r8"
+                      lineageId="Package\Load LFS Annual into Fact OLTP Table\LFS Annual.Outputs[Excel Source Error Output].Columns[2014]"
+                      name="2014" />
+                    <outputColumn
+                      refId="Package\Load LFS Annual into Fact OLTP Table\LFS Annual.Outputs[Excel Source Error Output].Columns[2015]"
+                      dataType="r8"
+                      lineageId="Package\Load LFS Annual into Fact OLTP Table\LFS Annual.Outputs[Excel Source Error Output].Columns[2015]"
+                      name="2015" />
+                    <outputColumn
+                      refId="Package\Load LFS Annual into Fact OLTP Table\LFS Annual.Outputs[Excel Source Error Output].Columns[2016]"
+                      dataType="r8"
+                      lineageId="Package\Load LFS Annual into Fact OLTP Table\LFS Annual.Outputs[Excel Source Error Output].Columns[2016]"
+                      name="2016" />
+                    <outputColumn
+                      refId="Package\Load LFS Annual into Fact OLTP Table\LFS Annual.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Load LFS Annual into Fact OLTP Table\LFS Annual.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Load LFS Annual into Fact OLTP Table\LFS Annual.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Load LFS Annual into Fact OLTP Table\LFS Annual.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Load LFS Annual into Fact OLTP Table\Unpivot"
+              componentClassID="Microsoft.UnPivot"
+              contactInfo="Unpivot;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Expands an un-normalized data flow into a more normalized version. Values from multiple columns of a single record expand to multiple records in a single column. For example, expand a table that lists athletic scores with a column for each game to more records and a single score column."
+              name="Unpivot">
+              <inputs>
+                <input
+                  refId="Package\Load LFS Annual into Fact OLTP Table\Unpivot.Inputs[Unpivot Input]"
+                  hasSideEffects="true"
+                  name="Unpivot Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Load LFS Annual into Fact OLTP Table\Unpivot.Inputs[Unpivot Input].Columns[2011]"
+                      cachedDataType="r8"
+                      cachedName="2011"
+                      lineageId="Package\Load LFS Annual into Fact OLTP Table\LFS Annual.Outputs[Excel Source Output].Columns[2011]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The lineage ID of the output column that will receive the value from this input column. Or -1 if column's value is not used in output rows."
+                          name="DestinationColumn">#{Package\Load LFS Annual into Fact OLTP Table\Unpivot.Outputs[Unpivot Output].Columns[Value]}</property>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the value written to the PivotKey column in the output row."
+                          expressionType="Notify"
+                          name="PivotKeyValue">2011</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Load LFS Annual into Fact OLTP Table\Unpivot.Inputs[Unpivot Input].Columns[2012]"
+                      cachedDataType="r8"
+                      cachedName="2012"
+                      lineageId="Package\Load LFS Annual into Fact OLTP Table\LFS Annual.Outputs[Excel Source Output].Columns[2012]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The lineage ID of the output column that will receive the value from this input column. Or -1 if column's value is not used in output rows."
+                          name="DestinationColumn">#{Package\Load LFS Annual into Fact OLTP Table\Unpivot.Outputs[Unpivot Output].Columns[Value]}</property>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the value written to the PivotKey column in the output row."
+                          expressionType="Notify"
+                          name="PivotKeyValue">2012</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Load LFS Annual into Fact OLTP Table\Unpivot.Inputs[Unpivot Input].Columns[2013]"
+                      cachedDataType="r8"
+                      cachedName="2013"
+                      lineageId="Package\Load LFS Annual into Fact OLTP Table\LFS Annual.Outputs[Excel Source Output].Columns[2013]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The lineage ID of the output column that will receive the value from this input column. Or -1 if column's value is not used in output rows."
+                          name="DestinationColumn">#{Package\Load LFS Annual into Fact OLTP Table\Unpivot.Outputs[Unpivot Output].Columns[Value]}</property>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the value written to the PivotKey column in the output row."
+                          expressionType="Notify"
+                          name="PivotKeyValue">2013</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Load LFS Annual into Fact OLTP Table\Unpivot.Inputs[Unpivot Input].Columns[2014]"
+                      cachedDataType="r8"
+                      cachedName="2014"
+                      lineageId="Package\Load LFS Annual into Fact OLTP Table\LFS Annual.Outputs[Excel Source Output].Columns[2014]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The lineage ID of the output column that will receive the value from this input column. Or -1 if column's value is not used in output rows."
+                          name="DestinationColumn">#{Package\Load LFS Annual into Fact OLTP Table\Unpivot.Outputs[Unpivot Output].Columns[Value]}</property>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the value written to the PivotKey column in the output row."
+                          expressionType="Notify"
+                          name="PivotKeyValue">2014</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Load LFS Annual into Fact OLTP Table\Unpivot.Inputs[Unpivot Input].Columns[2015]"
+                      cachedDataType="r8"
+                      cachedName="2015"
+                      lineageId="Package\Load LFS Annual into Fact OLTP Table\LFS Annual.Outputs[Excel Source Output].Columns[2015]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The lineage ID of the output column that will receive the value from this input column. Or -1 if column's value is not used in output rows."
+                          name="DestinationColumn">#{Package\Load LFS Annual into Fact OLTP Table\Unpivot.Outputs[Unpivot Output].Columns[Value]}</property>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the value written to the PivotKey column in the output row."
+                          expressionType="Notify"
+                          name="PivotKeyValue">2015</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Load LFS Annual into Fact OLTP Table\Unpivot.Inputs[Unpivot Input].Columns[2016]"
+                      cachedDataType="r8"
+                      cachedName="2016"
+                      lineageId="Package\Load LFS Annual into Fact OLTP Table\LFS Annual.Outputs[Excel Source Output].Columns[2016]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The lineage ID of the output column that will receive the value from this input column. Or -1 if column's value is not used in output rows."
+                          name="DestinationColumn">#{Package\Load LFS Annual into Fact OLTP Table\Unpivot.Outputs[Unpivot Output].Columns[Value]}</property>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the value written to the PivotKey column in the output row."
+                          expressionType="Notify"
+                          name="PivotKeyValue">2016</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Load LFS Annual into Fact OLTP Table\Unpivot.Inputs[Unpivot Input].Columns[Geography]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Geography"
+                      lineageId="Package\Load LFS Annual into Fact OLTP Table\LFS Annual.Outputs[Excel Source Output].Columns[Geography]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The lineage ID of the output column that will receive the value from this input column. Or -1 if column's value is not used in output rows."
+                          name="DestinationColumn">#{Package\Load LFS Annual into Fact OLTP Table\Unpivot.Outputs[Unpivot Output].Columns[Geography]}</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the value written to the PivotKey column in the output row."
+                          expressionType="Notify"
+                          name="PivotKeyValue" />
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Load LFS Annual into Fact OLTP Table\Unpivot.Inputs[Unpivot Input].Columns[NAICS raw code]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="NAICS raw code"
+                      lineageId="Package\Load LFS Annual into Fact OLTP Table\LFS Annual.Outputs[Excel Source Output].Columns[NAICS raw code]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The lineage ID of the output column that will receive the value from this input column. Or -1 if column's value is not used in output rows."
+                          name="DestinationColumn">#{Package\Load LFS Annual into Fact OLTP Table\Unpivot.Outputs[Unpivot Output].Columns[NAICS raw code]}</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the value written to the PivotKey column in the output row."
+                          expressionType="Notify"
+                          name="PivotKeyValue" />
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Load LFS Annual into Fact OLTP Table\Unpivot.Inputs[Unpivot Input].Columns[PNAICS]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="PNAICS"
+                      lineageId="Package\Load LFS Annual into Fact OLTP Table\LFS Annual.Outputs[Excel Source Output].Columns[PNAICS]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="The lineage ID of the output column that will receive the value from this input column. Or -1 if column's value is not used in output rows."
+                          name="DestinationColumn">#{Package\Load LFS Annual into Fact OLTP Table\Unpivot.Outputs[Unpivot Output].Columns[PNAICS]}</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the value written to the PivotKey column in the output row."
+                          expressionType="Notify"
+                          name="PivotKeyValue" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Load LFS Annual into Fact OLTP Table\Unpivot.Outputs[Unpivot Output]"
+                  name="Unpivot Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Load LFS Annual into Fact OLTP Table\Unpivot.Outputs[Unpivot Output].Columns[Year]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Load LFS Annual into Fact OLTP Table\Unpivot.Outputs[Unpivot Output].Columns[Year]"
+                      name="Year">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the value in the PivotKeyValue property is written to the column in the new row."
+                          name="PivotKey">true</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load LFS Annual into Fact OLTP Table\Unpivot.Outputs[Unpivot Output].Columns[Value]"
+                      dataType="r8"
+                      lineageId="Package\Load LFS Annual into Fact OLTP Table\Unpivot.Outputs[Unpivot Output].Columns[Value]"
+                      name="Value">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the value in the PivotKeyValue property is written to the column in the new row."
+                          name="PivotKey">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load LFS Annual into Fact OLTP Table\Unpivot.Outputs[Unpivot Output].Columns[Geography]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Load LFS Annual into Fact OLTP Table\Unpivot.Outputs[Unpivot Output].Columns[Geography]"
+                      name="Geography">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the value in the PivotKeyValue property is written to the column in the new row."
+                          name="PivotKey">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load LFS Annual into Fact OLTP Table\Unpivot.Outputs[Unpivot Output].Columns[NAICS raw code]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Load LFS Annual into Fact OLTP Table\Unpivot.Outputs[Unpivot Output].Columns[NAICS raw code]"
+                      name="NAICS raw code">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the value in the PivotKeyValue property is written to the column in the new row."
+                          name="PivotKey">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Load LFS Annual into Fact OLTP Table\Unpivot.Outputs[Unpivot Output].Columns[PNAICS]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Load LFS Annual into Fact OLTP Table\Unpivot.Outputs[Unpivot Output].Columns[PNAICS]"
+                      name="PNAICS">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the value in the PivotKeyValue property is written to the column in the new row."
+                          name="PivotKey">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Load LFS Annual into Fact OLTP Table.Paths[Derived Column Output]"
+              endId="Package\Load LFS Annual into Fact OLTP Table\Fact OLTP Table.Inputs[OLE DB Destination Input]"
+              name="Derived Column Output"
+              startId="Package\Load LFS Annual into Fact OLTP Table\Derived Column.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Load LFS Annual into Fact OLTP Table.Paths[Excel Source Output]"
+              endId="Package\Load LFS Annual into Fact OLTP Table\Unpivot.Inputs[Unpivot Input]"
+              name="Excel Source Output"
+              startId="Package\Load LFS Annual into Fact OLTP Table\LFS Annual.Outputs[Excel Source Output]" />
+            <path
+              refId="Package\Load LFS Annual into Fact OLTP Table.Paths[Unpivot Output]"
+              endId="Package\Load LFS Annual into Fact OLTP Table\Derived Column.Inputs[Derived Column Input]"
+              name="Unpivot Output"
+              startId="Package\Load LFS Annual into Fact OLTP Table\Unpivot.Outputs[Unpivot Output]" />
           </paths>
         </pipeline>
       </DTS:ObjectData>
@@ -1120,6 +2000,14 @@
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint"
       DTS:To="Package\Transfer IOICC Flat data to Fact Table" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{1D01D203-EA05-4BED-9012-7BCFF266F16C}"
+      DTS:From="Package\Transfer IOICC Flat data to Fact Table"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\Load LFS Annual into Fact OLTP Table" />
   </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
 <!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
@@ -1132,7 +2020,7 @@
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="283,42"
           Id="Package\Load GDP Data Into IOICC Flat OLTP Table"
@@ -1163,6 +2051,32 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <NodeLayout
+          Size="259,42"
+          Id="Package\Load LFS Annual into Fact OLTP Table"
+          TopLeft="70,286" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="199,175">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,111"
+              Start="0,0"
+              End="0,103.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,103.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </Package>
@@ -1170,11 +2084,7 @@
     design-time-name="Package\Load GDP Data Into IOICC Flat OLTP Table">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="126,42"
-          Id="Package\Load GDP Data Into IOICC Flat OLTP Table\GDP 2020"
-          TopLeft="177,20" />
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="154,42"
           Id="Package\Load GDP Data Into IOICC Flat OLTP Table\IOICC Flat table"
@@ -1183,6 +2093,10 @@
           Size="215,42"
           Id="Package\Load GDP Data Into IOICC Flat OLTP Table\Add Source, Shorten PNAICS"
           TopLeft="462,117" />
+        <NodeLayout
+          Size="126,42"
+          Id="Package\Load GDP Data Into IOICC Flat OLTP Table\GDP 2020"
+          TopLeft="177,20" />
         <EdgeLayout
           Id="Package\Load GDP Data Into IOICC Flat OLTP Table.Paths[Excel Source Output]"
           TopLeft="240,62">
@@ -1214,7 +2128,9 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -1248,14 +2164,16 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Load GDP Data Into IOICC Flat OLTP Table\GDP 2020">
+    design-time-name="Package\Load GDP Data Into IOICC Flat OLTP Table\IOICC Flat table">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -1268,7 +2186,7 @@
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Load GDP Data Into IOICC Flat OLTP Table\IOICC Flat table">
+    design-time-name="Package\Load GDP Data Into IOICC Flat OLTP Table\GDP 2020">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -1284,19 +2202,19 @@
     design-time-name="Package\Transfer IOICC Flat data to Fact Table">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="213,42"
-          Id="Package\Transfer IOICC Flat data to Fact Table\IOICC Flat to Fact Converter"
-          TopLeft="212,41" />
+          Size="140,42"
+          Id="Package\Transfer IOICC Flat data to Fact Table\Shorten Year"
+          TopLeft="657,93" />
         <NodeLayout
           Size="171,42"
           Id="Package\Transfer IOICC Flat data to Fact Table\OLE DB Destination"
           TopLeft="210,213" />
         <NodeLayout
-          Size="140,42"
-          Id="Package\Transfer IOICC Flat data to Fact Table\Shorten Year"
-          TopLeft="657,93" />
+          Size="213,42"
+          Id="Package\Transfer IOICC Flat data to Fact Table\IOICC Flat to Fact Converter"
+          TopLeft="212,41" />
         <EdgeLayout
           Id="Package\Transfer IOICC Flat data to Fact Table.Paths[OLE DB Source Output]"
           TopLeft="425,62">
@@ -1328,7 +2246,9 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -1362,12 +2282,27 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Transfer IOICC Flat data to Fact Table\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\Transfer IOICC Flat data to Fact Table\IOICC Flat to Fact Converter">
     <Properties>
@@ -1381,8 +2316,135 @@
       </Property>
     </Properties>
   </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Load LFS Annual into Fact OLTP Table">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="131,42"
+          Id="Package\Load LFS Annual into Fact OLTP Table\LFS Annual"
+          TopLeft="89,47" />
+        <NodeLayout
+          Size="156,42"
+          Id="Package\Load LFS Annual into Fact OLTP Table\Fact OLTP Table"
+          TopLeft="176,310" />
+        <NodeLayout
+          Size="115,42"
+          Id="Package\Load LFS Annual into Fact OLTP Table\Unpivot"
+          TopLeft="281,208" />
+        <EdgeLayout
+          Id="Package\Load LFS Annual into Fact OLTP Table.Paths[Excel Source Output]"
+          TopLeft="154.5,89">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="184,119"
+              Start="0,0"
+              End="184,111.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,55.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,55.5"
+                    Point2="0,59.5"
+                    Point3="4,59.5" />
+                  <mssgle:LineSegment
+                    End="180,59.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="180,59.5"
+                    Point2="184,59.5"
+                    Point3="184,63.5" />
+                  <mssgle:LineSegment
+                    End="184,111.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="154,42"
+          Id="Package\Load LFS Annual into Fact OLTP Table\Derived Column"
+          TopLeft="602,205" />
+        <EdgeLayout
+          Id="Package\Load LFS Annual into Fact OLTP Table.Paths[Unpivot Output]"
+          TopLeft="396,227.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="206,0"
+              Start="0,0"
+              End="198.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="198.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load LFS Annual into Fact OLTP Table.Paths[Derived Column Output]"
+          TopLeft="679,247">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-425,63"
+              Start="0,0"
+              End="-425,55.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,27.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,27.5"
+                    Point2="0,31.5"
+                    Point3="-4,31.5" />
+                  <mssgle:LineSegment
+                    End="-421,31.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-421,31.5"
+                    Point2="-425,31.5"
+                    Point3="-425,35.5" />
+                  <mssgle:LineSegment
+                    End="-425,55.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Transfer IOICC Flat data to Fact Table\OLE DB Destination">
+    design-time-name="Package\Load LFS Annual into Fact OLTP Table\LFS Annual">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load LFS Annual into Fact OLTP Table\Fact OLTP Table">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
