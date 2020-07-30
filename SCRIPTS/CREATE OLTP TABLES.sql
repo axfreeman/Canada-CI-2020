@@ -7,7 +7,7 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 
--- Yhis table eventually contains all the industry data.
+-- This table eventually contains all the industry data.
 -- It has to combine data from four different sources that are each coded differently.
 -- and it contains a variety of indicators (jobs, real GDP, GDP, hours, possibly more as the project expands).
 -- This is the reason for the complexity. Each source has to be pre-processed before it is
@@ -19,13 +19,12 @@ CREATE TABLE [dbo].[Fact](
 	[FactPK] [int] NOT NULL IDENTITY(1,1) ,
 	[Source] [nvarchar](255) NULL, /*the name of the source of the data eg 'cansim-0930333', 'census', etc*/
 	[Indicator][nvarchar] (256) NULL, /* what the numeric field measures, eg 'jobs', 'real GDP', etc */
-	[ANAICS4] [nvarchar](5)  NULL, /* The basic four-digit industry code */
-	[NAICS description] [nvarchar] (255) NULL,
-	[IOICC6] [nvarchar] (6) NULL,
+	[PNAICS] [nvarchar](7)  NULL, /* The standardised PNAICS industry code */
+	[PNAICS description] [nvarchar] (255) NULL,
 	[GeoName] [nvarchar](255) NULL,
 	[Year] [nvarchar](10) NULL, /* EG '2010 M01' or '2018' or '2018 Q01'*/
 	[Value] [float] NULL,
-	 CONSTRAINT [PK_CI_Fact] PRIMARY KEY CLUSTERED 
+	CONSTRAINT [PK_CI_Fact] PRIMARY KEY CLUSTERED 
 (
 	[FactPK] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY])
@@ -48,9 +47,11 @@ CREATE TABLE [dbo].[dimGeography](
 GO
 
 -- Waystation file.
--- Data coded with Canada's IOICC system are unpivoted and placed here.
--- Then, the eight-character IOICC codes are converted to ANAICS and in certain cases, the data are transformed with a coefficient
--- using the [IOICC to NAICS] view because the IOICC code is insufficiently granular.
+-- Data coded with Canada's IOICC system are placed here, unpivoted if necessary.
+-- These data are preprocessed to create a Universal PNAICS code, described in DOCUMENTS/Uniform Coding.docx.
+-- From here, these data are passed into the Fact table, using a view to convert the seven-character PNAICS codes 
+-- These are either passed through or transformed with a coefficient (split factor) 
+-- to yield the creative industry 4-digit NAICS codes underneath
 
 DROP TABLE IF EXISTS [dbo].[IOICC flat]
 GO
@@ -58,7 +59,7 @@ CREATE TABLE [dbo].[IOICC flat](
 	[Source] [nvarchar](255) NOT NULL,
 	[Indicator][nvarchar] (256) NOT NULL,
 	[NAICS description] [nvarchar] (255)  NOT NULL,
-	[IOICC6] [nvarchar] (8) NOT NULL,
+	[PNAICS] [nvarchar] (8) NOT NULL,
 	[geoName] [nvarchar](255) NOT NULL,
 	[Year] [nvarchar](255) NOT NULL,
 	[Value] [float] NULL
@@ -69,49 +70,31 @@ GO
 -- Covers both ANAICS4 and ANAICS2 mappings, which are mapped from different codes
 -- ie we don't map the same IOICC code to both ANAICS2 and ANAICS4.
 
-DROP TABLE IF EXISTS [dbo].[IOICC to ANAICS]
+DROP TABLE IF EXISTS [dbo].[IOICC SPLITTER]
 GO
 
-CREATE TABLE [dbo].[IOICC to ANAICS](
-	[IOICC6] [nvarchar] (8) NOT NULL,
-	[IOICC coefficient] float NULL,
-	[ANAICS4][nvarchar] (255) NULL,
-	[ANAICS2][nvarchar] (3) NULL,
-	[IOICC descriptor] [nvarchar](255) NULL,
+CREATE TABLE [dbo].[IOICC SPLITTER](
+	[PNAICS SOURCE] [nvarchar] (7) NOT NULL,
+	[Coefficient] float NULL,
+	[PNAICS TARGET][nvarchar] (7) NULL,
+	[SOURCE DESCRIPTION][nvarchar] (255) NULL,
+	[TARGET DESCRIPTION] [nvarchar](255) NULL,
 ) ON [PRIMARY]
 GO
 
 -- Creative Industry NAICS codes.
 
-DROP TABLE IF EXISTS [dbo].[dimIndustry]
+DROP TABLE IF EXISTS [dbo].[dimNewIndustry]
 GO
 
-CREATE TABLE [dbo].[dimIndustry](
-	[ANAICS4] [nvarchar](5) NULL,
-	[iNESTA] [nvarchar] (5) NULL,
-	[iHiggs] [nvarchar] (5) NULL,
-	[iFreeman] [nvarchar] (8) NULL,
-	[NAICS description] [nvarchar](255) NULL,
-	[CI sector] [nvarchar] (255)NULL,
-	[MI sector] [nvarchar] (255)NULL,
-	[Creative Industry Type] [nvarchar] (255) NULL
-) ON [PRIMARY]
-GO
-
--- Main Industry NAICS codes.
--- The Main industries are identified by 2-digit NAICS codes
--- Some of these are 'pseudo-codes' because Statscan amalgamates 2 or more 2-digit codes
--- For example, A31 (in this application) represents sectors A31-33, which statscan
--- lumps together and calls 'manufacturing'
-
-DROP TABLE IF EXISTS [dbo].[dimMainIndustries]
-GO
-
-CREATE TABLE [dbo].[dimMainIndustries](
-	[ANAICS2] [nvarchar](3) NULL,
-	[ANAICS4] [nvarchar] (5)NULL,
-	[NAICS description] [nvarchar](255) NULL,
-	[MI sector] [nvarchar] (255)NULL
+CREATE TABLE [dbo].[dimNewIndustry](
+	[PNAICS][nvarchar](7) NOT NULL,
+	[NAICS6][nvarchar](7) NULL,
+	[NAICS5][nvarchar](7) NULL,
+	[NAICS4][nvarchar](7) NULL,
+	[NAICS3][nvarchar](7) NULL,
+	[NAICS2][nvarchar](7) NULL,
+	[Creative Sector] [nvarchar] (255) NULL,
 ) ON [PRIMARY]
 GO
 

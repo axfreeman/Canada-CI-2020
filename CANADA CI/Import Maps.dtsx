@@ -11,42 +11,10 @@
   DTS:LocaleID="2057"
   DTS:ObjectName="Import Maps"
   DTS:PackageType="5"
-  DTS:VersionBuild="129"
-  DTS:VersionGUID="{357294AE-4814-4633-82EC-CD68E8892458}">
+  DTS:VersionBuild="139"
+  DTS:VersionGUID="{01F9FD6E-41DE-4303-AF77-5BBE706E7C29}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
-  <DTS:ConnectionManagers>
-    <DTS:ConnectionManager
-      DTS:refId="Package.ConnectionManagers[DESKTOP-8IJALLC.CANADA_CI_OLTP]"
-      DTS:CreationName="OLEDB"
-      DTS:DTSID="{12E59B82-86F4-408A-A166-04BC03830ACA}"
-      DTS:ObjectName="DESKTOP-8IJALLC.CANADA_CI_OLTP">
-      <DTS:ObjectData>
-        <DTS:ConnectionManager
-          DTS:ConnectionString="Data Source=DESKTOP-8IJALLC;Initial Catalog=CANADA_CI_OLTP;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
-      </DTS:ObjectData>
-    </DTS:ConnectionManager>
-    <DTS:ConnectionManager
-      DTS:refId="Package.ConnectionManagers[Excel Connection Manager]"
-      DTS:CreationName="EXCEL"
-      DTS:DTSID="{88A1D991-44AC-4463-8D68-B9F8AB4CA793}"
-      DTS:ObjectName="Excel Connection Manager">
-      <DTS:ObjectData>
-        <DTS:ConnectionManager
-          DTS:ConnectionString="Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\Lenovo\Desktop\GitHub\New folder\Canada-CI-2020\SOURCE DATA\MAPPING.xls;Extended Properties=&quot;Excel 8.0;HDR=YES&quot;;" />
-      </DTS:ObjectData>
-    </DTS:ConnectionManager>
-    <DTS:ConnectionManager
-      DTS:refId="Package.ConnectionManagers[Excel Connection Manager 1]"
-      DTS:CreationName="EXCEL"
-      DTS:DTSID="{CA012F7A-E90E-4D49-B2FD-5AA30E23BDB4}"
-      DTS:ObjectName="Excel Connection Manager 1">
-      <DTS:ObjectData>
-        <DTS:ConnectionManager
-          DTS:ConnectionString="Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\Lenovo\Desktop\GitHub\New folder\Canada-CI-2020\SOURCE DATA\MAPPING.xls;Extended Properties=&quot;Excel 8.0;HDR=YES&quot;;" />
-      </DTS:ObjectData>
-    </DTS:ConnectionManager>
-  </DTS:ConnectionManagers>
   <DTS:Variables />
   <DTS:Executables>
     <DTS:Executable
@@ -233,8 +201,8 @@
               <connections>
                 <connection
                   refId="Package\Import dimGeography Table\MAPPINGS (dimGeography).Connections[OleDbConnection]"
-                  connectionManagerID="{A53F01F8-C5F2-4AE6-9A65-41A1ED17DECE}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[MAPPING XLS]"
+                  connectionManagerID="{7A6A48E9-CEDD-40AC-8E7B-406E882F411E}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[MAPPINGS]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -324,14 +292,14 @@
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
-      DTS:refId="Package\Import dimIndustry Table"
+      DTS:refId="Package\Import dimNewIndustry Table"
       DTS:CreationName="Microsoft.Pipeline"
       DTS:DelayValidation="True"
       DTS:Description="Data Flow Task"
       DTS:DTSID="{4FBBE059-68FC-4B6E-93F0-81E241D1A39D}"
       DTS:ExecutableType="Microsoft.Pipeline"
       DTS:LocaleID="-1"
-      DTS:ObjectName="Import dimIndustry Table"
+      DTS:ObjectName="Import dimNewIndustry Table"
       DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:Variables />
       <DTS:ObjectData>
@@ -339,7 +307,7 @@
           version="1">
           <components>
             <component
-              refId="Package\Import dimIndustry Table\dimIndustry OLTP Table"
+              refId="Package\Import dimNewIndustry Table\dimIndustry OLTP Table"
               componentClassID="Microsoft.OLEDBDestination"
               contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
               description="OLE DB Destination"
@@ -354,7 +322,7 @@
                 <property
                   dataType="System.String"
                   description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset">[dbo].[dimIndustry]</property>
+                  name="OpenRowset">[dbo].[dimNewIndustry]</property>
                 <property
                   dataType="System.String"
                   description="Specifies the variable that contains the name of the database object used to open a rowset."
@@ -396,7 +364,7 @@
               </properties>
               <connections>
                 <connection
-                  refId="Package\Import dimIndustry Table\dimIndustry OLTP Table.Connections[OleDbConnection]"
+                  refId="Package\Import dimNewIndustry Table\dimIndustry OLTP Table.Connections[OleDbConnection]"
                   connectionManagerID="{7C609DE3-B60F-43F3-9132-B532B5CB115C}:external"
                   connectionManagerRefId="Project.ConnectionManagers[OLTP]"
                   description="The OLE DB runtime connection used to access the database."
@@ -404,132 +372,120 @@
               </connections>
               <inputs>
                 <input
-                  refId="Package\Import dimIndustry Table\dimIndustry OLTP Table.Inputs[OLE DB Destination Input]"
+                  refId="Package\Import dimNewIndustry Table\dimIndustry OLTP Table.Inputs[OLE DB Destination Input]"
                   errorOrTruncationOperation="Insert"
                   errorRowDisposition="FailComponent"
                   hasSideEffects="true"
                   name="OLE DB Destination Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Import dimIndustry Table\dimIndustry OLTP Table.Inputs[OLE DB Destination Input].Columns[NAICS description]"
+                      refId="Package\Import dimNewIndustry Table\dimIndustry OLTP Table.Inputs[OLE DB Destination Input].Columns[Creative Sector]"
                       cachedDataType="wstr"
                       cachedLength="255"
-                      cachedName="NAICS description"
-                      externalMetadataColumnId="Package\Import dimIndustry Table\dimIndustry OLTP Table.Inputs[OLE DB Destination Input].ExternalColumns[NAICS description]"
-                      lineageId="Package\Import dimIndustry Table\MAPPINGS (dimIndustry).Outputs[Excel Source Output].Columns[NAICS description]" />
+                      cachedName="Creative Sector"
+                      externalMetadataColumnId="Package\Import dimNewIndustry Table\dimIndustry OLTP Table.Inputs[OLE DB Destination Input].ExternalColumns[Creative Sector]"
+                      lineageId="Package\Import dimNewIndustry Table\MAPPINGS (dimNewIndustry).Outputs[Excel Source Output].Columns[Creative Sector]" />
                     <inputColumn
-                      refId="Package\Import dimIndustry Table\dimIndustry OLTP Table.Inputs[OLE DB Destination Input].Columns[CI sector]"
+                      refId="Package\Import dimNewIndustry Table\dimIndustry OLTP Table.Inputs[OLE DB Destination Input].Columns[ShortNAICS6]"
                       cachedDataType="wstr"
-                      cachedLength="255"
-                      cachedName="CI sector"
-                      externalMetadataColumnId="Package\Import dimIndustry Table\dimIndustry OLTP Table.Inputs[OLE DB Destination Input].ExternalColumns[CI sector]"
-                      lineageId="Package\Import dimIndustry Table\MAPPINGS (dimIndustry).Outputs[Excel Source Output].Columns[CI sector]" />
+                      cachedLength="7"
+                      cachedName="ShortNAICS6"
+                      externalMetadataColumnId="Package\Import dimNewIndustry Table\dimIndustry OLTP Table.Inputs[OLE DB Destination Input].ExternalColumns[NAICS6]"
+                      lineageId="Package\Import dimNewIndustry Table\Shorten NAICS codes.Outputs[Derived Column Output].Columns[ShortNAICS6]" />
                     <inputColumn
-                      refId="Package\Import dimIndustry Table\dimIndustry OLTP Table.Inputs[OLE DB Destination Input].Columns[ShortNAICS4]"
+                      refId="Package\Import dimNewIndustry Table\dimIndustry OLTP Table.Inputs[OLE DB Destination Input].Columns[ShortNAICS5]"
                       cachedDataType="wstr"
-                      cachedLength="5"
+                      cachedLength="7"
+                      cachedName="ShortNAICS5"
+                      externalMetadataColumnId="Package\Import dimNewIndustry Table\dimIndustry OLTP Table.Inputs[OLE DB Destination Input].ExternalColumns[NAICS5]"
+                      lineageId="Package\Import dimNewIndustry Table\Shorten NAICS codes.Outputs[Derived Column Output].Columns[ShortNAICS5]" />
+                    <inputColumn
+                      refId="Package\Import dimNewIndustry Table\dimIndustry OLTP Table.Inputs[OLE DB Destination Input].Columns[ShortNAICS4]"
+                      cachedDataType="wstr"
+                      cachedLength="7"
                       cachedName="ShortNAICS4"
-                      externalMetadataColumnId="Package\Import dimIndustry Table\dimIndustry OLTP Table.Inputs[OLE DB Destination Input].ExternalColumns[ANAICS4]"
-                      lineageId="Package\Import dimIndustry Table\Shorten NAICS codes.Outputs[Derived Column Output].Columns[ShortNAICS4]" />
+                      externalMetadataColumnId="Package\Import dimNewIndustry Table\dimIndustry OLTP Table.Inputs[OLE DB Destination Input].ExternalColumns[NAICS4]"
+                      lineageId="Package\Import dimNewIndustry Table\Shorten NAICS codes.Outputs[Derived Column Output].Columns[ShortNAICS4]" />
                     <inputColumn
-                      refId="Package\Import dimIndustry Table\dimIndustry OLTP Table.Inputs[OLE DB Destination Input].Columns[Creative Industry Type]"
+                      refId="Package\Import dimNewIndustry Table\dimIndustry OLTP Table.Inputs[OLE DB Destination Input].Columns[ShortNAICS3]"
                       cachedDataType="wstr"
-                      cachedLength="255"
-                      cachedName="Creative Industry Type"
-                      externalMetadataColumnId="Package\Import dimIndustry Table\dimIndustry OLTP Table.Inputs[OLE DB Destination Input].ExternalColumns[Creative Industry Type]"
-                      lineageId="Package\Import dimIndustry Table\MAPPINGS (dimIndustry).Outputs[Excel Source Output].Columns[Creative Industry Type]" />
+                      cachedLength="7"
+                      cachedName="ShortNAICS3"
+                      externalMetadataColumnId="Package\Import dimNewIndustry Table\dimIndustry OLTP Table.Inputs[OLE DB Destination Input].ExternalColumns[NAICS3]"
+                      lineageId="Package\Import dimNewIndustry Table\Shorten NAICS codes.Outputs[Derived Column Output].Columns[ShortNAICS3]" />
                     <inputColumn
-                      refId="Package\Import dimIndustry Table\dimIndustry OLTP Table.Inputs[OLE DB Destination Input].Columns[ShortiNESTA]"
+                      refId="Package\Import dimNewIndustry Table\dimIndustry OLTP Table.Inputs[OLE DB Destination Input].Columns[ShortNAICS2]"
                       cachedDataType="wstr"
-                      cachedLength="5"
-                      cachedName="ShortiNESTA"
-                      externalMetadataColumnId="Package\Import dimIndustry Table\dimIndustry OLTP Table.Inputs[OLE DB Destination Input].ExternalColumns[iNESTA]"
-                      lineageId="Package\Import dimIndustry Table\Shorten NAICS codes.Outputs[Derived Column Output].Columns[ShortiNESTA]" />
+                      cachedLength="7"
+                      cachedName="ShortNAICS2"
+                      externalMetadataColumnId="Package\Import dimNewIndustry Table\dimIndustry OLTP Table.Inputs[OLE DB Destination Input].ExternalColumns[NAICS2]"
+                      lineageId="Package\Import dimNewIndustry Table\Shorten NAICS codes.Outputs[Derived Column Output].Columns[ShortNAICS2]" />
                     <inputColumn
-                      refId="Package\Import dimIndustry Table\dimIndustry OLTP Table.Inputs[OLE DB Destination Input].Columns[ShortiHiggs]"
+                      refId="Package\Import dimNewIndustry Table\dimIndustry OLTP Table.Inputs[OLE DB Destination Input].Columns[ShortPNAICS]"
                       cachedDataType="wstr"
-                      cachedLength="5"
-                      cachedName="ShortiHiggs"
-                      externalMetadataColumnId="Package\Import dimIndustry Table\dimIndustry OLTP Table.Inputs[OLE DB Destination Input].ExternalColumns[iHiggs]"
-                      lineageId="Package\Import dimIndustry Table\Shorten NAICS codes.Outputs[Derived Column Output].Columns[ShortiHiggs]" />
-                    <inputColumn
-                      refId="Package\Import dimIndustry Table\dimIndustry OLTP Table.Inputs[OLE DB Destination Input].Columns[ShortiFreeman]"
-                      cachedDataType="wstr"
-                      cachedLength="8"
-                      cachedName="ShortiFreeman"
-                      externalMetadataColumnId="Package\Import dimIndustry Table\dimIndustry OLTP Table.Inputs[OLE DB Destination Input].ExternalColumns[iFreeman]"
-                      lineageId="Package\Import dimIndustry Table\Shorten NAICS codes.Outputs[Derived Column Output].Columns[ShortiFreeman]" />
-                    <inputColumn
-                      refId="Package\Import dimIndustry Table\dimIndustry OLTP Table.Inputs[OLE DB Destination Input].Columns[MI sector]"
-                      cachedDataType="wstr"
-                      cachedLength="255"
-                      cachedName="MI sector"
-                      externalMetadataColumnId="Package\Import dimIndustry Table\dimIndustry OLTP Table.Inputs[OLE DB Destination Input].ExternalColumns[MI sector]"
-                      lineageId="Package\Import dimIndustry Table\MAPPINGS (dimIndustry).Outputs[Excel Source Output].Columns[MI sector]" />
+                      cachedLength="7"
+                      cachedName="ShortPNAICS"
+                      externalMetadataColumnId="Package\Import dimNewIndustry Table\dimIndustry OLTP Table.Inputs[OLE DB Destination Input].ExternalColumns[PNAICS]"
+                      lineageId="Package\Import dimNewIndustry Table\Shorten NAICS codes.Outputs[Derived Column Output].Columns[ShortPNAICS]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\Import dimIndustry Table\dimIndustry OLTP Table.Inputs[OLE DB Destination Input].ExternalColumns[ANAICS4]"
+                      refId="Package\Import dimNewIndustry Table\dimIndustry OLTP Table.Inputs[OLE DB Destination Input].ExternalColumns[PNAICS]"
                       dataType="wstr"
-                      length="5"
-                      name="ANAICS4" />
+                      length="7"
+                      name="PNAICS" />
                     <externalMetadataColumn
-                      refId="Package\Import dimIndustry Table\dimIndustry OLTP Table.Inputs[OLE DB Destination Input].ExternalColumns[NAICS description]"
+                      refId="Package\Import dimNewIndustry Table\dimIndustry OLTP Table.Inputs[OLE DB Destination Input].ExternalColumns[NAICS6]"
+                      dataType="wstr"
+                      length="7"
+                      name="NAICS6" />
+                    <externalMetadataColumn
+                      refId="Package\Import dimNewIndustry Table\dimIndustry OLTP Table.Inputs[OLE DB Destination Input].ExternalColumns[NAICS5]"
+                      dataType="wstr"
+                      length="7"
+                      name="NAICS5" />
+                    <externalMetadataColumn
+                      refId="Package\Import dimNewIndustry Table\dimIndustry OLTP Table.Inputs[OLE DB Destination Input].ExternalColumns[NAICS4]"
+                      dataType="wstr"
+                      length="7"
+                      name="NAICS4" />
+                    <externalMetadataColumn
+                      refId="Package\Import dimNewIndustry Table\dimIndustry OLTP Table.Inputs[OLE DB Destination Input].ExternalColumns[NAICS3]"
+                      dataType="wstr"
+                      length="7"
+                      name="NAICS3" />
+                    <externalMetadataColumn
+                      refId="Package\Import dimNewIndustry Table\dimIndustry OLTP Table.Inputs[OLE DB Destination Input].ExternalColumns[NAICS2]"
+                      dataType="wstr"
+                      length="7"
+                      name="NAICS2" />
+                    <externalMetadataColumn
+                      refId="Package\Import dimNewIndustry Table\dimIndustry OLTP Table.Inputs[OLE DB Destination Input].ExternalColumns[Creative Sector]"
                       dataType="wstr"
                       length="255"
-                      name="NAICS description" />
-                    <externalMetadataColumn
-                      refId="Package\Import dimIndustry Table\dimIndustry OLTP Table.Inputs[OLE DB Destination Input].ExternalColumns[CI sector]"
-                      dataType="wstr"
-                      length="255"
-                      name="CI sector" />
-                    <externalMetadataColumn
-                      refId="Package\Import dimIndustry Table\dimIndustry OLTP Table.Inputs[OLE DB Destination Input].ExternalColumns[Creative Industry Type]"
-                      dataType="wstr"
-                      length="255"
-                      name="Creative Industry Type" />
-                    <externalMetadataColumn
-                      refId="Package\Import dimIndustry Table\dimIndustry OLTP Table.Inputs[OLE DB Destination Input].ExternalColumns[iNESTA]"
-                      dataType="wstr"
-                      length="5"
-                      name="iNESTA" />
-                    <externalMetadataColumn
-                      refId="Package\Import dimIndustry Table\dimIndustry OLTP Table.Inputs[OLE DB Destination Input].ExternalColumns[iHiggs]"
-                      dataType="wstr"
-                      length="5"
-                      name="iHiggs" />
-                    <externalMetadataColumn
-                      refId="Package\Import dimIndustry Table\dimIndustry OLTP Table.Inputs[OLE DB Destination Input].ExternalColumns[iFreeman]"
-                      dataType="wstr"
-                      length="8"
-                      name="iFreeman" />
-                    <externalMetadataColumn
-                      refId="Package\Import dimIndustry Table\dimIndustry OLTP Table.Inputs[OLE DB Destination Input].ExternalColumns[MI sector]"
-                      dataType="wstr"
-                      length="255"
-                      name="MI sector" />
+                      name="Creative Sector" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
               <outputs>
                 <output
-                  refId="Package\Import dimIndustry Table\dimIndustry OLTP Table.Outputs[OLE DB Destination Error Output]"
+                  refId="Package\Import dimNewIndustry Table\dimIndustry OLTP Table.Outputs[OLE DB Destination Error Output]"
                   exclusionGroup="1"
                   isErrorOut="true"
                   name="OLE DB Destination Error Output"
-                  synchronousInputId="Package\Import dimIndustry Table\dimIndustry OLTP Table.Inputs[OLE DB Destination Input]">
+                  synchronousInputId="Package\Import dimNewIndustry Table\dimIndustry OLTP Table.Inputs[OLE DB Destination Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Import dimIndustry Table\dimIndustry OLTP Table.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      refId="Package\Import dimNewIndustry Table\dimIndustry OLTP Table.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\Import dimIndustry Table\dimIndustry OLTP Table.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      lineageId="Package\Import dimNewIndustry Table\dimIndustry OLTP Table.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\Import dimIndustry Table\dimIndustry OLTP Table.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      refId="Package\Import dimNewIndustry Table\dimIndustry OLTP Table.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\Import dimIndustry Table\dimIndustry OLTP Table.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\Import dimNewIndustry Table\dimIndustry OLTP Table.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -538,11 +494,11 @@
               </outputs>
             </component>
             <component
-              refId="Package\Import dimIndustry Table\MAPPINGS (dimIndustry)"
+              refId="Package\Import dimNewIndustry Table\MAPPINGS (dimNewIndustry)"
               componentClassID="Microsoft.ExcelSource"
               contactInfo="Excel Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
               description="Excel Source"
-              name="MAPPINGS (dimIndustry)"
+              name="MAPPINGS (dimNewIndustry)"
               usesDispositions="true"
               version="1">
               <properties>
@@ -553,7 +509,7 @@
                 <property
                   dataType="System.String"
                   description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset">dimIndustry$</property>
+                  name="OpenRowset">dimNewIndustry$</property>
                 <property
                   dataType="System.String"
                   description="Specifies the variable that contains the name of the database object used to open a rowset."
@@ -579,273 +535,184 @@
               </properties>
               <connections>
                 <connection
-                  refId="Package\Import dimIndustry Table\MAPPINGS (dimIndustry).Connections[OleDbConnection]"
-                  connectionManagerID="{A53F01F8-C5F2-4AE6-9A65-41A1ED17DECE}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[MAPPING XLS]"
+                  refId="Package\Import dimNewIndustry Table\MAPPINGS (dimNewIndustry).Connections[OleDbConnection]"
+                  connectionManagerID="{7A6A48E9-CEDD-40AC-8E7B-406E882F411E}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[MAPPINGS]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
               <outputs>
                 <output
-                  refId="Package\Import dimIndustry Table\MAPPINGS (dimIndustry).Outputs[Excel Source Output]"
+                  refId="Package\Import dimNewIndustry Table\MAPPINGS (dimNewIndustry).Outputs[Excel Source Output]"
                   name="Excel Source Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Import dimIndustry Table\MAPPINGS (dimIndustry).Outputs[Excel Source Output].Columns[ANAICS6]"
+                      refId="Package\Import dimNewIndustry Table\MAPPINGS (dimNewIndustry).Outputs[Excel Source Output].Columns[PNAICS]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Import dimIndustry Table\MAPPINGS (dimIndustry).Outputs[Excel Source Output].ExternalColumns[ANAICS6]"
+                      externalMetadataColumnId="Package\Import dimNewIndustry Table\MAPPINGS (dimNewIndustry).Outputs[Excel Source Output].ExternalColumns[PNAICS]"
                       length="255"
-                      lineageId="Package\Import dimIndustry Table\MAPPINGS (dimIndustry).Outputs[Excel Source Output].Columns[ANAICS6]"
-                      name="ANAICS6"
+                      lineageId="Package\Import dimNewIndustry Table\MAPPINGS (dimNewIndustry).Outputs[Excel Source Output].Columns[PNAICS]"
+                      name="PNAICS"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Import dimIndustry Table\MAPPINGS (dimIndustry).Outputs[Excel Source Output].Columns[ANAICS4]"
+                      refId="Package\Import dimNewIndustry Table\MAPPINGS (dimNewIndustry).Outputs[Excel Source Output].Columns[NAICS6]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Import dimIndustry Table\MAPPINGS (dimIndustry).Outputs[Excel Source Output].ExternalColumns[ANAICS4]"
+                      externalMetadataColumnId="Package\Import dimNewIndustry Table\MAPPINGS (dimNewIndustry).Outputs[Excel Source Output].ExternalColumns[NAICS6]"
                       length="255"
-                      lineageId="Package\Import dimIndustry Table\MAPPINGS (dimIndustry).Outputs[Excel Source Output].Columns[ANAICS4]"
-                      name="ANAICS4"
+                      lineageId="Package\Import dimNewIndustry Table\MAPPINGS (dimNewIndustry).Outputs[Excel Source Output].Columns[NAICS6]"
+                      name="NAICS6"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Import dimIndustry Table\MAPPINGS (dimIndustry).Outputs[Excel Source Output].Columns[ANAICS2]"
+                      refId="Package\Import dimNewIndustry Table\MAPPINGS (dimNewIndustry).Outputs[Excel Source Output].Columns[NAICS5]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Import dimIndustry Table\MAPPINGS (dimIndustry).Outputs[Excel Source Output].ExternalColumns[ANAICS2]"
+                      externalMetadataColumnId="Package\Import dimNewIndustry Table\MAPPINGS (dimNewIndustry).Outputs[Excel Source Output].ExternalColumns[NAICS5]"
                       length="255"
-                      lineageId="Package\Import dimIndustry Table\MAPPINGS (dimIndustry).Outputs[Excel Source Output].Columns[ANAICS2]"
-                      name="ANAICS2"
+                      lineageId="Package\Import dimNewIndustry Table\MAPPINGS (dimNewIndustry).Outputs[Excel Source Output].Columns[NAICS5]"
+                      name="NAICS5"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Import dimIndustry Table\MAPPINGS (dimIndustry).Outputs[Excel Source Output].Columns[NAICS description]"
+                      refId="Package\Import dimNewIndustry Table\MAPPINGS (dimNewIndustry).Outputs[Excel Source Output].Columns[NAICS4]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Import dimIndustry Table\MAPPINGS (dimIndustry).Outputs[Excel Source Output].ExternalColumns[NAICS description]"
+                      externalMetadataColumnId="Package\Import dimNewIndustry Table\MAPPINGS (dimNewIndustry).Outputs[Excel Source Output].ExternalColumns[NAICS4]"
                       length="255"
-                      lineageId="Package\Import dimIndustry Table\MAPPINGS (dimIndustry).Outputs[Excel Source Output].Columns[NAICS description]"
-                      name="NAICS description"
+                      lineageId="Package\Import dimNewIndustry Table\MAPPINGS (dimNewIndustry).Outputs[Excel Source Output].Columns[NAICS4]"
+                      name="NAICS4"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Import dimIndustry Table\MAPPINGS (dimIndustry).Outputs[Excel Source Output].Columns[CI sector]"
+                      refId="Package\Import dimNewIndustry Table\MAPPINGS (dimNewIndustry).Outputs[Excel Source Output].Columns[NAICS3]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Import dimIndustry Table\MAPPINGS (dimIndustry).Outputs[Excel Source Output].ExternalColumns[CI sector]"
+                      externalMetadataColumnId="Package\Import dimNewIndustry Table\MAPPINGS (dimNewIndustry).Outputs[Excel Source Output].ExternalColumns[NAICS3]"
                       length="255"
-                      lineageId="Package\Import dimIndustry Table\MAPPINGS (dimIndustry).Outputs[Excel Source Output].Columns[CI sector]"
-                      name="CI sector"
+                      lineageId="Package\Import dimNewIndustry Table\MAPPINGS (dimNewIndustry).Outputs[Excel Source Output].Columns[NAICS3]"
+                      name="NAICS3"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Import dimIndustry Table\MAPPINGS (dimIndustry).Outputs[Excel Source Output].Columns[Creative Industry Type]"
+                      refId="Package\Import dimNewIndustry Table\MAPPINGS (dimNewIndustry).Outputs[Excel Source Output].Columns[NAICS2]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Import dimIndustry Table\MAPPINGS (dimIndustry).Outputs[Excel Source Output].ExternalColumns[Creative Industry Type]"
+                      externalMetadataColumnId="Package\Import dimNewIndustry Table\MAPPINGS (dimNewIndustry).Outputs[Excel Source Output].ExternalColumns[NAICS2]"
                       length="255"
-                      lineageId="Package\Import dimIndustry Table\MAPPINGS (dimIndustry).Outputs[Excel Source Output].Columns[Creative Industry Type]"
-                      name="Creative Industry Type"
+                      lineageId="Package\Import dimNewIndustry Table\MAPPINGS (dimNewIndustry).Outputs[Excel Source Output].Columns[NAICS2]"
+                      name="NAICS2"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Import dimIndustry Table\MAPPINGS (dimIndustry).Outputs[Excel Source Output].Columns[iNESTA]"
+                      refId="Package\Import dimNewIndustry Table\MAPPINGS (dimNewIndustry).Outputs[Excel Source Output].Columns[Creative Sector]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Import dimIndustry Table\MAPPINGS (dimIndustry).Outputs[Excel Source Output].ExternalColumns[iNESTA]"
+                      externalMetadataColumnId="Package\Import dimNewIndustry Table\MAPPINGS (dimNewIndustry).Outputs[Excel Source Output].ExternalColumns[Creative Sector]"
                       length="255"
-                      lineageId="Package\Import dimIndustry Table\MAPPINGS (dimIndustry).Outputs[Excel Source Output].Columns[iNESTA]"
-                      name="iNESTA"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Import dimIndustry Table\MAPPINGS (dimIndustry).Outputs[Excel Source Output].Columns[iHiggs]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Import dimIndustry Table\MAPPINGS (dimIndustry).Outputs[Excel Source Output].ExternalColumns[iHiggs]"
-                      length="255"
-                      lineageId="Package\Import dimIndustry Table\MAPPINGS (dimIndustry).Outputs[Excel Source Output].Columns[iHiggs]"
-                      name="iHiggs"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Import dimIndustry Table\MAPPINGS (dimIndustry).Outputs[Excel Source Output].Columns[iFreeman]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Import dimIndustry Table\MAPPINGS (dimIndustry).Outputs[Excel Source Output].ExternalColumns[iFreeman]"
-                      length="255"
-                      lineageId="Package\Import dimIndustry Table\MAPPINGS (dimIndustry).Outputs[Excel Source Output].Columns[iFreeman]"
-                      name="iFreeman"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Import dimIndustry Table\MAPPINGS (dimIndustry).Outputs[Excel Source Output].Columns[MI sector]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Import dimIndustry Table\MAPPINGS (dimIndustry).Outputs[Excel Source Output].ExternalColumns[MI sector]"
-                      length="255"
-                      lineageId="Package\Import dimIndustry Table\MAPPINGS (dimIndustry).Outputs[Excel Source Output].Columns[MI sector]"
-                      name="MI sector"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Import dimIndustry Table\MAPPINGS (dimIndustry).Outputs[Excel Source Output].Columns[F12]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Import dimIndustry Table\MAPPINGS (dimIndustry).Outputs[Excel Source Output].ExternalColumns[F12]"
-                      length="255"
-                      lineageId="Package\Import dimIndustry Table\MAPPINGS (dimIndustry).Outputs[Excel Source Output].Columns[F12]"
-                      name="F12"
+                      lineageId="Package\Import dimNewIndustry Table\MAPPINGS (dimNewIndustry).Outputs[Excel Source Output].Columns[Creative Sector]"
+                      name="Creative Sector"
                       truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\Import dimIndustry Table\MAPPINGS (dimIndustry).Outputs[Excel Source Output].ExternalColumns[ANAICS6]"
+                      refId="Package\Import dimNewIndustry Table\MAPPINGS (dimNewIndustry).Outputs[Excel Source Output].ExternalColumns[PNAICS]"
                       dataType="wstr"
                       length="255"
-                      name="ANAICS6" />
+                      name="PNAICS" />
                     <externalMetadataColumn
-                      refId="Package\Import dimIndustry Table\MAPPINGS (dimIndustry).Outputs[Excel Source Output].ExternalColumns[ANAICS4]"
+                      refId="Package\Import dimNewIndustry Table\MAPPINGS (dimNewIndustry).Outputs[Excel Source Output].ExternalColumns[NAICS6]"
                       dataType="wstr"
                       length="255"
-                      name="ANAICS4" />
+                      name="NAICS6" />
                     <externalMetadataColumn
-                      refId="Package\Import dimIndustry Table\MAPPINGS (dimIndustry).Outputs[Excel Source Output].ExternalColumns[ANAICS2]"
+                      refId="Package\Import dimNewIndustry Table\MAPPINGS (dimNewIndustry).Outputs[Excel Source Output].ExternalColumns[NAICS5]"
                       dataType="wstr"
                       length="255"
-                      name="ANAICS2" />
+                      name="NAICS5" />
                     <externalMetadataColumn
-                      refId="Package\Import dimIndustry Table\MAPPINGS (dimIndustry).Outputs[Excel Source Output].ExternalColumns[NAICS description]"
+                      refId="Package\Import dimNewIndustry Table\MAPPINGS (dimNewIndustry).Outputs[Excel Source Output].ExternalColumns[NAICS4]"
                       dataType="wstr"
                       length="255"
-                      name="NAICS description" />
+                      name="NAICS4" />
                     <externalMetadataColumn
-                      refId="Package\Import dimIndustry Table\MAPPINGS (dimIndustry).Outputs[Excel Source Output].ExternalColumns[CI sector]"
+                      refId="Package\Import dimNewIndustry Table\MAPPINGS (dimNewIndustry).Outputs[Excel Source Output].ExternalColumns[NAICS3]"
                       dataType="wstr"
                       length="255"
-                      name="CI sector" />
+                      name="NAICS3" />
                     <externalMetadataColumn
-                      refId="Package\Import dimIndustry Table\MAPPINGS (dimIndustry).Outputs[Excel Source Output].ExternalColumns[Creative Industry Type]"
+                      refId="Package\Import dimNewIndustry Table\MAPPINGS (dimNewIndustry).Outputs[Excel Source Output].ExternalColumns[NAICS2]"
                       dataType="wstr"
                       length="255"
-                      name="Creative Industry Type" />
+                      name="NAICS2" />
                     <externalMetadataColumn
-                      refId="Package\Import dimIndustry Table\MAPPINGS (dimIndustry).Outputs[Excel Source Output].ExternalColumns[iNESTA]"
+                      refId="Package\Import dimNewIndustry Table\MAPPINGS (dimNewIndustry).Outputs[Excel Source Output].ExternalColumns[Creative Sector]"
                       dataType="wstr"
                       length="255"
-                      name="iNESTA" />
-                    <externalMetadataColumn
-                      refId="Package\Import dimIndustry Table\MAPPINGS (dimIndustry).Outputs[Excel Source Output].ExternalColumns[iHiggs]"
-                      dataType="wstr"
-                      length="255"
-                      name="iHiggs" />
-                    <externalMetadataColumn
-                      refId="Package\Import dimIndustry Table\MAPPINGS (dimIndustry).Outputs[Excel Source Output].ExternalColumns[iFreeman]"
-                      dataType="wstr"
-                      length="255"
-                      name="iFreeman" />
-                    <externalMetadataColumn
-                      refId="Package\Import dimIndustry Table\MAPPINGS (dimIndustry).Outputs[Excel Source Output].ExternalColumns[F11]"
-                      dataType="wstr"
-                      length="255"
-                      name="F11" />
-                    <externalMetadataColumn
-                      refId="Package\Import dimIndustry Table\MAPPINGS (dimIndustry).Outputs[Excel Source Output].ExternalColumns[MI sector]"
-                      dataType="wstr"
-                      length="255"
-                      name="MI sector" />
-                    <externalMetadataColumn
-                      refId="Package\Import dimIndustry Table\MAPPINGS (dimIndustry).Outputs[Excel Source Output].ExternalColumns[F12]"
-                      dataType="wstr"
-                      length="255"
-                      name="F12" />
+                      name="Creative Sector" />
                   </externalMetadataColumns>
                 </output>
                 <output
-                  refId="Package\Import dimIndustry Table\MAPPINGS (dimIndustry).Outputs[Excel Source Error Output]"
+                  refId="Package\Import dimNewIndustry Table\MAPPINGS (dimNewIndustry).Outputs[Excel Source Error Output]"
                   isErrorOut="true"
                   name="Excel Source Error Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Import dimIndustry Table\MAPPINGS (dimIndustry).Outputs[Excel Source Error Output].Columns[ANAICS6]"
+                      refId="Package\Import dimNewIndustry Table\MAPPINGS (dimNewIndustry).Outputs[Excel Source Error Output].Columns[PNAICS]"
                       dataType="wstr"
                       length="255"
-                      lineageId="Package\Import dimIndustry Table\MAPPINGS (dimIndustry).Outputs[Excel Source Error Output].Columns[ANAICS6]"
-                      name="ANAICS6" />
+                      lineageId="Package\Import dimNewIndustry Table\MAPPINGS (dimNewIndustry).Outputs[Excel Source Error Output].Columns[PNAICS]"
+                      name="PNAICS" />
                     <outputColumn
-                      refId="Package\Import dimIndustry Table\MAPPINGS (dimIndustry).Outputs[Excel Source Error Output].Columns[ANAICS4]"
+                      refId="Package\Import dimNewIndustry Table\MAPPINGS (dimNewIndustry).Outputs[Excel Source Error Output].Columns[NAICS6]"
                       dataType="wstr"
                       length="255"
-                      lineageId="Package\Import dimIndustry Table\MAPPINGS (dimIndustry).Outputs[Excel Source Error Output].Columns[ANAICS4]"
-                      name="ANAICS4" />
+                      lineageId="Package\Import dimNewIndustry Table\MAPPINGS (dimNewIndustry).Outputs[Excel Source Error Output].Columns[NAICS6]"
+                      name="NAICS6" />
                     <outputColumn
-                      refId="Package\Import dimIndustry Table\MAPPINGS (dimIndustry).Outputs[Excel Source Error Output].Columns[ANAICS2]"
+                      refId="Package\Import dimNewIndustry Table\MAPPINGS (dimNewIndustry).Outputs[Excel Source Error Output].Columns[NAICS5]"
                       dataType="wstr"
                       length="255"
-                      lineageId="Package\Import dimIndustry Table\MAPPINGS (dimIndustry).Outputs[Excel Source Error Output].Columns[ANAICS2]"
-                      name="ANAICS2" />
+                      lineageId="Package\Import dimNewIndustry Table\MAPPINGS (dimNewIndustry).Outputs[Excel Source Error Output].Columns[NAICS5]"
+                      name="NAICS5" />
                     <outputColumn
-                      refId="Package\Import dimIndustry Table\MAPPINGS (dimIndustry).Outputs[Excel Source Error Output].Columns[NAICS description]"
+                      refId="Package\Import dimNewIndustry Table\MAPPINGS (dimNewIndustry).Outputs[Excel Source Error Output].Columns[NAICS4]"
                       dataType="wstr"
                       length="255"
-                      lineageId="Package\Import dimIndustry Table\MAPPINGS (dimIndustry).Outputs[Excel Source Error Output].Columns[NAICS description]"
-                      name="NAICS description" />
+                      lineageId="Package\Import dimNewIndustry Table\MAPPINGS (dimNewIndustry).Outputs[Excel Source Error Output].Columns[NAICS4]"
+                      name="NAICS4" />
                     <outputColumn
-                      refId="Package\Import dimIndustry Table\MAPPINGS (dimIndustry).Outputs[Excel Source Error Output].Columns[CI sector]"
+                      refId="Package\Import dimNewIndustry Table\MAPPINGS (dimNewIndustry).Outputs[Excel Source Error Output].Columns[NAICS3]"
                       dataType="wstr"
                       length="255"
-                      lineageId="Package\Import dimIndustry Table\MAPPINGS (dimIndustry).Outputs[Excel Source Error Output].Columns[CI sector]"
-                      name="CI sector" />
+                      lineageId="Package\Import dimNewIndustry Table\MAPPINGS (dimNewIndustry).Outputs[Excel Source Error Output].Columns[NAICS3]"
+                      name="NAICS3" />
                     <outputColumn
-                      refId="Package\Import dimIndustry Table\MAPPINGS (dimIndustry).Outputs[Excel Source Error Output].Columns[MI sector]"
+                      refId="Package\Import dimNewIndustry Table\MAPPINGS (dimNewIndustry).Outputs[Excel Source Error Output].Columns[NAICS2]"
                       dataType="wstr"
                       length="255"
-                      lineageId="Package\Import dimIndustry Table\MAPPINGS (dimIndustry).Outputs[Excel Source Error Output].Columns[MI sector]"
-                      name="MI sector" />
+                      lineageId="Package\Import dimNewIndustry Table\MAPPINGS (dimNewIndustry).Outputs[Excel Source Error Output].Columns[NAICS2]"
+                      name="NAICS2" />
                     <outputColumn
-                      refId="Package\Import dimIndustry Table\MAPPINGS (dimIndustry).Outputs[Excel Source Error Output].Columns[Creative Industry Type]"
+                      refId="Package\Import dimNewIndustry Table\MAPPINGS (dimNewIndustry).Outputs[Excel Source Error Output].Columns[Creative Sector]"
                       dataType="wstr"
                       length="255"
-                      lineageId="Package\Import dimIndustry Table\MAPPINGS (dimIndustry).Outputs[Excel Source Error Output].Columns[Creative Industry Type]"
-                      name="Creative Industry Type" />
+                      lineageId="Package\Import dimNewIndustry Table\MAPPINGS (dimNewIndustry).Outputs[Excel Source Error Output].Columns[Creative Sector]"
+                      name="Creative Sector" />
                     <outputColumn
-                      refId="Package\Import dimIndustry Table\MAPPINGS (dimIndustry).Outputs[Excel Source Error Output].Columns[iNESTA]"
-                      dataType="wstr"
-                      length="255"
-                      lineageId="Package\Import dimIndustry Table\MAPPINGS (dimIndustry).Outputs[Excel Source Error Output].Columns[iNESTA]"
-                      name="iNESTA" />
-                    <outputColumn
-                      refId="Package\Import dimIndustry Table\MAPPINGS (dimIndustry).Outputs[Excel Source Error Output].Columns[iHiggs]"
-                      dataType="wstr"
-                      length="255"
-                      lineageId="Package\Import dimIndustry Table\MAPPINGS (dimIndustry).Outputs[Excel Source Error Output].Columns[iHiggs]"
-                      name="iHiggs" />
-                    <outputColumn
-                      refId="Package\Import dimIndustry Table\MAPPINGS (dimIndustry).Outputs[Excel Source Error Output].Columns[iFreeman]"
-                      dataType="wstr"
-                      length="255"
-                      lineageId="Package\Import dimIndustry Table\MAPPINGS (dimIndustry).Outputs[Excel Source Error Output].Columns[iFreeman]"
-                      name="iFreeman" />
-                    <outputColumn
-                      refId="Package\Import dimIndustry Table\MAPPINGS (dimIndustry).Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      refId="Package\Import dimNewIndustry Table\MAPPINGS (dimNewIndustry).Outputs[Excel Source Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\Import dimIndustry Table\MAPPINGS (dimIndustry).Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      lineageId="Package\Import dimNewIndustry Table\MAPPINGS (dimNewIndustry).Outputs[Excel Source Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\Import dimIndustry Table\MAPPINGS (dimIndustry).Outputs[Excel Source Error Output].Columns[F12]"
-                      dataType="wstr"
-                      length="255"
-                      lineageId="Package\Import dimIndustry Table\MAPPINGS (dimIndustry).Outputs[Excel Source Error Output].Columns[F12]"
-                      name="F12" />
-                    <outputColumn
-                      refId="Package\Import dimIndustry Table\MAPPINGS (dimIndustry).Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      refId="Package\Import dimNewIndustry Table\MAPPINGS (dimNewIndustry).Outputs[Excel Source Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\Import dimIndustry Table\MAPPINGS (dimIndustry).Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\Import dimNewIndustry Table\MAPPINGS (dimNewIndustry).Outputs[Excel Source Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -854,7 +721,7 @@
               </outputs>
             </component>
             <component
-              refId="Package\Import dimIndustry Table\Shorten NAICS codes"
+              refId="Package\Import dimNewIndustry Table\Shorten NAICS codes"
               componentClassID="Microsoft.DerivedColumn"
               contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
               description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
@@ -862,53 +729,134 @@
               usesDispositions="true">
               <inputs>
                 <input
-                  refId="Package\Import dimIndustry Table\Shorten NAICS codes.Inputs[Derived Column Input]"
+                  refId="Package\Import dimNewIndustry Table\Shorten NAICS codes.Inputs[Derived Column Input]"
                   description="Input to the Derived Column Transformation"
                   name="Derived Column Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Import dimIndustry Table\Shorten NAICS codes.Inputs[Derived Column Input].Columns[ANAICS4]"
+                      refId="Package\Import dimNewIndustry Table\Shorten NAICS codes.Inputs[Derived Column Input].Columns[PNAICS]"
                       cachedDataType="wstr"
                       cachedLength="255"
-                      cachedName="ANAICS4"
-                      lineageId="Package\Import dimIndustry Table\MAPPINGS (dimIndustry).Outputs[Excel Source Output].Columns[ANAICS4]" />
+                      cachedName="PNAICS"
+                      lineageId="Package\Import dimNewIndustry Table\MAPPINGS (dimNewIndustry).Outputs[Excel Source Output].Columns[PNAICS]" />
                     <inputColumn
-                      refId="Package\Import dimIndustry Table\Shorten NAICS codes.Inputs[Derived Column Input].Columns[iNESTA]"
+                      refId="Package\Import dimNewIndustry Table\Shorten NAICS codes.Inputs[Derived Column Input].Columns[NAICS6]"
                       cachedDataType="wstr"
                       cachedLength="255"
-                      cachedName="iNESTA"
-                      lineageId="Package\Import dimIndustry Table\MAPPINGS (dimIndustry).Outputs[Excel Source Output].Columns[iNESTA]" />
+                      cachedName="NAICS6"
+                      lineageId="Package\Import dimNewIndustry Table\MAPPINGS (dimNewIndustry).Outputs[Excel Source Output].Columns[NAICS6]" />
                     <inputColumn
-                      refId="Package\Import dimIndustry Table\Shorten NAICS codes.Inputs[Derived Column Input].Columns[iHiggs]"
+                      refId="Package\Import dimNewIndustry Table\Shorten NAICS codes.Inputs[Derived Column Input].Columns[NAICS5]"
                       cachedDataType="wstr"
                       cachedLength="255"
-                      cachedName="iHiggs"
-                      lineageId="Package\Import dimIndustry Table\MAPPINGS (dimIndustry).Outputs[Excel Source Output].Columns[iHiggs]" />
+                      cachedName="NAICS5"
+                      lineageId="Package\Import dimNewIndustry Table\MAPPINGS (dimNewIndustry).Outputs[Excel Source Output].Columns[NAICS5]" />
                     <inputColumn
-                      refId="Package\Import dimIndustry Table\Shorten NAICS codes.Inputs[Derived Column Input].Columns[iFreeman]"
+                      refId="Package\Import dimNewIndustry Table\Shorten NAICS codes.Inputs[Derived Column Input].Columns[NAICS4]"
                       cachedDataType="wstr"
                       cachedLength="255"
-                      cachedName="iFreeman"
-                      lineageId="Package\Import dimIndustry Table\MAPPINGS (dimIndustry).Outputs[Excel Source Output].Columns[iFreeman]" />
+                      cachedName="NAICS4"
+                      lineageId="Package\Import dimNewIndustry Table\MAPPINGS (dimNewIndustry).Outputs[Excel Source Output].Columns[NAICS4]" />
+                    <inputColumn
+                      refId="Package\Import dimNewIndustry Table\Shorten NAICS codes.Inputs[Derived Column Input].Columns[NAICS3]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="NAICS3"
+                      lineageId="Package\Import dimNewIndustry Table\MAPPINGS (dimNewIndustry).Outputs[Excel Source Output].Columns[NAICS3]" />
+                    <inputColumn
+                      refId="Package\Import dimNewIndustry Table\Shorten NAICS codes.Inputs[Derived Column Input].Columns[NAICS2]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="NAICS2"
+                      lineageId="Package\Import dimNewIndustry Table\MAPPINGS (dimNewIndustry).Outputs[Excel Source Output].Columns[NAICS2]" />
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
               </inputs>
               <outputs>
                 <output
-                  refId="Package\Import dimIndustry Table\Shorten NAICS codes.Outputs[Derived Column Output]"
+                  refId="Package\Import dimNewIndustry Table\Shorten NAICS codes.Outputs[Derived Column Output]"
                   description="Default Output of the Derived Column Transformation"
                   exclusionGroup="1"
                   name="Derived Column Output"
-                  synchronousInputId="Package\Import dimIndustry Table\Shorten NAICS codes.Inputs[Derived Column Input]">
+                  synchronousInputId="Package\Import dimNewIndustry Table\Shorten NAICS codes.Inputs[Derived Column Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Import dimIndustry Table\Shorten NAICS codes.Outputs[Derived Column Output].Columns[ShortNAICS4]"
+                      refId="Package\Import dimNewIndustry Table\Shorten NAICS codes.Outputs[Derived Column Output].Columns[ShortPNAICS]"
                       dataType="wstr"
                       errorOrTruncationOperation="Computation"
                       errorRowDisposition="FailComponent"
-                      length="5"
-                      lineageId="Package\Import dimIndustry Table\Shorten NAICS codes.Outputs[Derived Column Output].Columns[ShortNAICS4]"
+                      length="7"
+                      lineageId="Package\Import dimNewIndustry Table\Shorten NAICS codes.Outputs[Derived Column Output].Columns[ShortPNAICS]"
+                      name="ShortPNAICS"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[LEFT](#{Package\Import dimNewIndustry Table\MAPPINGS (dimNewIndustry).Outputs[Excel Source Output].Columns[PNAICS]},7)</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">LEFT(PNAICS,7)</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Import dimNewIndustry Table\Shorten NAICS codes.Outputs[Derived Column Output].Columns[ShortNAICS6]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="7"
+                      lineageId="Package\Import dimNewIndustry Table\Shorten NAICS codes.Outputs[Derived Column Output].Columns[ShortNAICS6]"
+                      name="ShortNAICS6"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[LEFT](#{Package\Import dimNewIndustry Table\MAPPINGS (dimNewIndustry).Outputs[Excel Source Output].Columns[NAICS6]},7)</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">LEFT(NAICS6,7)</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Import dimNewIndustry Table\Shorten NAICS codes.Outputs[Derived Column Output].Columns[ShortNAICS5]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="7"
+                      lineageId="Package\Import dimNewIndustry Table\Shorten NAICS codes.Outputs[Derived Column Output].Columns[ShortNAICS5]"
+                      name="ShortNAICS5"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[LEFT](#{Package\Import dimNewIndustry Table\MAPPINGS (dimNewIndustry).Outputs[Excel Source Output].Columns[NAICS5]},7)</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">LEFT(NAICS5,7)</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Import dimNewIndustry Table\Shorten NAICS codes.Outputs[Derived Column Output].Columns[ShortNAICS4]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="7"
+                      lineageId="Package\Import dimNewIndustry Table\Shorten NAICS codes.Outputs[Derived Column Output].Columns[ShortNAICS4]"
                       name="ShortNAICS4"
                       truncationRowDisposition="FailComponent">
                       <properties>
@@ -916,105 +864,82 @@
                           containsID="true"
                           dataType="System.String"
                           description="Derived Column Expression"
-                          name="Expression">[LEFT](#{Package\Import dimIndustry Table\MAPPINGS (dimIndustry).Outputs[Excel Source Output].Columns[ANAICS4]},5)</property>
+                          name="Expression">[LEFT](#{Package\Import dimNewIndustry Table\MAPPINGS (dimNewIndustry).Outputs[Excel Source Output].Columns[NAICS4]},7)</property>
                         <property
                           containsID="true"
                           dataType="System.String"
                           description="Derived Column Friendly Expression"
                           expressionType="Notify"
-                          name="FriendlyExpression">LEFT(ANAICS4,5)</property>
+                          name="FriendlyExpression">LEFT(NAICS4,7)</property>
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\Import dimIndustry Table\Shorten NAICS codes.Outputs[Derived Column Output].Columns[ShortiNESTA]"
+                      refId="Package\Import dimNewIndustry Table\Shorten NAICS codes.Outputs[Derived Column Output].Columns[ShortNAICS3]"
                       dataType="wstr"
                       errorOrTruncationOperation="Computation"
                       errorRowDisposition="FailComponent"
-                      length="5"
-                      lineageId="Package\Import dimIndustry Table\Shorten NAICS codes.Outputs[Derived Column Output].Columns[ShortiNESTA]"
-                      name="ShortiNESTA"
+                      length="7"
+                      lineageId="Package\Import dimNewIndustry Table\Shorten NAICS codes.Outputs[Derived Column Output].Columns[ShortNAICS3]"
+                      name="ShortNAICS3"
                       truncationRowDisposition="FailComponent">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.String"
                           description="Derived Column Expression"
-                          name="Expression">[LEFT](#{Package\Import dimIndustry Table\MAPPINGS (dimIndustry).Outputs[Excel Source Output].Columns[iNESTA]},5)</property>
+                          name="Expression">[LEFT](#{Package\Import dimNewIndustry Table\MAPPINGS (dimNewIndustry).Outputs[Excel Source Output].Columns[NAICS3]},7)</property>
                         <property
                           containsID="true"
                           dataType="System.String"
                           description="Derived Column Friendly Expression"
                           expressionType="Notify"
-                          name="FriendlyExpression">LEFT(iNESTA,5)</property>
+                          name="FriendlyExpression">LEFT(NAICS3,7)</property>
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\Import dimIndustry Table\Shorten NAICS codes.Outputs[Derived Column Output].Columns[ShortiHiggs]"
+                      refId="Package\Import dimNewIndustry Table\Shorten NAICS codes.Outputs[Derived Column Output].Columns[ShortNAICS2]"
                       dataType="wstr"
                       errorOrTruncationOperation="Computation"
                       errorRowDisposition="FailComponent"
-                      length="5"
-                      lineageId="Package\Import dimIndustry Table\Shorten NAICS codes.Outputs[Derived Column Output].Columns[ShortiHiggs]"
-                      name="ShortiHiggs"
+                      length="7"
+                      lineageId="Package\Import dimNewIndustry Table\Shorten NAICS codes.Outputs[Derived Column Output].Columns[ShortNAICS2]"
+                      name="ShortNAICS2"
                       truncationRowDisposition="FailComponent">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.String"
                           description="Derived Column Expression"
-                          name="Expression">[LEFT](#{Package\Import dimIndustry Table\MAPPINGS (dimIndustry).Outputs[Excel Source Output].Columns[iHiggs]},5)</property>
+                          name="Expression">[LEFT](#{Package\Import dimNewIndustry Table\MAPPINGS (dimNewIndustry).Outputs[Excel Source Output].Columns[NAICS2]},7)</property>
                         <property
                           containsID="true"
                           dataType="System.String"
                           description="Derived Column Friendly Expression"
                           expressionType="Notify"
-                          name="FriendlyExpression">LEFT(iHiggs,5)</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\Import dimIndustry Table\Shorten NAICS codes.Outputs[Derived Column Output].Columns[ShortiFreeman]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Computation"
-                      errorRowDisposition="FailComponent"
-                      length="8"
-                      lineageId="Package\Import dimIndustry Table\Shorten NAICS codes.Outputs[Derived Column Output].Columns[ShortiFreeman]"
-                      name="ShortiFreeman"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Expression"
-                          name="Expression">[LEFT](#{Package\Import dimIndustry Table\MAPPINGS (dimIndustry).Outputs[Excel Source Output].Columns[iFreeman]},8)</property>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Friendly Expression"
-                          expressionType="Notify"
-                          name="FriendlyExpression">LEFT(iFreeman,8)</property>
+                          name="FriendlyExpression">LEFT(NAICS2,7)</property>
                       </properties>
                     </outputColumn>
                   </outputColumns>
                   <externalMetadataColumns />
                 </output>
                 <output
-                  refId="Package\Import dimIndustry Table\Shorten NAICS codes.Outputs[Derived Column Error Output]"
+                  refId="Package\Import dimNewIndustry Table\Shorten NAICS codes.Outputs[Derived Column Error Output]"
                   description="Error Output of the Derived Column Transformation"
                   exclusionGroup="1"
                   isErrorOut="true"
                   name="Derived Column Error Output"
-                  synchronousInputId="Package\Import dimIndustry Table\Shorten NAICS codes.Inputs[Derived Column Input]">
+                  synchronousInputId="Package\Import dimNewIndustry Table\Shorten NAICS codes.Inputs[Derived Column Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Import dimIndustry Table\Shorten NAICS codes.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      refId="Package\Import dimNewIndustry Table\Shorten NAICS codes.Outputs[Derived Column Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\Import dimIndustry Table\Shorten NAICS codes.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      lineageId="Package\Import dimNewIndustry Table\Shorten NAICS codes.Outputs[Derived Column Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\Import dimIndustry Table\Shorten NAICS codes.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      refId="Package\Import dimNewIndustry Table\Shorten NAICS codes.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\Import dimIndustry Table\Shorten NAICS codes.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\Import dimNewIndustry Table\Shorten NAICS codes.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -1025,583 +950,15 @@
           </components>
           <paths>
             <path
-              refId="Package\Import dimIndustry Table.Paths[Derived Column Output]"
-              endId="Package\Import dimIndustry Table\dimIndustry OLTP Table.Inputs[OLE DB Destination Input]"
+              refId="Package\Import dimNewIndustry Table.Paths[Derived Column Output]"
+              endId="Package\Import dimNewIndustry Table\dimIndustry OLTP Table.Inputs[OLE DB Destination Input]"
               name="Derived Column Output"
-              startId="Package\Import dimIndustry Table\Shorten NAICS codes.Outputs[Derived Column Output]" />
+              startId="Package\Import dimNewIndustry Table\Shorten NAICS codes.Outputs[Derived Column Output]" />
             <path
-              refId="Package\Import dimIndustry Table.Paths[Excel Source Output]"
-              endId="Package\Import dimIndustry Table\Shorten NAICS codes.Inputs[Derived Column Input]"
+              refId="Package\Import dimNewIndustry Table.Paths[Excel Source Output]"
+              endId="Package\Import dimNewIndustry Table\Shorten NAICS codes.Inputs[Derived Column Input]"
               name="Excel Source Output"
-              startId="Package\Import dimIndustry Table\MAPPINGS (dimIndustry).Outputs[Excel Source Output]" />
-          </paths>
-        </pipeline>
-      </DTS:ObjectData>
-    </DTS:Executable>
-    <DTS:Executable
-      DTS:refId="Package\Import dimMainIndustries Table"
-      DTS:CreationName="Microsoft.Pipeline"
-      DTS:Description="Data Flow Task"
-      DTS:DTSID="{65D6D65B-BD29-4900-AB2A-E7DE1F1314C8}"
-      DTS:ExecutableType="Microsoft.Pipeline"
-      DTS:LocaleID="-1"
-      DTS:ObjectName="Import dimMainIndustries Table"
-      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
-      <DTS:Variables />
-      <DTS:ObjectData>
-        <pipeline
-          version="1">
-          <components>
-            <component
-              refId="Package\Import dimMainIndustries Table\MAPPINGS (MI Master)"
-              componentClassID="Microsoft.ExcelSource"
-              contactInfo="Excel Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
-              description="Excel Source"
-              name="MAPPINGS (MI Master)"
-              usesDispositions="true"
-              version="1">
-              <properties>
-                <property
-                  dataType="System.Int32"
-                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
-                  name="CommandTimeout">0</property>
-                <property
-                  dataType="System.String"
-                  description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset">dimIndustry$_FilterDatabase</property>
-                <property
-                  dataType="System.String"
-                  description="Specifies the variable that contains the name of the database object used to open a rowset."
-                  name="OpenRowsetVariable"></property>
-                <property
-                  dataType="System.String"
-                  description="The SQL command to be executed."
-                  name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
-                <property
-                  dataType="System.String"
-                  description="The variable that contains the SQL command to be executed."
-                  name="SqlCommandVariable"></property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the mode used to access the database."
-                  name="AccessMode"
-                  typeConverter="AccessMode">0</property>
-                <property
-                  dataType="System.String"
-                  description="The mapping from parameters in the SQL command to variables."
-                  name="ParameterMapping"></property>
-              </properties>
-              <connections>
-                <connection
-                  refId="Package\Import dimMainIndustries Table\MAPPINGS (MI Master).Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[Excel Connection Manager]"
-                  connectionManagerRefId="Package.ConnectionManagers[Excel Connection Manager]"
-                  description="The OLE DB runtime connection used to access the database."
-                  name="OleDbConnection" />
-              </connections>
-              <outputs>
-                <output
-                  refId="Package\Import dimMainIndustries Table\MAPPINGS (MI Master).Outputs[Excel Source Output]"
-                  name="Excel Source Output">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\Import dimMainIndustries Table\MAPPINGS (MI Master).Outputs[Excel Source Output].Columns[ANAICS2]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Import dimMainIndustries Table\MAPPINGS (MI Master).Outputs[Excel Source Output].ExternalColumns[ANAICS2]"
-                      length="255"
-                      lineageId="Package\Import dimMainIndustries Table\MAPPINGS (MI Master).Outputs[Excel Source Output].Columns[ANAICS2]"
-                      name="ANAICS2"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Import dimMainIndustries Table\MAPPINGS (MI Master).Outputs[Excel Source Output].Columns[ANAICS4]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Import dimMainIndustries Table\MAPPINGS (MI Master).Outputs[Excel Source Output].ExternalColumns[ANAICS4]"
-                      length="255"
-                      lineageId="Package\Import dimMainIndustries Table\MAPPINGS (MI Master).Outputs[Excel Source Output].Columns[ANAICS4]"
-                      name="ANAICS4"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Import dimMainIndustries Table\MAPPINGS (MI Master).Outputs[Excel Source Output].Columns[ANAICS6]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Import dimMainIndustries Table\MAPPINGS (MI Master).Outputs[Excel Source Output].ExternalColumns[ANAICS6]"
-                      length="255"
-                      lineageId="Package\Import dimMainIndustries Table\MAPPINGS (MI Master).Outputs[Excel Source Output].Columns[ANAICS6]"
-                      name="ANAICS6"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Import dimMainIndustries Table\MAPPINGS (MI Master).Outputs[Excel Source Output].Columns[NAICS description]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Import dimMainIndustries Table\MAPPINGS (MI Master).Outputs[Excel Source Output].ExternalColumns[NAICS description]"
-                      length="255"
-                      lineageId="Package\Import dimMainIndustries Table\MAPPINGS (MI Master).Outputs[Excel Source Output].Columns[NAICS description]"
-                      name="NAICS description"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Import dimMainIndustries Table\MAPPINGS (MI Master).Outputs[Excel Source Output].Columns[CI sector]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Import dimMainIndustries Table\MAPPINGS (MI Master).Outputs[Excel Source Output].ExternalColumns[CI sector]"
-                      length="255"
-                      lineageId="Package\Import dimMainIndustries Table\MAPPINGS (MI Master).Outputs[Excel Source Output].Columns[CI sector]"
-                      name="CI sector"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Import dimMainIndustries Table\MAPPINGS (MI Master).Outputs[Excel Source Output].Columns[MI sector]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Import dimMainIndustries Table\MAPPINGS (MI Master).Outputs[Excel Source Output].ExternalColumns[MI sector]"
-                      length="255"
-                      lineageId="Package\Import dimMainIndustries Table\MAPPINGS (MI Master).Outputs[Excel Source Output].Columns[MI sector]"
-                      name="MI sector"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Import dimMainIndustries Table\MAPPINGS (MI Master).Outputs[Excel Source Output].Columns[Creative Industry Type]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Import dimMainIndustries Table\MAPPINGS (MI Master).Outputs[Excel Source Output].ExternalColumns[Creative Industry Type]"
-                      length="255"
-                      lineageId="Package\Import dimMainIndustries Table\MAPPINGS (MI Master).Outputs[Excel Source Output].Columns[Creative Industry Type]"
-                      name="Creative Industry Type"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Import dimMainIndustries Table\MAPPINGS (MI Master).Outputs[Excel Source Output].Columns[iNESTA]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Import dimMainIndustries Table\MAPPINGS (MI Master).Outputs[Excel Source Output].ExternalColumns[iNESTA]"
-                      length="255"
-                      lineageId="Package\Import dimMainIndustries Table\MAPPINGS (MI Master).Outputs[Excel Source Output].Columns[iNESTA]"
-                      name="iNESTA"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Import dimMainIndustries Table\MAPPINGS (MI Master).Outputs[Excel Source Output].Columns[iHiggs]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Import dimMainIndustries Table\MAPPINGS (MI Master).Outputs[Excel Source Output].ExternalColumns[iHiggs]"
-                      length="255"
-                      lineageId="Package\Import dimMainIndustries Table\MAPPINGS (MI Master).Outputs[Excel Source Output].Columns[iHiggs]"
-                      name="iHiggs"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Import dimMainIndustries Table\MAPPINGS (MI Master).Outputs[Excel Source Output].Columns[iFreeman]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Import dimMainIndustries Table\MAPPINGS (MI Master).Outputs[Excel Source Output].ExternalColumns[iFreeman]"
-                      length="255"
-                      lineageId="Package\Import dimMainIndustries Table\MAPPINGS (MI Master).Outputs[Excel Source Output].Columns[iFreeman]"
-                      name="iFreeman"
-                      truncationRowDisposition="FailComponent" />
-                  </outputColumns>
-                  <externalMetadataColumns
-                    isUsed="True">
-                    <externalMetadataColumn
-                      refId="Package\Import dimMainIndustries Table\MAPPINGS (MI Master).Outputs[Excel Source Output].ExternalColumns[ANAICS2]"
-                      dataType="wstr"
-                      length="255"
-                      name="ANAICS2" />
-                    <externalMetadataColumn
-                      refId="Package\Import dimMainIndustries Table\MAPPINGS (MI Master).Outputs[Excel Source Output].ExternalColumns[ANAICS4]"
-                      dataType="wstr"
-                      length="255"
-                      name="ANAICS4" />
-                    <externalMetadataColumn
-                      refId="Package\Import dimMainIndustries Table\MAPPINGS (MI Master).Outputs[Excel Source Output].ExternalColumns[ANAICS6]"
-                      dataType="wstr"
-                      length="255"
-                      name="ANAICS6" />
-                    <externalMetadataColumn
-                      refId="Package\Import dimMainIndustries Table\MAPPINGS (MI Master).Outputs[Excel Source Output].ExternalColumns[NAICS description]"
-                      dataType="wstr"
-                      length="255"
-                      name="NAICS description" />
-                    <externalMetadataColumn
-                      refId="Package\Import dimMainIndustries Table\MAPPINGS (MI Master).Outputs[Excel Source Output].ExternalColumns[CI sector]"
-                      dataType="wstr"
-                      length="255"
-                      name="CI sector" />
-                    <externalMetadataColumn
-                      refId="Package\Import dimMainIndustries Table\MAPPINGS (MI Master).Outputs[Excel Source Output].ExternalColumns[MI sector]"
-                      dataType="wstr"
-                      length="255"
-                      name="MI sector" />
-                    <externalMetadataColumn
-                      refId="Package\Import dimMainIndustries Table\MAPPINGS (MI Master).Outputs[Excel Source Output].ExternalColumns[Creative Industry Type]"
-                      dataType="wstr"
-                      length="255"
-                      name="Creative Industry Type" />
-                    <externalMetadataColumn
-                      refId="Package\Import dimMainIndustries Table\MAPPINGS (MI Master).Outputs[Excel Source Output].ExternalColumns[iNESTA]"
-                      dataType="wstr"
-                      length="255"
-                      name="iNESTA" />
-                    <externalMetadataColumn
-                      refId="Package\Import dimMainIndustries Table\MAPPINGS (MI Master).Outputs[Excel Source Output].ExternalColumns[iHiggs]"
-                      dataType="wstr"
-                      length="255"
-                      name="iHiggs" />
-                    <externalMetadataColumn
-                      refId="Package\Import dimMainIndustries Table\MAPPINGS (MI Master).Outputs[Excel Source Output].ExternalColumns[iFreeman]"
-                      dataType="wstr"
-                      length="255"
-                      name="iFreeman" />
-                  </externalMetadataColumns>
-                </output>
-                <output
-                  refId="Package\Import dimMainIndustries Table\MAPPINGS (MI Master).Outputs[Excel Source Error Output]"
-                  isErrorOut="true"
-                  name="Excel Source Error Output">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\Import dimMainIndustries Table\MAPPINGS (MI Master).Outputs[Excel Source Error Output].Columns[ANAICS6]"
-                      dataType="wstr"
-                      length="255"
-                      lineageId="Package\Import dimMainIndustries Table\MAPPINGS (MI Master).Outputs[Excel Source Error Output].Columns[ANAICS6]"
-                      name="ANAICS6" />
-                    <outputColumn
-                      refId="Package\Import dimMainIndustries Table\MAPPINGS (MI Master).Outputs[Excel Source Error Output].Columns[ANAICS4]"
-                      dataType="wstr"
-                      length="255"
-                      lineageId="Package\Import dimMainIndustries Table\MAPPINGS (MI Master).Outputs[Excel Source Error Output].Columns[ANAICS4]"
-                      name="ANAICS4" />
-                    <outputColumn
-                      refId="Package\Import dimMainIndustries Table\MAPPINGS (MI Master).Outputs[Excel Source Error Output].Columns[ANAICS2]"
-                      dataType="wstr"
-                      length="255"
-                      lineageId="Package\Import dimMainIndustries Table\MAPPINGS (MI Master).Outputs[Excel Source Error Output].Columns[ANAICS2]"
-                      name="ANAICS2" />
-                    <outputColumn
-                      refId="Package\Import dimMainIndustries Table\MAPPINGS (MI Master).Outputs[Excel Source Error Output].Columns[NAICS description]"
-                      dataType="wstr"
-                      length="255"
-                      lineageId="Package\Import dimMainIndustries Table\MAPPINGS (MI Master).Outputs[Excel Source Error Output].Columns[NAICS description]"
-                      name="NAICS description" />
-                    <outputColumn
-                      refId="Package\Import dimMainIndustries Table\MAPPINGS (MI Master).Outputs[Excel Source Error Output].Columns[CI sector]"
-                      dataType="wstr"
-                      length="255"
-                      lineageId="Package\Import dimMainIndustries Table\MAPPINGS (MI Master).Outputs[Excel Source Error Output].Columns[CI sector]"
-                      name="CI sector" />
-                    <outputColumn
-                      refId="Package\Import dimMainIndustries Table\MAPPINGS (MI Master).Outputs[Excel Source Error Output].Columns[MI sector]"
-                      dataType="wstr"
-                      length="255"
-                      lineageId="Package\Import dimMainIndustries Table\MAPPINGS (MI Master).Outputs[Excel Source Error Output].Columns[MI sector]"
-                      name="MI sector" />
-                    <outputColumn
-                      refId="Package\Import dimMainIndustries Table\MAPPINGS (MI Master).Outputs[Excel Source Error Output].Columns[Creative Industry Type]"
-                      dataType="wstr"
-                      length="255"
-                      lineageId="Package\Import dimMainIndustries Table\MAPPINGS (MI Master).Outputs[Excel Source Error Output].Columns[Creative Industry Type]"
-                      name="Creative Industry Type" />
-                    <outputColumn
-                      refId="Package\Import dimMainIndustries Table\MAPPINGS (MI Master).Outputs[Excel Source Error Output].Columns[iNESTA]"
-                      dataType="wstr"
-                      length="255"
-                      lineageId="Package\Import dimMainIndustries Table\MAPPINGS (MI Master).Outputs[Excel Source Error Output].Columns[iNESTA]"
-                      name="iNESTA" />
-                    <outputColumn
-                      refId="Package\Import dimMainIndustries Table\MAPPINGS (MI Master).Outputs[Excel Source Error Output].Columns[iHiggs]"
-                      dataType="wstr"
-                      length="255"
-                      lineageId="Package\Import dimMainIndustries Table\MAPPINGS (MI Master).Outputs[Excel Source Error Output].Columns[iHiggs]"
-                      name="iHiggs" />
-                    <outputColumn
-                      refId="Package\Import dimMainIndustries Table\MAPPINGS (MI Master).Outputs[Excel Source Error Output].Columns[iFreeman]"
-                      dataType="wstr"
-                      length="255"
-                      lineageId="Package\Import dimMainIndustries Table\MAPPINGS (MI Master).Outputs[Excel Source Error Output].Columns[iFreeman]"
-                      name="iFreeman" />
-                    <outputColumn
-                      refId="Package\Import dimMainIndustries Table\MAPPINGS (MI Master).Outputs[Excel Source Error Output].Columns[ErrorCode]"
-                      dataType="i4"
-                      lineageId="Package\Import dimMainIndustries Table\MAPPINGS (MI Master).Outputs[Excel Source Error Output].Columns[ErrorCode]"
-                      name="ErrorCode"
-                      specialFlags="1" />
-                    <outputColumn
-                      refId="Package\Import dimMainIndustries Table\MAPPINGS (MI Master).Outputs[Excel Source Error Output].Columns[ErrorColumn]"
-                      dataType="i4"
-                      lineageId="Package\Import dimMainIndustries Table\MAPPINGS (MI Master).Outputs[Excel Source Error Output].Columns[ErrorColumn]"
-                      name="ErrorColumn"
-                      specialFlags="2" />
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-              </outputs>
-            </component>
-            <component
-              refId="Package\Import dimMainIndustries Table\MINAICS OLTP Table"
-              componentClassID="Microsoft.OLEDBDestination"
-              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
-              description="OLE DB Destination"
-              name="MINAICS OLTP Table"
-              usesDispositions="true"
-              version="4">
-              <properties>
-                <property
-                  dataType="System.Int32"
-                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
-                  name="CommandTimeout">0</property>
-                <property
-                  dataType="System.String"
-                  description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset">[dbo].[dimMainIndustries]</property>
-                <property
-                  dataType="System.String"
-                  description="Specifies the variable that contains the name of the database object used to open a rowset."
-                  name="OpenRowsetVariable"></property>
-                <property
-                  dataType="System.String"
-                  description="The SQL command to be executed."
-                  name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the column code page to use when code page information is unavailable from the data source."
-                  name="DefaultCodePage">1252</property>
-                <property
-                  dataType="System.Boolean"
-                  description="Forces the use of the DefaultCodePage property value when describing character data."
-                  name="AlwaysUseDefaultCodePage">false</property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the mode used to access the database."
-                  name="AccessMode"
-                  typeConverter="AccessMode">3</property>
-                <property
-                  dataType="System.Boolean"
-                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
-                  name="FastLoadKeepIdentity">false</property>
-                <property
-                  dataType="System.Boolean"
-                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
-                  name="FastLoadKeepNulls">false</property>
-                <property
-                  dataType="System.String"
-                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
-                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
-                  name="FastLoadMaxInsertCommitSize">2147483647</property>
-              </properties>
-              <connections>
-                <connection
-                  refId="Package\Import dimMainIndustries Table\MINAICS OLTP Table.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[DESKTOP-8IJALLC.CANADA_CI_OLTP]"
-                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-8IJALLC.CANADA_CI_OLTP]"
-                  description="The OLE DB runtime connection used to access the database."
-                  name="OleDbConnection" />
-              </connections>
-              <inputs>
-                <input
-                  refId="Package\Import dimMainIndustries Table\MINAICS OLTP Table.Inputs[OLE DB Destination Input]"
-                  errorOrTruncationOperation="Insert"
-                  errorRowDisposition="FailComponent"
-                  hasSideEffects="true"
-                  name="OLE DB Destination Input">
-                  <inputColumns>
-                    <inputColumn
-                      refId="Package\Import dimMainIndustries Table\MINAICS OLTP Table.Inputs[OLE DB Destination Input].Columns[ShortANAICS4]"
-                      cachedDataType="wstr"
-                      cachedLength="5"
-                      cachedName="ShortANAICS4"
-                      externalMetadataColumnId="Package\Import dimMainIndustries Table\MINAICS OLTP Table.Inputs[OLE DB Destination Input].ExternalColumns[ANAICS4]"
-                      lineageId="Package\Import dimMainIndustries Table\Truncate ANAICS2 and ANAICS4.Outputs[Derived Column Output].Columns[ShortANAICS4]" />
-                    <inputColumn
-                      refId="Package\Import dimMainIndustries Table\MINAICS OLTP Table.Inputs[OLE DB Destination Input].Columns[ShortANAICS2]"
-                      cachedDataType="wstr"
-                      cachedLength="3"
-                      cachedName="ShortANAICS2"
-                      externalMetadataColumnId="Package\Import dimMainIndustries Table\MINAICS OLTP Table.Inputs[OLE DB Destination Input].ExternalColumns[ANAICS2]"
-                      lineageId="Package\Import dimMainIndustries Table\Truncate ANAICS2 and ANAICS4.Outputs[Derived Column Output].Columns[ShortANAICS2]" />
-                  </inputColumns>
-                  <externalMetadataColumns
-                    isUsed="True">
-                    <externalMetadataColumn
-                      refId="Package\Import dimMainIndustries Table\MINAICS OLTP Table.Inputs[OLE DB Destination Input].ExternalColumns[MI sector]"
-                      dataType="wstr"
-                      length="255"
-                      name="MI sector" />
-                    <externalMetadataColumn
-                      refId="Package\Import dimMainIndustries Table\MINAICS OLTP Table.Inputs[OLE DB Destination Input].ExternalColumns[ANAICS2]"
-                      dataType="wstr"
-                      length="3"
-                      name="ANAICS2" />
-                    <externalMetadataColumn
-                      refId="Package\Import dimMainIndustries Table\MINAICS OLTP Table.Inputs[OLE DB Destination Input].ExternalColumns[ANAICS4]"
-                      dataType="wstr"
-                      length="5"
-                      name="ANAICS4" />
-                    <externalMetadataColumn
-                      refId="Package\Import dimMainIndustries Table\MINAICS OLTP Table.Inputs[OLE DB Destination Input].ExternalColumns[NAICS description]"
-                      dataType="wstr"
-                      length="255"
-                      name="NAICS description" />
-                  </externalMetadataColumns>
-                </input>
-              </inputs>
-              <outputs>
-                <output
-                  refId="Package\Import dimMainIndustries Table\MINAICS OLTP Table.Outputs[OLE DB Destination Error Output]"
-                  exclusionGroup="1"
-                  isErrorOut="true"
-                  name="OLE DB Destination Error Output"
-                  synchronousInputId="Package\Import dimMainIndustries Table\MINAICS OLTP Table.Inputs[OLE DB Destination Input]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\Import dimMainIndustries Table\MINAICS OLTP Table.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
-                      dataType="i4"
-                      lineageId="Package\Import dimMainIndustries Table\MINAICS OLTP Table.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
-                      name="ErrorCode"
-                      specialFlags="1" />
-                    <outputColumn
-                      refId="Package\Import dimMainIndustries Table\MINAICS OLTP Table.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
-                      dataType="i4"
-                      lineageId="Package\Import dimMainIndustries Table\MINAICS OLTP Table.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
-                      name="ErrorColumn"
-                      specialFlags="2" />
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-              </outputs>
-            </component>
-            <component
-              refId="Package\Import dimMainIndustries Table\Truncate ANAICS2 and ANAICS4"
-              componentClassID="Microsoft.DerivedColumn"
-              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
-              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
-              name="Truncate ANAICS2 and ANAICS4"
-              usesDispositions="true">
-              <inputs>
-                <input
-                  refId="Package\Import dimMainIndustries Table\Truncate ANAICS2 and ANAICS4.Inputs[Derived Column Input]"
-                  description="Input to the Derived Column Transformation"
-                  name="Derived Column Input">
-                  <inputColumns>
-                    <inputColumn
-                      refId="Package\Import dimMainIndustries Table\Truncate ANAICS2 and ANAICS4.Inputs[Derived Column Input].Columns[ANAICS2]"
-                      cachedDataType="wstr"
-                      cachedLength="255"
-                      cachedName="ANAICS2"
-                      lineageId="Package\Import dimMainIndustries Table\MAPPINGS (MI Master).Outputs[Excel Source Output].Columns[ANAICS2]" />
-                    <inputColumn
-                      refId="Package\Import dimMainIndustries Table\Truncate ANAICS2 and ANAICS4.Inputs[Derived Column Input].Columns[ANAICS4]"
-                      cachedDataType="wstr"
-                      cachedLength="255"
-                      cachedName="ANAICS4"
-                      lineageId="Package\Import dimMainIndustries Table\MAPPINGS (MI Master).Outputs[Excel Source Output].Columns[ANAICS4]" />
-                  </inputColumns>
-                  <externalMetadataColumns />
-                </input>
-              </inputs>
-              <outputs>
-                <output
-                  refId="Package\Import dimMainIndustries Table\Truncate ANAICS2 and ANAICS4.Outputs[Derived Column Output]"
-                  description="Default Output of the Derived Column Transformation"
-                  exclusionGroup="1"
-                  name="Derived Column Output"
-                  synchronousInputId="Package\Import dimMainIndustries Table\Truncate ANAICS2 and ANAICS4.Inputs[Derived Column Input]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\Import dimMainIndustries Table\Truncate ANAICS2 and ANAICS4.Outputs[Derived Column Output].Columns[ShortANAICS2]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Computation"
-                      errorRowDisposition="FailComponent"
-                      length="3"
-                      lineageId="Package\Import dimMainIndustries Table\Truncate ANAICS2 and ANAICS4.Outputs[Derived Column Output].Columns[ShortANAICS2]"
-                      name="ShortANAICS2"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Expression"
-                          name="Expression">[LEFT](#{Package\Import dimMainIndustries Table\MAPPINGS (MI Master).Outputs[Excel Source Output].Columns[ANAICS2]},3)</property>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Friendly Expression"
-                          expressionType="Notify"
-                          name="FriendlyExpression">LEFT(ANAICS2,3)</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\Import dimMainIndustries Table\Truncate ANAICS2 and ANAICS4.Outputs[Derived Column Output].Columns[ShortANAICS4]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Computation"
-                      errorRowDisposition="FailComponent"
-                      length="5"
-                      lineageId="Package\Import dimMainIndustries Table\Truncate ANAICS2 and ANAICS4.Outputs[Derived Column Output].Columns[ShortANAICS4]"
-                      name="ShortANAICS4"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Expression"
-                          name="Expression">[LEFT](#{Package\Import dimMainIndustries Table\MAPPINGS (MI Master).Outputs[Excel Source Output].Columns[ANAICS4]},5)</property>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Friendly Expression"
-                          expressionType="Notify"
-                          name="FriendlyExpression">LEFT(ANAICS4,5)</property>
-                      </properties>
-                    </outputColumn>
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-                <output
-                  refId="Package\Import dimMainIndustries Table\Truncate ANAICS2 and ANAICS4.Outputs[Derived Column Error Output]"
-                  description="Error Output of the Derived Column Transformation"
-                  exclusionGroup="1"
-                  isErrorOut="true"
-                  name="Derived Column Error Output"
-                  synchronousInputId="Package\Import dimMainIndustries Table\Truncate ANAICS2 and ANAICS4.Inputs[Derived Column Input]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\Import dimMainIndustries Table\Truncate ANAICS2 and ANAICS4.Outputs[Derived Column Error Output].Columns[ErrorCode]"
-                      dataType="i4"
-                      lineageId="Package\Import dimMainIndustries Table\Truncate ANAICS2 and ANAICS4.Outputs[Derived Column Error Output].Columns[ErrorCode]"
-                      name="ErrorCode"
-                      specialFlags="1" />
-                    <outputColumn
-                      refId="Package\Import dimMainIndustries Table\Truncate ANAICS2 and ANAICS4.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
-                      dataType="i4"
-                      lineageId="Package\Import dimMainIndustries Table\Truncate ANAICS2 and ANAICS4.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
-                      name="ErrorColumn"
-                      specialFlags="2" />
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-              </outputs>
-            </component>
-          </components>
-          <paths>
-            <path
-              refId="Package\Import dimMainIndustries Table.Paths[Derived Column Output]"
-              endId="Package\Import dimMainIndustries Table\MINAICS OLTP Table.Inputs[OLE DB Destination Input]"
-              name="Derived Column Output"
-              startId="Package\Import dimMainIndustries Table\Truncate ANAICS2 and ANAICS4.Outputs[Derived Column Output]" />
-            <path
-              refId="Package\Import dimMainIndustries Table.Paths[Excel Source Output]"
-              endId="Package\Import dimMainIndustries Table\Truncate ANAICS2 and ANAICS4.Inputs[Derived Column Input]"
-              name="Excel Source Output"
-              startId="Package\Import dimMainIndustries Table\MAPPINGS (MI Master).Outputs[Excel Source Output]" />
+              startId="Package\Import dimNewIndustry Table\MAPPINGS (dimNewIndustry).Outputs[Excel Source Output]" />
           </paths>
         </pipeline>
       </DTS:ObjectData>
@@ -1831,8 +1188,8 @@
               <connections>
                 <connection
                   refId="Package\Import dimOccupation Table\MAPPINGS (dimOccupation).Connections[OleDbConnection]"
-                  connectionManagerID="{A53F01F8-C5F2-4AE6-9A65-41A1ED17DECE}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[MAPPING XLS]"
+                  connectionManagerID="{7A6A48E9-CEDD-40AC-8E7B-406E882F411E}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[MAPPINGS]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -2209,13 +1566,13 @@
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
-      DTS:refId="Package\Import IOICC TO ANAICS OLTP Table"
+      DTS:refId="Package\Import IOICC Splitter OLTP Table"
       DTS:CreationName="Microsoft.Pipeline"
       DTS:Description="Data Flow Task"
       DTS:DTSID="{B87C10A8-A65D-47B8-A461-61E6FC21DB04}"
       DTS:ExecutableType="Microsoft.Pipeline"
       DTS:LocaleID="-1"
-      DTS:ObjectName="Import IOICC TO ANAICS OLTP Table"
+      DTS:ObjectName="Import IOICC Splitter OLTP Table"
       DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
       <DTS:Variables />
       <DTS:ObjectData>
@@ -2223,11 +1580,11 @@
           version="1">
           <components>
             <component
-              refId="Package\Import IOICC TO ANAICS OLTP Table\IOICC TO ANAICS OLTP Table"
+              refId="Package\Import IOICC Splitter OLTP Table\IOICC Splitter OLTP Table"
               componentClassID="Microsoft.OLEDBDestination"
               contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
               description="OLE DB Destination"
-              name="IOICC TO ANAICS OLTP Table"
+              name="IOICC Splitter OLTP Table"
               usesDispositions="true"
               version="4">
               <properties>
@@ -2238,7 +1595,7 @@
                 <property
                   dataType="System.String"
                   description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset">[dbo].[IOICC to ANAICS]</property>
+                  name="OpenRowset">[dbo].[IOICC SPLITTER]</property>
                 <property
                   dataType="System.String"
                   description="Specifies the variable that contains the name of the database object used to open a rowset."
@@ -2280,7 +1637,7 @@
               </properties>
               <connections>
                 <connection
-                  refId="Package\Import IOICC TO ANAICS OLTP Table\IOICC TO ANAICS OLTP Table.Connections[OleDbConnection]"
+                  refId="Package\Import IOICC Splitter OLTP Table\IOICC Splitter OLTP Table.Connections[OleDbConnection]"
                   connectionManagerID="{7C609DE3-B60F-43F3-9132-B532B5CB115C}:external"
                   connectionManagerRefId="Project.ConnectionManagers[OLTP]"
                   description="The OLE DB runtime connection used to access the database."
@@ -2288,94 +1645,94 @@
               </connections>
               <inputs>
                 <input
-                  refId="Package\Import IOICC TO ANAICS OLTP Table\IOICC TO ANAICS OLTP Table.Inputs[OLE DB Destination Input]"
+                  refId="Package\Import IOICC Splitter OLTP Table\IOICC Splitter OLTP Table.Inputs[OLE DB Destination Input]"
                   errorOrTruncationOperation="Insert"
                   errorRowDisposition="FailComponent"
                   hasSideEffects="true"
                   name="OLE DB Destination Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Import IOICC TO ANAICS OLTP Table\IOICC TO ANAICS OLTP Table.Inputs[OLE DB Destination Input].Columns[IOIC proportion]"
+                      refId="Package\Import IOICC Splitter OLTP Table\IOICC Splitter OLTP Table.Inputs[OLE DB Destination Input].Columns[Coefficient]"
                       cachedDataType="r8"
-                      cachedName="IOIC proportion"
-                      externalMetadataColumnId="Package\Import IOICC TO ANAICS OLTP Table\IOICC TO ANAICS OLTP Table.Inputs[OLE DB Destination Input].ExternalColumns[IOICC coefficient]"
-                      lineageId="Package\Import IOICC TO ANAICS OLTP Table\MAPPINGS (IOICC Standardiser).Outputs[Excel Source Output].Columns[IOIC proportion]" />
+                      cachedName="Coefficient"
+                      externalMetadataColumnId="Package\Import IOICC Splitter OLTP Table\IOICC Splitter OLTP Table.Inputs[OLE DB Destination Input].ExternalColumns[Coefficient]"
+                      lineageId="Package\Import IOICC Splitter OLTP Table\MAPPINGS (IOICC Standardiser).Outputs[Excel Source Output].Columns[Coefficient]" />
                     <inputColumn
-                      refId="Package\Import IOICC TO ANAICS OLTP Table\IOICC TO ANAICS OLTP Table.Inputs[OLE DB Destination Input].Columns[IOIC descriptor from actual source, with footnote number]"
+                      refId="Package\Import IOICC Splitter OLTP Table\IOICC Splitter OLTP Table.Inputs[OLE DB Destination Input].Columns[TARGET DESCRIPTION]"
                       cachedDataType="wstr"
                       cachedLength="255"
-                      cachedName="IOIC descriptor from actual source, with footnote number"
-                      externalMetadataColumnId="Package\Import IOICC TO ANAICS OLTP Table\IOICC TO ANAICS OLTP Table.Inputs[OLE DB Destination Input].ExternalColumns[IOICC descriptor]"
-                      lineageId="Package\Import IOICC TO ANAICS OLTP Table\MAPPINGS (IOICC Standardiser).Outputs[Excel Source Output].Columns[IOIC descriptor from actual source, with footnote number]" />
+                      cachedName="TARGET DESCRIPTION"
+                      externalMetadataColumnId="Package\Import IOICC Splitter OLTP Table\IOICC Splitter OLTP Table.Inputs[OLE DB Destination Input].ExternalColumns[TARGET DESCRIPTION]"
+                      lineageId="Package\Import IOICC Splitter OLTP Table\MAPPINGS (IOICC Standardiser).Outputs[Excel Source Output].Columns[TARGET DESCRIPTION]" />
                     <inputColumn
-                      refId="Package\Import IOICC TO ANAICS OLTP Table\IOICC TO ANAICS OLTP Table.Inputs[OLE DB Destination Input].Columns[ShortIOICC]"
-                      cachedDataType="wstr"
-                      cachedLength="8"
-                      cachedName="ShortIOICC"
-                      externalMetadataColumnId="Package\Import IOICC TO ANAICS OLTP Table\IOICC TO ANAICS OLTP Table.Inputs[OLE DB Destination Input].ExternalColumns[IOICC6]"
-                      lineageId="Package\Import IOICC TO ANAICS OLTP Table\Truncate IOICC and ANAICS codes.Outputs[Derived Column Output].Columns[ShortIOICC]" />
-                    <inputColumn
-                      refId="Package\Import IOICC TO ANAICS OLTP Table\IOICC TO ANAICS OLTP Table.Inputs[OLE DB Destination Input].Columns[ANAICS4]"
+                      refId="Package\Import IOICC Splitter OLTP Table\IOICC Splitter OLTP Table.Inputs[OLE DB Destination Input].Columns[SOURCE DESCRIPTION]"
                       cachedDataType="wstr"
                       cachedLength="255"
-                      cachedName="ANAICS4"
-                      externalMetadataColumnId="Package\Import IOICC TO ANAICS OLTP Table\IOICC TO ANAICS OLTP Table.Inputs[OLE DB Destination Input].ExternalColumns[ANAICS4]"
-                      lineageId="Package\Import IOICC TO ANAICS OLTP Table\MAPPINGS (IOICC Standardiser).Outputs[Excel Source Output].Columns[ANAICS4]" />
+                      cachedName="SOURCE DESCRIPTION"
+                      externalMetadataColumnId="Package\Import IOICC Splitter OLTP Table\IOICC Splitter OLTP Table.Inputs[OLE DB Destination Input].ExternalColumns[SOURCE DESCRIPTION]"
+                      lineageId="Package\Import IOICC Splitter OLTP Table\MAPPINGS (IOICC Standardiser).Outputs[Excel Source Output].Columns[SOURCE DESCRIPTION]" />
                     <inputColumn
-                      refId="Package\Import IOICC TO ANAICS OLTP Table\IOICC TO ANAICS OLTP Table.Inputs[OLE DB Destination Input].Columns[ShortNAICS2]"
+                      refId="Package\Import IOICC Splitter OLTP Table\IOICC Splitter OLTP Table.Inputs[OLE DB Destination Input].Columns[ShortPNAICSSource]"
                       cachedDataType="wstr"
-                      cachedLength="3"
-                      cachedName="ShortNAICS2"
-                      externalMetadataColumnId="Package\Import IOICC TO ANAICS OLTP Table\IOICC TO ANAICS OLTP Table.Inputs[OLE DB Destination Input].ExternalColumns[ANAICS2]"
-                      lineageId="Package\Import IOICC TO ANAICS OLTP Table\Truncate IOICC and ANAICS codes.Outputs[Derived Column Output].Columns[ShortNAICS2]" />
+                      cachedLength="7"
+                      cachedName="ShortPNAICSSource"
+                      externalMetadataColumnId="Package\Import IOICC Splitter OLTP Table\IOICC Splitter OLTP Table.Inputs[OLE DB Destination Input].ExternalColumns[PNAICS SOURCE]"
+                      lineageId="Package\Import IOICC Splitter OLTP Table\Shorten PNAICS codes.Outputs[Derived Column Output].Columns[ShortPNAICSSource]" />
+                    <inputColumn
+                      refId="Package\Import IOICC Splitter OLTP Table\IOICC Splitter OLTP Table.Inputs[OLE DB Destination Input].Columns[ShortPNAICSTarget]"
+                      cachedDataType="wstr"
+                      cachedLength="7"
+                      cachedName="ShortPNAICSTarget"
+                      externalMetadataColumnId="Package\Import IOICC Splitter OLTP Table\IOICC Splitter OLTP Table.Inputs[OLE DB Destination Input].ExternalColumns[PNAICS TARGET]"
+                      lineageId="Package\Import IOICC Splitter OLTP Table\Shorten PNAICS codes.Outputs[Derived Column Output].Columns[ShortPNAICSTarget]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\Import IOICC TO ANAICS OLTP Table\IOICC TO ANAICS OLTP Table.Inputs[OLE DB Destination Input].ExternalColumns[IOICC6]"
+                      refId="Package\Import IOICC Splitter OLTP Table\IOICC Splitter OLTP Table.Inputs[OLE DB Destination Input].ExternalColumns[PNAICS SOURCE]"
                       dataType="wstr"
-                      length="8"
-                      name="IOICC6" />
+                      length="7"
+                      name="PNAICS SOURCE" />
                     <externalMetadataColumn
-                      refId="Package\Import IOICC TO ANAICS OLTP Table\IOICC TO ANAICS OLTP Table.Inputs[OLE DB Destination Input].ExternalColumns[IOICC coefficient]"
+                      refId="Package\Import IOICC Splitter OLTP Table\IOICC Splitter OLTP Table.Inputs[OLE DB Destination Input].ExternalColumns[Coefficient]"
                       dataType="r8"
-                      name="IOICC coefficient" />
+                      name="Coefficient" />
                     <externalMetadataColumn
-                      refId="Package\Import IOICC TO ANAICS OLTP Table\IOICC TO ANAICS OLTP Table.Inputs[OLE DB Destination Input].ExternalColumns[ANAICS4]"
+                      refId="Package\Import IOICC Splitter OLTP Table\IOICC Splitter OLTP Table.Inputs[OLE DB Destination Input].ExternalColumns[PNAICS TARGET]"
+                      dataType="wstr"
+                      length="7"
+                      name="PNAICS TARGET" />
+                    <externalMetadataColumn
+                      refId="Package\Import IOICC Splitter OLTP Table\IOICC Splitter OLTP Table.Inputs[OLE DB Destination Input].ExternalColumns[SOURCE DESCRIPTION]"
                       dataType="wstr"
                       length="255"
-                      name="ANAICS4" />
+                      name="SOURCE DESCRIPTION" />
                     <externalMetadataColumn
-                      refId="Package\Import IOICC TO ANAICS OLTP Table\IOICC TO ANAICS OLTP Table.Inputs[OLE DB Destination Input].ExternalColumns[IOICC descriptor]"
+                      refId="Package\Import IOICC Splitter OLTP Table\IOICC Splitter OLTP Table.Inputs[OLE DB Destination Input].ExternalColumns[TARGET DESCRIPTION]"
                       dataType="wstr"
                       length="255"
-                      name="IOICC descriptor" />
-                    <externalMetadataColumn
-                      refId="Package\Import IOICC TO ANAICS OLTP Table\IOICC TO ANAICS OLTP Table.Inputs[OLE DB Destination Input].ExternalColumns[ANAICS2]"
-                      dataType="wstr"
-                      length="3"
-                      name="ANAICS2" />
+                      name="TARGET DESCRIPTION" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
               <outputs>
                 <output
-                  refId="Package\Import IOICC TO ANAICS OLTP Table\IOICC TO ANAICS OLTP Table.Outputs[OLE DB Destination Error Output]"
+                  refId="Package\Import IOICC Splitter OLTP Table\IOICC Splitter OLTP Table.Outputs[OLE DB Destination Error Output]"
                   exclusionGroup="1"
                   isErrorOut="true"
                   name="OLE DB Destination Error Output"
-                  synchronousInputId="Package\Import IOICC TO ANAICS OLTP Table\IOICC TO ANAICS OLTP Table.Inputs[OLE DB Destination Input]">
+                  synchronousInputId="Package\Import IOICC Splitter OLTP Table\IOICC Splitter OLTP Table.Inputs[OLE DB Destination Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Import IOICC TO ANAICS OLTP Table\IOICC TO ANAICS OLTP Table.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      refId="Package\Import IOICC Splitter OLTP Table\IOICC Splitter OLTP Table.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\Import IOICC TO ANAICS OLTP Table\IOICC TO ANAICS OLTP Table.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      lineageId="Package\Import IOICC Splitter OLTP Table\IOICC Splitter OLTP Table.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\Import IOICC TO ANAICS OLTP Table\IOICC TO ANAICS OLTP Table.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      refId="Package\Import IOICC Splitter OLTP Table\IOICC Splitter OLTP Table.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\Import IOICC TO ANAICS OLTP Table\IOICC TO ANAICS OLTP Table.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\Import IOICC Splitter OLTP Table\IOICC Splitter OLTP Table.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -2384,7 +1741,7 @@
               </outputs>
             </component>
             <component
-              refId="Package\Import IOICC TO ANAICS OLTP Table\MAPPINGS (IOICC Standardiser)"
+              refId="Package\Import IOICC Splitter OLTP Table\MAPPINGS (IOICC Standardiser)"
               componentClassID="Microsoft.ExcelSource"
               contactInfo="Excel Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
               description="Excel Source"
@@ -2399,7 +1756,7 @@
                 <property
                   dataType="System.String"
                   description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset">'IOIC Standardiser$'</property>
+                  name="OpenRowset">'IOIC Splitter$'</property>
                 <property
                   dataType="System.String"
                   description="Specifies the variable that contains the name of the database object used to open a rowset."
@@ -2425,181 +1782,139 @@
               </properties>
               <connections>
                 <connection
-                  refId="Package\Import IOICC TO ANAICS OLTP Table\MAPPINGS (IOICC Standardiser).Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[Excel Connection Manager 1]"
-                  connectionManagerRefId="Package.ConnectionManagers[Excel Connection Manager 1]"
+                  refId="Package\Import IOICC Splitter OLTP Table\MAPPINGS (IOICC Standardiser).Connections[OleDbConnection]"
+                  connectionManagerID="{7A6A48E9-CEDD-40AC-8E7B-406E882F411E}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[MAPPINGS]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
               <outputs>
                 <output
-                  refId="Package\Import IOICC TO ANAICS OLTP Table\MAPPINGS (IOICC Standardiser).Outputs[Excel Source Output]"
+                  refId="Package\Import IOICC Splitter OLTP Table\MAPPINGS (IOICC Standardiser).Outputs[Excel Source Output]"
                   name="Excel Source Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Import IOICC TO ANAICS OLTP Table\MAPPINGS (IOICC Standardiser).Outputs[Excel Source Output].Columns[IOIC_ID]"
+                      refId="Package\Import IOICC Splitter OLTP Table\MAPPINGS (IOICC Standardiser).Outputs[Excel Source Output].Columns[PNAICS SOURCE]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Import IOICC TO ANAICS OLTP Table\MAPPINGS (IOICC Standardiser).Outputs[Excel Source Output].ExternalColumns[IOIC_ID]"
+                      externalMetadataColumnId="Package\Import IOICC Splitter OLTP Table\MAPPINGS (IOICC Standardiser).Outputs[Excel Source Output].ExternalColumns[PNAICS SOURCE]"
                       length="255"
-                      lineageId="Package\Import IOICC TO ANAICS OLTP Table\MAPPINGS (IOICC Standardiser).Outputs[Excel Source Output].Columns[IOIC_ID]"
-                      name="IOIC_ID"
+                      lineageId="Package\Import IOICC Splitter OLTP Table\MAPPINGS (IOICC Standardiser).Outputs[Excel Source Output].Columns[PNAICS SOURCE]"
+                      name="PNAICS SOURCE"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Import IOICC TO ANAICS OLTP Table\MAPPINGS (IOICC Standardiser).Outputs[Excel Source Output].Columns[IOIC proportion]"
+                      refId="Package\Import IOICC Splitter OLTP Table\MAPPINGS (IOICC Standardiser).Outputs[Excel Source Output].Columns[Coefficient]"
                       dataType="r8"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Import IOICC TO ANAICS OLTP Table\MAPPINGS (IOICC Standardiser).Outputs[Excel Source Output].ExternalColumns[IOIC proportion]"
-                      lineageId="Package\Import IOICC TO ANAICS OLTP Table\MAPPINGS (IOICC Standardiser).Outputs[Excel Source Output].Columns[IOIC proportion]"
-                      name="IOIC proportion"
+                      externalMetadataColumnId="Package\Import IOICC Splitter OLTP Table\MAPPINGS (IOICC Standardiser).Outputs[Excel Source Output].ExternalColumns[Coefficient]"
+                      lineageId="Package\Import IOICC Splitter OLTP Table\MAPPINGS (IOICC Standardiser).Outputs[Excel Source Output].Columns[Coefficient]"
+                      name="Coefficient"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Import IOICC TO ANAICS OLTP Table\MAPPINGS (IOICC Standardiser).Outputs[Excel Source Output].Columns[ANAICS4]"
+                      refId="Package\Import IOICC Splitter OLTP Table\MAPPINGS (IOICC Standardiser).Outputs[Excel Source Output].Columns[PNAICS TARGET]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Import IOICC TO ANAICS OLTP Table\MAPPINGS (IOICC Standardiser).Outputs[Excel Source Output].ExternalColumns[ANAICS4]"
+                      externalMetadataColumnId="Package\Import IOICC Splitter OLTP Table\MAPPINGS (IOICC Standardiser).Outputs[Excel Source Output].ExternalColumns[PNAICS TARGET]"
                       length="255"
-                      lineageId="Package\Import IOICC TO ANAICS OLTP Table\MAPPINGS (IOICC Standardiser).Outputs[Excel Source Output].Columns[ANAICS4]"
-                      name="ANAICS4"
+                      lineageId="Package\Import IOICC Splitter OLTP Table\MAPPINGS (IOICC Standardiser).Outputs[Excel Source Output].Columns[PNAICS TARGET]"
+                      name="PNAICS TARGET"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Import IOICC TO ANAICS OLTP Table\MAPPINGS (IOICC Standardiser).Outputs[Excel Source Output].Columns[IOIC descriptor from actual source, with footnote number]"
+                      refId="Package\Import IOICC Splitter OLTP Table\MAPPINGS (IOICC Standardiser).Outputs[Excel Source Output].Columns[TARGET DESCRIPTION]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Import IOICC TO ANAICS OLTP Table\MAPPINGS (IOICC Standardiser).Outputs[Excel Source Output].ExternalColumns[IOIC descriptor from actual source, with footnote number]"
+                      externalMetadataColumnId="Package\Import IOICC Splitter OLTP Table\MAPPINGS (IOICC Standardiser).Outputs[Excel Source Output].ExternalColumns[TARGET DESCRIPTION]"
                       length="255"
-                      lineageId="Package\Import IOICC TO ANAICS OLTP Table\MAPPINGS (IOICC Standardiser).Outputs[Excel Source Output].Columns[IOIC descriptor from actual source, with footnote number]"
-                      name="IOIC descriptor from actual source, with footnote number"
+                      lineageId="Package\Import IOICC Splitter OLTP Table\MAPPINGS (IOICC Standardiser).Outputs[Excel Source Output].Columns[TARGET DESCRIPTION]"
+                      name="TARGET DESCRIPTION"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Import IOICC TO ANAICS OLTP Table\MAPPINGS (IOICC Standardiser).Outputs[Excel Source Output].Columns[ANAICS2]"
+                      refId="Package\Import IOICC Splitter OLTP Table\MAPPINGS (IOICC Standardiser).Outputs[Excel Source Output].Columns[SOURCE DESCRIPTION]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Import IOICC TO ANAICS OLTP Table\MAPPINGS (IOICC Standardiser).Outputs[Excel Source Output].ExternalColumns[ANAICS2]"
+                      externalMetadataColumnId="Package\Import IOICC Splitter OLTP Table\MAPPINGS (IOICC Standardiser).Outputs[Excel Source Output].ExternalColumns[SOURCE DESCRIPTION]"
                       length="255"
-                      lineageId="Package\Import IOICC TO ANAICS OLTP Table\MAPPINGS (IOICC Standardiser).Outputs[Excel Source Output].Columns[ANAICS2]"
-                      name="ANAICS2"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Import IOICC TO ANAICS OLTP Table\MAPPINGS (IOICC Standardiser).Outputs[Excel Source Output].Columns[Note 1]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Import IOICC TO ANAICS OLTP Table\MAPPINGS (IOICC Standardiser).Outputs[Excel Source Output].ExternalColumns[Note 1]"
-                      length="255"
-                      lineageId="Package\Import IOICC TO ANAICS OLTP Table\MAPPINGS (IOICC Standardiser).Outputs[Excel Source Output].Columns[Note 1]"
-                      name="Note 1"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Import IOICC TO ANAICS OLTP Table\MAPPINGS (IOICC Standardiser).Outputs[Excel Source Output].Columns[Note 2]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Import IOICC TO ANAICS OLTP Table\MAPPINGS (IOICC Standardiser).Outputs[Excel Source Output].ExternalColumns[Note 2]"
-                      length="255"
-                      lineageId="Package\Import IOICC TO ANAICS OLTP Table\MAPPINGS (IOICC Standardiser).Outputs[Excel Source Output].Columns[Note 2]"
-                      name="Note 2"
+                      lineageId="Package\Import IOICC Splitter OLTP Table\MAPPINGS (IOICC Standardiser).Outputs[Excel Source Output].Columns[SOURCE DESCRIPTION]"
+                      name="SOURCE DESCRIPTION"
                       truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\Import IOICC TO ANAICS OLTP Table\MAPPINGS (IOICC Standardiser).Outputs[Excel Source Output].ExternalColumns[IOIC_ID]"
+                      refId="Package\Import IOICC Splitter OLTP Table\MAPPINGS (IOICC Standardiser).Outputs[Excel Source Output].ExternalColumns[PNAICS SOURCE]"
                       dataType="wstr"
                       length="255"
-                      name="IOIC_ID" />
+                      name="PNAICS SOURCE" />
                     <externalMetadataColumn
-                      refId="Package\Import IOICC TO ANAICS OLTP Table\MAPPINGS (IOICC Standardiser).Outputs[Excel Source Output].ExternalColumns[IOIC proportion]"
+                      refId="Package\Import IOICC Splitter OLTP Table\MAPPINGS (IOICC Standardiser).Outputs[Excel Source Output].ExternalColumns[Coefficient]"
                       dataType="r8"
-                      name="IOIC proportion" />
+                      name="Coefficient" />
                     <externalMetadataColumn
-                      refId="Package\Import IOICC TO ANAICS OLTP Table\MAPPINGS (IOICC Standardiser).Outputs[Excel Source Output].ExternalColumns[ANAICS4]"
+                      refId="Package\Import IOICC Splitter OLTP Table\MAPPINGS (IOICC Standardiser).Outputs[Excel Source Output].ExternalColumns[PNAICS TARGET]"
                       dataType="wstr"
                       length="255"
-                      name="ANAICS4" />
+                      name="PNAICS TARGET" />
                     <externalMetadataColumn
-                      refId="Package\Import IOICC TO ANAICS OLTP Table\MAPPINGS (IOICC Standardiser).Outputs[Excel Source Output].ExternalColumns[IOIC descriptor from actual source, with footnote number]"
+                      refId="Package\Import IOICC Splitter OLTP Table\MAPPINGS (IOICC Standardiser).Outputs[Excel Source Output].ExternalColumns[TARGET DESCRIPTION]"
                       dataType="wstr"
                       length="255"
-                      name="IOIC descriptor from actual source, with footnote number" />
+                      name="TARGET DESCRIPTION" />
                     <externalMetadataColumn
-                      refId="Package\Import IOICC TO ANAICS OLTP Table\MAPPINGS (IOICC Standardiser).Outputs[Excel Source Output].ExternalColumns[ANAICS2]"
+                      refId="Package\Import IOICC Splitter OLTP Table\MAPPINGS (IOICC Standardiser).Outputs[Excel Source Output].ExternalColumns[SOURCE DESCRIPTION]"
                       dataType="wstr"
                       length="255"
-                      name="ANAICS2" />
-                    <externalMetadataColumn
-                      refId="Package\Import IOICC TO ANAICS OLTP Table\MAPPINGS (IOICC Standardiser).Outputs[Excel Source Output].ExternalColumns[Note 1]"
-                      dataType="wstr"
-                      length="255"
-                      name="Note 1" />
-                    <externalMetadataColumn
-                      refId="Package\Import IOICC TO ANAICS OLTP Table\MAPPINGS (IOICC Standardiser).Outputs[Excel Source Output].ExternalColumns[Note 2]"
-                      dataType="wstr"
-                      length="255"
-                      name="Note 2" />
+                      name="SOURCE DESCRIPTION" />
                   </externalMetadataColumns>
                 </output>
                 <output
-                  refId="Package\Import IOICC TO ANAICS OLTP Table\MAPPINGS (IOICC Standardiser).Outputs[Excel Source Error Output]"
+                  refId="Package\Import IOICC Splitter OLTP Table\MAPPINGS (IOICC Standardiser).Outputs[Excel Source Error Output]"
                   isErrorOut="true"
                   name="Excel Source Error Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Import IOICC TO ANAICS OLTP Table\MAPPINGS (IOICC Standardiser).Outputs[Excel Source Error Output].Columns[IOIC_ID]"
+                      refId="Package\Import IOICC Splitter OLTP Table\MAPPINGS (IOICC Standardiser).Outputs[Excel Source Error Output].Columns[PNAICS SOURCE]"
                       dataType="wstr"
                       length="255"
-                      lineageId="Package\Import IOICC TO ANAICS OLTP Table\MAPPINGS (IOICC Standardiser).Outputs[Excel Source Error Output].Columns[IOIC_ID]"
-                      name="IOIC_ID" />
+                      lineageId="Package\Import IOICC Splitter OLTP Table\MAPPINGS (IOICC Standardiser).Outputs[Excel Source Error Output].Columns[PNAICS SOURCE]"
+                      name="PNAICS SOURCE" />
                     <outputColumn
-                      refId="Package\Import IOICC TO ANAICS OLTP Table\MAPPINGS (IOICC Standardiser).Outputs[Excel Source Error Output].Columns[IOIC proportion]"
+                      refId="Package\Import IOICC Splitter OLTP Table\MAPPINGS (IOICC Standardiser).Outputs[Excel Source Error Output].Columns[Coefficient]"
                       dataType="r8"
-                      lineageId="Package\Import IOICC TO ANAICS OLTP Table\MAPPINGS (IOICC Standardiser).Outputs[Excel Source Error Output].Columns[IOIC proportion]"
-                      name="IOIC proportion" />
+                      lineageId="Package\Import IOICC Splitter OLTP Table\MAPPINGS (IOICC Standardiser).Outputs[Excel Source Error Output].Columns[Coefficient]"
+                      name="Coefficient" />
                     <outputColumn
-                      refId="Package\Import IOICC TO ANAICS OLTP Table\MAPPINGS (IOICC Standardiser).Outputs[Excel Source Error Output].Columns[ANAICS4]"
+                      refId="Package\Import IOICC Splitter OLTP Table\MAPPINGS (IOICC Standardiser).Outputs[Excel Source Error Output].Columns[PNAICS TARGET]"
                       dataType="wstr"
                       length="255"
-                      lineageId="Package\Import IOICC TO ANAICS OLTP Table\MAPPINGS (IOICC Standardiser).Outputs[Excel Source Error Output].Columns[ANAICS4]"
-                      name="ANAICS4" />
+                      lineageId="Package\Import IOICC Splitter OLTP Table\MAPPINGS (IOICC Standardiser).Outputs[Excel Source Error Output].Columns[PNAICS TARGET]"
+                      name="PNAICS TARGET" />
                     <outputColumn
-                      refId="Package\Import IOICC TO ANAICS OLTP Table\MAPPINGS (IOICC Standardiser).Outputs[Excel Source Error Output].Columns[ANAICS2]"
+                      refId="Package\Import IOICC Splitter OLTP Table\MAPPINGS (IOICC Standardiser).Outputs[Excel Source Error Output].Columns[TARGET DESCRIPTION]"
                       dataType="wstr"
                       length="255"
-                      lineageId="Package\Import IOICC TO ANAICS OLTP Table\MAPPINGS (IOICC Standardiser).Outputs[Excel Source Error Output].Columns[ANAICS2]"
-                      name="ANAICS2" />
+                      lineageId="Package\Import IOICC Splitter OLTP Table\MAPPINGS (IOICC Standardiser).Outputs[Excel Source Error Output].Columns[TARGET DESCRIPTION]"
+                      name="TARGET DESCRIPTION" />
                     <outputColumn
-                      refId="Package\Import IOICC TO ANAICS OLTP Table\MAPPINGS (IOICC Standardiser).Outputs[Excel Source Error Output].Columns[IOIC descriptor from actual source, with footnote number]"
+                      refId="Package\Import IOICC Splitter OLTP Table\MAPPINGS (IOICC Standardiser).Outputs[Excel Source Error Output].Columns[SOURCE DESCRIPTION]"
                       dataType="wstr"
                       length="255"
-                      lineageId="Package\Import IOICC TO ANAICS OLTP Table\MAPPINGS (IOICC Standardiser).Outputs[Excel Source Error Output].Columns[IOIC descriptor from actual source, with footnote number]"
-                      name="IOIC descriptor from actual source, with footnote number" />
+                      lineageId="Package\Import IOICC Splitter OLTP Table\MAPPINGS (IOICC Standardiser).Outputs[Excel Source Error Output].Columns[SOURCE DESCRIPTION]"
+                      name="SOURCE DESCRIPTION" />
                     <outputColumn
-                      refId="Package\Import IOICC TO ANAICS OLTP Table\MAPPINGS (IOICC Standardiser).Outputs[Excel Source Error Output].Columns[Note 1]"
-                      dataType="wstr"
-                      length="255"
-                      lineageId="Package\Import IOICC TO ANAICS OLTP Table\MAPPINGS (IOICC Standardiser).Outputs[Excel Source Error Output].Columns[Note 1]"
-                      name="Note 1" />
-                    <outputColumn
-                      refId="Package\Import IOICC TO ANAICS OLTP Table\MAPPINGS (IOICC Standardiser).Outputs[Excel Source Error Output].Columns[Note 2]"
-                      dataType="wstr"
-                      length="255"
-                      lineageId="Package\Import IOICC TO ANAICS OLTP Table\MAPPINGS (IOICC Standardiser).Outputs[Excel Source Error Output].Columns[Note 2]"
-                      name="Note 2" />
-                    <outputColumn
-                      refId="Package\Import IOICC TO ANAICS OLTP Table\MAPPINGS (IOICC Standardiser).Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      refId="Package\Import IOICC Splitter OLTP Table\MAPPINGS (IOICC Standardiser).Outputs[Excel Source Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\Import IOICC TO ANAICS OLTP Table\MAPPINGS (IOICC Standardiser).Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      lineageId="Package\Import IOICC Splitter OLTP Table\MAPPINGS (IOICC Standardiser).Outputs[Excel Source Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\Import IOICC TO ANAICS OLTP Table\MAPPINGS (IOICC Standardiser).Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      refId="Package\Import IOICC Splitter OLTP Table\MAPPINGS (IOICC Standardiser).Outputs[Excel Source Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\Import IOICC TO ANAICS OLTP Table\MAPPINGS (IOICC Standardiser).Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\Import IOICC Splitter OLTP Table\MAPPINGS (IOICC Standardiser).Outputs[Excel Source Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -2608,138 +1923,109 @@
               </outputs>
             </component>
             <component
-              refId="Package\Import IOICC TO ANAICS OLTP Table\Truncate IOICC and ANAICS codes"
+              refId="Package\Import IOICC Splitter OLTP Table\Shorten PNAICS codes"
               componentClassID="Microsoft.DerivedColumn"
               contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
               description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
-              name="Truncate IOICC and ANAICS codes"
+              name="Shorten PNAICS codes"
               usesDispositions="true">
               <inputs>
                 <input
-                  refId="Package\Import IOICC TO ANAICS OLTP Table\Truncate IOICC and ANAICS codes.Inputs[Derived Column Input]"
+                  refId="Package\Import IOICC Splitter OLTP Table\Shorten PNAICS codes.Inputs[Derived Column Input]"
                   description="Input to the Derived Column Transformation"
                   name="Derived Column Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Import IOICC TO ANAICS OLTP Table\Truncate IOICC and ANAICS codes.Inputs[Derived Column Input].Columns[IOIC_ID]"
+                      refId="Package\Import IOICC Splitter OLTP Table\Shorten PNAICS codes.Inputs[Derived Column Input].Columns[PNAICS SOURCE]"
                       cachedDataType="wstr"
                       cachedLength="255"
-                      cachedName="IOIC_ID"
-                      lineageId="Package\Import IOICC TO ANAICS OLTP Table\MAPPINGS (IOICC Standardiser).Outputs[Excel Source Output].Columns[IOIC_ID]" />
+                      cachedName="PNAICS SOURCE"
+                      lineageId="Package\Import IOICC Splitter OLTP Table\MAPPINGS (IOICC Standardiser).Outputs[Excel Source Output].Columns[PNAICS SOURCE]" />
                     <inputColumn
-                      refId="Package\Import IOICC TO ANAICS OLTP Table\Truncate IOICC and ANAICS codes.Inputs[Derived Column Input].Columns[ANAICS4]"
+                      refId="Package\Import IOICC Splitter OLTP Table\Shorten PNAICS codes.Inputs[Derived Column Input].Columns[PNAICS TARGET]"
                       cachedDataType="wstr"
                       cachedLength="255"
-                      cachedName="ANAICS4"
-                      lineageId="Package\Import IOICC TO ANAICS OLTP Table\MAPPINGS (IOICC Standardiser).Outputs[Excel Source Output].Columns[ANAICS4]" />
-                    <inputColumn
-                      refId="Package\Import IOICC TO ANAICS OLTP Table\Truncate IOICC and ANAICS codes.Inputs[Derived Column Input].Columns[ANAICS2]"
-                      cachedDataType="wstr"
-                      cachedLength="255"
-                      cachedName="ANAICS2"
-                      lineageId="Package\Import IOICC TO ANAICS OLTP Table\MAPPINGS (IOICC Standardiser).Outputs[Excel Source Output].Columns[ANAICS2]" />
+                      cachedName="PNAICS TARGET"
+                      lineageId="Package\Import IOICC Splitter OLTP Table\MAPPINGS (IOICC Standardiser).Outputs[Excel Source Output].Columns[PNAICS TARGET]" />
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
               </inputs>
               <outputs>
                 <output
-                  refId="Package\Import IOICC TO ANAICS OLTP Table\Truncate IOICC and ANAICS codes.Outputs[Derived Column Output]"
+                  refId="Package\Import IOICC Splitter OLTP Table\Shorten PNAICS codes.Outputs[Derived Column Output]"
                   description="Default Output of the Derived Column Transformation"
                   exclusionGroup="1"
                   name="Derived Column Output"
-                  synchronousInputId="Package\Import IOICC TO ANAICS OLTP Table\Truncate IOICC and ANAICS codes.Inputs[Derived Column Input]">
+                  synchronousInputId="Package\Import IOICC Splitter OLTP Table\Shorten PNAICS codes.Inputs[Derived Column Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Import IOICC TO ANAICS OLTP Table\Truncate IOICC and ANAICS codes.Outputs[Derived Column Output].Columns[ShortIOICC]"
+                      refId="Package\Import IOICC Splitter OLTP Table\Shorten PNAICS codes.Outputs[Derived Column Output].Columns[ShortPNAICSSource]"
                       dataType="wstr"
                       errorOrTruncationOperation="Computation"
                       errorRowDisposition="FailComponent"
-                      length="8"
-                      lineageId="Package\Import IOICC TO ANAICS OLTP Table\Truncate IOICC and ANAICS codes.Outputs[Derived Column Output].Columns[ShortIOICC]"
-                      name="ShortIOICC"
+                      length="7"
+                      lineageId="Package\Import IOICC Splitter OLTP Table\Shorten PNAICS codes.Outputs[Derived Column Output].Columns[ShortPNAICSSource]"
+                      name="ShortPNAICSSource"
                       truncationRowDisposition="FailComponent">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.String"
                           description="Derived Column Expression"
-                          name="Expression">[LEFT](#{Package\Import IOICC TO ANAICS OLTP Table\MAPPINGS (IOICC Standardiser).Outputs[Excel Source Output].Columns[IOIC_ID]},8)</property>
+                          name="Expression">[LEFT](#{Package\Import IOICC Splitter OLTP Table\MAPPINGS (IOICC Standardiser).Outputs[Excel Source Output].Columns[PNAICS SOURCE]},7)</property>
                         <property
                           containsID="true"
                           dataType="System.String"
                           description="Derived Column Friendly Expression"
                           expressionType="Notify"
-                          name="FriendlyExpression">LEFT(IOIC_ID,8)</property>
+                          name="FriendlyExpression">LEFT([PNAICS SOURCE],7)</property>
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\Import IOICC TO ANAICS OLTP Table\Truncate IOICC and ANAICS codes.Outputs[Derived Column Output].Columns[ShortNAICS4]"
+                      refId="Package\Import IOICC Splitter OLTP Table\Shorten PNAICS codes.Outputs[Derived Column Output].Columns[ShortPNAICSTarget]"
                       dataType="wstr"
                       errorOrTruncationOperation="Computation"
                       errorRowDisposition="FailComponent"
-                      length="5"
-                      lineageId="Package\Import IOICC TO ANAICS OLTP Table\Truncate IOICC and ANAICS codes.Outputs[Derived Column Output].Columns[ShortNAICS4]"
-                      name="ShortNAICS4"
+                      length="7"
+                      lineageId="Package\Import IOICC Splitter OLTP Table\Shorten PNAICS codes.Outputs[Derived Column Output].Columns[ShortPNAICSTarget]"
+                      name="ShortPNAICSTarget"
                       truncationRowDisposition="FailComponent">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.String"
                           description="Derived Column Expression"
-                          name="Expression">[LEFT](#{Package\Import IOICC TO ANAICS OLTP Table\MAPPINGS (IOICC Standardiser).Outputs[Excel Source Output].Columns[ANAICS4]},5)</property>
+                          name="Expression">[LEFT](#{Package\Import IOICC Splitter OLTP Table\MAPPINGS (IOICC Standardiser).Outputs[Excel Source Output].Columns[PNAICS TARGET]},7)</property>
                         <property
                           containsID="true"
                           dataType="System.String"
                           description="Derived Column Friendly Expression"
                           expressionType="Notify"
-                          name="FriendlyExpression">LEFT(ANAICS4,5)</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\Import IOICC TO ANAICS OLTP Table\Truncate IOICC and ANAICS codes.Outputs[Derived Column Output].Columns[ShortNAICS2]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Computation"
-                      errorRowDisposition="FailComponent"
-                      length="3"
-                      lineageId="Package\Import IOICC TO ANAICS OLTP Table\Truncate IOICC and ANAICS codes.Outputs[Derived Column Output].Columns[ShortNAICS2]"
-                      name="ShortNAICS2"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Expression"
-                          name="Expression">[LEFT](#{Package\Import IOICC TO ANAICS OLTP Table\MAPPINGS (IOICC Standardiser).Outputs[Excel Source Output].Columns[ANAICS2]},3)</property>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Friendly Expression"
-                          expressionType="Notify"
-                          name="FriendlyExpression">LEFT(ANAICS2,3)</property>
+                          name="FriendlyExpression">LEFT([PNAICS TARGET],7)</property>
                       </properties>
                     </outputColumn>
                   </outputColumns>
                   <externalMetadataColumns />
                 </output>
                 <output
-                  refId="Package\Import IOICC TO ANAICS OLTP Table\Truncate IOICC and ANAICS codes.Outputs[Derived Column Error Output]"
+                  refId="Package\Import IOICC Splitter OLTP Table\Shorten PNAICS codes.Outputs[Derived Column Error Output]"
                   description="Error Output of the Derived Column Transformation"
                   exclusionGroup="1"
                   isErrorOut="true"
                   name="Derived Column Error Output"
-                  synchronousInputId="Package\Import IOICC TO ANAICS OLTP Table\Truncate IOICC and ANAICS codes.Inputs[Derived Column Input]">
+                  synchronousInputId="Package\Import IOICC Splitter OLTP Table\Shorten PNAICS codes.Inputs[Derived Column Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Import IOICC TO ANAICS OLTP Table\Truncate IOICC and ANAICS codes.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      refId="Package\Import IOICC Splitter OLTP Table\Shorten PNAICS codes.Outputs[Derived Column Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\Import IOICC TO ANAICS OLTP Table\Truncate IOICC and ANAICS codes.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      lineageId="Package\Import IOICC Splitter OLTP Table\Shorten PNAICS codes.Outputs[Derived Column Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\Import IOICC TO ANAICS OLTP Table\Truncate IOICC and ANAICS codes.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      refId="Package\Import IOICC Splitter OLTP Table\Shorten PNAICS codes.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\Import IOICC TO ANAICS OLTP Table\Truncate IOICC and ANAICS codes.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\Import IOICC Splitter OLTP Table\Shorten PNAICS codes.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -2750,15 +2036,15 @@
           </components>
           <paths>
             <path
-              refId="Package\Import IOICC TO ANAICS OLTP Table.Paths[Derived Column Output]"
-              endId="Package\Import IOICC TO ANAICS OLTP Table\IOICC TO ANAICS OLTP Table.Inputs[OLE DB Destination Input]"
+              refId="Package\Import IOICC Splitter OLTP Table.Paths[Derived Column Output]"
+              endId="Package\Import IOICC Splitter OLTP Table\IOICC Splitter OLTP Table.Inputs[OLE DB Destination Input]"
               name="Derived Column Output"
-              startId="Package\Import IOICC TO ANAICS OLTP Table\Truncate IOICC and ANAICS codes.Outputs[Derived Column Output]" />
+              startId="Package\Import IOICC Splitter OLTP Table\Shorten PNAICS codes.Outputs[Derived Column Output]" />
             <path
-              refId="Package\Import IOICC TO ANAICS OLTP Table.Paths[Excel Source Output]"
-              endId="Package\Import IOICC TO ANAICS OLTP Table\Truncate IOICC and ANAICS codes.Inputs[Derived Column Input]"
+              refId="Package\Import IOICC Splitter OLTP Table.Paths[Excel Source Output]"
+              endId="Package\Import IOICC Splitter OLTP Table\Shorten PNAICS codes.Inputs[Derived Column Input]"
               name="Excel Source Output"
-              startId="Package\Import IOICC TO ANAICS OLTP Table\MAPPINGS (IOICC Standardiser).Outputs[Excel Source Output]" />
+              startId="Package\Import IOICC Splitter OLTP Table\MAPPINGS (IOICC Standardiser).Outputs[Excel Source Output]" />
           </paths>
         </pipeline>
       </DTS:ObjectData>
@@ -2768,24 +2054,16 @@
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint]"
       DTS:CreationName=""
-      DTS:DTSID="{1B2B87A4-5C89-4BDE-BE5B-788FB5DEC30B}"
-      DTS:From="Package\Import dimIndustry Table"
+      DTS:DTSID="{97B9967A-9584-4F55-896D-42EBC18B7A0B}"
+      DTS:From="Package\Import dimNewIndustry Table"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint"
-      DTS:To="Package\Import dimMainIndustries Table" />
-    <DTS:PrecedenceConstraint
-      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
-      DTS:CreationName=""
-      DTS:DTSID="{B48A0DF4-BE4A-4A8F-96CB-28690931EC85}"
-      DTS:From="Package\Import dimMainIndustries Table"
-      DTS:LogicalAnd="True"
-      DTS:ObjectName="Constraint 1"
-      DTS:To="Package\Import IOICC TO ANAICS OLTP Table" />
+      DTS:To="Package\Import IOICC Splitter OLTP Table" />
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
       DTS:CreationName=""
       DTS:DTSID="{1C8A3A9E-E475-46D8-B390-15E38F5F9A58}"
-      DTS:From="Package\Import IOICC TO ANAICS OLTP Table"
+      DTS:From="Package\Import IOICC Splitter OLTP Table"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 2"
       DTS:To="Package\Import dimOccupation Table" />
@@ -2809,75 +2087,49 @@
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="211,42"
           Id="Package\Import dimGeography Table"
-          TopLeft="52.5714294667147,199.435296914652" />
+          TopLeft="299.571429466715,127.435296914652" />
         <NodeLayout
-          Size="200,42"
-          Id="Package\Import dimIndustry Table"
+          Size="221,42"
+          Id="Package\Import dimNewIndustry Table"
           TopLeft="48.8846171776925,28.5324685631752" />
-        <NodeLayout
-          Size="229,42"
-          Id="Package\Import dimMainIndustries Table"
-          TopLeft="306.593412898644,32.1269194365715" />
         <NodeLayout
           Size="213,42"
           Id="Package\Import dimOccupation Table"
-          TopLeft="322.538468223453,117.21783412948" />
+          TopLeft="41.538468223453,127.21783412948" />
         <NodeLayout
-          Size="256,42"
-          Id="Package\Import IOICC TO ANAICS OLTP Table"
-          TopLeft="23.7252755842841,107.272020866313" />
+          Size="237,42"
+          Id="Package\Import IOICC Splitter OLTP Table"
+          TopLeft="283.725275584284,35.272020866313" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="248.884617177692,51.3296939998733">
+          TopLeft="159.384617177692,28.5324685631752">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="57.7087957209515,0"
+              EndConnector="242.840658406592,6.7395523031378"
               Start="0,0"
-              End="50.2087957209515,0">
+              End="242.840658406592,-0.760447696862201">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="50.2087957209515,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="420.993412898644,73.7269194365715">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-269.26813731436,33.5451014297415"
-              Start="0,0"
-              End="-269.26813731436,26.0451014297415">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,12.7725507148708" />
+                    End="0,-18.5" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,12.7725507148708"
-                    Point2="0,16.7725507148708"
-                    Point3="-4,16.7725507148708" />
+                    Point1="0,-18.5"
+                    Point2="0,-22.5"
+                    Point3="4,-22.5" />
                   <mssgle:LineSegment
-                    End="-265.26813731436,16.7725507148708" />
+                    End="238.840658406592,-22.5" />
                   <mssgle:CubicBezierSegment
-                    Point1="-265.26813731436,16.7725507148708"
-                    Point2="-269.26813731436,16.7725507148708"
-                    Point3="-269.26813731436,20.7725507148708" />
+                    Point1="238.840658406592,-22.5"
+                    Point2="242.840658406592,-22.5"
+                    Point3="242.840658406592,-18.5" />
                   <mssgle:LineSegment
-                    End="-269.26813731436,26.0451014297415" />
+                    End="242.840658406592,-0.760447696862201" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2888,30 +2140,30 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 2]"
-          TopLeft="279.725275584284,128.272020866313">
+          TopLeft="402.225275584284,77.272020866313">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="42.8131926391689,9.945813263167"
+              EndConnector="-254.186807360831,49.945813263167"
               Start="0,0"
-              End="35.3131926391689,9.945813263167">
+              End="-254.186807360831,42.445813263167">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="17.4065963195845,0" />
+                    End="0,20.9729066315835" />
                   <mssgle:CubicBezierSegment
-                    Point1="17.4065963195845,0"
-                    Point2="21.4065963195845,0"
-                    Point3="21.4065963195845,4" />
+                    Point1="0,20.9729066315835"
+                    Point2="0,24.9729066315835"
+                    Point3="-4,24.9729066315835" />
                   <mssgle:LineSegment
-                    End="21.4065963195845,5.945813263167" />
+                    End="-250.186807360831,24.9729066315835" />
                   <mssgle:CubicBezierSegment
-                    Point1="21.4065963195845,5.945813263167"
-                    Point2="21.4065963195845,9.945813263167"
-                    Point3="25.4065963195845,9.945813263167" />
+                    Point1="-250.186807360831,24.9729066315835"
+                    Point2="-254.186807360831,24.9729066315835"
+                    Point3="-254.186807360831,28.9729066315835" />
                   <mssgle:LineSegment
-                    End="35.3131926391689,9.945813263167" />
+                    End="-254.186807360831,42.445813263167" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2922,30 +2174,18 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 3]"
-          TopLeft="429.038468223453,159.21783412948">
+          TopLeft="254.538468223453,148.326565522066">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-270.967038756738,40.217462785172"
+              EndConnector="45.0329612432617,0"
               Start="0,0"
-              End="-270.967038756738,32.717462785172">
+              End="37.5329612432617,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,16.108731392586" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,16.108731392586"
-                    Point2="0,20.108731392586"
-                    Point3="-4,20.108731392586" />
-                  <mssgle:LineSegment
-                    End="-266.967038756738,20.108731392586" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-266.967038756738,20.108731392586"
-                    Point2="-270.967038756738,20.108731392586"
-                    Point3="-270.967038756738,24.108731392586" />
-                  <mssgle:LineSegment
-                    End="-270.967038756738,32.717462785172" />
+                    End="37.5329612432617,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -3024,49 +2264,47 @@
     </Properties>
   </PipelineComponentMetadata>
   <TaskHost
-    design-time-name="Package\Import dimIndustry Table">
+    design-time-name="Package\Import dimNewIndustry Table">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="218,42"
+          Id="Package\Import dimNewIndustry Table\MAPPINGS (dimNewIndustry)"
+          TopLeft="107.076924756535,18.3885921304255" />
         <NodeLayout
           Size="178,42"
-          Id="Package\Import dimIndustry Table\Shorten NAICS codes"
+          Id="Package\Import dimNewIndustry Table\Shorten NAICS codes"
           TopLeft="123.615370993078,108.103030155031" />
         <NodeLayout
           Size="193,42"
-          Id="Package\Import dimIndustry Table\dimIndustry OLTP Table"
-          TopLeft="108.465934003975,221.486988561576" />
-        <NodeLayout
-          Size="198,42"
-          Id="Package\Import dimIndustry Table\MAPPINGS (dimIndustry)"
-          TopLeft="107.076924756535,18.3885921304255" />
+          Id="Package\Import dimNewIndustry Table\dimIndustry OLTP Table"
+          TopLeft="119.465934003975,220.486988561576" />
         <EdgeLayout
-          Id="Package\Import dimIndustry Table.Paths[Derived Column Output]"
-          TopLeft="208.790652498527,150.103030155031">
+          Id="Package\Import dimNewIndustry Table.Paths[Derived Column Output]"
+          TopLeft="214.290652498526,150.103030155031">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,71.383958406545"
+              EndConnector="0,70.383958406545"
               Start="0,0"
-              End="0,63.883958406545">
+              End="0,62.883958406545">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,63.883958406545" />
+                    End="0,62.883958406545" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Import dimIndustry Table.Paths[Excel Source Output]"
-          TopLeft="209.346147874806,60.3885921304255">
+          Id="Package\Import dimNewIndustry Table.Paths[Excel Source Output]"
+          TopLeft="214.346147874806,60.3885921304255">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -3083,110 +2321,6 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-      </GraphLayout>
-    </LayoutInfo>
-  </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\Import dimIndustry Table\dimIndustry OLTP Table">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Import dimIndustry Table\MAPPINGS (dimIndustry)">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <TaskHost
-    design-time-name="Package\Import dimMainIndustries Table">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="232,42"
-          Id="Package\Import dimMainIndustries Table\Truncate ANAICS2 and ANAICS4"
-          TopLeft="146.4,126.8" />
-        <NodeLayout
-          Size="178,42"
-          Id="Package\Import dimMainIndustries Table\MINAICS OLTP Table"
-          TopLeft="171.6,233.6" />
-        <NodeLayout
-          Size="187,42"
-          Id="Package\Import dimMainIndustries Table\MAPPINGS (MI Master)"
-          TopLeft="137.2,41.2" />
-        <EdgeLayout
-          Id="Package\Import dimMainIndustries Table.Paths[Derived Column Output]"
-          TopLeft="261.6,168.4">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,65.2"
-              Start="0,0"
-              End="0,57.7">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,57.7" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Import dimMainIndustries Table.Paths[Excel Source Output]"
-          TopLeft="230.8,82.8">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="31.6,44"
-              Start="0,0"
-              End="31.6,36.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,18" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,18"
-                    Point2="0,22"
-                    Point3="4,22" />
-                  <mssgle:LineSegment
-                    End="27.6,22" />
-                  <mssgle:CubicBezierSegment
-                    Point1="27.6,22"
-                    Point2="31.6,22"
-                    Point3="31.6,26" />
-                  <mssgle:LineSegment
-                    End="31.6,36.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -3194,7 +2328,7 @@
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Import dimMainIndustries Table\MINAICS OLTP Table">
+    design-time-name="Package\Import dimNewIndustry Table\MAPPINGS (dimNewIndustry)">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -3207,7 +2341,7 @@
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Import dimMainIndustries Table\MAPPINGS (MI Master)">
+    design-time-name="Package\Import dimNewIndustry Table\dimIndustry OLTP Table">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -3338,83 +2472,99 @@
     </Properties>
   </PipelineComponentMetadata>
   <TaskHost
-    design-time-name="Package\Import IOICC TO ANAICS OLTP Table">
+    design-time-name="Package\Import IOICC Splitter OLTP Table">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="221,42"
-          Id="Package\Import IOICC TO ANAICS OLTP Table\IOICC TO ANAICS OLTP Table"
-          TopLeft="75.2,241.6" />
+          Size="185,42"
+          Id="Package\Import IOICC Splitter OLTP Table\Shorten PNAICS codes"
+          TopLeft="397,136" />
+        <NodeLayout
+          Size="201,42"
+          Id="Package\Import IOICC Splitter OLTP Table\IOICC Splitter OLTP Table"
+          TopLeft="102,211" />
         <NodeLayout
           Size="231,42"
-          Id="Package\Import IOICC TO ANAICS OLTP Table\MAPPINGS (IOICC Standardiser)"
+          Id="Package\Import IOICC Splitter OLTP Table\MAPPINGS (IOICC Standardiser)"
           TopLeft="80.8,36" />
-        <NodeLayout
-          Size="242,42"
-          Id="Package\Import IOICC TO ANAICS OLTP Table\Truncate IOICC and ANAICS codes"
-          TopLeft="60.9948604899742,130.391919523969" />
         <EdgeLayout
-          Id="Package\Import IOICC TO ANAICS OLTP Table.Paths[Excel Source Output]"
-          TopLeft="196.4,77.6">
+          Id="Package\Import IOICC Splitter OLTP Table.Paths[Excel Source Output]"
+          TopLeft="196.3,78">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-14.2051395100258,52.791919523969"
+              EndConnector="293.2,58"
               Start="0,0"
-              End="-14.2051395100258,45.291919523969">
+              End="293.2,50.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,22.3959597619845" />
+                    End="0,25" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,22.3959597619845"
-                    Point2="0,26.3959597619845"
-                    Point3="-4,26.3959597619845" />
+                    Point1="0,25"
+                    Point2="0,29"
+                    Point3="4,29" />
                   <mssgle:LineSegment
-                    End="-10.2051395100258,26.3959597619845" />
+                    End="289.2,29" />
                   <mssgle:CubicBezierSegment
-                    Point1="-10.2051395100258,26.3959597619845"
-                    Point2="-14.2051395100258,26.3959597619845"
-                    Point3="-14.2051395100258,30.3959597619845" />
+                    Point1="289.2,29"
+                    Point2="293.2,29"
+                    Point3="293.2,33" />
                   <mssgle:LineSegment
-                    End="-14.2051395100258,45.291919523969" />
+                    End="293.2,50.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
-          Id="Package\Import IOICC TO ANAICS OLTP Table.Paths[Derived Column Output]"
-          TopLeft="183.897430244987,171.991919523969">
+          Id="Package\Import IOICC Splitter OLTP Table.Paths[Derived Column Output]"
+          TopLeft="489.5,178">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,69.6080804760313"
+              EndConnector="-287,33"
               Start="0,0"
-              End="0,62.1080804760313">
+              End="-287,25.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,62.1080804760313" />
+                    End="0,12.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,12.5"
+                    Point2="0,16.5"
+                    Point3="-4,16.5" />
+                  <mssgle:LineSegment
+                    End="-283,16.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-283,16.5"
+                    Point2="-287,16.5"
+                    Point3="-287,20.5" />
+                  <mssgle:LineSegment
+                    End="-287,25.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Import IOICC TO ANAICS OLTP Table\IOICC TO ANAICS OLTP Table">
+    design-time-name="Package\Import IOICC Splitter OLTP Table\IOICC Splitter OLTP Table">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -3427,7 +2577,7 @@
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Import IOICC TO ANAICS OLTP Table\MAPPINGS (IOICC Standardiser)">
+    design-time-name="Package\Import IOICC Splitter OLTP Table\MAPPINGS (IOICC Standardiser)">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
