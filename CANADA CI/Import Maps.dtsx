@@ -11,10 +11,42 @@
   DTS:LocaleID="2057"
   DTS:ObjectName="Import Maps"
   DTS:PackageType="5"
-  DTS:VersionBuild="127"
-  DTS:VersionGUID="{CF8456F7-3D2D-442F-BA6E-7275D86697D4}">
+  DTS:VersionBuild="129"
+  DTS:VersionGUID="{357294AE-4814-4633-82EC-CD68E8892458}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DESKTOP-8IJALLC.CANADA_CI_OLTP]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{12E59B82-86F4-408A-A166-04BC03830ACA}"
+      DTS:ObjectName="DESKTOP-8IJALLC.CANADA_CI_OLTP">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=DESKTOP-8IJALLC;Initial Catalog=CANADA_CI_OLTP;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Excel Connection Manager]"
+      DTS:CreationName="EXCEL"
+      DTS:DTSID="{88A1D991-44AC-4463-8D68-B9F8AB4CA793}"
+      DTS:ObjectName="Excel Connection Manager">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\Lenovo\Desktop\GitHub\New folder\Canada-CI-2020\SOURCE DATA\MAPPING.xls;Extended Properties=&quot;Excel 8.0;HDR=YES&quot;;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Excel Connection Manager 1]"
+      DTS:CreationName="EXCEL"
+      DTS:DTSID="{CA012F7A-E90E-4D49-B2FD-5AA30E23BDB4}"
+      DTS:ObjectName="Excel Connection Manager 1">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Provider=Microsoft.Jet.OLEDB.4.0;Data Source=C:\Users\Lenovo\Desktop\GitHub\New folder\Canada-CI-2020\SOURCE DATA\MAPPING.xls;Extended Properties=&quot;Excel 8.0;HDR=YES&quot;;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
   <DTS:Variables />
   <DTS:Executables>
     <DTS:Executable
@@ -1036,7 +1068,7 @@
                 <property
                   dataType="System.String"
                   description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset">'Main Industries Master$'</property>
+                  name="OpenRowset">dimIndustry$_FilterDatabase</property>
                 <property
                   dataType="System.String"
                   description="Specifies the variable that contains the name of the database object used to open a rowset."
@@ -1063,8 +1095,8 @@
               <connections>
                 <connection
                   refId="Package\Import dimMainIndustries Table\MAPPINGS (MI Master).Connections[OleDbConnection]"
-                  connectionManagerID="{A53F01F8-C5F2-4AE6-9A65-41A1ED17DECE}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[MAPPING XLS]"
+                  connectionManagerID="Package.ConnectionManagers[Excel Connection Manager]"
+                  connectionManagerRefId="Package.ConnectionManagers[Excel Connection Manager]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -1084,36 +1116,6 @@
                       name="ANAICS2"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Import dimMainIndustries Table\MAPPINGS (MI Master).Outputs[Excel Source Output].Columns[NAICS Title]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Import dimMainIndustries Table\MAPPINGS (MI Master).Outputs[Excel Source Output].ExternalColumns[NAICS Title]"
-                      length="255"
-                      lineageId="Package\Import dimMainIndustries Table\MAPPINGS (MI Master).Outputs[Excel Source Output].Columns[NAICS Title]"
-                      name="NAICS Title"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Import dimMainIndustries Table\MAPPINGS (MI Master).Outputs[Excel Source Output].Columns[IOICC Title]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Import dimMainIndustries Table\MAPPINGS (MI Master).Outputs[Excel Source Output].ExternalColumns[IOICC Title]"
-                      length="255"
-                      lineageId="Package\Import dimMainIndustries Table\MAPPINGS (MI Master).Outputs[Excel Source Output].Columns[IOICC Title]"
-                      name="IOICC Title"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Import dimMainIndustries Table\MAPPINGS (MI Master).Outputs[Excel Source Output].Columns[Note]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Import dimMainIndustries Table\MAPPINGS (MI Master).Outputs[Excel Source Output].ExternalColumns[Note]"
-                      length="255"
-                      lineageId="Package\Import dimMainIndustries Table\MAPPINGS (MI Master).Outputs[Excel Source Output].Columns[Note]"
-                      name="Note"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
                       refId="Package\Import dimMainIndustries Table\MAPPINGS (MI Master).Outputs[Excel Source Output].Columns[ANAICS4]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversion"
@@ -1122,6 +1124,86 @@
                       length="255"
                       lineageId="Package\Import dimMainIndustries Table\MAPPINGS (MI Master).Outputs[Excel Source Output].Columns[ANAICS4]"
                       name="ANAICS4"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import dimMainIndustries Table\MAPPINGS (MI Master).Outputs[Excel Source Output].Columns[ANAICS6]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import dimMainIndustries Table\MAPPINGS (MI Master).Outputs[Excel Source Output].ExternalColumns[ANAICS6]"
+                      length="255"
+                      lineageId="Package\Import dimMainIndustries Table\MAPPINGS (MI Master).Outputs[Excel Source Output].Columns[ANAICS6]"
+                      name="ANAICS6"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import dimMainIndustries Table\MAPPINGS (MI Master).Outputs[Excel Source Output].Columns[NAICS description]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import dimMainIndustries Table\MAPPINGS (MI Master).Outputs[Excel Source Output].ExternalColumns[NAICS description]"
+                      length="255"
+                      lineageId="Package\Import dimMainIndustries Table\MAPPINGS (MI Master).Outputs[Excel Source Output].Columns[NAICS description]"
+                      name="NAICS description"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import dimMainIndustries Table\MAPPINGS (MI Master).Outputs[Excel Source Output].Columns[CI sector]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import dimMainIndustries Table\MAPPINGS (MI Master).Outputs[Excel Source Output].ExternalColumns[CI sector]"
+                      length="255"
+                      lineageId="Package\Import dimMainIndustries Table\MAPPINGS (MI Master).Outputs[Excel Source Output].Columns[CI sector]"
+                      name="CI sector"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import dimMainIndustries Table\MAPPINGS (MI Master).Outputs[Excel Source Output].Columns[MI sector]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import dimMainIndustries Table\MAPPINGS (MI Master).Outputs[Excel Source Output].ExternalColumns[MI sector]"
+                      length="255"
+                      lineageId="Package\Import dimMainIndustries Table\MAPPINGS (MI Master).Outputs[Excel Source Output].Columns[MI sector]"
+                      name="MI sector"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import dimMainIndustries Table\MAPPINGS (MI Master).Outputs[Excel Source Output].Columns[Creative Industry Type]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import dimMainIndustries Table\MAPPINGS (MI Master).Outputs[Excel Source Output].ExternalColumns[Creative Industry Type]"
+                      length="255"
+                      lineageId="Package\Import dimMainIndustries Table\MAPPINGS (MI Master).Outputs[Excel Source Output].Columns[Creative Industry Type]"
+                      name="Creative Industry Type"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import dimMainIndustries Table\MAPPINGS (MI Master).Outputs[Excel Source Output].Columns[iNESTA]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import dimMainIndustries Table\MAPPINGS (MI Master).Outputs[Excel Source Output].ExternalColumns[iNESTA]"
+                      length="255"
+                      lineageId="Package\Import dimMainIndustries Table\MAPPINGS (MI Master).Outputs[Excel Source Output].Columns[iNESTA]"
+                      name="iNESTA"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import dimMainIndustries Table\MAPPINGS (MI Master).Outputs[Excel Source Output].Columns[iHiggs]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import dimMainIndustries Table\MAPPINGS (MI Master).Outputs[Excel Source Output].ExternalColumns[iHiggs]"
+                      length="255"
+                      lineageId="Package\Import dimMainIndustries Table\MAPPINGS (MI Master).Outputs[Excel Source Output].Columns[iHiggs]"
+                      name="iHiggs"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import dimMainIndustries Table\MAPPINGS (MI Master).Outputs[Excel Source Output].Columns[iFreeman]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import dimMainIndustries Table\MAPPINGS (MI Master).Outputs[Excel Source Output].ExternalColumns[iFreeman]"
+                      length="255"
+                      lineageId="Package\Import dimMainIndustries Table\MAPPINGS (MI Master).Outputs[Excel Source Output].Columns[iFreeman]"
+                      name="iFreeman"
                       truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
@@ -1132,25 +1214,50 @@
                       length="255"
                       name="ANAICS2" />
                     <externalMetadataColumn
-                      refId="Package\Import dimMainIndustries Table\MAPPINGS (MI Master).Outputs[Excel Source Output].ExternalColumns[NAICS Title]"
-                      dataType="wstr"
-                      length="255"
-                      name="NAICS Title" />
-                    <externalMetadataColumn
-                      refId="Package\Import dimMainIndustries Table\MAPPINGS (MI Master).Outputs[Excel Source Output].ExternalColumns[IOICC Title]"
-                      dataType="wstr"
-                      length="255"
-                      name="IOICC Title" />
-                    <externalMetadataColumn
-                      refId="Package\Import dimMainIndustries Table\MAPPINGS (MI Master).Outputs[Excel Source Output].ExternalColumns[Note]"
-                      dataType="wstr"
-                      length="255"
-                      name="Note" />
-                    <externalMetadataColumn
                       refId="Package\Import dimMainIndustries Table\MAPPINGS (MI Master).Outputs[Excel Source Output].ExternalColumns[ANAICS4]"
                       dataType="wstr"
                       length="255"
                       name="ANAICS4" />
+                    <externalMetadataColumn
+                      refId="Package\Import dimMainIndustries Table\MAPPINGS (MI Master).Outputs[Excel Source Output].ExternalColumns[ANAICS6]"
+                      dataType="wstr"
+                      length="255"
+                      name="ANAICS6" />
+                    <externalMetadataColumn
+                      refId="Package\Import dimMainIndustries Table\MAPPINGS (MI Master).Outputs[Excel Source Output].ExternalColumns[NAICS description]"
+                      dataType="wstr"
+                      length="255"
+                      name="NAICS description" />
+                    <externalMetadataColumn
+                      refId="Package\Import dimMainIndustries Table\MAPPINGS (MI Master).Outputs[Excel Source Output].ExternalColumns[CI sector]"
+                      dataType="wstr"
+                      length="255"
+                      name="CI sector" />
+                    <externalMetadataColumn
+                      refId="Package\Import dimMainIndustries Table\MAPPINGS (MI Master).Outputs[Excel Source Output].ExternalColumns[MI sector]"
+                      dataType="wstr"
+                      length="255"
+                      name="MI sector" />
+                    <externalMetadataColumn
+                      refId="Package\Import dimMainIndustries Table\MAPPINGS (MI Master).Outputs[Excel Source Output].ExternalColumns[Creative Industry Type]"
+                      dataType="wstr"
+                      length="255"
+                      name="Creative Industry Type" />
+                    <externalMetadataColumn
+                      refId="Package\Import dimMainIndustries Table\MAPPINGS (MI Master).Outputs[Excel Source Output].ExternalColumns[iNESTA]"
+                      dataType="wstr"
+                      length="255"
+                      name="iNESTA" />
+                    <externalMetadataColumn
+                      refId="Package\Import dimMainIndustries Table\MAPPINGS (MI Master).Outputs[Excel Source Output].ExternalColumns[iHiggs]"
+                      dataType="wstr"
+                      length="255"
+                      name="iHiggs" />
+                    <externalMetadataColumn
+                      refId="Package\Import dimMainIndustries Table\MAPPINGS (MI Master).Outputs[Excel Source Output].ExternalColumns[iFreeman]"
+                      dataType="wstr"
+                      length="255"
+                      name="iFreeman" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -1158,6 +1265,12 @@
                   isErrorOut="true"
                   name="Excel Source Error Output">
                   <outputColumns>
+                    <outputColumn
+                      refId="Package\Import dimMainIndustries Table\MAPPINGS (MI Master).Outputs[Excel Source Error Output].Columns[ANAICS6]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Import dimMainIndustries Table\MAPPINGS (MI Master).Outputs[Excel Source Error Output].Columns[ANAICS6]"
+                      name="ANAICS6" />
                     <outputColumn
                       refId="Package\Import dimMainIndustries Table\MAPPINGS (MI Master).Outputs[Excel Source Error Output].Columns[ANAICS4]"
                       dataType="wstr"
@@ -1171,23 +1284,47 @@
                       lineageId="Package\Import dimMainIndustries Table\MAPPINGS (MI Master).Outputs[Excel Source Error Output].Columns[ANAICS2]"
                       name="ANAICS2" />
                     <outputColumn
-                      refId="Package\Import dimMainIndustries Table\MAPPINGS (MI Master).Outputs[Excel Source Error Output].Columns[NAICS Title]"
+                      refId="Package\Import dimMainIndustries Table\MAPPINGS (MI Master).Outputs[Excel Source Error Output].Columns[NAICS description]"
                       dataType="wstr"
                       length="255"
-                      lineageId="Package\Import dimMainIndustries Table\MAPPINGS (MI Master).Outputs[Excel Source Error Output].Columns[NAICS Title]"
-                      name="NAICS Title" />
+                      lineageId="Package\Import dimMainIndustries Table\MAPPINGS (MI Master).Outputs[Excel Source Error Output].Columns[NAICS description]"
+                      name="NAICS description" />
                     <outputColumn
-                      refId="Package\Import dimMainIndustries Table\MAPPINGS (MI Master).Outputs[Excel Source Error Output].Columns[IOICC Title]"
+                      refId="Package\Import dimMainIndustries Table\MAPPINGS (MI Master).Outputs[Excel Source Error Output].Columns[CI sector]"
                       dataType="wstr"
                       length="255"
-                      lineageId="Package\Import dimMainIndustries Table\MAPPINGS (MI Master).Outputs[Excel Source Error Output].Columns[IOICC Title]"
-                      name="IOICC Title" />
+                      lineageId="Package\Import dimMainIndustries Table\MAPPINGS (MI Master).Outputs[Excel Source Error Output].Columns[CI sector]"
+                      name="CI sector" />
                     <outputColumn
-                      refId="Package\Import dimMainIndustries Table\MAPPINGS (MI Master).Outputs[Excel Source Error Output].Columns[Note]"
+                      refId="Package\Import dimMainIndustries Table\MAPPINGS (MI Master).Outputs[Excel Source Error Output].Columns[MI sector]"
                       dataType="wstr"
                       length="255"
-                      lineageId="Package\Import dimMainIndustries Table\MAPPINGS (MI Master).Outputs[Excel Source Error Output].Columns[Note]"
-                      name="Note" />
+                      lineageId="Package\Import dimMainIndustries Table\MAPPINGS (MI Master).Outputs[Excel Source Error Output].Columns[MI sector]"
+                      name="MI sector" />
+                    <outputColumn
+                      refId="Package\Import dimMainIndustries Table\MAPPINGS (MI Master).Outputs[Excel Source Error Output].Columns[Creative Industry Type]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Import dimMainIndustries Table\MAPPINGS (MI Master).Outputs[Excel Source Error Output].Columns[Creative Industry Type]"
+                      name="Creative Industry Type" />
+                    <outputColumn
+                      refId="Package\Import dimMainIndustries Table\MAPPINGS (MI Master).Outputs[Excel Source Error Output].Columns[iNESTA]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Import dimMainIndustries Table\MAPPINGS (MI Master).Outputs[Excel Source Error Output].Columns[iNESTA]"
+                      name="iNESTA" />
+                    <outputColumn
+                      refId="Package\Import dimMainIndustries Table\MAPPINGS (MI Master).Outputs[Excel Source Error Output].Columns[iHiggs]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Import dimMainIndustries Table\MAPPINGS (MI Master).Outputs[Excel Source Error Output].Columns[iHiggs]"
+                      name="iHiggs" />
+                    <outputColumn
+                      refId="Package\Import dimMainIndustries Table\MAPPINGS (MI Master).Outputs[Excel Source Error Output].Columns[iFreeman]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Import dimMainIndustries Table\MAPPINGS (MI Master).Outputs[Excel Source Error Output].Columns[iFreeman]"
+                      name="iFreeman" />
                     <outputColumn
                       refId="Package\Import dimMainIndustries Table\MAPPINGS (MI Master).Outputs[Excel Source Error Output].Columns[ErrorCode]"
                       dataType="i4"
@@ -1264,8 +1401,8 @@
               <connections>
                 <connection
                   refId="Package\Import dimMainIndustries Table\MINAICS OLTP Table.Connections[OleDbConnection]"
-                  connectionManagerID="{7C609DE3-B60F-43F3-9132-B532B5CB115C}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[OLTP]"
+                  connectionManagerID="Package.ConnectionManagers[DESKTOP-8IJALLC.CANADA_CI_OLTP]"
+                  connectionManagerRefId="Package.ConnectionManagers[DESKTOP-8IJALLC.CANADA_CI_OLTP]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -1278,26 +1415,12 @@
                   name="OLE DB Destination Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Import dimMainIndustries Table\MINAICS OLTP Table.Inputs[OLE DB Destination Input].Columns[NAICS Title]"
-                      cachedDataType="wstr"
-                      cachedLength="255"
-                      cachedName="NAICS Title"
-                      externalMetadataColumnId="Package\Import dimMainIndustries Table\MINAICS OLTP Table.Inputs[OLE DB Destination Input].ExternalColumns[MI sector]"
-                      lineageId="Package\Import dimMainIndustries Table\MAPPINGS (MI Master).Outputs[Excel Source Output].Columns[NAICS Title]" />
-                    <inputColumn
                       refId="Package\Import dimMainIndustries Table\MINAICS OLTP Table.Inputs[OLE DB Destination Input].Columns[ShortANAICS4]"
                       cachedDataType="wstr"
                       cachedLength="5"
                       cachedName="ShortANAICS4"
                       externalMetadataColumnId="Package\Import dimMainIndustries Table\MINAICS OLTP Table.Inputs[OLE DB Destination Input].ExternalColumns[ANAICS4]"
                       lineageId="Package\Import dimMainIndustries Table\Truncate ANAICS2 and ANAICS4.Outputs[Derived Column Output].Columns[ShortANAICS4]" />
-                    <inputColumn
-                      refId="Package\Import dimMainIndustries Table\MINAICS OLTP Table.Inputs[OLE DB Destination Input].Columns[IOICC Title]"
-                      cachedDataType="wstr"
-                      cachedLength="255"
-                      cachedName="IOICC Title"
-                      externalMetadataColumnId="Package\Import dimMainIndustries Table\MINAICS OLTP Table.Inputs[OLE DB Destination Input].ExternalColumns[NAICS description]"
-                      lineageId="Package\Import dimMainIndustries Table\MAPPINGS (MI Master).Outputs[Excel Source Output].Columns[IOICC Title]" />
                     <inputColumn
                       refId="Package\Import dimMainIndustries Table\MINAICS OLTP Table.Inputs[OLE DB Destination Input].Columns[ShortANAICS2]"
                       cachedDataType="wstr"
@@ -2303,8 +2426,8 @@
               <connections>
                 <connection
                   refId="Package\Import IOICC TO ANAICS OLTP Table\MAPPINGS (IOICC Standardiser).Connections[OleDbConnection]"
-                  connectionManagerID="{A53F01F8-C5F2-4AE6-9A65-41A1ED17DECE}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[MAPPING XLS]"
+                  connectionManagerID="Package.ConnectionManagers[Excel Connection Manager 1]"
+                  connectionManagerRefId="Package.ConnectionManagers[Excel Connection Manager 1]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -3218,7 +3341,7 @@
     design-time-name="Package\Import IOICC TO ANAICS OLTP Table">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="221,42"
           Id="Package\Import IOICC TO ANAICS OLTP Table\IOICC TO ANAICS OLTP Table"
@@ -3262,9 +3385,7 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -3286,9 +3407,7 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
