@@ -85,14 +85,35 @@
     </SSIS:Properties>
   </SSIS:Parameter>
   <SSIS:Parameter
-    SSIS:Name="OLTP_InitialCatalog">
+    SSIS:Name="Root">
     <SSIS:Properties>
       <SSIS:Property
-        SSIS:Name="ID">{49bcbc4f-966e-4c69-a60a-0d2a30177207}</SSIS:Property>
+        SSIS:Name="ID">{e49d3c6d-6ed1-48e1-86b2-0d89cb297b51}</SSIS:Property>
       <SSIS:Property
         SSIS:Name="CreationName"></SSIS:Property>
       <SSIS:Property
-        SSIS:Name="Description">DUPLICATE - Remove in due course</SSIS:Property>
+        SSIS:Name="Description">Project Root</SSIS:Property>
+      <SSIS:Property
+        SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+      <SSIS:Property
+        SSIS:Name="Required">0</SSIS:Property>
+      <SSIS:Property
+        SSIS:Name="Sensitive">0</SSIS:Property>
+      <SSIS:Property
+        SSIS:Name="Value">C:\Users\GERG\Documents\GitHub\Canada-CI</SSIS:Property>
+      <SSIS:Property
+        SSIS:Name="DataType">18</SSIS:Property>
+    </SSIS:Properties>
+  </SSIS:Parameter>
+  <SSIS:Parameter
+    SSIS:Name="OLTP_InitialCatalog">
+    <SSIS:Properties>
+      <SSIS:Property
+        SSIS:Name="ID">{e0be9066-083d-4803-960c-c6df9e4211f5}</SSIS:Property>
+      <SSIS:Property
+        SSIS:Name="CreationName"></SSIS:Property>
+      <SSIS:Property
+        SSIS:Name="Description">Duplicate</SSIS:Property>
       <SSIS:Property
         SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
       <SSIS:Property
