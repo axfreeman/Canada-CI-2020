@@ -2,23 +2,23 @@
 <BuildLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <ProjectInfo>
     <Name>CANADA CI</Name>
-    <LastWriteTime>2020-08-01T21:57:22.9262809Z</LastWriteTime>
+    <LastWriteTime>2020-08-01T22:18:04.7377754Z</LastWriteTime>
     <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
   </ProjectInfo>
   <LastBuildInfos>
     <ProjectBuildItemInfo>
       <Name>Setup.dtsx</Name>
-      <LastWriteTime>2020-07-23T16:49:33.297699Z</LastWriteTime>
+      <LastWriteTime>2020-08-01T22:09:20.1721003Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>Import Maps.dtsx</Name>
-      <LastWriteTime>2020-08-01T22:01:52.156957Z</LastWriteTime>
+      <LastWriteTime>2020-08-01T22:10:53.0217657Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>ImportSourceData.dtsx</Name>
-      <LastWriteTime>2020-07-30T17:40:41.3028209Z</LastWriteTime>
+      <LastWriteTime>2020-08-01T22:15:07.4162931Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
   </LastBuildInfos>

@@ -4,9 +4,9 @@
   DTS:DTSID="{B54064BD-2F87-4904-A4C8-BBD2AF6F7305}"
   DTS:CreationName="FILE">
   <DTS:PropertyExpression
-    DTS:Name="ConnectionString">@[$Project::Scripts]+"\\CREATE OLTP VIEWS.SQL"</DTS:PropertyExpression>
+    DTS:Name="ConnectionString">@[$Project::Root]+"\\SCRIPTS\\CREATE OLTP VIEWS.SQL"</DTS:PropertyExpression>
   <DTS:ObjectData>
     <DTS:ConnectionManager
-      DTS:ConnectionString="C:\Users\Lenovo\Desktop\GitHub\New folder\Canada-CI\OLTP SETUP SCRIPTS\CREATE OLTP VIEWS.SQL" />
+      DTS:ConnectionString="C:\Users\GERG\Documents\GitHub\Canada-CI\SCRIPTS\CREATE OLTP VIEWS.SQL" />
   </DTS:ObjectData>
 </DTS:ConnectionManager>

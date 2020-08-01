@@ -11,8 +11,8 @@
   DTS:LocaleID="2057"
   DTS:ObjectName="Import Maps"
   DTS:PackageType="5"
-  DTS:VersionBuild="144"
-  DTS:VersionGUID="{403E169F-92FF-4100-A3EC-57023637F795}">
+  DTS:VersionBuild="145"
+  DTS:VersionGUID="{2D2EEAFB-3181-4167-B071-2535970FC4CD}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
