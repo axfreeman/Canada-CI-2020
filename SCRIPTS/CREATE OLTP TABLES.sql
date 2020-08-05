@@ -84,10 +84,10 @@ GO
 
 -- Creative Industry NAICS codes.
 
-DROP TABLE IF EXISTS [dbo].[dimNewIndustry]
+DROP TABLE IF EXISTS [dbo].[dimIndustry]
 GO
 
-CREATE TABLE [dbo].[dimNewIndustry](
+CREATE TABLE [dbo].[dimIndustry](
 	[PNAICS][nvarchar](7) NOT NULL,
 	[NAICS6][nvarchar](7) NULL,
 	[NAICS5][nvarchar](7) NULL,
