@@ -7,6 +7,6 @@
     DTS:Name="ConnectionString">@[$Project::Root] +"\\SCRIPTS\\CREATE OLTP TABLES.SQL"</DTS:PropertyExpression>
   <DTS:ObjectData>
     <DTS:ConnectionManager
-      DTS:ConnectionString="C:\Users\GERG\Documents\GitHub\Canada-CI\SCRIPTS\CREATE OLTP TABLES.SQL" />
+      DTS:ConnectionString="C:\Users\afree\Documents\Github\Canada-CI\SCRIPTS\CREATE OLTP TABLES.SQL" />
   </DTS:ObjectData>
 </DTS:ConnectionManager>

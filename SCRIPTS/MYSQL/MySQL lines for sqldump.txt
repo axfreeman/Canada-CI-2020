@@ -1,0 +1,3 @@
+cd C:\'Program Files'\MySQL\'MySQL Workbench 8.0 CE'
+
+.\mysqldump canada-ci --user=root --password=insecure --tables dimindustry dimgeography dimoccupations industrydescriptions census fact --quote-names >C:\Users\afree\Documents\Github\Canada-CI\EXPORTS\Canada_ci_dump.sql

@@ -7,12 +7,12 @@
   DTS:CreatorName="DESKTOP-SPBFOF5\GERG"
   DTS:DTSID="{932A1890-1273-484B-9C27-B81BD2E1D6D4}"
   DTS:ExecutableType="Microsoft.Package"
-  DTS:LastModifiedProductVersion="15.0.2000.121"
+  DTS:LastModifiedProductVersion="15.0.2000.123"
   DTS:LocaleID="2057"
   DTS:ObjectName="ImportSourceData"
   DTS:PackageType="5"
-  DTS:VersionBuild="17"
-  DTS:VersionGUID="{C309C7D6-AC35-4410-8B50-BED94F096094}">
+  DTS:VersionBuild="18"
+  DTS:VersionGUID="{948B394B-BD65-4ECF-869B-1789E1A8E6CB}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -25,12 +25,29 @@
         DTS:Name="ExcelFilePath">@[$Project::Root] +"\\SOURCE DATA\\GDP 2020.xlsx"</DTS:PropertyExpression>
       <DTS:ObjectData>
         <DTS:ConnectionManager
-          DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\GERG\Documents\GitHub\Canada-CI\SOURCE DATA\GDP 2020.xlsx;Extended Properties=&quot;EXCEL 12.0 XML;HDR=YES&quot;;" />
+          DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\afree\Documents\Github\Canada-CI\SOURCE DATA\GDP 2020.xlsx;Extended Properties=&quot;EXCEL 12.0 XML;HDR=YES&quot;;" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
   </DTS:ConnectionManagers>
   <DTS:Variables />
   <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\CREATE OLTP DATA TABLES AND VIEWS"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{00304C6C-C759-4E95-ADA7-FB78DE4B0050}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="CREATE OLTP DATA TABLES AND VIEWS"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{7C609DE3-B60F-43F3-9132-B532B5CB115C}"
+          SQLTask:SqlStmtSourceType="FileConnection"
+          SQLTask:SqlStatementSource="CREATE OLTP DATA TABLES AND VIEWS.sql" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
     <DTS:Executable
       DTS:refId="Package\Load GDP Data Into IOICC Flat OLTP Table"
       DTS:CreationName="Microsoft.Pipeline"
@@ -3269,6 +3286,14 @@
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 2"
       DTS:To="Package\Load LFS Monthly into Fact OLTP Table" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 3]"
+      DTS:CreationName=""
+      DTS:DTSID="{78F0DFB9-444A-4595-B48C-801635E1A4CB}"
+      DTS:From="Package\CREATE OLTP DATA TABLES AND VIEWS"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 3"
+      DTS:To="Package\Load GDP Data Into IOICC Flat OLTP Table" />
   </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
 <!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
@@ -3281,26 +3306,26 @@
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="283,42"
+          Size="282.857142857143,42.2857142857143"
           Id="Package\Load GDP Data Into IOICC Flat OLTP Table"
-          TopLeft="53,12" />
+          TopLeft="52.4444444297273,165.636361971374" />
         <NodeLayout
-          Size="259,42"
+          Size="258.857142857143,42.2857142857143"
           Id="Package\Load LFS Annual into Fact OLTP Table"
-          TopLeft="70,286" />
+          TopLeft="69.4444444297273,439.636361971374" />
         <NodeLayout
-          Size="264,42"
+          Size="264,42.2857142857143"
           Id="Package\Load LFS Monthly into Fact OLTP Table"
-          TopLeft="71,448" />
+          TopLeft="70.4444444297273,601.636361971374" />
         <NodeLayout
-          Size="259,42"
+          Size="258.857142857143,42.2857142857143"
           Id="Package\Transfer IOICC Flat data to Fact Table"
-          TopLeft="69,133" />
+          TopLeft="68.4444444297273,286.636361971374" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="196.5,54">
+          TopLeft="195.944444429727,207.636361971374">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -3322,7 +3347,7 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="199,175">
+          TopLeft="198.444444429727,328.636361971374">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -3344,7 +3369,7 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 2]"
-          TopLeft="201.25,328">
+          TopLeft="200.694444429727,481.636361971374">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -3356,6 +3381,32 @@
                   Capacity="5">
                   <mssgle:LineSegment
                     End="0,112.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="294.857142857143,42.2857142857143"
+          Id="Package\CREATE OLTP DATA TABLES AND VIEWS"
+          TopLeft="52.7777791759113,23.6363633802114" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 3]"
+          TopLeft="197.039683231391,65.9220776659256">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,99.7142843054486"
+              Start="0,0"
+              End="0,92.2142843054486">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,92.2142843054486" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>

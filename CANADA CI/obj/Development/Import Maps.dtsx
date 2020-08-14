@@ -7,16 +7,35 @@
   DTS:CreatorName="DESKTOP-9EATJT9\afree"
   DTS:DTSID="{E9AAC79A-0EBE-495A-A2C2-FC66C5F57A3A}"
   DTS:ExecutableType="Microsoft.Package"
-  DTS:LastModifiedProductVersion="15.0.2000.121"
+  DTS:LastModifiedProductVersion="15.0.2000.123"
   DTS:LocaleID="2057"
   DTS:ObjectName="Import Maps"
   DTS:PackageType="5"
-  DTS:VersionBuild="146"
-  DTS:VersionGUID="{0A439E8B-1A30-4933-91F8-19CE7B8C5C07}">
+  DTS:VersionBuild="148"
+  DTS:VersionGUID="{BEB764F7-B9AB-45FA-B9C9-60360A45C27E}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
   <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\DROP AND CREATE DIMENSION TABLES"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{8c542164-0489-4c0e-a838-3eac5aa700e4}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="DROP AND CREATE DIMENSION TABLES"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{7C609DE3-B60F-43F3-9132-B532B5CB115C}"
+          SQLTask:BypassPrepare="False"
+          SQLTask:SqlStmtSourceType="FileConnection"
+          SQLTask:SqlStatementSource="CREATE OLTP DIMENSION TABLES.sql" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
     <DTS:Executable
       DTS:refId="Package\Import dimGeography Table"
       DTS:CreationName="Microsoft.Pipeline"
@@ -2485,6 +2504,14 @@
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 3"
       DTS:To="Package\Import dimGeography Table" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 4]"
+      DTS:CreationName=""
+      DTS:DTSID="{A5F06E02-2837-47D8-A80A-751F8D24E52C}"
+      DTS:From="Package\DROP AND CREATE DIMENSION TABLES"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 4"
+      DTS:To="Package\Import dimNewIndustry Table" />
   </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
 <!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
@@ -2499,28 +2526,28 @@
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="211,42"
+          Size="210.857142857143,42.2857142857143"
           Id="Package\Import dimGeography Table"
-          TopLeft="299.571429466715,127.435296914652" />
+          TopLeft="303.460318458624,253.889840998783" />
         <NodeLayout
-          Size="221,42"
+          Size="221.142857142858,42.2857142857143"
           Id="Package\Import dimNewIndustry Table"
-          TopLeft="48.8846171776925,28.5324685631752" />
+          TopLeft="52.7735061696018,154.987012647306" />
         <NodeLayout
-          Size="213,42"
+          Size="213.142857142858,42.2857142857143"
           Id="Package\Import dimOccupation Table"
-          TopLeft="41.538468223453,127.21783412948" />
+          TopLeft="45.4273572153623,253.672378213611" />
         <NodeLayout
-          Size="214,42"
+          Size="213.714285714286,42.2857142857143"
           Id="Package\Import Industry Descriptions"
-          TopLeft="212,265" />
+          TopLeft="215.888888991909,391.454544084131" />
         <NodeLayout
-          Size="237,42"
+          Size="237.142857142858,42.2857142857143"
           Id="Package\Import IOICC Splitter OLTP Table"
-          TopLeft="283.725275584284,35.272020866313" />
+          TopLeft="287.614164576193,161.726564950444" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="159.384617177692,28.5324685631752">
+          TopLeft="163.273506169601,154.987012647306">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -2554,7 +2581,7 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="405.071429466715,169.435296914652">
+          TopLeft="408.960318458624,295.889840998783">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -2588,7 +2615,7 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 2]"
-          TopLeft="402.225275584284,77.272020866313">
+          TopLeft="406.114164576193,203.726564950444">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -2622,18 +2649,56 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 3]"
-          TopLeft="254.538468223453,148.326565522066">
+          TopLeft="258.427357215362,274.781109606197">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="45.0329612432617,0"
+              EndConnector="45.0329612432618,0"
               Start="0,0"
-              End="37.5329612432617,0">
+              End="37.5329612432618,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="37.5329612432617,0" />
+                    End="37.5329612432618,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="292.571428571429,42.2857142857143"
+          Id="Package\DROP AND CREATE DIMENSION TABLES"
+          TopLeft="43.3333344812747,14.7727271126322" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 4]"
+          TopLeft="189.619048766989,57.0584413983465">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-61.7979235497682,97.92857124896"
+              Start="0,0"
+              End="-61.7979235497682,90.42857124896">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,54.3350801539469" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,54.3350801539469"
+                    Point2="0,58.3350801539469"
+                    Point3="-4,58.3350801539469" />
+                  <mssgle:LineSegment
+                    End="-57.7979235497682,58.3350801539469" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-57.7979235497682,58.3350801539469"
+                    Point2="-61.7979235497682,58.3350801539469"
+                    Point3="-61.7979235497682,62.3350801539469" />
+                  <mssgle:LineSegment
+                    End="-61.7979235497682,90.42857124896" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>

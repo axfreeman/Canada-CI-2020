@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="CREATE OLTP DIMENSION TABLES.sql"
+  DTS:DTSID="{E62F5C1D-4863-4178-85E9-3F2034E08CDE}"
+  DTS:CreationName="FILE">
+  <DTS:PropertyExpression
+    DTS:Name="ConnectionString">@[$Project::Root]+"\\SCRIPTS\\MS_SQL\\CREATE OLTP DIMENSION TABLES.SQL"</DTS:PropertyExpression>
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectionString="C:\Users\afree\Documents\Github\Canada-CI\SCRIPTS\MS_SQL\CREATE OLTP DIMENSION TABLES.SQL" />
+  </DTS:ObjectData>
+</DTS:ConnectionManager>

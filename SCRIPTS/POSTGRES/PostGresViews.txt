@@ -1,0 +1,34 @@
+
+SELECT        
+SUM(Fact.Value) AS Value, 
+Fact.Year, 
+Fact.Indicator, 
+dimGeography."Standardised Province", 
+Fact.Source, 
+dimIndustry."Creative Sector", 
+Fact.PNAICS, 
+dimIndustry.PNAICS AS NIPNAICS,
+dimIndustry.NAICS6, 
+dimIndustry.NAICS5, 
+dimIndustry.NAICS4, 
+dimIndustry.NAICS3, 
+dimIndustry.NAICS2
+FROM
+dimGeography RIGHT OUTER JOIN
+Fact ON dimGeography.geoName_PK = Fact.GeoName RIGHT OUTER JOIN
+dimIndustry ON Fact.PNAICS = dimIndustry.PNAICS
+GROUP BY 
+dimIndustry."Creative Sector", 
+Fact.Source, 
+dimGeography."Standardised Province", 
+Fact.Indicator, 
+Fact.GeoName, 
+Fact.Year, 
+Fact.PNAICS, 
+dimIndustry.PNAICS, 
+dimIndustry.NAICS6, 
+dimIndustry.NAICS5, 
+dimIndustry.NAICS4, 
+dimIndustry.NAICS3, 
+dimIndustry.NAICS2, 
+Fact.Value
