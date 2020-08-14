@@ -1,4 +1,4 @@
-USE [CANADA_CI_OLTP]
+USE [canada_ci_oltp]
 GO
 
 SET ANSI_NULLS ON
@@ -13,175 +13,175 @@ GO
 -- This is the reason for the complexity. Each source has to be pre-processed before it is
 -- finally moved into here.
 
-DROP TABLE IF EXISTS [dbo].[Fact]
+DROP TABLE IF EXISTS [dbo].[fact]
 GO
-CREATE TABLE [dbo].[Fact](
-	[FactPK] [int] NOT NULL IDENTITY(1,1) ,
-	[Source] [nvarchar](255) NULL, /*the name of the source of the data eg 'cansim-0930333', 'census', etc*/
-	[Indicator][nvarchar] (256) NULL, /* what the numeric field measures, eg 'jobs', 'real GDP', etc */
-	[PNAICS] [nvarchar](7)  NULL, /* The standardised PNAICS industry code */
-	[PNAICS description] [nvarchar] (255) NULL,
-	[GeoName] [nvarchar](255) NULL,
-	[Year] [nvarchar](10) NULL, /* EG '2010 M01' or '2018' or '2018 Q01'*/
-	[Value] [float] NULL,
-	CONSTRAINT [PK_CI_Fact] PRIMARY KEY CLUSTERED 
+CREATE TABLE [dbo].[fact](
+	[factpk] [int] NOT NULL IDENTITY(1,1) ,
+	[source] [nvarchar](255) NULL, /*the name of the source of the data eg 'cansim-0930333', 'census', etc*/
+	[indicator][nvarchar] (256) NULL, /* what the numeric field measures, eg 'jobs', 'real GDP', etc */
+	[pnaics] [nvarchar](7)  NULL, /* The standardised pnaics industry code */
+	[pnaics_description] [nvarchar] (255) NULL,
+	[geo_name] [nvarchar](255) NULL,
+	[year] [nvarchar](10) NULL, /* EG '2010 M01' or '2018' or '2018 Q01'*/
+	[value] [float] NULL,
+	CONSTRAINT [pk_CI_fact] PRIMARY KEY CLUSTERED 
 (
-	[FactPK] ASC
+	[factpk] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY])
  ON [PRIMARY]
 GO
 
 -- Waystation file.
 -- Data coded with Canada's IOICC system are placed here, unpivoted if necessary.
--- These data are preprocessed to create a Universal PNAICS code, described in DOCUMENTS/Uniform Coding.docx.
--- From here, these data are passed into the Fact table, using a view to convert the seven-character PNAICS codes 
+-- These data are preprocessed to create a Universal pnaics code, described in DOCUMENTS/Uniform Coding.docx.
+-- From here, these data are passed into the fact table, using a view to convert the seven-character pnaics codes 
 -- These are either passed through or transformed with a coefficient (split factor) 
--- to yield the creative industry 4-digit NAICS codes underneath
+-- to yield the creative industry 4-digit naics codes underneath
 
-DROP TABLE IF EXISTS [dbo].[IOICC flat]
+DROP TABLE IF EXISTS [dbo].[ioicc_flat]
 GO
-CREATE TABLE [dbo].[IOICC flat](
-	[Source] [nvarchar](255) NOT NULL,
-	[Indicator][nvarchar] (256) NOT NULL,
-	[NAICS description] [nvarchar] (255)  NOT NULL,
-	[PNAICS] [nvarchar] (8) NOT NULL,
-	[geoName] [nvarchar](255) NOT NULL,
-	[Year] [nvarchar](255) NOT NULL,
-	[Value] [float] NULL
+CREATE TABLE [dbo].[ioicc_flat](
+	[source] [nvarchar](255) NOT NULL,
+	[indicator][nvarchar] (256) NOT NULL,
+	[naics_description] [nvarchar] (255)  NOT NULL,
+	[pnaics] [nvarchar] (8) NOT NULL,
+	[geo_name] [nvarchar](255) NOT NULL,
+	[year] [nvarchar](255) NOT NULL,
+	[value] [float] NULL
 ) ON [PRIMARY]
 GO
 
--- Concordance mapping IOICC to NAICS. 
--- Covers both ANAICS4 and ANAICS2 mappings, which are mapped from different codes
--- ie we don't map the same IOICC code to both ANAICS2 and ANAICS4.
+-- Concordance mapping IOICC to naics. 
+-- Covers both Anaics4 and Anaics2 mappings, which are mapped from different codes
+-- ie we don't map the same IOICC code to both Anaics2 and Anaics4.
 
-DROP TABLE IF EXISTS [dbo].[IOICC SPLITTER]
+DROP TABLE IF EXISTS [dbo].[ioicc_splitter]
 GO
 
-CREATE TABLE [dbo].[IOICC SPLITTER](
-	[PNAICS SOURCE] [nvarchar] (7) NOT NULL,
-	[Coefficient] float NULL,
-	[PNAICS TARGET][nvarchar] (7) NULL,
-	[SOURCE DESCRIPTION][nvarchar] (255) NULL,
-	[TARGET DESCRIPTION] [nvarchar](255) NULL,
+CREATE TABLE [dbo].[ioicc_splitter](
+	[pnaics_source] [nvarchar] (7) NOT NULL,
+	[coefficient] float NULL,
+	[pnaics_target][nvarchar] (7) NULL,
+	[source_description][nvarchar] (255) NULL,
+	[target_description] [nvarchar](255) NULL,
 ) ON [PRIMARY]
 GO
 
 
 -- Table for the census results
 
-DROP TABLE IF EXISTS [dbo].[Census]
+DROP TABLE IF EXISTS [dbo].[census]
 GO
 
 CREATE TABLE [dbo].[Census](
-geoName	 [nvarchar](255) NULL,
-ANAICS4	 [nvarchar](5) NULL,
-ANOCS4	 [nvarchar](5)NULL,
-[Occupation Description] [nvarchar](255)NULL,	
-[Industry Description] [nvarchar](255)NULL,
+geo_name	 [nvarchar](255) NULL,
+anaics4	 [nvarchar](5) NULL,
+anocs4	 [nvarchar](5)NULL,
+[occupation_description] [nvarchar](255)NULL,	
+[industry_description] [nvarchar](255)NULL,
 Value [float] 
 ) on [PRIMARY]
 GO
 
-DROP VIEW IF EXISTS [dbo].[Creative Industries]
+DROP VIEW IF EXISTS [dbo].[creative_industries]
 GO
 
-CREATE VIEW [dbo].[Creative Industries] AS
+CREATE VIEW [dbo].[creative_industries] AS
 
 SELECT        
-Industries.Value, 
-Industries.Year, 
-Industries.Indicator, 
-Industries.[Standardised Province], 
-Industries.Source, 
-Industries.[Creative Sector], 
-Industries.NAICS4, 
-dbo.industryDescriptions.Description
+industries.value, 
+industries.year, 
+industries.indicator, 
+industries.[standardised_province], 
+industries.Source, 
+industries.[creative_sector], 
+industries.naics4, 
+dbo.industry_descriptions.description
 
 FROM            
 
 (SELECT        
-SUM(dbo.Fact.Value) AS Value, 
-dbo.Fact.Year, 
-dbo.Fact.Indicator, 
-dbo.dimGeography.[Standardised Province], 
-dbo.Fact.Source, 
-dbo.dimIndustry.[Creative Sector], 
-dbo.Fact.PNAICS, 
-dbo.dimIndustry.PNAICS AS NIPNAICS, 
-dbo.dimIndustry.NAICS6, 
-dbo.dimIndustry.NAICS5, 
-dbo.dimIndustry.NAICS4, 
-dbo.dimIndustry.NAICS3, 
-dbo.dimIndustry.NAICS2
+SUM(dbo.fact.value) AS value, 
+dbo.fact.year, 
+dbo.fact.indicator, 
+dbo.dim_geography.[standardised_province], 
+dbo.fact.Source, 
+dbo.dim_industry.[creative_sector], 
+dbo.fact.pnaics, 
+dbo.dim_industry.pnaics AS ni_pnaics, 
+dbo.dim_industry.naics6, 
+dbo.dim_industry.naics5, 
+dbo.dim_industry.naics4, 
+dbo.dim_industry.naics3, 
+dbo.dim_industry.naics2
 
 FROM            
-dbo.dimGeography RIGHT OUTER JOIN
-dbo.Fact ON dbo.dimGeography.geoName_PK = dbo.Fact.GeoName RIGHT OUTER JOIN
-dbo.dimIndustry ON dbo.Fact.PNAICS = dbo.dimIndustry.PNAICS
+dbo.dim_geography RIGHT OUTER JOIN
+dbo.fact ON dbo.dim_geography.geo_name_pk = dbo.fact.geo_name RIGHT OUTER JOIN
+dbo.dim_industry ON dbo.fact.pnaics = dbo.dim_industry.pnaics
 
 GROUP BY 
-dbo.dimIndustry.[Creative Sector], 
-dbo.Fact.Source, 
-dbo.dimGeography.[Standardised Province], 
-dbo.Fact.Indicator, 
-dbo.Fact.GeoName, 
-dbo.Fact.Year, 
-dbo.Fact.PNAICS, 
-dbo.dimIndustry.PNAICS, 
-dbo.dimIndustry.NAICS6, 
-dbo.dimIndustry.NAICS5, 
-dbo.dimIndustry.NAICS4, 
-dbo.dimIndustry.NAICS3, 
-dbo.dimIndustry.NAICS2, 
-dbo.Fact.Value) AS Industries LEFT OUTER JOIN
-dbo.industryDescriptions ON Industries.NAICS4 = dbo.industryDescriptions.NAICS6
+dbo.dim_industry.[creative_sector], 
+dbo.fact.source, 
+dbo.dim_geography.[standardised_province], 
+dbo.fact.indicator, 
+dbo.fact.geo_name, 
+dbo.fact.year, 
+dbo.fact.pnaics, 
+dbo.dim_industry.pnaics, 
+dbo.dim_industry.naics6, 
+dbo.dim_industry.naics5, 
+dbo.dim_industry.naics4, 
+dbo.dim_industry.naics3, 
+dbo.dim_industry.naics2, 
+dbo.fact.value) AS industries LEFT OUTER JOIN
+dbo.industry_descriptions ON industries.naics4 = dbo.industry_descriptions.naics6
 GO
 
 
 
-DROP VIEW IF EXISTS [dbo].[Industries]
+DROP VIEW IF EXISTS [dbo].[industries]
 GO
 
-CREATE VIEW [dbo].[Industries]
+CREATE VIEW [dbo].[industries]
 AS
 SELECT        
-SUM(dbo.Fact.Value) AS Value, 
-dbo.Fact.Year, 
-dbo.Fact.Indicator, 
-dbo.dimGeography.[Standardised Province], 
-dbo.Fact.Source, 
-dbo.dimIndustry.[Creative Sector], 
-dbo.Fact.PNAICS, 
-dbo.dimIndustry.PNAICS AS NIPNAICS,
-dbo.dimIndustry.NAICS6, 
-dbo.dimIndustry.NAICS5, 
-dbo.dimIndustry.NAICS4, 
-dbo.dimIndustry.NAICS3, 
-dbo.dimIndustry.NAICS2
+SUM(dbo.fact.value) AS value, 
+dbo.fact.year, 
+dbo.fact.indicator, 
+dbo.dim_geography.[standardised_province], 
+dbo.fact.source, 
+dbo.dim_industry.[creative_sector], 
+dbo.fact.pnaics, 
+dbo.dim_industry.pnaics AS ni_pnaics,
+dbo.dim_industry.naics6, 
+dbo.dim_industry.naics5, 
+dbo.dim_industry.naics4, 
+dbo.dim_industry.naics3, 
+dbo.dim_industry.naics2
 FROM
-dbo.dimGeography RIGHT OUTER JOIN
-dbo.Fact ON dbo.dimGeography.geoName_PK = dbo.Fact.GeoName RIGHT OUTER JOIN
-dbo.dimIndustry ON dbo.Fact.PNAICS = dbo.dimIndustry.PNAICS
+dbo.dim_geography RIGHT OUTER JOIN
+dbo.fact ON dbo.dim_geography.geo_name_pk = dbo.fact.geo_name RIGHT OUTER JOIN
+dbo.dim_industry ON dbo.fact.pnaics = dbo.dim_industry.pnaics
 GROUP BY 
-dbo.dimIndustry.[Creative Sector], 
-dbo.Fact.Source, 
-dbo.dimGeography.[Standardised Province], 
-dbo.Fact.Indicator, 
-dbo.Fact.GeoName, 
-dbo.Fact.Year, 
-dbo.Fact.PNAICS, 
-dbo.dimIndustry.PNAICS, 
-dbo.dimIndustry.NAICS6, 
-dbo.dimIndustry.NAICS5, 
-dbo.dimIndustry.NAICS4, 
-dbo.dimIndustry.NAICS3, 
-dbo.dimIndustry.NAICS2, 
-dbo.Fact.Value
+dbo.dim_industry.[creative_sector], 
+dbo.fact.Source, 
+dbo.dim_geography.[standardised_province], 
+dbo.fact.indicator, 
+dbo.fact.geo_name, 
+dbo.fact.year, 
+dbo.fact.pnaics, 
+dbo.dim_industry.pnaics, 
+dbo.dim_industry.naics6, 
+dbo.dim_industry.naics5, 
+dbo.dim_industry.naics4, 
+dbo.dim_industry.naics3, 
+dbo.dim_industry.naics2, 
+dbo.fact.value
 GO
 
 
-DROP VIEW IF EXISTS [dbo].[IOICC Flat to Fact converter]
+DROP VIEW IF EXISTS [dbo].[ioicc_flat_to_fact_converter]
 GO
 
 -- This view converts a small number of IOICC codes that are not reported at the 4 digit level,
@@ -189,19 +189,20 @@ GO
 -- using the NESTA definition.
 -- Further split factor definitions are possible.
 
-CREATE VIEW [dbo].[IOICC Flat to Fact converter]
+CREATE VIEW [dbo].[ioicc_flat_to_fact_converter]
 AS
 SELECT        
-dbo.[IOICC flat].PNAICS, 
-dbo.[IOICC SPLITTER].[PNAICS TARGET], 
-dbo.[IOICC flat].Source, 
-dbo.[IOICC flat].Indicator, 
-dbo.[IOICC flat].geoName, 
-dbo.[IOICC flat].Year, 
-dbo.[IOICC flat].Value * dbo.[IOICC SPLITTER].Coefficient AS SplitValue, 
-dbo.[IOICC SPLITTER].Coefficient, 
-dbo.[IOICC flat].Value
-FROM            dbo.[IOICC flat] RIGHT OUTER JOIN
-                         dbo.[IOICC SPLITTER] ON dbo.[IOICC flat].PNAICS = dbo.[IOICC SPLITTER].[PNAICS SOURCE]
+dbo.[ioicc_flat].pnaics, 
+dbo.[ioicc_splitter].[pnaics_target], 
+dbo.[ioicc_flat].source, 
+dbo.[ioicc_flat].indicator, 
+dbo.[ioicc_flat].naics_description,
+dbo.[ioicc_flat].geo_name, 
+dbo.[ioicc_flat].year, 
+dbo.[ioicc_flat].value * dbo.[ioicc_splitter].coefficient AS split_value, 
+dbo.[ioicc_splitter].coefficient, 
+dbo.[ioicc_flat].value
+FROM dbo.[ioicc_flat] RIGHT OUTER JOIN
+dbo.[ioicc_splitter] ON dbo.[ioicc_flat].pnaics = dbo.[ioicc_splitter].[pnaics_source]
 GO
 

@@ -1,4 +1,4 @@
-USE [CANADA_CI_OLTP]
+USE [canada_ci_oltp]
 GO
 
 SET ANSI_NULLS ON
@@ -12,52 +12,52 @@ GO
 -- Northern provinces are amalgamated, because they don't exist throughout the whole period covered.
 -- the Geo Names table. Gets converted to the ROLAP DimGeo table. Probably redundant
 
-DROP TABLE IF EXISTS [dbo].[dimGeography]
+DROP TABLE IF EXISTS [dbo].[dim_geography]
 GO
 
-CREATE TABLE [dbo].[dimGeography](
-	[geoName_PK] [nvarchar](255) NOT NULL,
-	[Standardised Province] [nvarchar](255) NULL
+CREATE TABLE [dbo].[dim_geography](
+	[geo_name_pk] [nvarchar](255) NOT NULL,
+	[standardised_province] [nvarchar](255) NULL
 ) ON [PRIMARY]
 GO
 
 
--- Creative Industry NAICS codes.
+-- Creative Industry naics codes.
 
-DROP TABLE IF EXISTS [dbo].[dimIndustry]
+DROP TABLE IF EXISTS [dbo].[dim_industry]
 GO
 
-CREATE TABLE [dbo].[dimIndustry](
-	[PNAICS][nvarchar](7) NOT NULL,
-	[NAICS6][nvarchar](7) NULL,
-	[NAICS5][nvarchar](7) NULL,
-	[NAICS4][nvarchar](7) NULL,
-	[NAICS3][nvarchar](7) NULL,
-	[NAICS2][nvarchar](7) NULL,
-	[Creative Sector] [nvarchar] (255) NULL,
+CREATE TABLE [dbo].[dim_industry](
+	[pnaics][nvarchar](7) NOT NULL,
+	[naics6][nvarchar](7) NULL,
+	[naics5][nvarchar](7) NULL,
+	[naics4][nvarchar](7) NULL,
+	[naics3][nvarchar](7) NULL,
+	[naics2][nvarchar](7) NULL,
+	[creative_sector] [nvarchar] (255) NULL,
 ) ON [PRIMARY]
 GO
 
 
-DROP TABLE IF EXISTS dimOccupations
+DROP TABLE IF EXISTS dim_occupations
 GO
 
-CREATE TABLE [dbo].[dimOccupations](
-ANOCS4 [nvarchar](5) NULL,	
-oNESTA [nvarchar](5) NULL,	
-oHiggs [nvarchar](5) NULL,	
-oFreeman[nvarchar](8) NULL,
-[Occupation Description] [nvarchar] (255) NULL,	
-[Creative Occupation Type] [nvarchar](12) NULL,
+CREATE TABLE [dbo].[dim_occupations](
+anocs4 [nvarchar](5) NULL,	
+o_nesta [nvarchar](5) NULL,	
+o_higgs [nvarchar](5) NULL,	
+o_freeman[nvarchar](8) NULL,
+[occupation_description] [nvarchar] (255) NULL,	
+[creative_occupation Type] [nvarchar](12) NULL,
 ) on [PRIMARY]
 GO
 
-DROP TABLE IF EXISTS industryDescriptions
+DROP TABLE IF EXISTS industry_descriptions
 GO
 
-CREATE TABLE [dbo].[industryDescriptions](
-NAICS6[nvarchar](6) NULL,	
-Description[nvarchar](255) NULL,	
+CREATE TABLE [dbo].[industry_descriptions](
+naics6[nvarchar](6) NULL,	
+description[nvarchar](255) NULL,	
 ) on [PRIMARY]
 GO
 
