@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="Maria32.root"
+  DTS:DTSID="{A0042922-7265-4830-A7DD-1DC8651D4917}"
+  DTS:CreationName="ODBC">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectionString="uid=root;Dsn=Maria32;">
+      <DTS:Password
+        DTS:Name="pwd"
+        Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAV8F2cz2D/EKh4iLdCjyJTgAAAAACAAAAAAAQZgAAAAEAACAAAADyZZn6RGcvzKwjWb4Q0M2BZ+DxZmNeQ70AyJAo1aVLMAAAAAAOgAAAAAIAACAAAADNeJMF7q+8P6VLMSsv8lY3w2TPfSivFyU4nGD/xj/qt3AAAACBIY+I8rNb/tJLP26IpaXS4ZBUtT9MNfXgSHCQkp01gRgaUpalA+88mZk2ggRnEoARJTvv3aXhwtNWQsYSf3tzPxu2t2GjrRodpXjYz/HW0r74LMAbOcxyF9xIKKHzdwZW6hoyv1jiQ7NJH6d6Vo/nQAAAANgt/HR59/sICyFMMIn7aHvBLIeBFppm2cICfVyw6vVZw0dpNvssNibMj/3oYPtc6+yp3INltdF5erXjagbESss=</DTS:Password>
+    </DTS:ConnectionManager>
+  </DTS:ObjectData>
+</DTS:ConnectionManager>

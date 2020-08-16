@@ -1,0 +1,12 @@
+﻿<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="create_all_tables.sql"
+  DTS:DTSID="{D9C07E09-B1EA-4291-96FE-C33CDA499C61}"
+  DTS:CreationName="FILE">
+  <DTS:PropertyExpression
+    DTS:Name="ConnectionString">@[$Project::Root]+"\\SCRIPTS\\MARIADB\\create_all_tables.sql"</DTS:PropertyExpression>
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectionString="C:\Users\afree\Documents\Github\Canada-CI\SCRIPTS\MARIADB\create_all_tables.sql" />
+  </DTS:ObjectData>
+</DTS:ConnectionManager>

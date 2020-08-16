@@ -11,8 +11,8 @@
   DTS:LocaleID="2057"
   DTS:ObjectName="Import Maps"
   DTS:PackageType="5"
-  DTS:VersionBuild="157"
-  DTS:VersionGUID="{56A7A1EB-FA78-4EA9-98BA-FF898C3482EE}">
+  DTS:VersionBuild="158"
+  DTS:VersionGUID="{1E8578E3-BB28-47D7-8038-3CCABF261E8D}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -1097,19 +1097,19 @@
                       externalMetadataColumnId="Package\Import dim_occupation Table\dim_occupation OLTP Table.Inputs[OLE DB Destination Input].ExternalColumns[o_freeman]"
                       lineageId="Package\Import dim_occupation Table\Shorten anocs, creative.Outputs[Derived Column Output].Columns[short_o_freeman]" />
                     <inputColumn
-                      refId="Package\Import dim_occupation Table\dim_occupation OLTP Table.Inputs[OLE DB Destination Input].Columns[short_creative_occupation_type]"
-                      cachedDataType="wstr"
-                      cachedLength="12"
-                      cachedName="short_creative_occupation_type"
-                      externalMetadataColumnId="Package\Import dim_occupation Table\dim_occupation OLTP Table.Inputs[OLE DB Destination Input].ExternalColumns[creative_occupation Type]"
-                      lineageId="Package\Import dim_occupation Table\Shorten anocs, creative.Outputs[Derived Column Output].Columns[short_creative_occupation_type]" />
-                    <inputColumn
                       refId="Package\Import dim_occupation Table\dim_occupation OLTP Table.Inputs[OLE DB Destination Input].Columns[short_anocs]"
                       cachedDataType="wstr"
                       cachedLength="5"
                       cachedName="short_anocs"
                       externalMetadataColumnId="Package\Import dim_occupation Table\dim_occupation OLTP Table.Inputs[OLE DB Destination Input].ExternalColumns[anocs4]"
                       lineageId="Package\Import dim_occupation Table\Shorten anocs, creative.Outputs[Derived Column Output].Columns[short_anocs]" />
+                    <inputColumn
+                      refId="Package\Import dim_occupation Table\dim_occupation OLTP Table.Inputs[OLE DB Destination Input].Columns[short_creative_occupation_type]"
+                      cachedDataType="wstr"
+                      cachedLength="12"
+                      cachedName="short_creative_occupation_type"
+                      externalMetadataColumnId="Package\Import dim_occupation Table\dim_occupation OLTP Table.Inputs[OLE DB Destination Input].ExternalColumns[creative_occupation]"
+                      lineageId="Package\Import dim_occupation Table\Shorten anocs, creative.Outputs[Derived Column Output].Columns[short_creative_occupation_type]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -1139,10 +1139,10 @@
                       length="255"
                       name="occupation_description" />
                     <externalMetadataColumn
-                      refId="Package\Import dim_occupation Table\dim_occupation OLTP Table.Inputs[OLE DB Destination Input].ExternalColumns[creative_occupation Type]"
+                      refId="Package\Import dim_occupation Table\dim_occupation OLTP Table.Inputs[OLE DB Destination Input].ExternalColumns[creative_occupation]"
                       dataType="wstr"
                       length="12"
-                      name="creative_occupation Type" />
+                      name="creative_occupation" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -2689,7 +2689,7 @@
     design-time-name="Package\Import dim_geography Table">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="221.714285714286,42.2857142857143"
           Id="Package\Import dim_geography Table\MAPPINGS (dim_geography)"
@@ -2717,7 +2717,9 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -2847,7 +2849,7 @@
     design-time-name="Package\Import dim_occupation Table">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="193.142857142858,42.2857142857143"
           Id="Package\Import dim_occupation Table\Shorten anocs, creative"
@@ -2879,9 +2881,7 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -2915,9 +2915,7 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -2953,7 +2951,7 @@
     design-time-name="Package\Import industry_descriptions">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="145.714285714286,42.2857142857143"
           Id="Package\Import industry_descriptions\Shorten naics"
@@ -2966,6 +2964,30 @@
           Size="242.857142857143,42.2857142857143"
           Id="Package\Import industry_descriptions\industry_descriptions OLTP Table"
           TopLeft="250,297" />
+        <EdgeLayout
+          Id="Package\Import industry_descriptions.Paths[Derived Column Output]"
+          TopLeft="369.642857142857,213.285714285714">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,83.7142857142857"
+              Start="0,0"
+              End="0,76.2142857142857">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,76.2142857142857" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <EdgeLayout
           Id="Package\Import industry_descriptions.Paths[Excel Source Output]"
           TopLeft="377.857142857143,89.2857142857143">
@@ -2997,29 +3019,9 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Import industry_descriptions.Paths[Derived Column Output]"
-          TopLeft="369.642857142857,213.285714285714">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,83.7142857142857"
-              Start="0,0"
-              End="0,76.2142857142857">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,76.2142857142857" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>

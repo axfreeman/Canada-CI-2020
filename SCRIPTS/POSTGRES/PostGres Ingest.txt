@@ -1,4 +1,0 @@
-\copy dimGeography FROM 'C:\Users\afree\Documents\Github\Canada-CI\EXPORTS\dimGeography.csv' DELIMITERS ',' HEADER CSV QUOTE '"';
-\copy dimindustry FROM 'C:\Users\afree\Documents\Github\Canada-CI\EXPORTS\dimIndustry.csv' DELIMITERS ',' HEADER CSV QUOTE '"';
-\copy dimoccupations FROM 'C:\Users\afree\Documents\Github\Canada-CI\EXPORTS\dimOccupations.csv' DELIMITERS ',' HEADER CSV QUOTE '"';
-\copy industrydescriptions FROM 'C:\Users\afree\Documents\Github\Canada-CI\EXPORTS\industryDescriptions.csv' DELIMITER ',' HEADER CSV QUOTE '"';
