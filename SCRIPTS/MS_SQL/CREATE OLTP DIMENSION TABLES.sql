@@ -29,7 +29,8 @@ CREATE TABLE dim_industry(
 	naics4 nvarchar(7) NULL,
 	naics3 nvarchar(7) NULL,
 	naics2 nvarchar(7) NULL,
-	creative_sector nvarchar (255) NULL
+	creative_sector nvarchar (255) NULL,
+	main_industry nvarchar(255) NULL
 ) 
 GO
 

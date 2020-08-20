@@ -11,8 +11,8 @@
   DTS:LocaleID="2057"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionBuild="12"
-  DTS:VersionGUID="{51462CB0-CAA4-4BF9-A342-E0328F969770}">
+  DTS:VersionBuild="13"
+  DTS:VersionGUID="{2442B07B-27C0-4B19-960B-A3E9E098CB86}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -2120,14 +2120,14 @@
         <NodeLayout
           Size="187.428571428572,42.2857142857143"
           Id="Package\export dim_geography"
-          TopLeft="97.7777803680043,147.136362041816" />
+          TopLeft="84.4444466814583,49.636363098444" />
         <NodeLayout
           Size="174.285714285715,42.2857142857143"
           Id="Package\export dim_industry"
-          TopLeft="363.888898528653,148.909089295332" />
+          TopLeft="350.555564842107,51.4090903519598" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="285.206351796576,169.165582811431">
+          TopLeft="271.87301811003,71.665583868059">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -2150,10 +2150,10 @@
         <NodeLayout
           Size="194.285714285715,42.2857142857143"
           Id="Package\export dim_occupations"
-          TopLeft="97.2222247977316,249.363633661231" />
+          TopLeft="83.8888911111856,151.863634717858" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="451.03175567151,191.194803581046">
+          TopLeft="437.698421984964,93.6948046376741">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -2188,10 +2188,10 @@
         <NodeLayout
           Size="216,42.2857142857143"
           Id="Package\Export industry_descriptions"
-          TopLeft="359.444453966471,249.363633661231" />
+          TopLeft="346.111120279925,151.863634717859" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 2]"
-          TopLeft="291.507939083446,270.506490804088">
+          TopLeft="278.1746053969,173.006491860716">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -2214,10 +2214,10 @@
         <NodeLayout
           Size="156.571428571429,42.2857142857143"
           Id="Package\export fact table"
-          TopLeft="121.666669889733,377.590904998878" />
+          TopLeft="108.333336203187,280.090906055506" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 3]"
-          TopLeft="467.444453966471,291.649347946945">
+          TopLeft="454.111120279925,194.149349003573">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"

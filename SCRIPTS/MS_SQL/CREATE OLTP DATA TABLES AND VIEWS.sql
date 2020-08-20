@@ -72,106 +72,6 @@ Value float
 ) 
 GO
 
-DROP VIEW IF EXISTS creative_industries 
-GO
-
-CREATE VIEW creative_industries AS
-
-SELECT 
-	industries.value, 
-	industries.year, 
-	industries.indicator, 
-	industries.standardised_province , 
-	industries.Source, 
-	industries.creative_sector , 
-	industries.naics4, 
-	industry_descriptions.description
-
-FROM 
-
-(SELECT 
-SUM(fact.value) AS value, 
-	fact.year, 
-	fact.indicator, 
-	dim_geography.standardised_province , 
-	fact.Source, 
-	dim_industry.creative_sector , 
-	fact.pnaics, 
-	dim_industry.pnaics AS ni_pnaics, 
-	dim_industry.naics6, 
-	dim_industry.naics5, 
-	dim_industry.naics4, 
-	dim_industry.naics3, 
-	dim_industry.naics2
-
-FROM 
-dim_geography 
-RIGHT OUTER JOIN
-	fact ON dim_geography.geo_name_pk = fact.geo_name 
-RIGHT OUTER JOIN
-	dim_industry ON fact.pnaics = dim_industry.pnaics
-GROUP BY 
-	dim_industry.creative_sector , 
-	fact.source, 
-	dim_geography.standardised_province , 
-	fact.indicator, 
-	fact.geo_name, 
-	fact.year, 
-	fact.pnaics, 
-	dim_industry.pnaics, 
-	dim_industry.naics6, 
-	dim_industry.naics5, 
-	dim_industry.naics4, 
-	dim_industry.naics3, 
-	dim_industry.naics2, 
-	fact.value) AS industries 
-	LEFT OUTER JOIN
-industry_descriptions ON industries.naics4 = industry_descriptions.naics6
-GO
-
-DROP VIEW IF EXISTS industries 
-GO
-
-CREATE VIEW industries 
-AS
-SELECT 
-SUM(fact.value) AS value, 
-	fact.year, 
-	fact.indicator, 
-	dim_geography.standardised_province , 
-	fact.source, 
-	dim_industry.creative_sector , 
-	fact.pnaics, 
-	dim_industry.pnaics AS ni_pnaics,
-	dim_industry.naics6, 
-	dim_industry.naics5, 
-	dim_industry.naics4, 
-	dim_industry.naics3, 
-	dim_industry.naics2
-FROM
-	dim_geography 
-RIGHT OUTER JOIN
-fact ON dim_geography.geo_name_pk = fact.geo_name 
-RIGHT OUTER JOIN
-dim_industry ON fact.pnaics = dim_industry.pnaics
-GROUP BY 
-	dim_industry.creative_sector , 
-	fact.Source, 
-	dim_geography.standardised_province , 
-	fact.indicator, 
-	fact.geo_name, 
-	fact.year, 
-	fact.pnaics, 
-	dim_industry.pnaics, 
-	dim_industry.naics6, 
-	dim_industry.naics5, 
-	dim_industry.naics4, 
-	dim_industry.naics3, 
-	dim_industry.naics2, 
-	fact.value
-GO
-
-
 DROP VIEW IF EXISTS ioicc_flat_to_fact_converter 
 GO
 
@@ -196,5 +96,68 @@ SELECT
 FROM ioicc_flat 
 RIGHT OUTER JOIN
 	ioicc_splitter ON ioicc_flat .pnaics = ioicc_splitter .pnaics_source 
+GO
+
+DROP VIEW IF EXISTS [dbo].[dim_industry_with_descriptions]
+GO
+
+CREATE VIEW [dbo].[dim_industry_with_descriptions]
+AS
+SELECT 
+dbo.dim_industry.pnaics, 
+dbo.dim_industry.main_industry, 
+dbo.dim_industry.creative_sector, 
+dbo.industry_descriptions.description
+FROM   
+dbo.dim_industry LEFT OUTER JOIN
+dbo.industry_descriptions ON 
+dbo.dim_industry.naics4 = dbo.industry_descriptions.naics6
+GO
+
+-- This is the most detailed view, listing every record in the fact file beside its province, 
+-- year, industry, creative sector and main industry.
+-- See the 'industries_summary' view, which groups by creative sector and main industry
+
+CREATE OR ALTER VIEW [dbo].[industries_full]
+AS
+SELECT
+dbo.fact.value,
+dbo.fact.year, 
+dbo.fact.indicator, 
+dbo.dim_geography.standardised_province, 
+dbo.fact.source, 
+dbo.fact.pnaics, 
+dbo.dim_industry_with_descriptions.main_industry, 
+dbo.dim_industry_with_descriptions.creative_sector, 
+dbo.dim_industry_with_descriptions.description
+FROM 
+dbo.dim_industry_with_descriptions INNER JOIN
+dbo.fact ON dbo.dim_industry_with_descriptions.pnaics = dbo.fact.pnaics LEFT OUTER JOIN
+dbo.dim_geography ON dbo.fact.geo_name = dbo.dim_geography.geo_name_pk
+GO
+
+-- This summary view groups by all dimension fields, leaving out the 
+-- detail provided by pnaics and description fields.
+-- it is thus more suited to quick visualizations since there are relatively
+-- fewer records, but cannot provide for drill-down
+
+CREATE OR ALTER VIEW [dbo].[industries_summary]
+AS
+SELECT 
+SUM(value) AS value, 
+year, 
+indicator, 
+standardised_province AS province, 
+source, 
+main_industry, 
+creative_sector
+FROM   dbo.industries_full
+GROUP BY 
+year, 
+indicator, 
+standardised_province, 
+source, 
+main_industry, 
+creative_sector
 GO
 

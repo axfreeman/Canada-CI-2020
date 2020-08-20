@@ -11,8 +11,8 @@
   DTS:LocaleID="2057"
   DTS:ObjectName="Import Maps"
   DTS:PackageType="5"
-  DTS:VersionBuild="158"
-  DTS:VersionGUID="{1E8578E3-BB28-47D7-8038-3CCABF261E8D}">
+  DTS:VersionBuild="159"
+  DTS:VersionGUID="{432D7553-A6F0-4DE0-B06A-0A79CE9FCD09}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -446,6 +446,13 @@
                       cachedName="short_naics3"
                       externalMetadataColumnId="Package\Import dim_industry Table\dim_industry OLTP Table.Inputs[OLE DB Destination Input].ExternalColumns[naics3]"
                       lineageId="Package\Import dim_industry Table\Shorten NAICS codes.Outputs[Derived Column Output].Columns[short_naics3]" />
+                    <inputColumn
+                      refId="Package\Import dim_industry Table\dim_industry OLTP Table.Inputs[OLE DB Destination Input].Columns[main_industry]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="main_industry"
+                      externalMetadataColumnId="Package\Import dim_industry Table\dim_industry OLTP Table.Inputs[OLE DB Destination Input].ExternalColumns[main_industry]"
+                      lineageId="Package\Import dim_industry Table\MAPPINGS (dim_industry).Outputs[Excel Source Output].Columns[main_industry]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -484,6 +491,11 @@
                       dataType="wstr"
                       length="255"
                       name="creative_sector" />
+                    <externalMetadataColumn
+                      refId="Package\Import dim_industry Table\dim_industry OLTP Table.Inputs[OLE DB Destination Input].ExternalColumns[main_industry]"
+                      dataType="wstr"
+                      length="255"
+                      name="main_industry" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -635,6 +647,16 @@
                       lineageId="Package\Import dim_industry Table\MAPPINGS (dim_industry).Outputs[Excel Source Output].Columns[naics3]"
                       name="naics3"
                       truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import dim_industry Table\MAPPINGS (dim_industry).Outputs[Excel Source Output].Columns[main_industry]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import dim_industry Table\MAPPINGS (dim_industry).Outputs[Excel Source Output].ExternalColumns[main_industry]"
+                      length="255"
+                      lineageId="Package\Import dim_industry Table\MAPPINGS (dim_industry).Outputs[Excel Source Output].Columns[main_industry]"
+                      name="main_industry"
+                      truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -673,6 +695,11 @@
                       dataType="wstr"
                       length="255"
                       name="naics3" />
+                    <externalMetadataColumn
+                      refId="Package\Import dim_industry Table\MAPPINGS (dim_industry).Outputs[Excel Source Output].ExternalColumns[main_industry]"
+                      dataType="wstr"
+                      length="255"
+                      name="main_industry" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -722,6 +749,12 @@
                       length="255"
                       lineageId="Package\Import dim_industry Table\MAPPINGS (dim_industry).Outputs[Excel Source Error Output].Columns[creative_sector]"
                       name="creative_sector" />
+                    <outputColumn
+                      refId="Package\Import dim_industry Table\MAPPINGS (dim_industry).Outputs[Excel Source Error Output].Columns[main_industry]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Import dim_industry Table\MAPPINGS (dim_industry).Outputs[Excel Source Error Output].Columns[main_industry]"
+                      name="main_industry" />
                     <outputColumn
                       refId="Package\Import dim_industry Table\MAPPINGS (dim_industry).Outputs[Excel Source Error Output].Columns[ErrorCode]"
                       dataType="i4"
@@ -2755,7 +2788,7 @@
     design-time-name="Package\Import dim_industry Table">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="208.571428571429,42.2857142857143"
           Id="Package\Import dim_industry Table\MAPPINGS (dim_industry)"
@@ -2787,9 +2820,7 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -2811,9 +2842,7 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -2849,7 +2878,7 @@
     design-time-name="Package\Import dim_occupation Table">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="193.142857142858,42.2857142857143"
           Id="Package\Import dim_occupation Table\Shorten anocs, creative"
@@ -2881,7 +2910,9 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -2915,7 +2946,9 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
