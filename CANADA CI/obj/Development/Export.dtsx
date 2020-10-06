@@ -11,8 +11,8 @@
   DTS:LocaleID="2057"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionBuild="13"
-  DTS:VersionGUID="{2442B07B-27C0-4B19-960B-A3E9E098CB86}">
+  DTS:VersionBuild="14"
+  DTS:VersionGUID="{5F40C04B-4071-4AAE-952F-0F6DA1836009}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -688,6 +688,16 @@
                       lineageId="Package\export dim_industry\dim_industry OLTP Table.Outputs[OLE DB Source Output].Columns[creative_sector]"
                       name="creative_sector"
                       truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\export dim_industry\dim_industry OLTP Table.Outputs[OLE DB Source Output].Columns[main_industry]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\export dim_industry\dim_industry OLTP Table.Outputs[OLE DB Source Output].ExternalColumns[main_industry]"
+                      length="255"
+                      lineageId="Package\export dim_industry\dim_industry OLTP Table.Outputs[OLE DB Source Output].Columns[main_industry]"
+                      name="main_industry"
+                      truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -726,6 +736,11 @@
                       dataType="wstr"
                       length="255"
                       name="creative_sector" />
+                    <externalMetadataColumn
+                      refId="Package\export dim_industry\dim_industry OLTP Table.Outputs[OLE DB Source Output].ExternalColumns[main_industry]"
+                      dataType="wstr"
+                      length="255"
+                      name="main_industry" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -775,6 +790,12 @@
                       length="255"
                       lineageId="Package\export dim_industry\dim_industry OLTP Table.Outputs[OLE DB Source Error Output].Columns[creative_sector]"
                       name="creative_sector" />
+                    <outputColumn
+                      refId="Package\export dim_industry\dim_industry OLTP Table.Outputs[OLE DB Source Error Output].Columns[main_industry]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\export dim_industry\dim_industry OLTP Table.Outputs[OLE DB Source Error Output].Columns[main_industry]"
+                      name="main_industry" />
                     <outputColumn
                       refId="Package\export dim_industry\dim_industry OLTP Table.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
                       dataType="i4"
@@ -2118,13 +2139,25 @@
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="187.428571428572,42.2857142857143"
+          Size="187.5,42.5"
           Id="Package\export dim_geography"
           TopLeft="84.4444466814583,49.636363098444" />
         <NodeLayout
-          Size="174.285714285715,42.2857142857143"
+          Size="174.5,42.5"
           Id="Package\export dim_industry"
           TopLeft="350.555564842107,51.4090903519598" />
+        <NodeLayout
+          Size="194.5,42.5"
+          Id="Package\export dim_occupations"
+          TopLeft="83.8888911111856,151.863634717858" />
+        <NodeLayout
+          Size="156.5,42.5"
+          Id="Package\export fact table"
+          TopLeft="108.333336203187,280.090906055506" />
+        <NodeLayout
+          Size="216,42.5"
+          Id="Package\Export industry_descriptions"
+          TopLeft="346.111120279925,151.863634717859" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
           TopLeft="271.87301811003,71.665583868059">
@@ -2147,10 +2180,6 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="194.285714285715,42.2857142857143"
-          Id="Package\export dim_occupations"
-          TopLeft="83.8888911111856,151.863634717858" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
           TopLeft="437.698421984964,93.6948046376741">
@@ -2185,10 +2214,6 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="216,42.2857142857143"
-          Id="Package\Export industry_descriptions"
-          TopLeft="346.111120279925,151.863634717859" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 2]"
           TopLeft="278.1746053969,173.006491860716">
@@ -2211,10 +2236,6 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="156.571428571429,42.2857142857143"
-          Id="Package\export fact table"
-          TopLeft="108.333336203187,280.090906055506" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 3]"
           TopLeft="454.111120279925,194.149349003573">
@@ -2291,7 +2312,7 @@
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\export dim_geography\dim_geography OLTP table">
+    design-time-name="Package\export dim_geography\dim_geography MariaDB table">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -2304,7 +2325,7 @@
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\export dim_geography\dim_geography MariaDB table">
+    design-time-name="Package\export dim_geography\dim_geography OLTP table">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -2322,11 +2343,11 @@
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="202.285714285715,42.2857142857143"
+          Size="202.5,42.5"
           Id="Package\export dim_industry\dim_industry OLTP Table"
           TopLeft="157,24.3333333333333" />
         <NodeLayout
-          Size="205.142857142858,42.2857142857143"
+          Size="205,42.5"
           Id="Package\export dim_industry\dim_industry ODBC Table"
           TopLeft="152,114.666666666667" />
         <EdgeLayout
@@ -2355,7 +2376,7 @@
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\export dim_industry\dim_industry OLTP Table">
+    design-time-name="Package\export dim_industry\dim_industry ODBC Table">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -2368,7 +2389,7 @@
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\export dim_industry\dim_industry ODBC Table">
+    design-time-name="Package\export dim_industry\dim_industry OLTP Table">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -2419,19 +2440,6 @@
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\export dim_occupations\dim_occupations OLTP table">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
     design-time-name="Package\export dim_occupations\dim_occupations MariaDB Table">
     <Properties>
       <Property>
@@ -2444,59 +2452,8 @@
       </Property>
     </Properties>
   </PipelineComponentMetadata>
-  <TaskHost
-    design-time-name="Package\Export industry_descriptions">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="242.857142857143,42.2857142857143"
-          Id="Package\Export industry_descriptions\industry_descriptions OLTP Table"
-          TopLeft="73,29.6" />
-        <NodeLayout
-          Size="256.571428571429,42.2857142857143"
-          Id="Package\Export industry_descriptions\industry_descriptions MariaDB Table"
-          TopLeft="69.2,165.2" />
-        <EdgeLayout
-          Id="Package\Export industry_descriptions.Paths[OLE DB Source Output]"
-          TopLeft="195.957142857143,71.8857142857143">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,93.3142857142857"
-              Start="0,0"
-              End="0,85.8142857142857">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,85.8142857142857" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-      </GraphLayout>
-    </LayoutInfo>
-  </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Export industry_descriptions\industry_descriptions OLTP Table">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Export industry_descriptions\industry_descriptions MariaDB Table">
+    design-time-name="Package\export dim_occupations\dim_occupations OLTP table">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -2547,7 +2504,7 @@
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\export fact table\fact OLTP Table">
+    design-time-name="Package\export fact table\fact MariaDB Table">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -2560,7 +2517,71 @@
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\export fact table\fact MariaDB Table">
+    design-time-name="Package\export fact table\fact OLTP Table">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Export industry_descriptions">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="242.857142857143,42.2857142857143"
+          Id="Package\Export industry_descriptions\industry_descriptions OLTP Table"
+          TopLeft="73,29.6" />
+        <NodeLayout
+          Size="256.571428571429,42.2857142857143"
+          Id="Package\Export industry_descriptions\industry_descriptions MariaDB Table"
+          TopLeft="69.2,165.2" />
+        <EdgeLayout
+          Id="Package\Export industry_descriptions.Paths[OLE DB Source Output]"
+          TopLeft="195.957142857143,71.8857142857143">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,93.3142857142857"
+              Start="0,0"
+              End="0,85.8142857142857">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,85.8142857142857" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Export industry_descriptions\industry_descriptions MariaDB Table">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Export industry_descriptions\industry_descriptions OLTP Table">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>

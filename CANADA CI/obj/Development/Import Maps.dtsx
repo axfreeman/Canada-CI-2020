@@ -11,8 +11,8 @@
   DTS:LocaleID="2057"
   DTS:ObjectName="Import Maps"
   DTS:PackageType="5"
-  DTS:VersionBuild="159"
-  DTS:VersionGUID="{432D7553-A6F0-4DE0-B06A-0A79CE9FCD09}">
+  DTS:VersionBuild="162"
+  DTS:VersionGUID="{F41C1868-3434-42E7-8B35-D0ACB1DDCAAE}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -2546,27 +2546,27 @@
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="292.571428571429,42.2857142857143"
+          Size="271.5,42"
           Id="Package\DROP AND CREATE DIMENSION TABLES"
           TopLeft="43.3333344812747,14.7727271126322" />
         <NodeLayout
-          Size="218.285714285715,42.2857142857143"
+          Size="218.5,42.5"
           Id="Package\Import dim_geography Table"
           TopLeft="303.460318458624,253.889840998783" />
         <NodeLayout
-          Size="204.571428571429,42.2857142857143"
+          Size="204.5,42.5"
           Id="Package\Import dim_industry Table"
           TopLeft="52.7735061696018,154.987012647306" />
         <NodeLayout
-          Size="219.428571428572,42.2857142857143"
+          Size="219.5,42.5"
           Id="Package\Import dim_occupation Table"
           TopLeft="45.4273572153623,253.672378213611" />
         <NodeLayout
-          Size="215.428571428572,42.2857142857143"
+          Size="215.5,42.5"
           Id="Package\Import industry_descriptions"
           TopLeft="215.888888991909,391.454544084131" />
         <NodeLayout
-          Size="234.285714285715,42.2857142857143"
+          Size="234.5,42.5"
           Id="Package\Import ioicc_splitter OLTP Table"
           TopLeft="287.614164576193,161.726564950444" />
         <EdgeLayout
@@ -2683,30 +2683,30 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 4]"
-          TopLeft="189.619048766989,57.0584413983465">
+          TopLeft="179.083334481275,56.7727271126322">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-34.5598283116729,97.9285712489595"
+              EndConnector="-24.0598283116729,98.2142855346738"
               Start="0,0"
-              End="-34.5598283116729,90.4285712489595">
+              End="-24.0598283116729,90.7142855346738">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,44.9642856244798" />
+                    End="0,45.1071427673369" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,44.9642856244798"
-                    Point2="0,48.9642856244798"
-                    Point3="-4,48.9642856244798" />
+                    Point1="0,45.1071427673369"
+                    Point2="0,49.1071427673369"
+                    Point3="-4,49.1071427673369" />
                   <mssgle:LineSegment
-                    End="-30.5598283116729,48.9642856244798" />
+                    End="-20.0598283116729,49.1071427673369" />
                   <mssgle:CubicBezierSegment
-                    Point1="-30.5598283116729,48.9642856244798"
-                    Point2="-34.5598283116729,48.9642856244798"
-                    Point3="-34.5598283116729,52.9642856244798" />
+                    Point1="-20.0598283116729,49.1071427673369"
+                    Point2="-24.0598283116729,49.1071427673369"
+                    Point3="-24.0598283116729,53.1071427673369" />
                   <mssgle:LineSegment
-                    End="-34.5598283116729,90.4285712489595" />
+                    End="-24.0598283116729,90.7142855346738" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2788,11 +2788,7 @@
     design-time-name="Package\Import dim_industry Table">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="208.571428571429,42.2857142857143"
-          Id="Package\Import dim_industry Table\MAPPINGS (dim_industry)"
-          TopLeft="107.076924756535,18.3885921304255" />
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="178.285714285715,42.2857142857143"
           Id="Package\Import dim_industry Table\Shorten NAICS codes"
@@ -2801,28 +2797,10 @@
           Size="202.285714285715,42.2857142857143"
           Id="Package\Import dim_industry Table\dim_industry OLTP Table"
           TopLeft="119.465934003975,220.486988561576" />
-        <EdgeLayout
-          Id="Package\Import dim_industry Table.Paths[Derived Column Output]"
-          TopLeft="216.683509641384,150.388744440745">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,70.0982441208307"
-              Start="0,0"
-              End="0,62.5982441208307">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,62.5982441208307" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
+        <NodeLayout
+          Size="208.571428571429,42.2857142857143"
+          Id="Package\Import dim_industry Table\MAPPINGS (dim_industry)"
+          TopLeft="107.076924756535,18.3885921304255" />
         <EdgeLayout
           Id="Package\Import dim_industry Table.Paths[Excel Source Output]"
           TopLeft="212.060433589092,60.6743064161398">
@@ -2842,14 +2820,40 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Import dim_industry Table.Paths[Derived Column Output]"
+          TopLeft="216.683509641384,150.388744440745">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,70.0982441208307"
+              Start="0,0"
+              End="0,62.5982441208307">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,62.5982441208307" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Import dim_industry Table\MAPPINGS (dim_industry)">
+    design-time-name="Package\Import dim_industry Table\dim_industry OLTP Table">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -2862,7 +2866,7 @@
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Import dim_industry Table\dim_industry OLTP Table">
+    design-time-name="Package\Import dim_industry Table\MAPPINGS (dim_industry)">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -3090,17 +3094,17 @@
     design-time-name="Package\Import ioicc_splitter OLTP Table">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="183.428571428572,42.2857142857143"
+          Size="183.5,42.5"
           Id="Package\Import ioicc_splitter OLTP Table\Shorten pnaics codes"
           TopLeft="397,136" />
         <NodeLayout
-          Size="200.571428571429,42.2857142857143"
+          Size="200.5,42.5"
           Id="Package\Import ioicc_splitter OLTP Table\ioicc_splitter OLTP Table"
-          TopLeft="102,211" />
+          TopLeft="80,211.5" />
         <NodeLayout
-          Size="206.857142857143,42.2857142857143"
+          Size="207,42.5"
           Id="Package\Import ioicc_splitter OLTP Table\MAPPINGS (ioicc_splitter)"
           TopLeft="80.8,36" />
         <EdgeLayout
@@ -3134,45 +3138,41 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Import ioicc_splitter OLTP Table.Paths[Derived Column Output]"
-          TopLeft="488.714285714286,178.285714285714">
+          TopLeft="488.75,178.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-286.428571428571,32.7142857142857"
+              EndConnector="-308.5,33"
               Start="0,0"
-              End="-286.428571428571,25.2142857142857">
+              End="-308.5,25.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,12.3571428571429" />
+                    End="0,12.5" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,12.3571428571429"
-                    Point2="0,16.3571428571429"
-                    Point3="-4,16.3571428571429" />
+                    Point1="0,12.5"
+                    Point2="0,16.5"
+                    Point3="-4,16.5" />
                   <mssgle:LineSegment
-                    End="-282.428571428571,16.3571428571429" />
+                    End="-304.5,16.5" />
                   <mssgle:CubicBezierSegment
-                    Point1="-282.428571428571,16.3571428571429"
-                    Point2="-286.428571428571,16.3571428571429"
-                    Point3="-286.428571428571,20.3571428571429" />
+                    Point1="-304.5,16.5"
+                    Point2="-308.5,16.5"
+                    Point3="-308.5,20.5" />
                   <mssgle:LineSegment
-                    End="-286.428571428571,25.2142857142857" />
+                    End="-308.5,25.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>

@@ -11,8 +11,8 @@
   DTS:LocaleID="2057"
   DTS:ObjectName="ImportData"
   DTS:PackageType="5"
-  DTS:VersionBuild="28"
-  DTS:VersionGUID="{53615F06-4289-4CD1-8D23-1BA5036D93C5}">
+  DTS:VersionBuild="29"
+  DTS:VersionGUID="{A4E6CD98-F1C6-423E-AE27-1E1BA1FFCDC8}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -3345,39 +3345,51 @@
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="294.857142857143,42.2857142857143"
+          Size="295,42.5"
           Id="Package\CREATE OLTP DATA TABLES AND VIEWS"
           TopLeft="52.7777791759113,23.6363633802114" />
         <NodeLayout
-          Size="283.428571428572,42.2857142857143"
+          Size="283.5,42.5"
           Id="Package\Load GDP Data Into ioicc_flat OLTP Table"
-          TopLeft="52.4444444297273,165.636361971374" />
+          TopLeft="406.944444429727,27.636361971374" />
         <NodeLayout
-          Size="265.142857142858,42.2857142857143"
+          Size="265,42.5"
           Id="Package\Load LFS Annual into fact OLTP Table"
-          TopLeft="69.4444444297273,439.636361971374" />
+          TopLeft="404.944444429727,111.136361971374" />
         <NodeLayout
-          Size="269.714285714286,42.2857142857143"
+          Size="269.5,42.5"
           Id="Package\Load LFS Monthly into fact OLTP Table"
-          TopLeft="70.4444444297273,601.636361971374" />
+          TopLeft="45.9444444297273,230.636361971374" />
         <NodeLayout
-          Size="251.428571428572,42.2857142857143"
+          Size="251.5,42.5"
           Id="Package\Transfer ioicc_flat data to fact Table"
-          TopLeft="68.4444444297273,286.636361971374" />
+          TopLeft="56.9444444297273,109.636361971374" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="194.158730144013,207.922076257088">
+          TopLeft="548.694444429727,70.136361971374">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,78.7142857142858"
+              EndConnector="-366,39.5"
               Start="0,0"
-              End="0,71.2142857142858">
+              End="-366,32">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,71.2142857142858" />
+                    End="0,15.75" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,15.75"
+                    Point2="0,19.75"
+                    Point3="-4,19.75" />
+                  <mssgle:LineSegment
+                    End="-362,19.75" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-362,19.75"
+                    Point2="-366,19.75"
+                    Point3="-366,23.75" />
+                  <mssgle:LineSegment
+                    End="-366,32" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -3388,18 +3400,18 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="198.087301572584,328.922076257088">
+          TopLeft="308.444444429727,131.636361971374">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,110.714285714286"
+              EndConnector="96.5000000000001,0"
               Start="0,0"
-              End="0,103.214285714286">
+              End="89.0000000000001,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,103.214285714286" />
+                    End="89.0000000000001,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -3410,18 +3422,30 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 2]"
-          TopLeft="203.658730144013,481.922076257088">
+          TopLeft="537.444444429727,153.636361971374">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,119.714285714286"
+              EndConnector="-356.75,76.9999999999999"
               Start="0,0"
-              End="0,112.214285714286">
+              End="-356.75,69.4999999999999">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,112.214285714286" />
+                    End="0,34.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,34.5"
+                    Point2="0,38.5"
+                    Point3="-4,38.5" />
+                  <mssgle:LineSegment
+                    End="-352.75,38.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-352.75,38.5"
+                    Point2="-356.75,38.5"
+                    Point3="-356.75,42.5" />
+                  <mssgle:LineSegment
+                    End="-356.75,69.4999999999999" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -3432,18 +3456,18 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 3]"
-          TopLeft="197.182540374248,65.9220776659257">
+          TopLeft="347.777779175911,46.8863626757927">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,99.7142843054483"
+              EndConnector="59.1666652538161,0"
               Start="0,0"
-              End="0,92.2142843054483">
+              End="51.6666652538161,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,92.2142843054483" />
+                    End="51.6666652538161,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -3461,15 +3485,15 @@
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="154.285714285715,42.2857142857143"
+          Size="154.5,42.5"
           Id="Package\Load GDP Data Into ioicc_flat OLTP Table\IOICC Flat table"
           TopLeft="277,258" />
         <NodeLayout
-          Size="214.857142857143,42.2857142857143"
+          Size="215,42.5"
           Id="Package\Load GDP Data Into ioicc_flat OLTP Table\Add Source, Shorten PNAICS"
           TopLeft="462,117" />
         <NodeLayout
-          Size="129.714285714286,42.2857142857143"
+          Size="129.5,42.5"
           Id="Package\Load GDP Data Into ioicc_flat OLTP Table\GDP 2020"
           TopLeft="177,20" />
         <EdgeLayout
@@ -3843,17 +3867,17 @@
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="140,42.2857142857143"
-          Id="Package\Transfer ioicc_flat data to fact Table\Shorten Year"
-          TopLeft="657,93" />
-        <NodeLayout
-          Size="211.428571428572,42.2857142857143"
+          Size="211.5,42.5"
           Id="Package\Transfer ioicc_flat data to fact Table\ioicc_flat_to_fact_converter"
           TopLeft="212,41" />
         <NodeLayout
-          Size="154.857142857143,42.2857142857143"
+          Size="155,42.5"
           Id="Package\Transfer ioicc_flat data to fact Table\fact OLTP table"
           TopLeft="210.666666666667,212.333333333333" />
+        <NodeLayout
+          Size="140,42.5"
+          Id="Package\Transfer ioicc_flat data to fact Table\Shorten Year"
+          TopLeft="657,93" />
         <EdgeLayout
           Id="Package\Transfer ioicc_flat data to fact Table.Paths[OLE DB Source Output]"
           TopLeft="423.428571428571,62.1428571428571">
