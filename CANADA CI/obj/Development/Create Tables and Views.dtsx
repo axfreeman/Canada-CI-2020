@@ -11,8 +11,8 @@
   DTS:LocaleID="2057"
   DTS:ObjectName="Create Tables and Views"
   DTS:PackageType="5"
-  DTS:VersionBuild="2"
-  DTS:VersionGUID="{7D315CBF-74A1-4A99-8D03-2FA15087AE14}">
+  DTS:VersionBuild="3"
+  DTS:VersionGUID="{3F655FE3-2532-4783-BF01-D1E7EA99C2C1}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />

@@ -11,8 +11,8 @@
   DTS:LocaleID="2057"
   DTS:ObjectName="Import Maps"
   DTS:PackageType="5"
-  DTS:VersionBuild="163"
-  DTS:VersionGUID="{5F4F23E8-0D7F-476C-AE98-EA25DC625A93}">
+  DTS:VersionBuild="168"
+  DTS:VersionGUID="{FA177CCA-7042-433C-B125-61AB961EFD12}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -104,32 +104,32 @@
                   name="OLE DB Destination Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Import dim_geography Table\dim_geography OLTP Table.Inputs[OLE DB Destination Input].Columns[geo_name_pk]"
-                      cachedDataType="wstr"
-                      cachedLength="255"
-                      cachedName="geo_name_pk"
-                      externalMetadataColumnId="Package\Import dim_geography Table\dim_geography OLTP Table.Inputs[OLE DB Destination Input].ExternalColumns[geo_name_pk]"
-                      lineageId="Package\Import dim_geography Table\MAPPINGS (dim_geography).Outputs[Excel Source Output].Columns[geo_name_pk]" />
-                    <inputColumn
                       refId="Package\Import dim_geography Table\dim_geography OLTP Table.Inputs[OLE DB Destination Input].Columns[standardised_province]"
                       cachedDataType="wstr"
                       cachedLength="255"
                       cachedName="standardised_province"
                       externalMetadataColumnId="Package\Import dim_geography Table\dim_geography OLTP Table.Inputs[OLE DB Destination Input].ExternalColumns[standardised_province]"
                       lineageId="Package\Import dim_geography Table\MAPPINGS (dim_geography).Outputs[Excel Source Output].Columns[standardised_province]" />
+                    <inputColumn
+                      refId="Package\Import dim_geography Table\dim_geography OLTP Table.Inputs[OLE DB Destination Input].Columns[geo_name_pk]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="geo_name_pk"
+                      externalMetadataColumnId="Package\Import dim_geography Table\dim_geography OLTP Table.Inputs[OLE DB Destination Input].ExternalColumns[geo_name_id]"
+                      lineageId="Package\Import dim_geography Table\MAPPINGS (dim_geography).Outputs[Excel Source Output].Columns[geo_name_pk]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
-                    <externalMetadataColumn
-                      refId="Package\Import dim_geography Table\dim_geography OLTP Table.Inputs[OLE DB Destination Input].ExternalColumns[geo_name_pk]"
-                      dataType="wstr"
-                      length="255"
-                      name="geo_name_pk" />
                     <externalMetadataColumn
                       refId="Package\Import dim_geography Table\dim_geography OLTP Table.Inputs[OLE DB Destination Input].ExternalColumns[standardised_province]"
                       dataType="wstr"
                       length="255"
                       name="standardised_province" />
+                    <externalMetadataColumn
+                      refId="Package\Import dim_geography Table\dim_geography OLTP Table.Inputs[OLE DB Destination Input].ExternalColumns[geo_name_id]"
+                      dataType="wstr"
+                      length="255"
+                      name="geo_name_id" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -386,13 +386,6 @@
                       externalMetadataColumnId="Package\Import dim_industry Table\dim_industry OLTP Table.Inputs[OLE DB Destination Input].ExternalColumns[creative_sector]"
                       lineageId="Package\Import dim_industry Table\MAPPINGS (dim_industry).Outputs[Excel Source Output].Columns[creative_sector]" />
                     <inputColumn
-                      refId="Package\Import dim_industry Table\dim_industry OLTP Table.Inputs[OLE DB Destination Input].Columns[short_pnaics]"
-                      cachedDataType="wstr"
-                      cachedLength="7"
-                      cachedName="short_pnaics"
-                      externalMetadataColumnId="Package\Import dim_industry Table\dim_industry OLTP Table.Inputs[OLE DB Destination Input].ExternalColumns[pnaics]"
-                      lineageId="Package\Import dim_industry Table\Shorten NAICS codes.Outputs[Derived Column Output].Columns[short_pnaics]" />
-                    <inputColumn
                       refId="Package\Import dim_industry Table\dim_industry OLTP Table.Inputs[OLE DB Destination Input].Columns[short_naics6]"
                       cachedDataType="wstr"
                       cachedLength="7"
@@ -434,14 +427,16 @@
                       cachedName="main_industry"
                       externalMetadataColumnId="Package\Import dim_industry Table\dim_industry OLTP Table.Inputs[OLE DB Destination Input].ExternalColumns[main_industry]"
                       lineageId="Package\Import dim_industry Table\MAPPINGS (dim_industry).Outputs[Excel Source Output].Columns[main_industry]" />
+                    <inputColumn
+                      refId="Package\Import dim_industry Table\dim_industry OLTP Table.Inputs[OLE DB Destination Input].Columns[short_pnaics]"
+                      cachedDataType="wstr"
+                      cachedLength="7"
+                      cachedName="short_pnaics"
+                      externalMetadataColumnId="Package\Import dim_industry Table\dim_industry OLTP Table.Inputs[OLE DB Destination Input].ExternalColumns[pnaics_id]"
+                      lineageId="Package\Import dim_industry Table\Shorten NAICS codes.Outputs[Derived Column Output].Columns[short_pnaics]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
-                    <externalMetadataColumn
-                      refId="Package\Import dim_industry Table\dim_industry OLTP Table.Inputs[OLE DB Destination Input].ExternalColumns[pnaics]"
-                      dataType="wstr"
-                      length="7"
-                      name="pnaics" />
                     <externalMetadataColumn
                       refId="Package\Import dim_industry Table\dim_industry OLTP Table.Inputs[OLE DB Destination Input].ExternalColumns[naics6]"
                       dataType="wstr"
@@ -477,6 +472,11 @@
                       dataType="wstr"
                       length="255"
                       name="main_industry" />
+                    <externalMetadataColumn
+                      refId="Package\Import dim_industry Table\dim_industry OLTP Table.Inputs[OLE DB Destination Input].ExternalColumns[pnaics_id]"
+                      dataType="wstr"
+                      length="7"
+                      name="pnaics_id" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -2521,37 +2521,37 @@
         <NodeLayout
           Size="218.5,42.5"
           Id="Package\Import dim_geography Table"
-          TopLeft="303.460318458624,253.889840998783" />
+          TopLeft="286.460318458624,137.389840998783" />
         <NodeLayout
-          Size="204.5,42.5"
+          Size="204.5,42"
           Id="Package\Import dim_industry Table"
-          TopLeft="52.7735061696018,154.987012647306" />
+          TopLeft="35.7735061696018,38.487012647306" />
         <NodeLayout
           Size="219.5,42.5"
           Id="Package\Import dim_occupation Table"
-          TopLeft="45.4273572153623,253.672378213611" />
+          TopLeft="28.4273572153623,137.172378213611" />
         <NodeLayout
           Size="215.5,42.5"
           Id="Package\Import industry_descriptions"
-          TopLeft="215.888888991909,391.454544084131" />
+          TopLeft="198.888888991909,274.954544084131" />
         <NodeLayout
           Size="234.5,42.5"
           Id="Package\Import ioicc_splitter OLTP Table"
-          TopLeft="287.614164576193,161.726564950444" />
+          TopLeft="270.614164576193,45.226564950444" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="257.34493474103,179.499645941732">
+          TopLeft="240.273506169602,62.981788798875">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="30.2692298351627,0"
+              EndConnector="30.3406584065912,0"
               Start="0,0"
-              End="22.7692298351627,0">
+              End="22.8406584065912,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="22.7692298351627,0" />
+                    End="22.8406584065912,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2562,7 +2562,7 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="412.603175601481,296.175555284497">
+          TopLeft="395.603175601481,179.675555284497">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -2596,7 +2596,7 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 2]"
-          TopLeft="404.75702171905,204.012279236158">
+          TopLeft="387.75702171905,87.512279236158">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -2630,7 +2630,7 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 3]"
-          TopLeft="264.855928643934,274.923966749054">
+          TopLeft="247.855928643934,158.423966749054">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -2657,37 +2657,35 @@
     design-time-name="Package\Import dim_geography Table">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="221.714285714286,42.2857142857143"
+          Size="221.5,42.5"
           Id="Package\Import dim_geography Table\MAPPINGS (dim_geography)"
           TopLeft="137.714288059546,46.4941182991213" />
         <NodeLayout
-          Size="215.428571428572,42.2857142857143"
+          Size="215.5,42.5"
           Id="Package\Import dim_geography Table\dim_geography OLTP Table"
-          TopLeft="138.285716640706,200.047061629114" />
+          TopLeft="144.285716640706,121.047061629114" />
         <EdgeLayout
           Id="Package\Import dim_geography Table.Paths[Excel Source Output]"
-          TopLeft="247.28571663584,88.7798325848356">
+          TopLeft="250.250002350126,88.9941182991213">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,111.267229044278"
+              EndConnector="0,32.0529433299927"
               Start="0,0"
-              End="0,103.767229044278">
+              End="0,24.5529433299927">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,103.767229044278" />
+                    End="0,24.5529433299927" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -2723,17 +2721,17 @@
     design-time-name="Package\Import dim_industry Table">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="178.285714285715,42.2857142857143"
+          Size="178.5,42.5"
           Id="Package\Import dim_industry Table\Shorten NAICS codes"
           TopLeft="123.615370993078,108.103030155031" />
         <NodeLayout
-          Size="202.285714285715,42.2857142857143"
+          Size="202.5,42.5"
           Id="Package\Import dim_industry Table\dim_industry OLTP Table"
           TopLeft="119.465934003975,220.486988561576" />
         <NodeLayout
-          Size="208.571428571429,42.2857142857143"
+          Size="208.5,42.5"
           Id="Package\Import dim_industry Table\MAPPINGS (dim_industry)"
           TopLeft="107.076924756535,18.3885921304255" />
         <EdgeLayout
@@ -2755,9 +2753,7 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -2779,9 +2775,7 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -2923,77 +2917,61 @@
     design-time-name="Package\Import industry_descriptions">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="145.714285714286,42.2857142857143"
+          Size="145.5,42.5"
           Id="Package\Import industry_descriptions\Shorten naics"
-          TopLeft="295,171" />
+          TopLeft="304.666666666667,126" />
         <NodeLayout
-          Size="241.714285714286,42.2857142857143"
+          Size="241.5,42.5"
           Id="Package\Import industry_descriptions\MAPPING (industry_descriptions)"
           TopLeft="257,47" />
         <NodeLayout
-          Size="242.857142857143,42.2857142857143"
+          Size="243,42.5"
           Id="Package\Import industry_descriptions\industry_descriptions OLTP Table"
-          TopLeft="250,297" />
+          TopLeft="256.333333333333,207.333333333333" />
         <EdgeLayout
           Id="Package\Import industry_descriptions.Paths[Derived Column Output]"
-          TopLeft="369.642857142857,213.285714285714">
+          TopLeft="377.625,168.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,83.7142857142857"
+              EndConnector="0,38.8333333333333"
               Start="0,0"
-              End="0,76.2142857142857">
+              End="0,31.3333333333333">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,76.2142857142857" />
+                    End="0,31.3333333333333" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Import industry_descriptions.Paths[Excel Source Output]"
-          TopLeft="377.857142857143,89.2857142857143">
+          TopLeft="377.583333333333,89.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-10,81.7142857142857"
+              EndConnector="0,36.5"
               Start="0,0"
-              End="-10,74.2142857142857">
+              End="0,29">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,36.8571428571429" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,36.8571428571429"
-                    Point2="0,40.8571428571429"
-                    Point3="-4,40.8571428571429" />
-                  <mssgle:LineSegment
-                    End="-6,40.8571428571429" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-6,40.8571428571429"
-                    Point2="-10,40.8571428571429"
-                    Point3="-10,44.8571428571429" />
-                  <mssgle:LineSegment
-                    End="-10,74.2142857142857" />
+                    End="0,29" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>

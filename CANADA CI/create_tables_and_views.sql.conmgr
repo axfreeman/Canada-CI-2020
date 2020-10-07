@@ -3,8 +3,10 @@
   DTS:ObjectName="create_tables_and_views.sql"
   DTS:DTSID="{46242F69-4E3E-4E55-9DA8-BEEA02C98987}"
   DTS:CreationName="FILE">
+  <DTS:PropertyExpression
+    DTS:Name="ConnectionString">@[$Project::Root]+"\\SCRIPTS\\MS_SQL\\create_tables_and_views.sql"</DTS:PropertyExpression>
   <DTS:ObjectData>
     <DTS:ConnectionManager
-      DTS:ConnectionString="C:\Users\afree\Documents\Github\Canada-CI\SCRIPTS\MS_SQL\create_tables_and_views.sql" />
+      DTS:ConnectionString="C:\Users\afree\Documents\Github\Canada-CI\SCRIPTS\create_tables_and_views.sql" />
   </DTS:ObjectData>
 </DTS:ConnectionManager>

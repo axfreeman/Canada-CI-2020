@@ -5,7 +5,7 @@ USE canada_ci_oltp -- the Geography dimension. Creates a standard geography that
 DROP TABLE IF EXISTS dim_geography
 GO
   CREATE TABLE dim_geography(
-    geo_name_pk nvarchar(255) NOT NULL,
+    geo_name_id nvarchar(255) NOT NULL,
     standardised_province nvarchar(255) NULL
   )
 GO
@@ -14,7 +14,7 @@ GO
   DROP TABLE IF EXISTS dim_industry
 GO
   CREATE TABLE dim_industry(
-    pnaics nvarchar(7) NOT NULL,
+    pnaics_id nvarchar(7) NOT NULL,
     naics6 nvarchar(7) NULL,
     naics5 nvarchar(7) NULL,
     naics4 nvarchar(7) NULL,
@@ -55,12 +55,11 @@ GO
     /*the name of the source of the data eg 'cansim-0930333', 'census', etc*/
     indicator nvarchar (256) NULL,
     /* what the numeric field measures, eg 'jobs', 'real GDP', etc */
-    pnaics nvarchar (7) NULL,
+    pnaics_id nvarchar (7) NULL,
     /* The standardised pnaics industry code */
     pnaics_description nvarchar (255) NULL,
-    geo_name nvarchar (255) NULL,
-    year nvarchar (10) NULL,
-    /* EG '2010 M01' or '2018' or '2018 Q01'*/
+    geo_name_id nvarchar (255) NULL,
+    date Date NULL,
     value float NULL
   )
 GO
@@ -76,9 +75,9 @@ GO
     source nvarchar (255) NOT NULL,
     indicator nvarchar (256) NOT NULL,
     naics_description nvarchar (255) NOT NULL,
-    pnaics nvarchar (8) NOT NULL,
-    geo_name nvarchar (255) NOT NULL,
-    year nvarchar (255) NOT NULL,
+    pnaics_id nvarchar (8) NOT NULL,
+    geo_name_id nvarchar (255) NOT NULL,
+    date Date NOT NULL,
     value float NULL
   )
 GO
@@ -99,7 +98,7 @@ GO
   DROP TABLE IF EXISTS census
 GO
   CREATE TABLE census (
-    geo_name nvarchar (255) NULL,
+    geo_name_id nvarchar (255) NULL,
     anaics4 nvarchar (5) NULL,
     anocs4 nvarchar (5) NULL,
     occupation_description nvarchar (255) NULL,
@@ -115,25 +114,28 @@ GO
   -- Further split factor definitions are possible.
   CREATE VIEW ioicc_flat_to_fact_converter AS
 SELECT
-  ioicc_flat.pnaics,
+  ioicc_flat.pnaics_id,
   ioicc_splitter.pnaics_target,
   ioicc_flat.source,
   ioicc_flat.indicator,
   ioicc_flat.naics_description,
-  ioicc_flat.geo_name,
-  ioicc_flat.year,
+  ioicc_flat.geo_name_id,
+  ioicc_flat.date,
   ioicc_flat.value * ioicc_splitter.coefficient AS split_value,
   ioicc_splitter.coefficient,
   ioicc_flat.value
 FROM
   ioicc_flat
-  RIGHT OUTER JOIN ioicc_splitter ON ioicc_flat.pnaics = ioicc_splitter.pnaics_source
+  RIGHT OUTER JOIN ioicc_splitter ON ioicc_flat.pnaics_id = ioicc_splitter.pnaics_source
 GO
-  DROP VIEW IF EXISTS [dbo].[dim_industry_with_descriptions]
+
+
+DROP VIEW IF EXISTS [dbo].[dim_industry_with_descriptions]
 GO
-  CREATE VIEW [dbo].[dim_industry_with_descriptions] AS
+
+CREATE VIEW [dbo].[dim_industry_with_descriptions] AS
 SELECT
-  dim_industry.pnaics,
+  dim_industry.pnaics_id,
   dim_industry.main_industry,
   dim_industry.creative_sector,
   industry_descriptions.description
@@ -142,24 +144,24 @@ FROM
   LEFT OUTER JOIN industry_descriptions ON dim_industry.naics4 = industry_descriptions.naics6
 GO
   -- This is the most detailed view, listing every record in the fact file beside its province,
-  -- year, industry, creative sector and main industry.
+  -- date, industry, creative sector and main industry.
   -- See the 'industries_summary' view, which groups by creative sector and main industry
   CREATE
   OR ALTER VIEW [dbo].[industries_full] AS
 SELECT
   fact.value,
-  fact.year,
+  fact.date,
   fact.indicator,
   dim_geography.standardised_province,
   fact.source,
-  fact.pnaics,
+  fact.pnaics_id,
   dim_industry_with_descriptions.main_industry,
   dim_industry_with_descriptions.creative_sector,
   dim_industry_with_descriptions.description
 FROM
   dim_industry_with_descriptions
-  INNER JOIN fact ON dim_industry_with_descriptions.pnaics = fact.pnaics
-  LEFT OUTER JOIN dim_geography ON fact.geo_name = dim_geography.geo_name_pk
+  INNER JOIN fact ON dim_industry_with_descriptions.pnaics_id = fact.pnaics_id
+  LEFT OUTER JOIN dim_geography ON fact.geo_name_id = dim_geography.geo_name_id
 GO
   -- This summary view groups by all dimension fields, leaving out the
   -- detail provided by pnaics and description fields.
@@ -169,7 +171,7 @@ GO
   OR ALTER VIEW [dbo].[industries_summary] AS
 SELECT
   SUM(value) AS value,
-  year,
+  date,
   indicator,
   standardised_province AS province,
   source,
@@ -178,7 +180,7 @@ SELECT
 FROM
   industries_full
 GROUP BY
-  year,
+  date,
   indicator,
   standardised_province,
   source,
