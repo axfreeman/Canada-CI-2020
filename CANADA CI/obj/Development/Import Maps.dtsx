@@ -11,31 +11,12 @@
   DTS:LocaleID="2057"
   DTS:ObjectName="Import Maps"
   DTS:PackageType="5"
-  DTS:VersionBuild="162"
-  DTS:VersionGUID="{F41C1868-3434-42E7-8B35-D0ACB1DDCAAE}">
+  DTS:VersionBuild="163"
+  DTS:VersionGUID="{5F4F23E8-0D7F-476C-AE98-EA25DC625A93}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
   <DTS:Executables>
-    <DTS:Executable
-      DTS:refId="Package\DROP AND CREATE DIMENSION TABLES"
-      DTS:CreationName="Microsoft.ExecuteSQLTask"
-      DTS:Description="Execute SQL Task"
-      DTS:DTSID="{8c542164-0489-4c0e-a838-3eac5aa700e4}"
-      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
-      DTS:LocaleID="-1"
-      DTS:ObjectName="DROP AND CREATE DIMENSION TABLES"
-      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="0">
-      <DTS:Variables />
-      <DTS:ObjectData>
-        <SQLTask:SqlTaskData
-          SQLTask:Connection="{7C609DE3-B60F-43F3-9132-B532B5CB115C}"
-          SQLTask:BypassPrepare="False"
-          SQLTask:SqlStmtSourceType="FileConnection"
-          SQLTask:SqlStatementSource="CREATE OLTP DIMENSION TABLES.sql" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
-      </DTS:ObjectData>
-    </DTS:Executable>
     <DTS:Executable
       DTS:refId="Package\Import dim_geography Table"
       DTS:CreationName="Microsoft.Pipeline"
@@ -2524,14 +2505,6 @@
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 3"
       DTS:To="Package\Import dim_geography Table" />
-    <DTS:PrecedenceConstraint
-      DTS:refId="Package.PrecedenceConstraints[Constraint 4]"
-      DTS:CreationName=""
-      DTS:DTSID="{A5F06E02-2837-47D8-A80A-751F8D24E52C}"
-      DTS:From="Package\DROP AND CREATE DIMENSION TABLES"
-      DTS:LogicalAnd="True"
-      DTS:ObjectName="Constraint 4"
-      DTS:To="Package\Import dim_industry Table" />
   </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
 <!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
@@ -2545,10 +2518,6 @@
     <LayoutInfo>
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="271.5,42"
-          Id="Package\DROP AND CREATE DIMENSION TABLES"
-          TopLeft="43.3333344812747,14.7727271126322" />
         <NodeLayout
           Size="218.5,42.5"
           Id="Package\Import dim_geography Table"
@@ -2673,40 +2642,6 @@
                   Capacity="5">
                   <mssgle:LineSegment
                     End="31.1043898146903,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package.PrecedenceConstraints[Constraint 4]"
-          TopLeft="179.083334481275,56.7727271126322">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-24.0598283116729,98.2142855346738"
-              Start="0,0"
-              End="-24.0598283116729,90.7142855346738">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,45.1071427673369" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,45.1071427673369"
-                    Point2="0,49.1071427673369"
-                    Point3="-4,49.1071427673369" />
-                  <mssgle:LineSegment
-                    End="-20.0598283116729,49.1071427673369" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-20.0598283116729,49.1071427673369"
-                    Point2="-24.0598283116729,49.1071427673369"
-                    Point3="-24.0598283116729,53.1071427673369" />
-                  <mssgle:LineSegment
-                    End="-24.0598283116729,90.7142855346738" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>

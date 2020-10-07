@@ -11,8 +11,8 @@
   DTS:LocaleID="2057"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
-  DTS:VersionBuild="14"
-  DTS:VersionGUID="{5F40C04B-4071-4AAE-952F-0F6DA1836009}">
+  DTS:VersionBuild="15"
+  DTS:VersionGUID="{2233F40A-BB6F-45D2-A386-124FC2CA0B43}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -2279,13 +2279,13 @@
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="225.714285714286,42.2857142857143"
-          Id="Package\export dim_geography\dim_geography MariaDB table"
-          TopLeft="238.888895217283,177.272725351586" />
-        <NodeLayout
-          Size="212,42.2857142857143"
+          Size="212,42.5"
           Id="Package\export dim_geography\dim_geography OLTP table"
           TopLeft="241.666673068647,62.045453873055" />
+        <NodeLayout
+          Size="225.5,42.5"
+          Id="Package\export dim_geography\dim_geography MariaDB table"
+          TopLeft="238.888895217283,177.272725351586" />
         <EdgeLayout
           Id="Package\export dim_geography.Paths[OLE DB Source Output]"
           TopLeft="349.706355571537,104.331168158769">
@@ -2407,13 +2407,13 @@
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="218.857142857143,42.2857142857143"
-          Id="Package\export dim_occupations\dim_occupations OLTP table"
-          TopLeft="119,34.5" />
-        <NodeLayout
-          Size="236,42.2857142857143"
+          Size="236,42.5"
           Id="Package\export dim_occupations\dim_occupations MariaDB Table"
           TopLeft="115,175.5" />
+        <NodeLayout
+          Size="219,42.5"
+          Id="Package\export dim_occupations\dim_occupations OLTP table"
+          TopLeft="119,34.5" />
         <EdgeLayout
           Id="Package\export dim_occupations.Paths[OLE DB Source Output]"
           TopLeft="230.714285714286,76.7857142857143">
@@ -2469,7 +2469,7 @@
     design-time-name="Package\export fact table">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="158.285714285715,42.2857142857143"
           Id="Package\export fact table\fact OLTP Table"
@@ -2497,7 +2497,9 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -2533,7 +2535,7 @@
     design-time-name="Package\Export industry_descriptions">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="242.857142857143,42.2857142857143"
           Id="Package\Export industry_descriptions\industry_descriptions OLTP Table"
@@ -2561,7 +2563,9 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>

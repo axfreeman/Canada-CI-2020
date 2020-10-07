@@ -26,13 +26,14 @@
           <SSIS:Property SSIS:Name="CreatorComputerName">DESKTOP-9EATJT9</SSIS:Property>
           <SSIS:Property SSIS:Name="Description">
           </SSIS:Property>
-          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAV8F2cz2D/EKh4iLdCjyJTgAAAAACAAAAAAAQZgAAAAEAACAAAADaQw6Ux4fJJjwLzJT7klputoC9lcTH6lag+/ORtXh+xAAAAAAOgAAAAAIAACAAAADpmiI+SV5TfN3eNQ7Xv+24BmTC8nOL6zZ+b68cRt0pHpAAAABSJ3zje8UiuT4qcbY/AOxdqlaxfbBMZ03CiKAwPwUOXrS3qk1rfCODSEJQiZyS+9TJglVIMjkeiZoYKr42XFRuvVapnXeKYfeTHWNLO/e9eBvpj6RhAUR0Smn/sg9Q98/qPgr4lXjLw8UzMERbkz0UmD8FDVoOnGnj1nAH97sL7ejS7/RGUOCs7unhs5QKx8ZAAAAAh4ilQGnPDRFUVUypDhoHo0c73rtmCkbFZUNkjWutQfAg3/wEUOwTQTWy5zQ9u1DHkNptUzc8DpndVQNW0pwYSA==</SSIS:Property>
+          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAV8F2cz2D/EKh4iLdCjyJTgAAAAACAAAAAAAQZgAAAAEAACAAAAChj64vXdrl/DGIBERv90upqUXIm1lU4KXCxXDwDbcZzgAAAAAOgAAAAAIAACAAAAAewHikcao+a5bw9x0LpZf4omgdxYghf1wH2184m9yAOJAAAAAiJn6pBnST8e5+nU0VZvW/7Ems2L7LLfQVL3YMXEX2VFMx5EPKZLbvgY0fCJGRjp5TfsbG5bjU365X8I4coTN6VL84SUcSBOiz3aS2glXqhLYNbgtq/rLiekLBlvaANTun2tegyLP+eg1zjWeLLYPQvYP5wPww/dJoNAlV8Tpw5VGIzNFHHigfY1EHAK2KyyZAAAAAAAkjxkzFbYtVGyxxAN3FCwd638HBRtcd3uovInhfs37QrgrXGL0msWNdsFlPwHUiVbRBY2yDIF53dhvSD9oVKQ==</SSIS:Property>
           <SSIS:Property SSIS:Name="FormatVersion">1</SSIS:Property>
         </SSIS:Properties>
         <SSIS:Packages>
           <SSIS:Package SSIS:Name="Import Maps.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="Export.dtsx" SSIS:EntryPoint="1" />
-          <SSIS:Package SSIS:Name="ImportData.dtsx" SSIS:EntryPoint="1" />
+          <SSIS:Package SSIS:Name="Create Tables and Views.dtsx" SSIS:EntryPoint="1" />
+          <SSIS:Package SSIS:Name="Import Data.dtsx" SSIS:EntryPoint="1" />
         </SSIS:Packages>
         <SSIS:ConnectionManagers>
           <SSIS:ConnectionManager SSIS:Name="P and H 4-digit.conmgr" />
@@ -42,10 +43,9 @@
           <SSIS:ConnectionManager SSIS:Name="LFS Annual.conmgr" />
           <SSIS:ConnectionManager SSIS:Name="MAPPINGS.conmgr" />
           <SSIS:ConnectionManager SSIS:Name="Fact CSV connector.conmgr" />
-          <SSIS:ConnectionManager SSIS:Name="CREATE OLTP DIMENSION TABLES.sql.conmgr" />
-          <SSIS:ConnectionManager SSIS:Name="CREATE OLTP DATA TABLES AND VIEWS.sql.conmgr" />
           <SSIS:ConnectionManager SSIS:Name="MARIADB create_all_tables.sql.conmgr" />
           <SSIS:ConnectionManager SSIS:Name="Maria32.root.conmgr" />
+          <SSIS:ConnectionManager SSIS:Name="create_tables_and_views.sql.conmgr" />
         </SSIS:ConnectionManagers>
         <SSIS:DeploymentInfo>
           <SSIS:ProjectConnectionParameters>
@@ -279,7 +279,7 @@
                 <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="Value">Data Source=DESKTOP-KSAPEQM\SQLEXPRESS;Initial Catalog=CANADA_CI_OLTP;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;</SSIS:Property>
+                <SSIS:Property SSIS:Name="Value">Data Source=DESKTOP-KSAPEQM;Initial Catalog=CANADA_CI_OLTP;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;</SSIS:Property>
                 <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
               </SSIS:Properties>
             </SSIS:Parameter>
@@ -946,6 +946,21 @@
                 <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
               </SSIS:Properties>
             </SSIS:Parameter>
+            <SSIS:Parameter SSIS:Name="CM.create_tables_and_views.sql.ConnectionString">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="CreationName">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="Value">C:\Users\afree\Documents\Github\Canada-CI\SCRIPTS\MS_SQL\create_tables_and_views.sql</SSIS:Property>
+                <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
+              </SSIS:Properties>
+            </SSIS:Parameter>
           </SSIS:ProjectConnectionParameters>
           <SSIS:PackageInfo>
             <SSIS:PackageMetaData SSIS:Name="Import Maps.dtsx">
@@ -954,10 +969,10 @@
                 <SSIS:Property SSIS:Name="Name">Import Maps</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">158</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">163</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{1E8578E3-BB28-47D7-8038-3CCABF261E8D}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{5F4F23E8-0D7F-476C-AE98-EA25DC625A93}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
@@ -971,10 +986,10 @@
                 <SSIS:Property SSIS:Name="Name">Package1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">13</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">15</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{2442B07B-27C0-4B19-960B-A3E9E098CB86}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{2233F40A-BB6F-45D2-A386-124FC2CA0B43}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
@@ -982,16 +997,33 @@
               </SSIS:Properties>
               <SSIS:Parameters />
             </SSIS:PackageMetaData>
-            <SSIS:PackageMetaData SSIS:Name="ImportData.dtsx">
+            <SSIS:PackageMetaData SSIS:Name="Create Tables and Views.dtsx">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">{13C13E8C-395C-4AF2-86B4-83F4A3D4D10C}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">Create Tables and Views</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">2</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionComments">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{7D315CBF-74A1-4A99-8D03-2FA15087AE14}</SSIS:Property>
+                <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">1</SSIS:Property>
+              </SSIS:Properties>
+              <SSIS:Parameters />
+            </SSIS:PackageMetaData>
+            <SSIS:PackageMetaData SSIS:Name="Import Data.dtsx">
               <SSIS:Properties>
                 <SSIS:Property SSIS:Name="ID">{978423C0-3999-4B6E-92FC-000457322B18}</SSIS:Property>
                 <SSIS:Property SSIS:Name="Name">ImportData</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">28</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">30</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{53615F06-4289-4CD1-8D23-1BA5036D93C5}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{85C99C76-ADD6-4B2E-994F-11D097948337}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>

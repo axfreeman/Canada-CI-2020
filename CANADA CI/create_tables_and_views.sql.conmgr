@@ -1,0 +1,10 @@
+﻿<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="create_tables_and_views.sql"
+  DTS:DTSID="{46242F69-4E3E-4E55-9DA8-BEEA02C98987}"
+  DTS:CreationName="FILE">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectionString="C:\Users\afree\Documents\Github\Canada-CI\SCRIPTS\MS_SQL\create_tables_and_views.sql" />
+  </DTS:ObjectData>
+</DTS:ConnectionManager>
