@@ -187,3 +187,43 @@ GROUP BY
   main_industry,
   creative_sector
 GO
+
+-- Temporary table to pre-process humungous P & H CSV file
+DROP TABLE IF EXISTS temp_P_H
+GO
+
+CREATE TABLE temp_P_H (
+REF_DATE Nvarchar(50) COLLATE Latin1_General_100_CI_AI_SC_UTF8,
+GEO Nvarchar(50)COLLATE Latin1_General_100_CI_AI_SC_UTF8,
+Labour_productivity_and_related_measures Nvarchar(50)COLLATE Latin1_General_100_CI_AI_SC_UTF8,
+Industry Nvarchar(255)COLLATE Latin1_General_100_CI_AI_SC_UTF8,
+UOM Nvarchar(50)COLLATE Latin1_General_100_CI_AI_SC_UTF8,
+VALUE Nvarchar(50)COLLATE Latin1_General_100_CI_AI_SC_UTF8,
+)
+GO
+
+-- This table collects P & H rows that are not used
+-- mainly for debugging purposes
+
+DROP TABLE IF EXISTS temp_P_H_unused
+GO
+
+CREATE TABLE [dbo].[temp_P_H_unused](
+	[REF_DATE] [nvarchar](50) NULL,
+	[GEO] [nvarchar](50) NULL,
+	[Labour_productivity_and_related_measures] [nvarchar](50) NULL,
+	[Industry] [nvarchar](255) NULL,
+	[UOM] [nvarchar](50) NULL,
+	[VALUE] [nvarchar](50) NULL
+) ON [PRIMARY]
+GO
+
+-- this view separates out the industry codes from the industry descriptions
+-- in the temp_P_H table
+
+CREATE OR ALTER VIEW [dbo].[Trimmed_temp_P_H]
+AS
+SELECT REF_DATE, GEO, Labour_productivity_and_related_measures, UOM, VALUE, Industry,	  
+Trim(']BGS' from Substring([Industry],CHARINDEX('[',[Industry])+1,CHARINDEX(']',[Industry])-CHARINDEX('[',[Industry]))) as Code
+FROM  dbo.temp_P_H
+GO
