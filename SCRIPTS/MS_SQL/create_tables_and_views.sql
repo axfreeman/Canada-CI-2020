@@ -198,7 +198,7 @@ GEO Nvarchar(50)COLLATE Latin1_General_100_CI_AI_SC_UTF8,
 Labour_productivity_and_related_measures Nvarchar(50)COLLATE Latin1_General_100_CI_AI_SC_UTF8,
 Industry Nvarchar(255)COLLATE Latin1_General_100_CI_AI_SC_UTF8,
 UOM Nvarchar(50)COLLATE Latin1_General_100_CI_AI_SC_UTF8,
-VALUE Nvarchar(50)COLLATE Latin1_General_100_CI_AI_SC_UTF8,
+VALUE float
 )
 GO
 
@@ -214,7 +214,7 @@ CREATE TABLE [dbo].[temp_P_H_unused](
 	[Labour_productivity_and_related_measures] [nvarchar](50) NULL,
 	[Industry] [nvarchar](255) NULL,
 	[UOM] [nvarchar](50) NULL,
-	[VALUE] [nvarchar](50) NULL
+	[VALUE] float
 ) ON [PRIMARY]
 GO
 
@@ -223,7 +223,39 @@ GO
 
 CREATE OR ALTER VIEW [dbo].[Trimmed_temp_P_H]
 AS
-SELECT REF_DATE, GEO, Labour_productivity_and_related_measures, UOM, VALUE, Industry,	  
-Trim(']BGS' from Substring([Industry],CHARINDEX('[',[Industry])+1,CHARINDEX(']',[Industry])-CHARINDEX('[',[Industry]))) as Code
+SELECT
+ REF_DATE,
+ GEO,
+ Labour_productivity_and_related_measures,
+ UOM,
+ VALUE,
+ Industry,	  
+ LEFT
+ (
+   'G'+
+   Trim
+   (
+    ']BGS' from Substring
+    (
+      [Industry],
+      CHARINDEX
+      (
+	   '[',
+	   [Industry]
+	  )+1,
+	  CHARINDEX
+	   (
+	    ']',
+	    [Industry]
+	   )-CHARINDEX
+	   (
+		'[',
+		[Industry]
+	   )
+	 )
+    )+'000000',
+   7
+ )
+ as Code
 FROM  dbo.temp_P_H
 GO

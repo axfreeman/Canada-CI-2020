@@ -11,8 +11,8 @@
   DTS:LocaleID="2057"
   DTS:ObjectName="Import Maps"
   DTS:PackageType="5"
-  DTS:VersionBuild="168"
-  DTS:VersionGUID="{FA177CCA-7042-433C-B125-61AB961EFD12}">
+  DTS:VersionBuild="169"
+  DTS:VersionGUID="{42A35B9C-21AD-4B20-A05C-3405084FF17D}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables />
@@ -2533,7 +2533,7 @@
         <NodeLayout
           Size="215.5,42.5"
           Id="Package\Import industry_descriptions"
-          TopLeft="198.888888991909,274.954544084131" />
+          TopLeft="165.888888991909,259.454544084131" />
         <NodeLayout
           Size="234.5,42.5"
           Id="Package\Import ioicc_splitter OLTP Table"
@@ -2562,30 +2562,30 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="395.603175601481,179.675555284497">
+          TopLeft="395.710318458624,179.889840998783">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-89.0000008952864,95.2789887996337"
+              EndConnector="-122.071429466715,79.564703085348"
               Start="0,0"
-              End="-89.0000008952864,87.7789887996337">
+              End="-122.071429466715,72.064703085348">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,43.6394943998168" />
+                    End="0,35.782351542674" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,43.6394943998168"
-                    Point2="0,47.6394943998168"
-                    Point3="-4,47.6394943998168" />
+                    Point1="0,35.782351542674"
+                    Point2="0,39.782351542674"
+                    Point3="-4,39.782351542674" />
                   <mssgle:LineSegment
-                    End="-85.0000008952864,47.6394943998168" />
+                    End="-118.071429466715,39.782351542674" />
                   <mssgle:CubicBezierSegment
-                    Point1="-85.0000008952864,47.6394943998168"
-                    Point2="-89.0000008952864,47.6394943998168"
-                    Point3="-89.0000008952864,51.6394943998168" />
+                    Point1="-118.071429466715,39.782351542674"
+                    Point2="-122.071429466715,39.782351542674"
+                    Point3="-122.071429466715,43.782351542674" />
                   <mssgle:LineSegment
-                    End="-89.0000008952864,87.7789887996337" />
+                    End="-122.071429466715,72.064703085348" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
