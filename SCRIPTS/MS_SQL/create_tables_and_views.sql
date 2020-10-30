@@ -204,6 +204,7 @@ GO
 
 -- This table collects P & H rows that are not used
 -- mainly for debugging purposes
+-- (But the table has to be present until the data is loaded)
 
 DROP TABLE IF EXISTS temp_P_H_unused
 GO
