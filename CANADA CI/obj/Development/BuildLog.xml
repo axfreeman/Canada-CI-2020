@@ -2,7 +2,7 @@
 <BuildLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <ProjectInfo>
     <Name>CANADA CI</Name>
-    <LastWriteTime>2020-11-10T17:38:30.6570835Z</LastWriteTime>
+    <LastWriteTime>2020-11-10T20:57:23.6525093Z</LastWriteTime>
     <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
   </ProjectInfo>
   <LastBuildInfos>
@@ -19,11 +19,6 @@
     <ProjectBuildItemInfo>
       <Name>Import Data.dtsx</Name>
       <LastWriteTime>2020-10-09T01:50:52.2171138Z</LastWriteTime>
-      <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
-    </ProjectBuildItemInfo>
-    <ProjectBuildItemInfo>
-      <Name>Export to MariaDB.dtsx</Name>
-      <LastWriteTime>2020-10-06T20:37:46.6455139Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
   </LastBuildInfos>

@@ -33,7 +33,6 @@
           <SSIS:Package SSIS:Name="Import Maps.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="Create Tables and Views.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="Import Data.dtsx" SSIS:EntryPoint="1" />
-          <SSIS:Package SSIS:Name="Export to MariaDB.dtsx" SSIS:EntryPoint="1" />
         </SSIS:Packages>
         <SSIS:ConnectionManagers>
           <SSIS:ConnectionManager SSIS:Name="P and H 4-digit.conmgr" />
@@ -1511,23 +1510,6 @@
                   </SSIS:Properties>
                 </SSIS:Parameter>
               </SSIS:Parameters>
-            </SSIS:PackageMetaData>
-            <SSIS:PackageMetaData SSIS:Name="Export to MariaDB.dtsx">
-              <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{EBA16E96-956E-4B1C-9E9F-D5A9410A5DCC}</SSIS:Property>
-                <SSIS:Property SSIS:Name="Name">Package1</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">15</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionComments">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{2233F40A-BB6F-45D2-A386-124FC2CA0B43}</SSIS:Property>
-                <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
-                <SSIS:Property SSIS:Name="Description">
-                </SSIS:Property>
-                <SSIS:Property SSIS:Name="ProtectionLevel">1</SSIS:Property>
-              </SSIS:Properties>
-              <SSIS:Parameters />
             </SSIS:PackageMetaData>
           </SSIS:PackageInfo>
         </SSIS:DeploymentInfo>
