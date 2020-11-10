@@ -1,4 +1,4 @@
-﻿<?xml version="1.0"?>
+<?xml version="1.0"?>
 <DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
   DTS:refId="Package"
   DTS:CreationDate="8/9/2020 7:09:33 PM"
@@ -88,8 +88,8 @@
               <connections>
                 <connection
                   refId="Package\export dim_geography\dim_geography MariaDB table.Connections[ODBCConnection]"
-                  connectionManagerID="{A0042922-7265-4830-A7DD-1DC8651D4917}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[Maria32.root]"
+                  connectionManagerID="{A0042922-7265-4830-A7DD-1DC8651D4917}:invalid"
+                  connectionManagerRefId="{A0042922-7265-4830-A7DD-1DC8651D4917}:invalid"
                   description="The ODBC runtime connection used to access the database."
                   name="ODBCConnection" />
               </connections>
@@ -381,8 +381,8 @@
               <connections>
                 <connection
                   refId="Package\export dim_industry\dim_industry ODBC Table.Connections[ODBCConnection]"
-                  connectionManagerID="{A0042922-7265-4830-A7DD-1DC8651D4917}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[Maria32.root]"
+                  connectionManagerID="{A0042922-7265-4830-A7DD-1DC8651D4917}:invalid"
+                  connectionManagerRefId="{A0042922-7265-4830-A7DD-1DC8651D4917}:invalid"
                   description="The ODBC runtime connection used to access the database."
                   name="ODBCConnection" />
               </connections>
@@ -895,8 +895,8 @@
               <connections>
                 <connection
                   refId="Package\export dim_occupations\dim_occupations MariaDB Table.Connections[ODBCConnection]"
-                  connectionManagerID="{A0042922-7265-4830-A7DD-1DC8651D4917}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[Maria32.root]"
+                  connectionManagerID="{A0042922-7265-4830-A7DD-1DC8651D4917}:invalid"
+                  connectionManagerRefId="{A0042922-7265-4830-A7DD-1DC8651D4917}:invalid"
                   description="The ODBC runtime connection used to access the database."
                   name="ODBCConnection" />
               </connections>
@@ -1348,8 +1348,8 @@
               <connections>
                 <connection
                   refId="Package\export fact table\fact MariaDB Table.Connections[ODBCConnection]"
-                  connectionManagerID="{A0042922-7265-4830-A7DD-1DC8651D4917}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[Maria32.root]"
+                  connectionManagerID="{A0042922-7265-4830-A7DD-1DC8651D4917}:invalid"
+                  connectionManagerRefId="{A0042922-7265-4830-A7DD-1DC8651D4917}:invalid"
                   description="The ODBC runtime connection used to access the database."
                   name="ODBCConnection" />
               </connections>
@@ -1869,8 +1869,8 @@
               <connections>
                 <connection
                   refId="Package\Export industry_descriptions\industry_descriptions MariaDB Table.Connections[ODBCConnection]"
-                  connectionManagerID="{A0042922-7265-4830-A7DD-1DC8651D4917}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[Maria32.root]"
+                  connectionManagerID="{A0042922-7265-4830-A7DD-1DC8651D4917}:invalid"
+                  connectionManagerRefId="{A0042922-7265-4830-A7DD-1DC8651D4917}:invalid"
                   description="The ODBC runtime connection used to access the database."
                   name="ODBCConnection" />
               </connections>
