@@ -11,8 +11,8 @@
   DTS:LocaleID="2057"
   DTS:ObjectName="ImportData"
   DTS:PackageType="5"
-  DTS:VersionBuild="88"
-  DTS:VersionGUID="{4FF7B6AB-2574-4C15-8F62-A7B157BB0581}">
+  DTS:VersionBuild="89"
+  DTS:VersionGUID="{E7F13591-A20D-47D4-A912-542C2F06802D}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -8902,8 +8902,8 @@
               <connections>
                 <connection
                   refId="Package\Preprocess P and H huge raw data file\Humungous file supplied by Statcan.Connections[FlatFileConnection]"
-                  connectionManagerID="{80F0BC15-033A-4AB9-8E40-B3C998E5C8BB}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[Flat File Connection Manager]"
+                  connectionManagerID="{6A5E005E-E647-4B05-9D79-0C6B17F66489}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[P and H CSV]"
                   name="FlatFileConnection" />
               </connections>
               <outputs>
@@ -9266,99 +9266,83 @@
                     isUsed="True">
                     <externalMetadataColumn
                       refId="Package\Preprocess P and H huge raw data file\Humungous file supplied by Statcan.Outputs[Flat File Source Output].ExternalColumns[REF_DATE]"
-                      codePage="65001"
-                      dataType="str"
-                      length="50"
+                      dataType="wstr"
+                      length="255"
                       name="REF_DATE" />
                     <externalMetadataColumn
                       refId="Package\Preprocess P and H huge raw data file\Humungous file supplied by Statcan.Outputs[Flat File Source Output].ExternalColumns[GEO]"
-                      codePage="65001"
-                      dataType="str"
-                      length="50"
+                      dataType="wstr"
+                      length="255"
                       name="GEO" />
                     <externalMetadataColumn
                       refId="Package\Preprocess P and H huge raw data file\Humungous file supplied by Statcan.Outputs[Flat File Source Output].ExternalColumns[DGUID]"
-                      codePage="65001"
-                      dataType="str"
-                      length="50"
+                      dataType="wstr"
+                      length="255"
                       name="DGUID" />
                     <externalMetadataColumn
                       refId="Package\Preprocess P and H huge raw data file\Humungous file supplied by Statcan.Outputs[Flat File Source Output].ExternalColumns[Labour productivity and related measures]"
-                      codePage="65001"
-                      dataType="str"
-                      length="50"
+                      dataType="wstr"
+                      length="255"
                       name="Labour productivity and related measures" />
                     <externalMetadataColumn
                       refId="Package\Preprocess P and H huge raw data file\Humungous file supplied by Statcan.Outputs[Flat File Source Output].ExternalColumns[Industry]"
-                      codePage="65001"
-                      dataType="str"
+                      dataType="wstr"
                       length="255"
                       name="Industry" />
                     <externalMetadataColumn
                       refId="Package\Preprocess P and H huge raw data file\Humungous file supplied by Statcan.Outputs[Flat File Source Output].ExternalColumns[UOM]"
-                      codePage="65001"
-                      dataType="str"
-                      length="50"
+                      dataType="wstr"
+                      length="255"
                       name="UOM" />
                     <externalMetadataColumn
                       refId="Package\Preprocess P and H huge raw data file\Humungous file supplied by Statcan.Outputs[Flat File Source Output].ExternalColumns[UOM_ID]"
-                      codePage="65001"
-                      dataType="str"
-                      length="50"
+                      dataType="wstr"
+                      length="255"
                       name="UOM_ID" />
                     <externalMetadataColumn
                       refId="Package\Preprocess P and H huge raw data file\Humungous file supplied by Statcan.Outputs[Flat File Source Output].ExternalColumns[SCALAR_FACTOR]"
-                      codePage="65001"
-                      dataType="str"
-                      length="50"
+                      dataType="wstr"
+                      length="255"
                       name="SCALAR_FACTOR" />
                     <externalMetadataColumn
                       refId="Package\Preprocess P and H huge raw data file\Humungous file supplied by Statcan.Outputs[Flat File Source Output].ExternalColumns[SCALAR_ID]"
-                      codePage="65001"
-                      dataType="str"
-                      length="50"
+                      dataType="wstr"
+                      length="255"
                       name="SCALAR_ID" />
                     <externalMetadataColumn
                       refId="Package\Preprocess P and H huge raw data file\Humungous file supplied by Statcan.Outputs[Flat File Source Output].ExternalColumns[VECTOR]"
-                      codePage="65001"
-                      dataType="str"
-                      length="50"
+                      dataType="wstr"
+                      length="255"
                       name="VECTOR" />
                     <externalMetadataColumn
                       refId="Package\Preprocess P and H huge raw data file\Humungous file supplied by Statcan.Outputs[Flat File Source Output].ExternalColumns[COORDINATE]"
-                      codePage="65001"
-                      dataType="str"
-                      length="50"
+                      dataType="wstr"
+                      length="255"
                       name="COORDINATE" />
                     <externalMetadataColumn
                       refId="Package\Preprocess P and H huge raw data file\Humungous file supplied by Statcan.Outputs[Flat File Source Output].ExternalColumns[VALUE]"
-                      codePage="65001"
-                      dataType="str"
-                      length="50"
+                      dataType="wstr"
+                      length="255"
                       name="VALUE" />
                     <externalMetadataColumn
                       refId="Package\Preprocess P and H huge raw data file\Humungous file supplied by Statcan.Outputs[Flat File Source Output].ExternalColumns[STATUS]"
-                      codePage="65001"
-                      dataType="str"
-                      length="50"
+                      dataType="wstr"
+                      length="255"
                       name="STATUS" />
                     <externalMetadataColumn
                       refId="Package\Preprocess P and H huge raw data file\Humungous file supplied by Statcan.Outputs[Flat File Source Output].ExternalColumns[SYMBOL]"
-                      codePage="65001"
-                      dataType="str"
-                      length="50"
+                      dataType="wstr"
+                      length="255"
                       name="SYMBOL" />
                     <externalMetadataColumn
                       refId="Package\Preprocess P and H huge raw data file\Humungous file supplied by Statcan.Outputs[Flat File Source Output].ExternalColumns[TERMINATED]"
-                      codePage="65001"
-                      dataType="str"
-                      length="50"
+                      dataType="wstr"
+                      length="255"
                       name="TERMINATED" />
                     <externalMetadataColumn
                       refId="Package\Preprocess P and H huge raw data file\Humungous file supplied by Statcan.Outputs[Flat File Source Output].ExternalColumns[DECIMALS]"
-                      codePage="65001"
-                      dataType="str"
-                      length="50"
+                      dataType="wstr"
+                      length="255"
                       name="DECIMALS" />
                   </externalMetadataColumns>
                 </output>
@@ -11977,9 +11961,7 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -12217,9 +12199,7 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>

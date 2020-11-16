@@ -11,10 +11,59 @@
   DTS:LocaleID="2057"
   DTS:ObjectName="Import Maps"
   DTS:PackageType="5"
-  DTS:VersionBuild="169"
-  DTS:VersionGUID="{42A35B9C-21AD-4B20-A05C-3405084FF17D}">
+  DTS:VersionBuild="175"
+  DTS:VersionGUID="{127F4644-6CA8-4F77-B91D-817C470D885B}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[industry_descriptions.csv]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{17A5F6FC-670C-4F15-8BA5-3F25ABE8EBBB}"
+      DTS:ObjectName="industry_descriptions.csv">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="2057"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:ColumnNamesInFirstDataRow="True"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x0022_"
+          DTS:CodePage="65001"
+          DTS:ConnectionString="C:\Users\afree\Documents\Github\Canada-CI\SOURCE DATA\industry_descriptions.csv">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="255"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="naics"
+              DTS:DTSID="{8A368FDC-DF9B-42F6-924B-FED46187FD15}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="255"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="anaics"
+              DTS:DTSID="{03AC64E5-8E73-4674-B6FC-514E03B33990}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:MaximumWidth="255"
+              DTS:DataType="130"
+              DTS:TextQualified="True"
+              DTS:ObjectName="description"
+              DTS:DTSID="{556F2923-94A2-4D71-9410-92E180FE42C5}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
   <DTS:Variables />
   <DTS:Executables>
     <DTS:Executable
@@ -31,6 +80,123 @@
         <pipeline
           version="1">
           <components>
+            <component
+              refId="Package\Import dim_geography Table\dim_geography CSV file"
+              componentClassID="Microsoft.FlatFileSource"
+              contactInfo="Flat File Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Flat File Source"
+              localeId="2057"
+              name="dim_geography CSV file"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether zero-length columns are treated as null."
+                  name="RetainNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of an output column containing the file name. If no name is specified, no output column containing the file name will be generated."
+                  name="FileNameColumnName"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Import dim_geography Table\dim_geography CSV file.Connections[FlatFileConnection]"
+                  connectionManagerID="{45103203-0866-4D57-A1D5-A3008983B00A}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[dim_geography,csv]"
+                  name="FlatFileConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Import dim_geography Table\dim_geography CSV file.Outputs[Flat File Source Output]"
+                  name="Flat File Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Import dim_geography Table\dim_geography CSV file.Outputs[Flat File Source Output].Columns[geo_name_pk]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import dim_geography Table\dim_geography CSV file.Outputs[Flat File Source Output].ExternalColumns[geo_name_pk]"
+                      length="255"
+                      lineageId="Package\Import dim_geography Table\dim_geography CSV file.Outputs[Flat File Source Output].Columns[geo_name_pk]"
+                      name="geo_name_pk"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Import dim_geography Table\dim_geography CSV file.Outputs[Flat File Source Output].Columns[standardised_province]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import dim_geography Table\dim_geography CSV file.Outputs[Flat File Source Output].ExternalColumns[standardised_province]"
+                      length="255"
+                      lineageId="Package\Import dim_geography Table\dim_geography CSV file.Outputs[Flat File Source Output].Columns[standardised_province]"
+                      name="standardised_province"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Import dim_geography Table\dim_geography CSV file.Outputs[Flat File Source Output].ExternalColumns[geo_name_pk]"
+                      dataType="wstr"
+                      length="255"
+                      name="geo_name_pk" />
+                    <externalMetadataColumn
+                      refId="Package\Import dim_geography Table\dim_geography CSV file.Outputs[Flat File Source Output].ExternalColumns[standardised_province]"
+                      dataType="wstr"
+                      length="255"
+                      name="standardised_province" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Import dim_geography Table\dim_geography CSV file.Outputs[Flat File Source Error Output]"
+                  isErrorOut="true"
+                  name="Flat File Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Import dim_geography Table\dim_geography CSV file.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      codePage="65001"
+                      dataType="text"
+                      description="Flat File Source Error Output Column"
+                      lineageId="Package\Import dim_geography Table\dim_geography CSV file.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      name="Flat File Source Error Output Column" />
+                    <outputColumn
+                      refId="Package\Import dim_geography Table\dim_geography CSV file.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Import dim_geography Table\dim_geography CSV file.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Import dim_geography Table\dim_geography CSV file.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Import dim_geography Table\dim_geography CSV file.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
             <component
               refId="Package\Import dim_geography Table\dim_geography OLTP Table"
               componentClassID="Microsoft.OLEDBDestination"
@@ -109,14 +275,14 @@
                       cachedLength="255"
                       cachedName="standardised_province"
                       externalMetadataColumnId="Package\Import dim_geography Table\dim_geography OLTP Table.Inputs[OLE DB Destination Input].ExternalColumns[standardised_province]"
-                      lineageId="Package\Import dim_geography Table\MAPPINGS (dim_geography).Outputs[Excel Source Output].Columns[standardised_province]" />
+                      lineageId="Package\Import dim_geography Table\dim_geography CSV file.Outputs[Flat File Source Output].Columns[standardised_province]" />
                     <inputColumn
                       refId="Package\Import dim_geography Table\dim_geography OLTP Table.Inputs[OLE DB Destination Input].Columns[geo_name_pk]"
                       cachedDataType="wstr"
                       cachedLength="255"
                       cachedName="geo_name_pk"
                       externalMetadataColumnId="Package\Import dim_geography Table\dim_geography OLTP Table.Inputs[OLE DB Destination Input].ExternalColumns[geo_name_id]"
-                      lineageId="Package\Import dim_geography Table\MAPPINGS (dim_geography).Outputs[Excel Source Output].Columns[geo_name_pk]" />
+                      lineageId="Package\Import dim_geography Table\dim_geography CSV file.Outputs[Flat File Source Output].Columns[geo_name_pk]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -158,135 +324,13 @@
                 </output>
               </outputs>
             </component>
-            <component
-              refId="Package\Import dim_geography Table\MAPPINGS (dim_geography)"
-              componentClassID="Microsoft.ExcelSource"
-              contactInfo="Excel Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
-              description="Excel Source"
-              name="MAPPINGS (dim_geography)"
-              usesDispositions="true"
-              version="1">
-              <properties>
-                <property
-                  dataType="System.Int32"
-                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
-                  name="CommandTimeout">0</property>
-                <property
-                  dataType="System.String"
-                  description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset">dim_geography$</property>
-                <property
-                  dataType="System.String"
-                  description="Specifies the variable that contains the name of the database object used to open a rowset."
-                  name="OpenRowsetVariable"></property>
-                <property
-                  dataType="System.String"
-                  description="The SQL command to be executed."
-                  name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
-                <property
-                  dataType="System.String"
-                  description="The variable that contains the SQL command to be executed."
-                  name="SqlCommandVariable"></property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the mode used to access the database."
-                  name="AccessMode"
-                  typeConverter="AccessMode">0</property>
-                <property
-                  dataType="System.String"
-                  description="The mapping from parameters in the SQL command to variables."
-                  name="ParameterMapping"></property>
-              </properties>
-              <connections>
-                <connection
-                  refId="Package\Import dim_geography Table\MAPPINGS (dim_geography).Connections[OleDbConnection]"
-                  connectionManagerID="{7A6A48E9-CEDD-40AC-8E7B-406E882F411E}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[MAPPINGS]"
-                  description="The OLE DB runtime connection used to access the database."
-                  name="OleDbConnection" />
-              </connections>
-              <outputs>
-                <output
-                  refId="Package\Import dim_geography Table\MAPPINGS (dim_geography).Outputs[Excel Source Output]"
-                  name="Excel Source Output">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\Import dim_geography Table\MAPPINGS (dim_geography).Outputs[Excel Source Output].Columns[geo_name_pk]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Import dim_geography Table\MAPPINGS (dim_geography).Outputs[Excel Source Output].ExternalColumns[geo_name_pk]"
-                      length="255"
-                      lineageId="Package\Import dim_geography Table\MAPPINGS (dim_geography).Outputs[Excel Source Output].Columns[geo_name_pk]"
-                      name="geo_name_pk"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Import dim_geography Table\MAPPINGS (dim_geography).Outputs[Excel Source Output].Columns[standardised_province]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Import dim_geography Table\MAPPINGS (dim_geography).Outputs[Excel Source Output].ExternalColumns[standardised_province]"
-                      length="255"
-                      lineageId="Package\Import dim_geography Table\MAPPINGS (dim_geography).Outputs[Excel Source Output].Columns[standardised_province]"
-                      name="standardised_province"
-                      truncationRowDisposition="FailComponent" />
-                  </outputColumns>
-                  <externalMetadataColumns
-                    isUsed="True">
-                    <externalMetadataColumn
-                      refId="Package\Import dim_geography Table\MAPPINGS (dim_geography).Outputs[Excel Source Output].ExternalColumns[geo_name_pk]"
-                      dataType="wstr"
-                      length="255"
-                      name="geo_name_pk" />
-                    <externalMetadataColumn
-                      refId="Package\Import dim_geography Table\MAPPINGS (dim_geography).Outputs[Excel Source Output].ExternalColumns[standardised_province]"
-                      dataType="wstr"
-                      length="255"
-                      name="standardised_province" />
-                  </externalMetadataColumns>
-                </output>
-                <output
-                  refId="Package\Import dim_geography Table\MAPPINGS (dim_geography).Outputs[Excel Source Error Output]"
-                  isErrorOut="true"
-                  name="Excel Source Error Output">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\Import dim_geography Table\MAPPINGS (dim_geography).Outputs[Excel Source Error Output].Columns[geo_name_pk]"
-                      dataType="wstr"
-                      length="255"
-                      lineageId="Package\Import dim_geography Table\MAPPINGS (dim_geography).Outputs[Excel Source Error Output].Columns[geo_name_pk]"
-                      name="geo_name_pk" />
-                    <outputColumn
-                      refId="Package\Import dim_geography Table\MAPPINGS (dim_geography).Outputs[Excel Source Error Output].Columns[standardised_province]"
-                      dataType="wstr"
-                      length="255"
-                      lineageId="Package\Import dim_geography Table\MAPPINGS (dim_geography).Outputs[Excel Source Error Output].Columns[standardised_province]"
-                      name="standardised_province" />
-                    <outputColumn
-                      refId="Package\Import dim_geography Table\MAPPINGS (dim_geography).Outputs[Excel Source Error Output].Columns[ErrorCode]"
-                      dataType="i4"
-                      lineageId="Package\Import dim_geography Table\MAPPINGS (dim_geography).Outputs[Excel Source Error Output].Columns[ErrorCode]"
-                      name="ErrorCode"
-                      specialFlags="1" />
-                    <outputColumn
-                      refId="Package\Import dim_geography Table\MAPPINGS (dim_geography).Outputs[Excel Source Error Output].Columns[ErrorColumn]"
-                      dataType="i4"
-                      lineageId="Package\Import dim_geography Table\MAPPINGS (dim_geography).Outputs[Excel Source Error Output].Columns[ErrorColumn]"
-                      name="ErrorColumn"
-                      specialFlags="2" />
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-              </outputs>
-            </component>
           </components>
           <paths>
             <path
-              refId="Package\Import dim_geography Table.Paths[Excel Source Output]"
+              refId="Package\Import dim_geography Table.Paths[Flat File Source Output]"
               endId="Package\Import dim_geography Table\dim_geography OLTP Table.Inputs[OLE DB Destination Input]"
-              name="Excel Source Output"
-              startId="Package\Import dim_geography Table\MAPPINGS (dim_geography).Outputs[Excel Source Output]" />
+              name="Flat File Source Output"
+              startId="Package\Import dim_geography Table\dim_geography CSV file.Outputs[Flat File Source Output]" />
           </paths>
         </pipeline>
       </DTS:ObjectData>
@@ -384,7 +428,7 @@
                       cachedLength="255"
                       cachedName="creative_sector"
                       externalMetadataColumnId="Package\Import dim_industry Table\dim_industry OLTP Table.Inputs[OLE DB Destination Input].ExternalColumns[creative_sector]"
-                      lineageId="Package\Import dim_industry Table\MAPPINGS (dim_industry).Outputs[Excel Source Output].Columns[creative_sector]" />
+                      lineageId="Package\Import dim_industry Table\Flat File Source.Outputs[Flat File Source Output].Columns[creative_sector]" />
                     <inputColumn
                       refId="Package\Import dim_industry Table\dim_industry OLTP Table.Inputs[OLE DB Destination Input].Columns[short_naics6]"
                       cachedDataType="wstr"
@@ -426,7 +470,7 @@
                       cachedLength="255"
                       cachedName="main_industry"
                       externalMetadataColumnId="Package\Import dim_industry Table\dim_industry OLTP Table.Inputs[OLE DB Destination Input].ExternalColumns[main_industry]"
-                      lineageId="Package\Import dim_industry Table\MAPPINGS (dim_industry).Outputs[Excel Source Output].Columns[main_industry]" />
+                      lineageId="Package\Import dim_industry Table\Flat File Source.Outputs[Flat File Source Output].Columns[main_industry]" />
                     <inputColumn
                       refId="Package\Import dim_industry Table\dim_industry OLTP Table.Inputs[OLE DB Destination Input].Columns[short_pnaics]"
                       cachedDataType="wstr"
@@ -506,246 +550,271 @@
               </outputs>
             </component>
             <component
-              refId="Package\Import dim_industry Table\MAPPINGS (dim_industry)"
-              componentClassID="Microsoft.ExcelSource"
-              contactInfo="Excel Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
-              description="Excel Source"
-              name="MAPPINGS (dim_industry)"
+              refId="Package\Import dim_industry Table\Flat File Source"
+              componentClassID="Microsoft.FlatFileSource"
+              contactInfo="Flat File Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Flat File Source"
+              localeId="2057"
+              name="Flat File Source"
               usesDispositions="true"
               version="1">
               <properties>
                 <property
-                  dataType="System.Int32"
-                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
-                  name="CommandTimeout">0</property>
+                  dataType="System.Boolean"
+                  description="Specifies whether zero-length columns are treated as null."
+                  name="RetainNulls">true</property>
                 <property
                   dataType="System.String"
-                  description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset">dim_industry$</property>
-                <property
-                  dataType="System.String"
-                  description="Specifies the variable that contains the name of the database object used to open a rowset."
-                  name="OpenRowsetVariable"></property>
-                <property
-                  dataType="System.String"
-                  description="The SQL command to be executed."
-                  name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
-                <property
-                  dataType="System.String"
-                  description="The variable that contains the SQL command to be executed."
-                  name="SqlCommandVariable"></property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the mode used to access the database."
-                  name="AccessMode"
-                  typeConverter="AccessMode">0</property>
-                <property
-                  dataType="System.String"
-                  description="The mapping from parameters in the SQL command to variables."
-                  name="ParameterMapping"></property>
+                  description="Specifies the name of an output column containing the file name. If no name is specified, no output column containing the file name will be generated."
+                  name="FileNameColumnName"></property>
               </properties>
               <connections>
                 <connection
-                  refId="Package\Import dim_industry Table\MAPPINGS (dim_industry).Connections[OleDbConnection]"
-                  connectionManagerID="{7A6A48E9-CEDD-40AC-8E7B-406E882F411E}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[MAPPINGS]"
-                  description="The OLE DB runtime connection used to access the database."
-                  name="OleDbConnection" />
+                  refId="Package\Import dim_industry Table\Flat File Source.Connections[FlatFileConnection]"
+                  connectionManagerID="{E4C25A5A-8A6C-4E9B-9041-C27BE299883E}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[dim_industry.csv]"
+                  name="FlatFileConnection" />
               </connections>
               <outputs>
                 <output
-                  refId="Package\Import dim_industry Table\MAPPINGS (dim_industry).Outputs[Excel Source Output]"
-                  name="Excel Source Output">
+                  refId="Package\Import dim_industry Table\Flat File Source.Outputs[Flat File Source Output]"
+                  name="Flat File Source Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Import dim_industry Table\MAPPINGS (dim_industry).Outputs[Excel Source Output].Columns[pnaics]"
+                      refId="Package\Import dim_industry Table\Flat File Source.Outputs[Flat File Source Output].Columns[pnaics]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Import dim_industry Table\MAPPINGS (dim_industry).Outputs[Excel Source Output].ExternalColumns[pnaics]"
+                      externalMetadataColumnId="Package\Import dim_industry Table\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[pnaics]"
                       length="255"
-                      lineageId="Package\Import dim_industry Table\MAPPINGS (dim_industry).Outputs[Excel Source Output].Columns[pnaics]"
+                      lineageId="Package\Import dim_industry Table\Flat File Source.Outputs[Flat File Source Output].Columns[pnaics]"
                       name="pnaics"
-                      truncationRowDisposition="FailComponent" />
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
                     <outputColumn
-                      refId="Package\Import dim_industry Table\MAPPINGS (dim_industry).Outputs[Excel Source Output].Columns[naics6]"
+                      refId="Package\Import dim_industry Table\Flat File Source.Outputs[Flat File Source Output].Columns[naics6]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Import dim_industry Table\MAPPINGS (dim_industry).Outputs[Excel Source Output].ExternalColumns[naics6]"
+                      externalMetadataColumnId="Package\Import dim_industry Table\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[naics6]"
                       length="255"
-                      lineageId="Package\Import dim_industry Table\MAPPINGS (dim_industry).Outputs[Excel Source Output].Columns[naics6]"
+                      lineageId="Package\Import dim_industry Table\Flat File Source.Outputs[Flat File Source Output].Columns[naics6]"
                       name="naics6"
-                      truncationRowDisposition="FailComponent" />
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
                     <outputColumn
-                      refId="Package\Import dim_industry Table\MAPPINGS (dim_industry).Outputs[Excel Source Output].Columns[naics5]"
+                      refId="Package\Import dim_industry Table\Flat File Source.Outputs[Flat File Source Output].Columns[naics5]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Import dim_industry Table\MAPPINGS (dim_industry).Outputs[Excel Source Output].ExternalColumns[naics5]"
+                      externalMetadataColumnId="Package\Import dim_industry Table\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[naics5]"
                       length="255"
-                      lineageId="Package\Import dim_industry Table\MAPPINGS (dim_industry).Outputs[Excel Source Output].Columns[naics5]"
+                      lineageId="Package\Import dim_industry Table\Flat File Source.Outputs[Flat File Source Output].Columns[naics5]"
                       name="naics5"
-                      truncationRowDisposition="FailComponent" />
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
                     <outputColumn
-                      refId="Package\Import dim_industry Table\MAPPINGS (dim_industry).Outputs[Excel Source Output].Columns[naics4]"
+                      refId="Package\Import dim_industry Table\Flat File Source.Outputs[Flat File Source Output].Columns[naics4]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Import dim_industry Table\MAPPINGS (dim_industry).Outputs[Excel Source Output].ExternalColumns[naics4]"
+                      externalMetadataColumnId="Package\Import dim_industry Table\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[naics4]"
                       length="255"
-                      lineageId="Package\Import dim_industry Table\MAPPINGS (dim_industry).Outputs[Excel Source Output].Columns[naics4]"
+                      lineageId="Package\Import dim_industry Table\Flat File Source.Outputs[Flat File Source Output].Columns[naics4]"
                       name="naics4"
-                      truncationRowDisposition="FailComponent" />
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
                     <outputColumn
-                      refId="Package\Import dim_industry Table\MAPPINGS (dim_industry).Outputs[Excel Source Output].Columns[naics2]"
+                      refId="Package\Import dim_industry Table\Flat File Source.Outputs[Flat File Source Output].Columns[naics3]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Import dim_industry Table\MAPPINGS (dim_industry).Outputs[Excel Source Output].ExternalColumns[naics2]"
+                      externalMetadataColumnId="Package\Import dim_industry Table\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[naics3]"
                       length="255"
-                      lineageId="Package\Import dim_industry Table\MAPPINGS (dim_industry).Outputs[Excel Source Output].Columns[naics2]"
-                      name="naics2"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Import dim_industry Table\MAPPINGS (dim_industry).Outputs[Excel Source Output].Columns[creative_sector]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Import dim_industry Table\MAPPINGS (dim_industry).Outputs[Excel Source Output].ExternalColumns[creative_sector]"
-                      length="255"
-                      lineageId="Package\Import dim_industry Table\MAPPINGS (dim_industry).Outputs[Excel Source Output].Columns[creative_sector]"
-                      name="creative_sector"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Import dim_industry Table\MAPPINGS (dim_industry).Outputs[Excel Source Output].Columns[naics3]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Import dim_industry Table\MAPPINGS (dim_industry).Outputs[Excel Source Output].ExternalColumns[naics3]"
-                      length="255"
-                      lineageId="Package\Import dim_industry Table\MAPPINGS (dim_industry).Outputs[Excel Source Output].Columns[naics3]"
+                      lineageId="Package\Import dim_industry Table\Flat File Source.Outputs[Flat File Source Output].Columns[naics3]"
                       name="naics3"
-                      truncationRowDisposition="FailComponent" />
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
                     <outputColumn
-                      refId="Package\Import dim_industry Table\MAPPINGS (dim_industry).Outputs[Excel Source Output].Columns[main_industry]"
+                      refId="Package\Import dim_industry Table\Flat File Source.Outputs[Flat File Source Output].Columns[naics2]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Import dim_industry Table\MAPPINGS (dim_industry).Outputs[Excel Source Output].ExternalColumns[main_industry]"
+                      externalMetadataColumnId="Package\Import dim_industry Table\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[naics2]"
                       length="255"
-                      lineageId="Package\Import dim_industry Table\MAPPINGS (dim_industry).Outputs[Excel Source Output].Columns[main_industry]"
+                      lineageId="Package\Import dim_industry Table\Flat File Source.Outputs[Flat File Source Output].Columns[naics2]"
+                      name="naics2"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Import dim_industry Table\Flat File Source.Outputs[Flat File Source Output].Columns[creative_sector]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import dim_industry Table\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[creative_sector]"
+                      length="255"
+                      lineageId="Package\Import dim_industry Table\Flat File Source.Outputs[Flat File Source Output].Columns[creative_sector]"
+                      name="creative_sector"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Import dim_industry Table\Flat File Source.Outputs[Flat File Source Output].Columns[main_industry]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import dim_industry Table\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[main_industry]"
+                      length="255"
+                      lineageId="Package\Import dim_industry Table\Flat File Source.Outputs[Flat File Source Output].Columns[main_industry]"
                       name="main_industry"
-                      truncationRowDisposition="FailComponent" />
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\Import dim_industry Table\MAPPINGS (dim_industry).Outputs[Excel Source Output].ExternalColumns[pnaics]"
+                      refId="Package\Import dim_industry Table\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[pnaics]"
                       dataType="wstr"
                       length="255"
                       name="pnaics" />
                     <externalMetadataColumn
-                      refId="Package\Import dim_industry Table\MAPPINGS (dim_industry).Outputs[Excel Source Output].ExternalColumns[naics6]"
+                      refId="Package\Import dim_industry Table\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[naics6]"
                       dataType="wstr"
                       length="255"
                       name="naics6" />
                     <externalMetadataColumn
-                      refId="Package\Import dim_industry Table\MAPPINGS (dim_industry).Outputs[Excel Source Output].ExternalColumns[naics5]"
+                      refId="Package\Import dim_industry Table\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[naics5]"
                       dataType="wstr"
                       length="255"
                       name="naics5" />
                     <externalMetadataColumn
-                      refId="Package\Import dim_industry Table\MAPPINGS (dim_industry).Outputs[Excel Source Output].ExternalColumns[naics4]"
+                      refId="Package\Import dim_industry Table\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[naics4]"
                       dataType="wstr"
                       length="255"
                       name="naics4" />
                     <externalMetadataColumn
-                      refId="Package\Import dim_industry Table\MAPPINGS (dim_industry).Outputs[Excel Source Output].ExternalColumns[naics2]"
-                      dataType="wstr"
-                      length="255"
-                      name="naics2" />
-                    <externalMetadataColumn
-                      refId="Package\Import dim_industry Table\MAPPINGS (dim_industry).Outputs[Excel Source Output].ExternalColumns[creative_sector]"
-                      dataType="wstr"
-                      length="255"
-                      name="creative_sector" />
-                    <externalMetadataColumn
-                      refId="Package\Import dim_industry Table\MAPPINGS (dim_industry).Outputs[Excel Source Output].ExternalColumns[naics3]"
+                      refId="Package\Import dim_industry Table\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[naics3]"
                       dataType="wstr"
                       length="255"
                       name="naics3" />
                     <externalMetadataColumn
-                      refId="Package\Import dim_industry Table\MAPPINGS (dim_industry).Outputs[Excel Source Output].ExternalColumns[main_industry]"
+                      refId="Package\Import dim_industry Table\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[naics2]"
+                      dataType="wstr"
+                      length="255"
+                      name="naics2" />
+                    <externalMetadataColumn
+                      refId="Package\Import dim_industry Table\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[creative_sector]"
+                      dataType="wstr"
+                      length="255"
+                      name="creative_sector" />
+                    <externalMetadataColumn
+                      refId="Package\Import dim_industry Table\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[main_industry]"
                       dataType="wstr"
                       length="255"
                       name="main_industry" />
                   </externalMetadataColumns>
                 </output>
                 <output
-                  refId="Package\Import dim_industry Table\MAPPINGS (dim_industry).Outputs[Excel Source Error Output]"
+                  refId="Package\Import dim_industry Table\Flat File Source.Outputs[Flat File Source Error Output]"
                   isErrorOut="true"
-                  name="Excel Source Error Output">
+                  name="Flat File Source Error Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Import dim_industry Table\MAPPINGS (dim_industry).Outputs[Excel Source Error Output].Columns[pnaics]"
-                      dataType="wstr"
-                      length="255"
-                      lineageId="Package\Import dim_industry Table\MAPPINGS (dim_industry).Outputs[Excel Source Error Output].Columns[pnaics]"
-                      name="pnaics" />
+                      refId="Package\Import dim_industry Table\Flat File Source.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      codePage="65001"
+                      dataType="text"
+                      description="Flat File Source Error Output Column"
+                      lineageId="Package\Import dim_industry Table\Flat File Source.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      name="Flat File Source Error Output Column" />
                     <outputColumn
-                      refId="Package\Import dim_industry Table\MAPPINGS (dim_industry).Outputs[Excel Source Error Output].Columns[naics6]"
-                      dataType="wstr"
-                      length="255"
-                      lineageId="Package\Import dim_industry Table\MAPPINGS (dim_industry).Outputs[Excel Source Error Output].Columns[naics6]"
-                      name="naics6" />
-                    <outputColumn
-                      refId="Package\Import dim_industry Table\MAPPINGS (dim_industry).Outputs[Excel Source Error Output].Columns[naics5]"
-                      dataType="wstr"
-                      length="255"
-                      lineageId="Package\Import dim_industry Table\MAPPINGS (dim_industry).Outputs[Excel Source Error Output].Columns[naics5]"
-                      name="naics5" />
-                    <outputColumn
-                      refId="Package\Import dim_industry Table\MAPPINGS (dim_industry).Outputs[Excel Source Error Output].Columns[naics4]"
-                      dataType="wstr"
-                      length="255"
-                      lineageId="Package\Import dim_industry Table\MAPPINGS (dim_industry).Outputs[Excel Source Error Output].Columns[naics4]"
-                      name="naics4" />
-                    <outputColumn
-                      refId="Package\Import dim_industry Table\MAPPINGS (dim_industry).Outputs[Excel Source Error Output].Columns[naics3]"
-                      dataType="wstr"
-                      length="255"
-                      lineageId="Package\Import dim_industry Table\MAPPINGS (dim_industry).Outputs[Excel Source Error Output].Columns[naics3]"
-                      name="naics3" />
-                    <outputColumn
-                      refId="Package\Import dim_industry Table\MAPPINGS (dim_industry).Outputs[Excel Source Error Output].Columns[naics2]"
-                      dataType="wstr"
-                      length="255"
-                      lineageId="Package\Import dim_industry Table\MAPPINGS (dim_industry).Outputs[Excel Source Error Output].Columns[naics2]"
-                      name="naics2" />
-                    <outputColumn
-                      refId="Package\Import dim_industry Table\MAPPINGS (dim_industry).Outputs[Excel Source Error Output].Columns[creative_sector]"
-                      dataType="wstr"
-                      length="255"
-                      lineageId="Package\Import dim_industry Table\MAPPINGS (dim_industry).Outputs[Excel Source Error Output].Columns[creative_sector]"
-                      name="creative_sector" />
-                    <outputColumn
-                      refId="Package\Import dim_industry Table\MAPPINGS (dim_industry).Outputs[Excel Source Error Output].Columns[main_industry]"
-                      dataType="wstr"
-                      length="255"
-                      lineageId="Package\Import dim_industry Table\MAPPINGS (dim_industry).Outputs[Excel Source Error Output].Columns[main_industry]"
-                      name="main_industry" />
-                    <outputColumn
-                      refId="Package\Import dim_industry Table\MAPPINGS (dim_industry).Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      refId="Package\Import dim_industry Table\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\Import dim_industry Table\MAPPINGS (dim_industry).Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      lineageId="Package\Import dim_industry Table\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\Import dim_industry Table\MAPPINGS (dim_industry).Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      refId="Package\Import dim_industry Table\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\Import dim_industry Table\MAPPINGS (dim_industry).Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\Import dim_industry Table\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -771,37 +840,37 @@
                       cachedDataType="wstr"
                       cachedLength="255"
                       cachedName="pnaics"
-                      lineageId="Package\Import dim_industry Table\MAPPINGS (dim_industry).Outputs[Excel Source Output].Columns[pnaics]" />
+                      lineageId="Package\Import dim_industry Table\Flat File Source.Outputs[Flat File Source Output].Columns[pnaics]" />
                     <inputColumn
                       refId="Package\Import dim_industry Table\Shorten NAICS codes.Inputs[Derived Column Input].Columns[naics6]"
                       cachedDataType="wstr"
                       cachedLength="255"
                       cachedName="naics6"
-                      lineageId="Package\Import dim_industry Table\MAPPINGS (dim_industry).Outputs[Excel Source Output].Columns[naics6]" />
+                      lineageId="Package\Import dim_industry Table\Flat File Source.Outputs[Flat File Source Output].Columns[naics6]" />
                     <inputColumn
                       refId="Package\Import dim_industry Table\Shorten NAICS codes.Inputs[Derived Column Input].Columns[naics5]"
                       cachedDataType="wstr"
                       cachedLength="255"
                       cachedName="naics5"
-                      lineageId="Package\Import dim_industry Table\MAPPINGS (dim_industry).Outputs[Excel Source Output].Columns[naics5]" />
+                      lineageId="Package\Import dim_industry Table\Flat File Source.Outputs[Flat File Source Output].Columns[naics5]" />
                     <inputColumn
                       refId="Package\Import dim_industry Table\Shorten NAICS codes.Inputs[Derived Column Input].Columns[naics4]"
                       cachedDataType="wstr"
                       cachedLength="255"
                       cachedName="naics4"
-                      lineageId="Package\Import dim_industry Table\MAPPINGS (dim_industry).Outputs[Excel Source Output].Columns[naics4]" />
+                      lineageId="Package\Import dim_industry Table\Flat File Source.Outputs[Flat File Source Output].Columns[naics4]" />
                     <inputColumn
                       refId="Package\Import dim_industry Table\Shorten NAICS codes.Inputs[Derived Column Input].Columns[naics2]"
                       cachedDataType="wstr"
                       cachedLength="255"
                       cachedName="naics2"
-                      lineageId="Package\Import dim_industry Table\MAPPINGS (dim_industry).Outputs[Excel Source Output].Columns[naics2]" />
+                      lineageId="Package\Import dim_industry Table\Flat File Source.Outputs[Flat File Source Output].Columns[naics2]" />
                     <inputColumn
                       refId="Package\Import dim_industry Table\Shorten NAICS codes.Inputs[Derived Column Input].Columns[naics3]"
                       cachedDataType="wstr"
                       cachedLength="255"
                       cachedName="naics3"
-                      lineageId="Package\Import dim_industry Table\MAPPINGS (dim_industry).Outputs[Excel Source Output].Columns[naics3]" />
+                      lineageId="Package\Import dim_industry Table\Flat File Source.Outputs[Flat File Source Output].Columns[naics3]" />
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
@@ -828,7 +897,7 @@
                           containsID="true"
                           dataType="System.String"
                           description="Derived Column Expression"
-                          name="Expression">[LEFT](#{Package\Import dim_industry Table\MAPPINGS (dim_industry).Outputs[Excel Source Output].Columns[pnaics]},7)</property>
+                          name="Expression">[LEFT](#{Package\Import dim_industry Table\Flat File Source.Outputs[Flat File Source Output].Columns[pnaics]},7)</property>
                         <property
                           containsID="true"
                           dataType="System.String"
@@ -851,7 +920,7 @@
                           containsID="true"
                           dataType="System.String"
                           description="Derived Column Expression"
-                          name="Expression">[LEFT](#{Package\Import dim_industry Table\MAPPINGS (dim_industry).Outputs[Excel Source Output].Columns[naics6]},7)</property>
+                          name="Expression">[LEFT](#{Package\Import dim_industry Table\Flat File Source.Outputs[Flat File Source Output].Columns[naics6]},7)</property>
                         <property
                           containsID="true"
                           dataType="System.String"
@@ -874,7 +943,7 @@
                           containsID="true"
                           dataType="System.String"
                           description="Derived Column Expression"
-                          name="Expression">[LEFT](#{Package\Import dim_industry Table\MAPPINGS (dim_industry).Outputs[Excel Source Output].Columns[naics5]},7)</property>
+                          name="Expression">[LEFT](#{Package\Import dim_industry Table\Flat File Source.Outputs[Flat File Source Output].Columns[naics5]},7)</property>
                         <property
                           containsID="true"
                           dataType="System.String"
@@ -897,7 +966,7 @@
                           containsID="true"
                           dataType="System.String"
                           description="Derived Column Expression"
-                          name="Expression">[LEFT](#{Package\Import dim_industry Table\MAPPINGS (dim_industry).Outputs[Excel Source Output].Columns[naics4]},7)</property>
+                          name="Expression">[LEFT](#{Package\Import dim_industry Table\Flat File Source.Outputs[Flat File Source Output].Columns[naics4]},7)</property>
                         <property
                           containsID="true"
                           dataType="System.String"
@@ -920,7 +989,7 @@
                           containsID="true"
                           dataType="System.String"
                           description="Derived Column Expression"
-                          name="Expression">[LEFT](#{Package\Import dim_industry Table\MAPPINGS (dim_industry).Outputs[Excel Source Output].Columns[naics2]},7)</property>
+                          name="Expression">[LEFT](#{Package\Import dim_industry Table\Flat File Source.Outputs[Flat File Source Output].Columns[naics2]},7)</property>
                         <property
                           containsID="true"
                           dataType="System.String"
@@ -943,7 +1012,7 @@
                           containsID="true"
                           dataType="System.String"
                           description="Derived Column Expression"
-                          name="Expression">[LEFT](#{Package\Import dim_industry Table\MAPPINGS (dim_industry).Outputs[Excel Source Output].Columns[naics3]},7)</property>
+                          name="Expression">[LEFT](#{Package\Import dim_industry Table\Flat File Source.Outputs[Flat File Source Output].Columns[naics3]},7)</property>
                         <property
                           containsID="true"
                           dataType="System.String"
@@ -988,10 +1057,10 @@
               name="Derived Column Output"
               startId="Package\Import dim_industry Table\Shorten NAICS codes.Outputs[Derived Column Output]" />
             <path
-              refId="Package\Import dim_industry Table.Paths[Excel Source Output]"
+              refId="Package\Import dim_industry Table.Paths[Flat File Source Output]"
               endId="Package\Import dim_industry Table\Shorten NAICS codes.Inputs[Derived Column Input]"
-              name="Excel Source Output"
-              startId="Package\Import dim_industry Table\MAPPINGS (dim_industry).Outputs[Excel Source Output]" />
+              name="Flat File Source Output"
+              startId="Package\Import dim_industry Table\Flat File Source.Outputs[Flat File Source Output]" />
           </paths>
         </pipeline>
       </DTS:ObjectData>
@@ -1010,6 +1079,227 @@
         <pipeline
           version="1">
           <components>
+            <component
+              refId="Package\Import dim_occupation Table\dim_occupation csv file"
+              componentClassID="Microsoft.FlatFileSource"
+              contactInfo="Flat File Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Flat File Source"
+              localeId="2057"
+              name="dim_occupation csv file"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether zero-length columns are treated as null."
+                  name="RetainNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of an output column containing the file name. If no name is specified, no output column containing the file name will be generated."
+                  name="FileNameColumnName"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Import dim_occupation Table\dim_occupation csv file.Connections[FlatFileConnection]"
+                  connectionManagerID="{AEC8EAC7-4318-4176-B528-4C1C39BB095E}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[dim_occupation.csv]"
+                  name="FlatFileConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Import dim_occupation Table\dim_occupation csv file.Outputs[Flat File Source Output]"
+                  name="Flat File Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Import dim_occupation Table\dim_occupation csv file.Outputs[Flat File Source Output].Columns[anocs4]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import dim_occupation Table\dim_occupation csv file.Outputs[Flat File Source Output].ExternalColumns[anocs4]"
+                      length="255"
+                      lineageId="Package\Import dim_occupation Table\dim_occupation csv file.Outputs[Flat File Source Output].Columns[anocs4]"
+                      name="anocs4"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Import dim_occupation Table\dim_occupation csv file.Outputs[Flat File Source Output].Columns[occupation_description]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import dim_occupation Table\dim_occupation csv file.Outputs[Flat File Source Output].ExternalColumns[occupation_description]"
+                      length="255"
+                      lineageId="Package\Import dim_occupation Table\dim_occupation csv file.Outputs[Flat File Source Output].Columns[occupation_description]"
+                      name="occupation_description"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Import dim_occupation Table\dim_occupation csv file.Outputs[Flat File Source Output].Columns[creative_occupation_type]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import dim_occupation Table\dim_occupation csv file.Outputs[Flat File Source Output].ExternalColumns[creative_occupation_type]"
+                      length="255"
+                      lineageId="Package\Import dim_occupation Table\dim_occupation csv file.Outputs[Flat File Source Output].Columns[creative_occupation_type]"
+                      name="creative_occupation_type"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Import dim_occupation Table\dim_occupation csv file.Outputs[Flat File Source Output].Columns[o_nesta]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import dim_occupation Table\dim_occupation csv file.Outputs[Flat File Source Output].ExternalColumns[o_nesta]"
+                      length="255"
+                      lineageId="Package\Import dim_occupation Table\dim_occupation csv file.Outputs[Flat File Source Output].Columns[o_nesta]"
+                      name="o_nesta"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Import dim_occupation Table\dim_occupation csv file.Outputs[Flat File Source Output].Columns[o_higgs]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import dim_occupation Table\dim_occupation csv file.Outputs[Flat File Source Output].ExternalColumns[o_higgs]"
+                      length="255"
+                      lineageId="Package\Import dim_occupation Table\dim_occupation csv file.Outputs[Flat File Source Output].Columns[o_higgs]"
+                      name="o_higgs"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Import dim_occupation Table\dim_occupation csv file.Outputs[Flat File Source Output].Columns[o_freeman]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import dim_occupation Table\dim_occupation csv file.Outputs[Flat File Source Output].ExternalColumns[o_freeman]"
+                      length="255"
+                      lineageId="Package\Import dim_occupation Table\dim_occupation csv file.Outputs[Flat File Source Output].Columns[o_freeman]"
+                      name="o_freeman"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Import dim_occupation Table\dim_occupation csv file.Outputs[Flat File Source Output].ExternalColumns[anocs4]"
+                      dataType="wstr"
+                      length="255"
+                      name="anocs4" />
+                    <externalMetadataColumn
+                      refId="Package\Import dim_occupation Table\dim_occupation csv file.Outputs[Flat File Source Output].ExternalColumns[occupation_description]"
+                      dataType="wstr"
+                      length="255"
+                      name="occupation_description" />
+                    <externalMetadataColumn
+                      refId="Package\Import dim_occupation Table\dim_occupation csv file.Outputs[Flat File Source Output].ExternalColumns[creative_occupation_type]"
+                      dataType="wstr"
+                      length="255"
+                      name="creative_occupation_type" />
+                    <externalMetadataColumn
+                      refId="Package\Import dim_occupation Table\dim_occupation csv file.Outputs[Flat File Source Output].ExternalColumns[o_nesta]"
+                      dataType="wstr"
+                      length="255"
+                      name="o_nesta" />
+                    <externalMetadataColumn
+                      refId="Package\Import dim_occupation Table\dim_occupation csv file.Outputs[Flat File Source Output].ExternalColumns[o_higgs]"
+                      dataType="wstr"
+                      length="255"
+                      name="o_higgs" />
+                    <externalMetadataColumn
+                      refId="Package\Import dim_occupation Table\dim_occupation csv file.Outputs[Flat File Source Output].ExternalColumns[o_freeman]"
+                      dataType="wstr"
+                      length="255"
+                      name="o_freeman" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Import dim_occupation Table\dim_occupation csv file.Outputs[Flat File Source Error Output]"
+                  isErrorOut="true"
+                  name="Flat File Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Import dim_occupation Table\dim_occupation csv file.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      codePage="65001"
+                      dataType="text"
+                      description="Flat File Source Error Output Column"
+                      lineageId="Package\Import dim_occupation Table\dim_occupation csv file.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      name="Flat File Source Error Output Column" />
+                    <outputColumn
+                      refId="Package\Import dim_occupation Table\dim_occupation csv file.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Import dim_occupation Table\dim_occupation csv file.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Import dim_occupation Table\dim_occupation csv file.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Import dim_occupation Table\dim_occupation csv file.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
             <component
               refId="Package\Import dim_occupation Table\dim_occupation OLTP Table"
               componentClassID="Microsoft.OLEDBDestination"
@@ -1088,7 +1378,7 @@
                       cachedLength="255"
                       cachedName="occupation_description"
                       externalMetadataColumnId="Package\Import dim_occupation Table\dim_occupation OLTP Table.Inputs[OLE DB Destination Input].ExternalColumns[occupation_description]"
-                      lineageId="Package\Import dim_occupation Table\MAPPINGS (dim_occupation).Outputs[Excel Source Output].Columns[occupation_description]" />
+                      lineageId="Package\Import dim_occupation Table\dim_occupation csv file.Outputs[Flat File Source Output].Columns[occupation_description]" />
                     <inputColumn
                       refId="Package\Import dim_occupation Table\dim_occupation OLTP Table.Inputs[OLE DB Destination Input].Columns[short_o_nesta]"
                       cachedDataType="wstr"
@@ -1186,212 +1476,6 @@
               </outputs>
             </component>
             <component
-              refId="Package\Import dim_occupation Table\MAPPINGS (dim_occupation)"
-              componentClassID="Microsoft.ExcelSource"
-              contactInfo="Excel Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
-              description="Excel Source"
-              name="MAPPINGS (dim_occupation)"
-              usesDispositions="true"
-              version="1">
-              <properties>
-                <property
-                  dataType="System.Int32"
-                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
-                  name="CommandTimeout">0</property>
-                <property
-                  dataType="System.String"
-                  description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset">dim_occupation$</property>
-                <property
-                  dataType="System.String"
-                  description="Specifies the variable that contains the name of the database object used to open a rowset."
-                  name="OpenRowsetVariable"></property>
-                <property
-                  dataType="System.String"
-                  description="The SQL command to be executed."
-                  name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
-                <property
-                  dataType="System.String"
-                  description="The variable that contains the SQL command to be executed."
-                  name="SqlCommandVariable"></property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the mode used to access the database."
-                  name="AccessMode"
-                  typeConverter="AccessMode">0</property>
-                <property
-                  dataType="System.String"
-                  description="The mapping from parameters in the SQL command to variables."
-                  name="ParameterMapping"></property>
-              </properties>
-              <connections>
-                <connection
-                  refId="Package\Import dim_occupation Table\MAPPINGS (dim_occupation).Connections[OleDbConnection]"
-                  connectionManagerID="{7A6A48E9-CEDD-40AC-8E7B-406E882F411E}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[MAPPINGS]"
-                  description="The OLE DB runtime connection used to access the database."
-                  name="OleDbConnection" />
-              </connections>
-              <outputs>
-                <output
-                  refId="Package\Import dim_occupation Table\MAPPINGS (dim_occupation).Outputs[Excel Source Output]"
-                  name="Excel Source Output">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\Import dim_occupation Table\MAPPINGS (dim_occupation).Outputs[Excel Source Output].Columns[anocs4]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Import dim_occupation Table\MAPPINGS (dim_occupation).Outputs[Excel Source Output].ExternalColumns[anocs4]"
-                      length="255"
-                      lineageId="Package\Import dim_occupation Table\MAPPINGS (dim_occupation).Outputs[Excel Source Output].Columns[anocs4]"
-                      name="anocs4"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Import dim_occupation Table\MAPPINGS (dim_occupation).Outputs[Excel Source Output].Columns[occupation_description]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Import dim_occupation Table\MAPPINGS (dim_occupation).Outputs[Excel Source Output].ExternalColumns[occupation_description]"
-                      length="255"
-                      lineageId="Package\Import dim_occupation Table\MAPPINGS (dim_occupation).Outputs[Excel Source Output].Columns[occupation_description]"
-                      name="occupation_description"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Import dim_occupation Table\MAPPINGS (dim_occupation).Outputs[Excel Source Output].Columns[o_nesta]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Import dim_occupation Table\MAPPINGS (dim_occupation).Outputs[Excel Source Output].ExternalColumns[o_nesta]"
-                      length="255"
-                      lineageId="Package\Import dim_occupation Table\MAPPINGS (dim_occupation).Outputs[Excel Source Output].Columns[o_nesta]"
-                      name="o_nesta"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Import dim_occupation Table\MAPPINGS (dim_occupation).Outputs[Excel Source Output].Columns[o_higgs]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Import dim_occupation Table\MAPPINGS (dim_occupation).Outputs[Excel Source Output].ExternalColumns[o_higgs]"
-                      length="255"
-                      lineageId="Package\Import dim_occupation Table\MAPPINGS (dim_occupation).Outputs[Excel Source Output].Columns[o_higgs]"
-                      name="o_higgs"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Import dim_occupation Table\MAPPINGS (dim_occupation).Outputs[Excel Source Output].Columns[o_freeman]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Import dim_occupation Table\MAPPINGS (dim_occupation).Outputs[Excel Source Output].ExternalColumns[o_freeman]"
-                      length="255"
-                      lineageId="Package\Import dim_occupation Table\MAPPINGS (dim_occupation).Outputs[Excel Source Output].Columns[o_freeman]"
-                      name="o_freeman"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Import dim_occupation Table\MAPPINGS (dim_occupation).Outputs[Excel Source Output].Columns[creative_occupation_type]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Import dim_occupation Table\MAPPINGS (dim_occupation).Outputs[Excel Source Output].ExternalColumns[creative_occupation_type]"
-                      length="255"
-                      lineageId="Package\Import dim_occupation Table\MAPPINGS (dim_occupation).Outputs[Excel Source Output].Columns[creative_occupation_type]"
-                      name="creative_occupation_type"
-                      truncationRowDisposition="FailComponent" />
-                  </outputColumns>
-                  <externalMetadataColumns
-                    isUsed="True">
-                    <externalMetadataColumn
-                      refId="Package\Import dim_occupation Table\MAPPINGS (dim_occupation).Outputs[Excel Source Output].ExternalColumns[anocs4]"
-                      dataType="wstr"
-                      length="255"
-                      name="anocs4" />
-                    <externalMetadataColumn
-                      refId="Package\Import dim_occupation Table\MAPPINGS (dim_occupation).Outputs[Excel Source Output].ExternalColumns[occupation_description]"
-                      dataType="wstr"
-                      length="255"
-                      name="occupation_description" />
-                    <externalMetadataColumn
-                      refId="Package\Import dim_occupation Table\MAPPINGS (dim_occupation).Outputs[Excel Source Output].ExternalColumns[o_nesta]"
-                      dataType="wstr"
-                      length="255"
-                      name="o_nesta" />
-                    <externalMetadataColumn
-                      refId="Package\Import dim_occupation Table\MAPPINGS (dim_occupation).Outputs[Excel Source Output].ExternalColumns[o_higgs]"
-                      dataType="wstr"
-                      length="255"
-                      name="o_higgs" />
-                    <externalMetadataColumn
-                      refId="Package\Import dim_occupation Table\MAPPINGS (dim_occupation).Outputs[Excel Source Output].ExternalColumns[o_freeman]"
-                      dataType="wstr"
-                      length="255"
-                      name="o_freeman" />
-                    <externalMetadataColumn
-                      refId="Package\Import dim_occupation Table\MAPPINGS (dim_occupation).Outputs[Excel Source Output].ExternalColumns[creative_occupation_type]"
-                      dataType="wstr"
-                      length="255"
-                      name="creative_occupation_type" />
-                  </externalMetadataColumns>
-                </output>
-                <output
-                  refId="Package\Import dim_occupation Table\MAPPINGS (dim_occupation).Outputs[Excel Source Error Output]"
-                  isErrorOut="true"
-                  name="Excel Source Error Output">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\Import dim_occupation Table\MAPPINGS (dim_occupation).Outputs[Excel Source Error Output].Columns[anocs4]"
-                      dataType="wstr"
-                      length="255"
-                      lineageId="Package\Import dim_occupation Table\MAPPINGS (dim_occupation).Outputs[Excel Source Error Output].Columns[anocs4]"
-                      name="anocs4" />
-                    <outputColumn
-                      refId="Package\Import dim_occupation Table\MAPPINGS (dim_occupation).Outputs[Excel Source Error Output].Columns[occupation_description]"
-                      dataType="wstr"
-                      length="255"
-                      lineageId="Package\Import dim_occupation Table\MAPPINGS (dim_occupation).Outputs[Excel Source Error Output].Columns[occupation_description]"
-                      name="occupation_description" />
-                    <outputColumn
-                      refId="Package\Import dim_occupation Table\MAPPINGS (dim_occupation).Outputs[Excel Source Error Output].Columns[creative_occupation_type]"
-                      dataType="wstr"
-                      length="255"
-                      lineageId="Package\Import dim_occupation Table\MAPPINGS (dim_occupation).Outputs[Excel Source Error Output].Columns[creative_occupation_type]"
-                      name="creative_occupation_type" />
-                    <outputColumn
-                      refId="Package\Import dim_occupation Table\MAPPINGS (dim_occupation).Outputs[Excel Source Error Output].Columns[o_nesta]"
-                      dataType="wstr"
-                      length="255"
-                      lineageId="Package\Import dim_occupation Table\MAPPINGS (dim_occupation).Outputs[Excel Source Error Output].Columns[o_nesta]"
-                      name="o_nesta" />
-                    <outputColumn
-                      refId="Package\Import dim_occupation Table\MAPPINGS (dim_occupation).Outputs[Excel Source Error Output].Columns[o_higgs]"
-                      dataType="wstr"
-                      length="255"
-                      lineageId="Package\Import dim_occupation Table\MAPPINGS (dim_occupation).Outputs[Excel Source Error Output].Columns[o_higgs]"
-                      name="o_higgs" />
-                    <outputColumn
-                      refId="Package\Import dim_occupation Table\MAPPINGS (dim_occupation).Outputs[Excel Source Error Output].Columns[o_freeman]"
-                      dataType="wstr"
-                      length="255"
-                      lineageId="Package\Import dim_occupation Table\MAPPINGS (dim_occupation).Outputs[Excel Source Error Output].Columns[o_freeman]"
-                      name="o_freeman" />
-                    <outputColumn
-                      refId="Package\Import dim_occupation Table\MAPPINGS (dim_occupation).Outputs[Excel Source Error Output].Columns[ErrorCode]"
-                      dataType="i4"
-                      lineageId="Package\Import dim_occupation Table\MAPPINGS (dim_occupation).Outputs[Excel Source Error Output].Columns[ErrorCode]"
-                      name="ErrorCode"
-                      specialFlags="1" />
-                    <outputColumn
-                      refId="Package\Import dim_occupation Table\MAPPINGS (dim_occupation).Outputs[Excel Source Error Output].Columns[ErrorColumn]"
-                      dataType="i4"
-                      lineageId="Package\Import dim_occupation Table\MAPPINGS (dim_occupation).Outputs[Excel Source Error Output].Columns[ErrorColumn]"
-                      name="ErrorColumn"
-                      specialFlags="2" />
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-              </outputs>
-            </component>
-            <component
               refId="Package\Import dim_occupation Table\Shorten anocs, creative"
               componentClassID="Microsoft.DerivedColumn"
               contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
@@ -1409,31 +1493,31 @@
                       cachedDataType="wstr"
                       cachedLength="255"
                       cachedName="anocs4"
-                      lineageId="Package\Import dim_occupation Table\MAPPINGS (dim_occupation).Outputs[Excel Source Output].Columns[anocs4]" />
+                      lineageId="Package\Import dim_occupation Table\dim_occupation csv file.Outputs[Flat File Source Output].Columns[anocs4]" />
                     <inputColumn
                       refId="Package\Import dim_occupation Table\Shorten anocs, creative.Inputs[Derived Column Input].Columns[o_nesta]"
                       cachedDataType="wstr"
                       cachedLength="255"
                       cachedName="o_nesta"
-                      lineageId="Package\Import dim_occupation Table\MAPPINGS (dim_occupation).Outputs[Excel Source Output].Columns[o_nesta]" />
+                      lineageId="Package\Import dim_occupation Table\dim_occupation csv file.Outputs[Flat File Source Output].Columns[o_nesta]" />
                     <inputColumn
                       refId="Package\Import dim_occupation Table\Shorten anocs, creative.Inputs[Derived Column Input].Columns[o_higgs]"
                       cachedDataType="wstr"
                       cachedLength="255"
                       cachedName="o_higgs"
-                      lineageId="Package\Import dim_occupation Table\MAPPINGS (dim_occupation).Outputs[Excel Source Output].Columns[o_higgs]" />
+                      lineageId="Package\Import dim_occupation Table\dim_occupation csv file.Outputs[Flat File Source Output].Columns[o_higgs]" />
                     <inputColumn
                       refId="Package\Import dim_occupation Table\Shorten anocs, creative.Inputs[Derived Column Input].Columns[o_freeman]"
                       cachedDataType="wstr"
                       cachedLength="255"
                       cachedName="o_freeman"
-                      lineageId="Package\Import dim_occupation Table\MAPPINGS (dim_occupation).Outputs[Excel Source Output].Columns[o_freeman]" />
+                      lineageId="Package\Import dim_occupation Table\dim_occupation csv file.Outputs[Flat File Source Output].Columns[o_freeman]" />
                     <inputColumn
                       refId="Package\Import dim_occupation Table\Shorten anocs, creative.Inputs[Derived Column Input].Columns[creative_occupation_type]"
                       cachedDataType="wstr"
                       cachedLength="255"
                       cachedName="creative_occupation_type"
-                      lineageId="Package\Import dim_occupation Table\MAPPINGS (dim_occupation).Outputs[Excel Source Output].Columns[creative_occupation_type]" />
+                      lineageId="Package\Import dim_occupation Table\dim_occupation csv file.Outputs[Flat File Source Output].Columns[creative_occupation_type]" />
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
@@ -1460,7 +1544,7 @@
                           containsID="true"
                           dataType="System.String"
                           description="Derived Column Expression"
-                          name="Expression">[LEFT](#{Package\Import dim_occupation Table\MAPPINGS (dim_occupation).Outputs[Excel Source Output].Columns[anocs4]},5)</property>
+                          name="Expression">[LEFT](#{Package\Import dim_occupation Table\dim_occupation csv file.Outputs[Flat File Source Output].Columns[anocs4]},5)</property>
                         <property
                           containsID="true"
                           dataType="System.String"
@@ -1483,7 +1567,7 @@
                           containsID="true"
                           dataType="System.String"
                           description="Derived Column Expression"
-                          name="Expression">[LEFT](#{Package\Import dim_occupation Table\MAPPINGS (dim_occupation).Outputs[Excel Source Output].Columns[creative_occupation_type]},12)</property>
+                          name="Expression">[LEFT](#{Package\Import dim_occupation Table\dim_occupation csv file.Outputs[Flat File Source Output].Columns[creative_occupation_type]},12)</property>
                         <property
                           containsID="true"
                           dataType="System.String"
@@ -1506,7 +1590,7 @@
                           containsID="true"
                           dataType="System.String"
                           description="Derived Column Expression"
-                          name="Expression">[LEFT](#{Package\Import dim_occupation Table\MAPPINGS (dim_occupation).Outputs[Excel Source Output].Columns[o_nesta]},5)</property>
+                          name="Expression">[LEFT](#{Package\Import dim_occupation Table\dim_occupation csv file.Outputs[Flat File Source Output].Columns[o_nesta]},5)</property>
                         <property
                           containsID="true"
                           dataType="System.String"
@@ -1529,7 +1613,7 @@
                           containsID="true"
                           dataType="System.String"
                           description="Derived Column Expression"
-                          name="Expression">[LEFT](#{Package\Import dim_occupation Table\MAPPINGS (dim_occupation).Outputs[Excel Source Output].Columns[o_higgs]},5)</property>
+                          name="Expression">[LEFT](#{Package\Import dim_occupation Table\dim_occupation csv file.Outputs[Flat File Source Output].Columns[o_higgs]},5)</property>
                         <property
                           containsID="true"
                           dataType="System.String"
@@ -1552,7 +1636,7 @@
                           containsID="true"
                           dataType="System.String"
                           description="Derived Column Expression"
-                          name="Expression">[LEFT](#{Package\Import dim_occupation Table\MAPPINGS (dim_occupation).Outputs[Excel Source Output].Columns[o_freeman]},8)</property>
+                          name="Expression">[LEFT](#{Package\Import dim_occupation Table\dim_occupation csv file.Outputs[Flat File Source Output].Columns[o_freeman]},8)</property>
                         <property
                           containsID="true"
                           dataType="System.String"
@@ -1597,10 +1681,10 @@
               name="Derived Column Output"
               startId="Package\Import dim_occupation Table\Shorten anocs, creative.Outputs[Derived Column Output]" />
             <path
-              refId="Package\Import dim_occupation Table.Paths[Excel Source Output]"
+              refId="Package\Import dim_occupation Table.Paths[Flat File Source Output]"
               endId="Package\Import dim_occupation Table\Shorten anocs, creative.Inputs[Derived Column Input]"
-              name="Excel Source Output"
-              startId="Package\Import dim_occupation Table\MAPPINGS (dim_occupation).Outputs[Excel Source Output]" />
+              name="Flat File Source Output"
+              startId="Package\Import dim_occupation Table\dim_occupation csv file.Outputs[Flat File Source Output]" />
           </paths>
         </pipeline>
       </DTS:ObjectData>
@@ -1619,6 +1703,149 @@
         <pipeline
           version="1">
           <components>
+            <component
+              refId="Package\Import industry_descriptions\industry_descriptions csv file"
+              componentClassID="Microsoft.FlatFileSource"
+              contactInfo="Flat File Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Flat File Source"
+              localeId="2057"
+              name="industry_descriptions csv file"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether zero-length columns are treated as null."
+                  name="RetainNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of an output column containing the file name. If no name is specified, no output column containing the file name will be generated."
+                  name="FileNameColumnName"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Import industry_descriptions\industry_descriptions csv file.Connections[FlatFileConnection]"
+                  connectionManagerID="Package.ConnectionManagers[industry_descriptions.csv]"
+                  connectionManagerRefId="Package.ConnectionManagers[industry_descriptions.csv]"
+                  name="FlatFileConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Import industry_descriptions\industry_descriptions csv file.Outputs[Flat File Source Output]"
+                  name="Flat File Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Import industry_descriptions\industry_descriptions csv file.Outputs[Flat File Source Output].Columns[naics]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import industry_descriptions\industry_descriptions csv file.Outputs[Flat File Source Output].ExternalColumns[naics]"
+                      length="255"
+                      lineageId="Package\Import industry_descriptions\industry_descriptions csv file.Outputs[Flat File Source Output].Columns[naics]"
+                      name="naics"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Import industry_descriptions\industry_descriptions csv file.Outputs[Flat File Source Output].Columns[anaics]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import industry_descriptions\industry_descriptions csv file.Outputs[Flat File Source Output].ExternalColumns[anaics]"
+                      length="255"
+                      lineageId="Package\Import industry_descriptions\industry_descriptions csv file.Outputs[Flat File Source Output].Columns[anaics]"
+                      name="anaics"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Import industry_descriptions\industry_descriptions csv file.Outputs[Flat File Source Output].Columns[description]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import industry_descriptions\industry_descriptions csv file.Outputs[Flat File Source Output].ExternalColumns[description]"
+                      length="255"
+                      lineageId="Package\Import industry_descriptions\industry_descriptions csv file.Outputs[Flat File Source Output].Columns[description]"
+                      name="description"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Import industry_descriptions\industry_descriptions csv file.Outputs[Flat File Source Output].ExternalColumns[naics]"
+                      dataType="wstr"
+                      length="255"
+                      name="naics" />
+                    <externalMetadataColumn
+                      refId="Package\Import industry_descriptions\industry_descriptions csv file.Outputs[Flat File Source Output].ExternalColumns[anaics]"
+                      dataType="wstr"
+                      length="255"
+                      name="anaics" />
+                    <externalMetadataColumn
+                      refId="Package\Import industry_descriptions\industry_descriptions csv file.Outputs[Flat File Source Output].ExternalColumns[description]"
+                      dataType="wstr"
+                      length="255"
+                      name="description" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Import industry_descriptions\industry_descriptions csv file.Outputs[Flat File Source Error Output]"
+                  isErrorOut="true"
+                  name="Flat File Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Import industry_descriptions\industry_descriptions csv file.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      codePage="65001"
+                      dataType="text"
+                      description="Flat File Source Error Output Column"
+                      lineageId="Package\Import industry_descriptions\industry_descriptions csv file.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      name="Flat File Source Error Output Column" />
+                    <outputColumn
+                      refId="Package\Import industry_descriptions\industry_descriptions csv file.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Import industry_descriptions\industry_descriptions csv file.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Import industry_descriptions\industry_descriptions csv file.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Import industry_descriptions\industry_descriptions csv file.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
             <component
               refId="Package\Import industry_descriptions\industry_descriptions OLTP Table"
               componentClassID="Microsoft.OLEDBDestination"
@@ -1697,7 +1924,7 @@
                       cachedLength="255"
                       cachedName="description"
                       externalMetadataColumnId="Package\Import industry_descriptions\industry_descriptions OLTP Table.Inputs[OLE DB Destination Input].ExternalColumns[description]"
-                      lineageId="Package\Import industry_descriptions\MAPPING (industry_descriptions).Outputs[Excel Source Output].Columns[description]" />
+                      lineageId="Package\Import industry_descriptions\industry_descriptions csv file.Outputs[Flat File Source Output].Columns[description]" />
                     <inputColumn
                       refId="Package\Import industry_descriptions\industry_descriptions OLTP Table.Inputs[OLE DB Destination Input].Columns[short_naics]"
                       cachedDataType="wstr"
@@ -1747,149 +1974,6 @@
               </outputs>
             </component>
             <component
-              refId="Package\Import industry_descriptions\MAPPING (industry_descriptions)"
-              componentClassID="Microsoft.ExcelSource"
-              contactInfo="Excel Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
-              description="Excel Source"
-              name="MAPPING (industry_descriptions)"
-              usesDispositions="true"
-              version="1">
-              <properties>
-                <property
-                  dataType="System.Int32"
-                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
-                  name="CommandTimeout">0</property>
-                <property
-                  dataType="System.String"
-                  description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset">industry_descriptions$</property>
-                <property
-                  dataType="System.String"
-                  description="Specifies the variable that contains the name of the database object used to open a rowset."
-                  name="OpenRowsetVariable"></property>
-                <property
-                  dataType="System.String"
-                  description="The SQL command to be executed."
-                  name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
-                <property
-                  dataType="System.String"
-                  description="The variable that contains the SQL command to be executed."
-                  name="SqlCommandVariable"></property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the mode used to access the database."
-                  name="AccessMode"
-                  typeConverter="AccessMode">0</property>
-                <property
-                  dataType="System.String"
-                  description="The mapping from parameters in the SQL command to variables."
-                  name="ParameterMapping"></property>
-              </properties>
-              <connections>
-                <connection
-                  refId="Package\Import industry_descriptions\MAPPING (industry_descriptions).Connections[OleDbConnection]"
-                  connectionManagerID="{7A6A48E9-CEDD-40AC-8E7B-406E882F411E}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[MAPPINGS]"
-                  description="The OLE DB runtime connection used to access the database."
-                  name="OleDbConnection" />
-              </connections>
-              <outputs>
-                <output
-                  refId="Package\Import industry_descriptions\MAPPING (industry_descriptions).Outputs[Excel Source Output]"
-                  name="Excel Source Output">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\Import industry_descriptions\MAPPING (industry_descriptions).Outputs[Excel Source Output].Columns[naics]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Import industry_descriptions\MAPPING (industry_descriptions).Outputs[Excel Source Output].ExternalColumns[naics]"
-                      length="255"
-                      lineageId="Package\Import industry_descriptions\MAPPING (industry_descriptions).Outputs[Excel Source Output].Columns[naics]"
-                      name="naics"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Import industry_descriptions\MAPPING (industry_descriptions).Outputs[Excel Source Output].Columns[anaics]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Import industry_descriptions\MAPPING (industry_descriptions).Outputs[Excel Source Output].ExternalColumns[anaics]"
-                      length="255"
-                      lineageId="Package\Import industry_descriptions\MAPPING (industry_descriptions).Outputs[Excel Source Output].Columns[anaics]"
-                      name="anaics"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Import industry_descriptions\MAPPING (industry_descriptions).Outputs[Excel Source Output].Columns[description]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Import industry_descriptions\MAPPING (industry_descriptions).Outputs[Excel Source Output].ExternalColumns[description]"
-                      length="255"
-                      lineageId="Package\Import industry_descriptions\MAPPING (industry_descriptions).Outputs[Excel Source Output].Columns[description]"
-                      name="description"
-                      truncationRowDisposition="FailComponent" />
-                  </outputColumns>
-                  <externalMetadataColumns
-                    isUsed="True">
-                    <externalMetadataColumn
-                      refId="Package\Import industry_descriptions\MAPPING (industry_descriptions).Outputs[Excel Source Output].ExternalColumns[naics]"
-                      dataType="wstr"
-                      length="255"
-                      name="naics" />
-                    <externalMetadataColumn
-                      refId="Package\Import industry_descriptions\MAPPING (industry_descriptions).Outputs[Excel Source Output].ExternalColumns[anaics]"
-                      dataType="wstr"
-                      length="255"
-                      name="anaics" />
-                    <externalMetadataColumn
-                      refId="Package\Import industry_descriptions\MAPPING (industry_descriptions).Outputs[Excel Source Output].ExternalColumns[description]"
-                      dataType="wstr"
-                      length="255"
-                      name="description" />
-                  </externalMetadataColumns>
-                </output>
-                <output
-                  refId="Package\Import industry_descriptions\MAPPING (industry_descriptions).Outputs[Excel Source Error Output]"
-                  isErrorOut="true"
-                  name="Excel Source Error Output">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\Import industry_descriptions\MAPPING (industry_descriptions).Outputs[Excel Source Error Output].Columns[naics]"
-                      dataType="wstr"
-                      length="255"
-                      lineageId="Package\Import industry_descriptions\MAPPING (industry_descriptions).Outputs[Excel Source Error Output].Columns[naics]"
-                      name="naics" />
-                    <outputColumn
-                      refId="Package\Import industry_descriptions\MAPPING (industry_descriptions).Outputs[Excel Source Error Output].Columns[anaics]"
-                      dataType="wstr"
-                      length="255"
-                      lineageId="Package\Import industry_descriptions\MAPPING (industry_descriptions).Outputs[Excel Source Error Output].Columns[anaics]"
-                      name="anaics" />
-                    <outputColumn
-                      refId="Package\Import industry_descriptions\MAPPING (industry_descriptions).Outputs[Excel Source Error Output].Columns[description]"
-                      dataType="wstr"
-                      length="255"
-                      lineageId="Package\Import industry_descriptions\MAPPING (industry_descriptions).Outputs[Excel Source Error Output].Columns[description]"
-                      name="description" />
-                    <outputColumn
-                      refId="Package\Import industry_descriptions\MAPPING (industry_descriptions).Outputs[Excel Source Error Output].Columns[ErrorCode]"
-                      dataType="i4"
-                      lineageId="Package\Import industry_descriptions\MAPPING (industry_descriptions).Outputs[Excel Source Error Output].Columns[ErrorCode]"
-                      name="ErrorCode"
-                      specialFlags="1" />
-                    <outputColumn
-                      refId="Package\Import industry_descriptions\MAPPING (industry_descriptions).Outputs[Excel Source Error Output].Columns[ErrorColumn]"
-                      dataType="i4"
-                      lineageId="Package\Import industry_descriptions\MAPPING (industry_descriptions).Outputs[Excel Source Error Output].Columns[ErrorColumn]"
-                      name="ErrorColumn"
-                      specialFlags="2" />
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-              </outputs>
-            </component>
-            <component
               refId="Package\Import industry_descriptions\Shorten naics"
               componentClassID="Microsoft.DerivedColumn"
               contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
@@ -1907,7 +1991,7 @@
                       cachedDataType="wstr"
                       cachedLength="255"
                       cachedName="naics"
-                      lineageId="Package\Import industry_descriptions\MAPPING (industry_descriptions).Outputs[Excel Source Output].Columns[naics]" />
+                      lineageId="Package\Import industry_descriptions\industry_descriptions csv file.Outputs[Flat File Source Output].Columns[naics]" />
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
@@ -1934,7 +2018,7 @@
                           containsID="true"
                           dataType="System.String"
                           description="Derived Column Expression"
-                          name="Expression">[LEFT](#{Package\Import industry_descriptions\MAPPING (industry_descriptions).Outputs[Excel Source Output].Columns[naics]},6)</property>
+                          name="Expression">[LEFT](#{Package\Import industry_descriptions\industry_descriptions csv file.Outputs[Flat File Source Output].Columns[naics]},6)</property>
                         <property
                           containsID="true"
                           dataType="System.String"
@@ -1979,10 +2063,10 @@
               name="Derived Column Output"
               startId="Package\Import industry_descriptions\Shorten naics.Outputs[Derived Column Output]" />
             <path
-              refId="Package\Import industry_descriptions.Paths[Excel Source Output]"
+              refId="Package\Import industry_descriptions.Paths[Flat File Source Output]"
               endId="Package\Import industry_descriptions\Shorten naics.Inputs[Derived Column Input]"
-              name="Excel Source Output"
-              startId="Package\Import industry_descriptions\MAPPING (industry_descriptions).Outputs[Excel Source Output]" />
+              name="Flat File Source Output"
+              startId="Package\Import industry_descriptions\industry_descriptions csv file.Outputs[Flat File Source Output]" />
           </paths>
         </pipeline>
       </DTS:ObjectData>
@@ -2001,6 +2085,199 @@
         <pipeline
           version="1">
           <components>
+            <component
+              refId="Package\Import ioicc_splitter OLTP Table\ioicc_splitter csv flat file"
+              componentClassID="Microsoft.FlatFileSource"
+              contactInfo="Flat File Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Flat File Source"
+              localeId="2057"
+              name="ioicc_splitter csv flat file"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether zero-length columns are treated as null."
+                  name="RetainNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of an output column containing the file name. If no name is specified, no output column containing the file name will be generated."
+                  name="FileNameColumnName"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Import ioicc_splitter OLTP Table\ioicc_splitter csv flat file.Connections[FlatFileConnection]"
+                  connectionManagerID="{2DF3827A-B57D-4548-86F4-18B6847FA417}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[ioic_splitter.csv]"
+                  name="FlatFileConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Import ioicc_splitter OLTP Table\ioicc_splitter csv flat file.Outputs[Flat File Source Output]"
+                  name="Flat File Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Import ioicc_splitter OLTP Table\ioicc_splitter csv flat file.Outputs[Flat File Source Output].Columns[pnaics_source]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import ioicc_splitter OLTP Table\ioicc_splitter csv flat file.Outputs[Flat File Source Output].ExternalColumns[pnaics_source]"
+                      length="255"
+                      lineageId="Package\Import ioicc_splitter OLTP Table\ioicc_splitter csv flat file.Outputs[Flat File Source Output].Columns[pnaics_source]"
+                      name="pnaics_source"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Import ioicc_splitter OLTP Table\ioicc_splitter csv flat file.Outputs[Flat File Source Output].Columns[coefficient]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import ioicc_splitter OLTP Table\ioicc_splitter csv flat file.Outputs[Flat File Source Output].ExternalColumns[coefficient]"
+                      lineageId="Package\Import ioicc_splitter OLTP Table\ioicc_splitter csv flat file.Outputs[Flat File Source Output].Columns[coefficient]"
+                      name="coefficient"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Import ioicc_splitter OLTP Table\ioicc_splitter csv flat file.Outputs[Flat File Source Output].Columns[pnaics_target]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import ioicc_splitter OLTP Table\ioicc_splitter csv flat file.Outputs[Flat File Source Output].ExternalColumns[pnaics_target]"
+                      length="255"
+                      lineageId="Package\Import ioicc_splitter OLTP Table\ioicc_splitter csv flat file.Outputs[Flat File Source Output].Columns[pnaics_target]"
+                      name="pnaics_target"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Import ioicc_splitter OLTP Table\ioicc_splitter csv flat file.Outputs[Flat File Source Output].Columns[target_description]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import ioicc_splitter OLTP Table\ioicc_splitter csv flat file.Outputs[Flat File Source Output].ExternalColumns[target_description]"
+                      length="255"
+                      lineageId="Package\Import ioicc_splitter OLTP Table\ioicc_splitter csv flat file.Outputs[Flat File Source Output].Columns[target_description]"
+                      name="target_description"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Import ioicc_splitter OLTP Table\ioicc_splitter csv flat file.Outputs[Flat File Source Output].Columns[source_description]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import ioicc_splitter OLTP Table\ioicc_splitter csv flat file.Outputs[Flat File Source Output].ExternalColumns[source_description]"
+                      length="255"
+                      lineageId="Package\Import ioicc_splitter OLTP Table\ioicc_splitter csv flat file.Outputs[Flat File Source Output].Columns[source_description]"
+                      name="source_description"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Import ioicc_splitter OLTP Table\ioicc_splitter csv flat file.Outputs[Flat File Source Output].ExternalColumns[pnaics_source]"
+                      dataType="wstr"
+                      length="255"
+                      name="pnaics_source" />
+                    <externalMetadataColumn
+                      refId="Package\Import ioicc_splitter OLTP Table\ioicc_splitter csv flat file.Outputs[Flat File Source Output].ExternalColumns[coefficient]"
+                      dataType="r8"
+                      name="coefficient" />
+                    <externalMetadataColumn
+                      refId="Package\Import ioicc_splitter OLTP Table\ioicc_splitter csv flat file.Outputs[Flat File Source Output].ExternalColumns[pnaics_target]"
+                      dataType="wstr"
+                      length="255"
+                      name="pnaics_target" />
+                    <externalMetadataColumn
+                      refId="Package\Import ioicc_splitter OLTP Table\ioicc_splitter csv flat file.Outputs[Flat File Source Output].ExternalColumns[target_description]"
+                      dataType="wstr"
+                      length="255"
+                      name="target_description" />
+                    <externalMetadataColumn
+                      refId="Package\Import ioicc_splitter OLTP Table\ioicc_splitter csv flat file.Outputs[Flat File Source Output].ExternalColumns[source_description]"
+                      dataType="wstr"
+                      length="255"
+                      name="source_description" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Import ioicc_splitter OLTP Table\ioicc_splitter csv flat file.Outputs[Flat File Source Error Output]"
+                  isErrorOut="true"
+                  name="Flat File Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Import ioicc_splitter OLTP Table\ioicc_splitter csv flat file.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      codePage="65001"
+                      dataType="text"
+                      description="Flat File Source Error Output Column"
+                      lineageId="Package\Import ioicc_splitter OLTP Table\ioicc_splitter csv flat file.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      name="Flat File Source Error Output Column" />
+                    <outputColumn
+                      refId="Package\Import ioicc_splitter OLTP Table\ioicc_splitter csv flat file.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Import ioicc_splitter OLTP Table\ioicc_splitter csv flat file.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Import ioicc_splitter OLTP Table\ioicc_splitter csv flat file.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Import ioicc_splitter OLTP Table\ioicc_splitter csv flat file.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
             <component
               refId="Package\Import ioicc_splitter OLTP Table\ioicc_splitter OLTP Table"
               componentClassID="Microsoft.OLEDBDestination"
@@ -2078,14 +2355,14 @@
                       cachedDataType="r8"
                       cachedName="coefficient"
                       externalMetadataColumnId="Package\Import ioicc_splitter OLTP Table\ioicc_splitter OLTP Table.Inputs[OLE DB Destination Input].ExternalColumns[coefficient]"
-                      lineageId="Package\Import ioicc_splitter OLTP Table\MAPPINGS (ioicc_splitter).Outputs[Excel Source Output].Columns[coefficient]" />
+                      lineageId="Package\Import ioicc_splitter OLTP Table\ioicc_splitter csv flat file.Outputs[Flat File Source Output].Columns[coefficient]" />
                     <inputColumn
                       refId="Package\Import ioicc_splitter OLTP Table\ioicc_splitter OLTP Table.Inputs[OLE DB Destination Input].Columns[target_description]"
                       cachedDataType="wstr"
                       cachedLength="255"
                       cachedName="target_description"
                       externalMetadataColumnId="Package\Import ioicc_splitter OLTP Table\ioicc_splitter OLTP Table.Inputs[OLE DB Destination Input].ExternalColumns[target_description]"
-                      lineageId="Package\Import ioicc_splitter OLTP Table\MAPPINGS (ioicc_splitter).Outputs[Excel Source Output].Columns[target_description]" />
+                      lineageId="Package\Import ioicc_splitter OLTP Table\ioicc_splitter csv flat file.Outputs[Flat File Source Output].Columns[target_description]" />
                     <inputColumn
                       refId="Package\Import ioicc_splitter OLTP Table\ioicc_splitter OLTP Table.Inputs[OLE DB Destination Input].Columns[short_pnaics_target]"
                       cachedDataType="wstr"
@@ -2106,7 +2383,7 @@
                       cachedLength="255"
                       cachedName="source_description"
                       externalMetadataColumnId="Package\Import ioicc_splitter OLTP Table\ioicc_splitter OLTP Table.Inputs[OLE DB Destination Input].ExternalColumns[source_description]"
-                      lineageId="Package\Import ioicc_splitter OLTP Table\MAPPINGS (ioicc_splitter).Outputs[Excel Source Output].Columns[source_description]" />
+                      lineageId="Package\Import ioicc_splitter OLTP Table\ioicc_splitter csv flat file.Outputs[Flat File Source Output].Columns[source_description]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -2163,188 +2440,6 @@
               </outputs>
             </component>
             <component
-              refId="Package\Import ioicc_splitter OLTP Table\MAPPINGS (ioicc_splitter)"
-              componentClassID="Microsoft.ExcelSource"
-              contactInfo="Excel Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
-              description="Excel Source"
-              name="MAPPINGS (ioicc_splitter)"
-              usesDispositions="true"
-              version="1">
-              <properties>
-                <property
-                  dataType="System.Int32"
-                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
-                  name="CommandTimeout">0</property>
-                <property
-                  dataType="System.String"
-                  description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset">ioicc_splitter$</property>
-                <property
-                  dataType="System.String"
-                  description="Specifies the variable that contains the name of the database object used to open a rowset."
-                  name="OpenRowsetVariable"></property>
-                <property
-                  dataType="System.String"
-                  description="The SQL command to be executed."
-                  name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
-                <property
-                  dataType="System.String"
-                  description="The variable that contains the SQL command to be executed."
-                  name="SqlCommandVariable"></property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the mode used to access the database."
-                  name="AccessMode"
-                  typeConverter="AccessMode">0</property>
-                <property
-                  dataType="System.String"
-                  description="The mapping from parameters in the SQL command to variables."
-                  name="ParameterMapping"></property>
-              </properties>
-              <connections>
-                <connection
-                  refId="Package\Import ioicc_splitter OLTP Table\MAPPINGS (ioicc_splitter).Connections[OleDbConnection]"
-                  connectionManagerID="{7A6A48E9-CEDD-40AC-8E7B-406E882F411E}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[MAPPINGS]"
-                  description="The OLE DB runtime connection used to access the database."
-                  name="OleDbConnection" />
-              </connections>
-              <outputs>
-                <output
-                  refId="Package\Import ioicc_splitter OLTP Table\MAPPINGS (ioicc_splitter).Outputs[Excel Source Output]"
-                  name="Excel Source Output">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\Import ioicc_splitter OLTP Table\MAPPINGS (ioicc_splitter).Outputs[Excel Source Output].Columns[pnaics_source]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Import ioicc_splitter OLTP Table\MAPPINGS (ioicc_splitter).Outputs[Excel Source Output].ExternalColumns[pnaics_source]"
-                      length="255"
-                      lineageId="Package\Import ioicc_splitter OLTP Table\MAPPINGS (ioicc_splitter).Outputs[Excel Source Output].Columns[pnaics_source]"
-                      name="pnaics_source"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Import ioicc_splitter OLTP Table\MAPPINGS (ioicc_splitter).Outputs[Excel Source Output].Columns[coefficient]"
-                      dataType="r8"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Import ioicc_splitter OLTP Table\MAPPINGS (ioicc_splitter).Outputs[Excel Source Output].ExternalColumns[coefficient]"
-                      lineageId="Package\Import ioicc_splitter OLTP Table\MAPPINGS (ioicc_splitter).Outputs[Excel Source Output].Columns[coefficient]"
-                      name="coefficient"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Import ioicc_splitter OLTP Table\MAPPINGS (ioicc_splitter).Outputs[Excel Source Output].Columns[pnaics_target]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Import ioicc_splitter OLTP Table\MAPPINGS (ioicc_splitter).Outputs[Excel Source Output].ExternalColumns[pnaics_target]"
-                      length="255"
-                      lineageId="Package\Import ioicc_splitter OLTP Table\MAPPINGS (ioicc_splitter).Outputs[Excel Source Output].Columns[pnaics_target]"
-                      name="pnaics_target"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Import ioicc_splitter OLTP Table\MAPPINGS (ioicc_splitter).Outputs[Excel Source Output].Columns[target_description]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Import ioicc_splitter OLTP Table\MAPPINGS (ioicc_splitter).Outputs[Excel Source Output].ExternalColumns[target_description]"
-                      length="255"
-                      lineageId="Package\Import ioicc_splitter OLTP Table\MAPPINGS (ioicc_splitter).Outputs[Excel Source Output].Columns[target_description]"
-                      name="target_description"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Import ioicc_splitter OLTP Table\MAPPINGS (ioicc_splitter).Outputs[Excel Source Output].Columns[source_description]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Import ioicc_splitter OLTP Table\MAPPINGS (ioicc_splitter).Outputs[Excel Source Output].ExternalColumns[source_description]"
-                      length="255"
-                      lineageId="Package\Import ioicc_splitter OLTP Table\MAPPINGS (ioicc_splitter).Outputs[Excel Source Output].Columns[source_description]"
-                      name="source_description"
-                      truncationRowDisposition="FailComponent" />
-                  </outputColumns>
-                  <externalMetadataColumns
-                    isUsed="True">
-                    <externalMetadataColumn
-                      refId="Package\Import ioicc_splitter OLTP Table\MAPPINGS (ioicc_splitter).Outputs[Excel Source Output].ExternalColumns[pnaics_source]"
-                      dataType="wstr"
-                      length="255"
-                      name="pnaics_source" />
-                    <externalMetadataColumn
-                      refId="Package\Import ioicc_splitter OLTP Table\MAPPINGS (ioicc_splitter).Outputs[Excel Source Output].ExternalColumns[coefficient]"
-                      dataType="r8"
-                      name="coefficient" />
-                    <externalMetadataColumn
-                      refId="Package\Import ioicc_splitter OLTP Table\MAPPINGS (ioicc_splitter).Outputs[Excel Source Output].ExternalColumns[pnaics_target]"
-                      dataType="wstr"
-                      length="255"
-                      name="pnaics_target" />
-                    <externalMetadataColumn
-                      refId="Package\Import ioicc_splitter OLTP Table\MAPPINGS (ioicc_splitter).Outputs[Excel Source Output].ExternalColumns[target_description]"
-                      dataType="wstr"
-                      length="255"
-                      name="target_description" />
-                    <externalMetadataColumn
-                      refId="Package\Import ioicc_splitter OLTP Table\MAPPINGS (ioicc_splitter).Outputs[Excel Source Output].ExternalColumns[source_description]"
-                      dataType="wstr"
-                      length="255"
-                      name="source_description" />
-                  </externalMetadataColumns>
-                </output>
-                <output
-                  refId="Package\Import ioicc_splitter OLTP Table\MAPPINGS (ioicc_splitter).Outputs[Excel Source Error Output]"
-                  isErrorOut="true"
-                  name="Excel Source Error Output">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\Import ioicc_splitter OLTP Table\MAPPINGS (ioicc_splitter).Outputs[Excel Source Error Output].Columns[pnaics_source]"
-                      dataType="wstr"
-                      length="255"
-                      lineageId="Package\Import ioicc_splitter OLTP Table\MAPPINGS (ioicc_splitter).Outputs[Excel Source Error Output].Columns[pnaics_source]"
-                      name="pnaics_source" />
-                    <outputColumn
-                      refId="Package\Import ioicc_splitter OLTP Table\MAPPINGS (ioicc_splitter).Outputs[Excel Source Error Output].Columns[coefficient]"
-                      dataType="r8"
-                      lineageId="Package\Import ioicc_splitter OLTP Table\MAPPINGS (ioicc_splitter).Outputs[Excel Source Error Output].Columns[coefficient]"
-                      name="coefficient" />
-                    <outputColumn
-                      refId="Package\Import ioicc_splitter OLTP Table\MAPPINGS (ioicc_splitter).Outputs[Excel Source Error Output].Columns[pnaics_target]"
-                      dataType="wstr"
-                      length="255"
-                      lineageId="Package\Import ioicc_splitter OLTP Table\MAPPINGS (ioicc_splitter).Outputs[Excel Source Error Output].Columns[pnaics_target]"
-                      name="pnaics_target" />
-                    <outputColumn
-                      refId="Package\Import ioicc_splitter OLTP Table\MAPPINGS (ioicc_splitter).Outputs[Excel Source Error Output].Columns[target_description]"
-                      dataType="wstr"
-                      length="255"
-                      lineageId="Package\Import ioicc_splitter OLTP Table\MAPPINGS (ioicc_splitter).Outputs[Excel Source Error Output].Columns[target_description]"
-                      name="target_description" />
-                    <outputColumn
-                      refId="Package\Import ioicc_splitter OLTP Table\MAPPINGS (ioicc_splitter).Outputs[Excel Source Error Output].Columns[source_description]"
-                      dataType="wstr"
-                      length="255"
-                      lineageId="Package\Import ioicc_splitter OLTP Table\MAPPINGS (ioicc_splitter).Outputs[Excel Source Error Output].Columns[source_description]"
-                      name="source_description" />
-                    <outputColumn
-                      refId="Package\Import ioicc_splitter OLTP Table\MAPPINGS (ioicc_splitter).Outputs[Excel Source Error Output].Columns[ErrorCode]"
-                      dataType="i4"
-                      lineageId="Package\Import ioicc_splitter OLTP Table\MAPPINGS (ioicc_splitter).Outputs[Excel Source Error Output].Columns[ErrorCode]"
-                      name="ErrorCode"
-                      specialFlags="1" />
-                    <outputColumn
-                      refId="Package\Import ioicc_splitter OLTP Table\MAPPINGS (ioicc_splitter).Outputs[Excel Source Error Output].Columns[ErrorColumn]"
-                      dataType="i4"
-                      lineageId="Package\Import ioicc_splitter OLTP Table\MAPPINGS (ioicc_splitter).Outputs[Excel Source Error Output].Columns[ErrorColumn]"
-                      name="ErrorColumn"
-                      specialFlags="2" />
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-              </outputs>
-            </component>
-            <component
               refId="Package\Import ioicc_splitter OLTP Table\Shorten pnaics codes"
               componentClassID="Microsoft.DerivedColumn"
               contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
@@ -2362,13 +2457,13 @@
                       cachedDataType="wstr"
                       cachedLength="255"
                       cachedName="pnaics_source"
-                      lineageId="Package\Import ioicc_splitter OLTP Table\MAPPINGS (ioicc_splitter).Outputs[Excel Source Output].Columns[pnaics_source]" />
+                      lineageId="Package\Import ioicc_splitter OLTP Table\ioicc_splitter csv flat file.Outputs[Flat File Source Output].Columns[pnaics_source]" />
                     <inputColumn
                       refId="Package\Import ioicc_splitter OLTP Table\Shorten pnaics codes.Inputs[Derived Column Input].Columns[pnaics_target]"
                       cachedDataType="wstr"
                       cachedLength="255"
                       cachedName="pnaics_target"
-                      lineageId="Package\Import ioicc_splitter OLTP Table\MAPPINGS (ioicc_splitter).Outputs[Excel Source Output].Columns[pnaics_target]" />
+                      lineageId="Package\Import ioicc_splitter OLTP Table\ioicc_splitter csv flat file.Outputs[Flat File Source Output].Columns[pnaics_target]" />
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
@@ -2395,7 +2490,7 @@
                           containsID="true"
                           dataType="System.String"
                           description="Derived Column Expression"
-                          name="Expression">[LEFT](#{Package\Import ioicc_splitter OLTP Table\MAPPINGS (ioicc_splitter).Outputs[Excel Source Output].Columns[pnaics_source]},7)</property>
+                          name="Expression">[LEFT](#{Package\Import ioicc_splitter OLTP Table\ioicc_splitter csv flat file.Outputs[Flat File Source Output].Columns[pnaics_source]},7)</property>
                         <property
                           containsID="true"
                           dataType="System.String"
@@ -2418,7 +2513,7 @@
                           containsID="true"
                           dataType="System.String"
                           description="Derived Column Expression"
-                          name="Expression">[LEFT](#{Package\Import ioicc_splitter OLTP Table\MAPPINGS (ioicc_splitter).Outputs[Excel Source Output].Columns[pnaics_target]},7)</property>
+                          name="Expression">[LEFT](#{Package\Import ioicc_splitter OLTP Table\ioicc_splitter csv flat file.Outputs[Flat File Source Output].Columns[pnaics_target]},7)</property>
                         <property
                           containsID="true"
                           dataType="System.String"
@@ -2463,10 +2558,10 @@
               name="Derived Column Output"
               startId="Package\Import ioicc_splitter OLTP Table\Shorten pnaics codes.Outputs[Derived Column Output]" />
             <path
-              refId="Package\Import ioicc_splitter OLTP Table.Paths[Excel Source Output]"
+              refId="Package\Import ioicc_splitter OLTP Table.Paths[Flat File Source Output]"
               endId="Package\Import ioicc_splitter OLTP Table\Shorten pnaics codes.Inputs[Derived Column Input]"
-              name="Excel Source Output"
-              startId="Package\Import ioicc_splitter OLTP Table\MAPPINGS (ioicc_splitter).Outputs[Excel Source Output]" />
+              name="Flat File Source Output"
+              startId="Package\Import ioicc_splitter OLTP Table\ioicc_splitter csv flat file.Outputs[Flat File Source Output]" />
           </paths>
         </pipeline>
       </DTS:ObjectData>
@@ -2525,7 +2620,7 @@
         <NodeLayout
           Size="204.5,42"
           Id="Package\Import dim_industry Table"
-          TopLeft="35.7735061696018,38.487012647306" />
+          TopLeft="35.2735061696018,38.487012647306" />
         <NodeLayout
           Size="219.5,42.5"
           Id="Package\Import dim_occupation Table"
@@ -2540,18 +2635,18 @@
           TopLeft="270.614164576193,45.226564950444" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="240.273506169602,62.981788798875">
+          TopLeft="239.773506169602,62.981788798875">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="30.3406584065912,0"
+              EndConnector="30.8406584065912,0"
               Start="0,0"
-              End="22.8406584065912,0">
+              End="23.3406584065912,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="22.8406584065912,0" />
+                    End="23.3406584065912,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2659,27 +2754,39 @@
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="221.5,42.5"
-          Id="Package\Import dim_geography Table\MAPPINGS (dim_geography)"
-          TopLeft="137.714288059546,46.4941182991213" />
-        <NodeLayout
           Size="215.5,42.5"
           Id="Package\Import dim_geography Table\dim_geography OLTP Table"
           TopLeft="144.285716640706,121.047061629114" />
+        <NodeLayout
+          Size="191,42"
+          Id="Package\Import dim_geography Table\dim_geography CSV file"
+          TopLeft="134,34.6666666666667" />
         <EdgeLayout
-          Id="Package\Import dim_geography Table.Paths[Excel Source Output]"
-          TopLeft="250.250002350126,88.9941182991213">
+          Id="Package\Import dim_geography Table.Paths[Flat File Source Output]"
+          TopLeft="229.5,76.6666666666667">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,32.0529433299927"
+              EndConnector="22.535716640706,44.3803949624474"
               Start="0,0"
-              End="0,24.5529433299927">
+              End="22.535716640706,36.8803949624474">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,24.5529433299927" />
+                    End="0,18.1901974812237" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,18.1901974812237"
+                    Point2="0,22.1901974812237"
+                    Point3="4,22.1901974812237" />
+                  <mssgle:LineSegment
+                    End="18.535716640706,22.1901974812237" />
+                  <mssgle:CubicBezierSegment
+                    Point1="18.535716640706,22.1901974812237"
+                    Point2="22.535716640706,22.1901974812237"
+                    Point3="22.535716640706,26.1901974812237" />
+                  <mssgle:LineSegment
+                    End="22.535716640706,36.8803949624474" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2704,19 +2811,6 @@
       </Property>
     </Properties>
   </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Import dim_geography Table\MAPPINGS (dim_geography)">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
   <TaskHost
     design-time-name="Package\Import dim_industry Table">
     <LayoutInfo>
@@ -2730,32 +2824,6 @@
           Size="202.5,42.5"
           Id="Package\Import dim_industry Table\dim_industry OLTP Table"
           TopLeft="119.465934003975,220.486988561576" />
-        <NodeLayout
-          Size="208.5,42.5"
-          Id="Package\Import dim_industry Table\MAPPINGS (dim_industry)"
-          TopLeft="107.076924756535,18.3885921304255" />
-        <EdgeLayout
-          Id="Package\Import dim_industry Table.Paths[Excel Source Output]"
-          TopLeft="212.060433589092,60.6743064161398">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,47.4287237388912"
-              Start="0,0"
-              End="0,39.9287237388912">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,39.9287237388912" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
         <EdgeLayout
           Id="Package\Import dim_industry Table.Paths[Derived Column Output]"
           TopLeft="216.683509641384,150.388744440745">
@@ -2770,6 +2838,44 @@
                   Capacity="5">
                   <mssgle:LineSegment
                     End="0,62.5982441208307" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="151,42"
+          Id="Package\Import dim_industry Table\Flat File Source"
+          TopLeft="460.5,39.5" />
+        <EdgeLayout
+          Id="Package\Import dim_industry Table.Paths[Flat File Source Output]"
+          TopLeft="536,81.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-323.134629006922,26.603030155031"
+              Start="0,0"
+              End="-323.134629006922,19.103030155031">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,9.3015150775155" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,9.3015150775155"
+                    Point2="0,13.3015150775155"
+                    Point3="-4,13.3015150775155" />
+                  <mssgle:LineSegment
+                    End="-319.134629006922,13.3015150775155" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-319.134629006922,13.3015150775155"
+                    Point2="-323.134629006922,13.3015150775155"
+                    Point3="-323.134629006922,17.3015150775155" />
+                  <mssgle:LineSegment
+                    End="-323.134629006922,19.103030155031" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2794,60 +2900,19 @@
       </Property>
     </Properties>
   </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Import dim_industry Table\MAPPINGS (dim_industry)">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
   <TaskHost
     design-time-name="Package\Import dim_occupation Table">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="193.142857142858,42.2857142857143"
+          Size="193,42.5"
           Id="Package\Import dim_occupation Table\Shorten anocs, creative"
           TopLeft="112.923079744599,135.969701736974" />
         <NodeLayout
-          Size="222.857142857143,42.2857142857143"
-          Id="Package\Import dim_occupation Table\MAPPINGS (dim_occupation)"
-          TopLeft="97.4769253905709,40.0969709720384" />
-        <NodeLayout
-          Size="217.142857142858,42.2857142857143"
+          Size="217,42.5"
           Id="Package\Import dim_occupation Table\dim_occupation OLTP Table"
           TopLeft="119.128208617487,235.911119459775" />
-        <EdgeLayout
-          Id="Package\Import dim_occupation Table.Paths[Excel Source Output]"
-          TopLeft="209.200002567585,82.3826852577527">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,53.5870164792213"
-              Start="0,0"
-              End="0,46.0870164792213">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,46.0870164792213" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
         <EdgeLayout
           Id="Package\Import dim_occupation Table.Paths[Derived Column Output]"
           TopLeft="209.494508316028,178.255416022688">
@@ -2879,27 +2944,50 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="188.5,42"
+          Id="Package\Import dim_occupation Table\dim_occupation csv file"
+          TopLeft="139.6,37.2" />
+        <EdgeLayout
+          Id="Package\Import dim_occupation Table.Paths[Flat File Source Output]"
+          TopLeft="233.85,79.2">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-24.426920255401,56.769701736974"
+              Start="0,0"
+              End="-24.426920255401,49.269701736974">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,24.384850868487" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,24.384850868487"
+                    Point2="0,28.384850868487"
+                    Point3="-4,28.384850868487" />
+                  <mssgle:LineSegment
+                    End="-20.426920255401,28.384850868487" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-20.426920255401,28.384850868487"
+                    Point2="-24.426920255401,28.384850868487"
+                    Point3="-24.426920255401,32.384850868487" />
+                  <mssgle:LineSegment
+                    End="-24.426920255401,49.269701736974" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\Import dim_occupation Table\MAPPINGS (dim_occupation)">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\Import dim_occupation Table\dim_occupation OLTP Table">
     <Properties>
@@ -2922,10 +3010,6 @@
           Size="145.5,42.5"
           Id="Package\Import industry_descriptions\Shorten naics"
           TopLeft="304.666666666667,126" />
-        <NodeLayout
-          Size="241.5,42.5"
-          Id="Package\Import industry_descriptions\MAPPING (industry_descriptions)"
-          TopLeft="257,47" />
         <NodeLayout
           Size="243,42.5"
           Id="Package\Import industry_descriptions\industry_descriptions OLTP Table"
@@ -2952,20 +3036,36 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <NodeLayout
+          Size="214,42"
+          Id="Package\Import industry_descriptions\industry_descriptions csv file"
+          TopLeft="256,37.2" />
         <EdgeLayout
-          Id="Package\Import industry_descriptions.Paths[Excel Source Output]"
-          TopLeft="377.583333333333,89.5">
+          Id="Package\Import industry_descriptions.Paths[Flat File Source Output]"
+          TopLeft="363,79.2">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,36.5"
+              EndConnector="14.416666666667,46.8"
               Start="0,0"
-              End="0,29">
+              End="14.416666666667,39.3">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,29" />
+                    End="0,19.4" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,19.4"
+                    Point2="0,23.4"
+                    Point3="4,23.4" />
+                  <mssgle:LineSegment
+                    End="10.416666666667,23.4" />
+                  <mssgle:CubicBezierSegment
+                    Point1="10.416666666667,23.4"
+                    Point2="14.416666666667,23.4"
+                    Point3="14.416666666667,27.4" />
+                  <mssgle:LineSegment
+                    End="14.416666666667,39.3" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2977,19 +3077,6 @@
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\Import industry_descriptions\MAPPING (industry_descriptions)">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
   <PipelineComponentMetadata
     design-time-name="Package\Import industry_descriptions\industry_descriptions OLTP Table">
     <Properties>
@@ -3016,44 +3103,6 @@
           Size="200.5,42.5"
           Id="Package\Import ioicc_splitter OLTP Table\ioicc_splitter OLTP Table"
           TopLeft="80,211.5" />
-        <NodeLayout
-          Size="207,42.5"
-          Id="Package\Import ioicc_splitter OLTP Table\MAPPINGS (ioicc_splitter)"
-          TopLeft="80.8,36" />
-        <EdgeLayout
-          Id="Package\Import ioicc_splitter OLTP Table.Paths[Excel Source Output]"
-          TopLeft="184.228571428571,78.2857142857143">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="304.485714285714,57.7142857142857"
-              Start="0,0"
-              End="304.485714285714,50.2142857142857">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,24.8571428571429" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,24.8571428571429"
-                    Point2="0,28.8571428571429"
-                    Point3="4,28.8571428571429" />
-                  <mssgle:LineSegment
-                    End="300.485714285714,28.8571428571429" />
-                  <mssgle:CubicBezierSegment
-                    Point1="300.485714285714,28.8571428571429"
-                    Point2="304.485714285714,28.8571428571429"
-                    Point3="304.485714285714,32.8571428571429" />
-                  <mssgle:LineSegment
-                    End="304.485714285714,50.2142857142857" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
         <EdgeLayout
           Id="Package\Import ioicc_splitter OLTP Table.Paths[Derived Column Output]"
           TopLeft="488.75,178.5">
@@ -3088,24 +3137,49 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <NodeLayout
+          Size="191.5,42"
+          Id="Package\Import ioicc_splitter OLTP Table\ioicc_splitter csv flat file"
+          TopLeft="106.8,27.2" />
+        <EdgeLayout
+          Id="Package\Import ioicc_splitter OLTP Table.Paths[Flat File Source Output]"
+          TopLeft="202.55,69.2">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="286.2,66.8"
+              Start="0,0"
+              End="286.2,59.3">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,29.4" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,29.4"
+                    Point2="0,33.4"
+                    Point3="4,33.4" />
+                  <mssgle:LineSegment
+                    End="282.2,33.4" />
+                  <mssgle:CubicBezierSegment
+                    Point1="282.2,33.4"
+                    Point2="286.2,33.4"
+                    Point3="286.2,37.4" />
+                  <mssgle:LineSegment
+                    End="286.2,59.3" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
     design-time-name="Package\Import ioicc_splitter OLTP Table\ioicc_splitter OLTP Table">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Import ioicc_splitter OLTP Table\MAPPINGS (ioicc_splitter)">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>

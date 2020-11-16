@@ -1,9 +1,10 @@
-<?xml version="1.0"?>
+﻿<?xml version="1.0"?>
 <DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
-  DTS:ObjectName="Fact CSV connector"
-  DTS:DTSID="{E05D1816-F94F-42CF-9862-F66D2571AD0F}"
-  DTS:Description="For exporting"
+  DTS:ObjectName="dim_occupation.csv"
+  DTS:DTSID="{AEC8EAC7-4318-4176-B528-4C1C39BB095E}"
   DTS:CreationName="FLATFILE">
+  <DTS:PropertyExpression
+    DTS:Name="ConnectionString">@[$Project::Root]+"\\SOURCE DATA\\dim_occupations.csv"</DTS:PropertyExpression>
   <DTS:ObjectData>
     <DTS:ConnectionManager
       DTS:Format="Delimited"
@@ -13,69 +14,61 @@
       DTS:RowDelimiter=""
       DTS:TextQualifier="_x0022_"
       DTS:CodePage="65001"
-      DTS:ConnectionString="C:\Users\afree\Documents\Github\Canada-CI\SOURCE DATA\P &amp; H for preprocessing.csv">
+      DTS:ConnectionString="C:\Users\afree\Documents\Github\Canada-CI\SOURCE DATA\dim_occupations.csv">
       <DTS:FlatFileColumns>
         <DTS:FlatFileColumn
           DTS:ColumnType="Delimited"
           DTS:ColumnDelimiter="_x002C_"
-          DTS:MaximumWidth="50"
-          DTS:DataType="129"
+          DTS:MaximumWidth="255"
+          DTS:DataType="130"
           DTS:TextQualified="True"
-          DTS:ObjectName="Source"
-          DTS:DTSID="{22B79F5C-5B73-4B27-B8A3-5EE328E08241}"
-          DTS:CreationName="" />
-        <DTS:FlatFileColumn
-          DTS:ColumnType="Delimited"
-          DTS:ColumnDelimiter="_x002C_"
-          DTS:MaximumWidth="50"
-          DTS:DataType="129"
-          DTS:TextQualified="True"
-          DTS:ObjectName="Indicator"
-          DTS:DTSID="{6C1985F7-A191-4F97-9FC2-302507204C78}"
-          DTS:CreationName="" />
-        <DTS:FlatFileColumn
-          DTS:ColumnType="Delimited"
-          DTS:ColumnDelimiter="_x002C_"
-          DTS:MaximumWidth="50"
-          DTS:DataType="129"
-          DTS:TextQualified="True"
-          DTS:ObjectName="PNAICS"
-          DTS:DTSID="{949189A5-5E15-4F44-A8BE-33E55B7D75E1}"
+          DTS:ObjectName="anocs4"
+          DTS:DTSID="{82EDF7A6-B100-4082-83DE-BC6D67344334}"
           DTS:CreationName="" />
         <DTS:FlatFileColumn
           DTS:ColumnType="Delimited"
           DTS:ColumnDelimiter="_x002C_"
           DTS:MaximumWidth="255"
-          DTS:DataType="129"
+          DTS:DataType="130"
           DTS:TextQualified="True"
-          DTS:ObjectName="PNAICS description"
-          DTS:DTSID="{2F546DA4-8384-4BB1-96DE-F58595C23A25}"
+          DTS:ObjectName="occupation_description"
+          DTS:DTSID="{9834D7D5-2752-4723-9AB9-D8B1558CFA72}"
           DTS:CreationName="" />
         <DTS:FlatFileColumn
           DTS:ColumnType="Delimited"
           DTS:ColumnDelimiter="_x002C_"
-          DTS:MaximumWidth="50"
-          DTS:DataType="129"
+          DTS:MaximumWidth="255"
+          DTS:DataType="130"
           DTS:TextQualified="True"
-          DTS:ObjectName="GeoName"
-          DTS:DTSID="{3A279B41-F507-4728-8674-4CF89D1098CA}"
+          DTS:ObjectName="creative_occupation_type"
+          DTS:DTSID="{1E6E57DE-E57C-49CE-95DC-969FF61DC6DF}"
           DTS:CreationName="" />
         <DTS:FlatFileColumn
           DTS:ColumnType="Delimited"
           DTS:ColumnDelimiter="_x002C_"
-          DTS:MaximumWidth="50"
-          DTS:DataType="129"
+          DTS:MaximumWidth="255"
+          DTS:DataType="130"
           DTS:TextQualified="True"
-          DTS:ObjectName="Year"
-          DTS:DTSID="{C161BB20-E140-4D2C-A703-1EE4C1EEF2D2}"
+          DTS:ObjectName="o_nesta"
+          DTS:DTSID="{FAD02F06-463D-42BD-9770-5FF8E198DDAD}"
+          DTS:CreationName="" />
+        <DTS:FlatFileColumn
+          DTS:ColumnType="Delimited"
+          DTS:ColumnDelimiter="_x002C_"
+          DTS:MaximumWidth="255"
+          DTS:DataType="130"
+          DTS:TextQualified="True"
+          DTS:ObjectName="o_higgs"
+          DTS:DTSID="{F61F01BC-63D0-4521-97D8-2B7AB0702222}"
           DTS:CreationName="" />
         <DTS:FlatFileColumn
           DTS:ColumnType="Delimited"
           DTS:ColumnDelimiter="_x000D__x000A_"
-          DTS:DataType="5"
+          DTS:MaximumWidth="255"
+          DTS:DataType="130"
           DTS:TextQualified="True"
-          DTS:ObjectName="Value"
-          DTS:DTSID="{E76A4D7A-17BB-4817-BE47-71836A016A9A}"
+          DTS:ObjectName="o_freeman"
+          DTS:DTSID="{A664AB6C-4C61-4178-A1E6-A6AE616B8E2F}"
           DTS:CreationName="" />
       </DTS:FlatFileColumns>
     </DTS:ConnectionManager>

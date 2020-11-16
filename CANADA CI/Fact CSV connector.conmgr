@@ -13,7 +13,7 @@
       DTS:RowDelimiter=""
       DTS:TextQualifier="_x0022_"
       DTS:CodePage="65001"
-      DTS:ConnectionString="C:\Users\afree\Documents\Github\Canada-CI\EXPORTS\fact.csv">
+      DTS:ConnectionString="C:\Users\afree\Documents\Github\Canada-CI\SOURCE DATA\P &amp; H for preprocessing.csv">
       <DTS:FlatFileColumns>
         <DTS:FlatFileColumn
           DTS:ColumnType="Delimited"
@@ -22,7 +22,7 @@
           DTS:DataType="129"
           DTS:TextQualified="True"
           DTS:ObjectName="Source"
-          DTS:DTSID="{4CCCD6E0-3EE6-4300-A150-47FB9C3DC665}"
+          DTS:DTSID="{22B79F5C-5B73-4B27-B8A3-5EE328E08241}"
           DTS:CreationName="" />
         <DTS:FlatFileColumn
           DTS:ColumnType="Delimited"
@@ -31,7 +31,7 @@
           DTS:DataType="129"
           DTS:TextQualified="True"
           DTS:ObjectName="Indicator"
-          DTS:DTSID="{198FEA0F-C7E0-4FEE-ACEC-D2CB448A959D}"
+          DTS:DTSID="{6C1985F7-A191-4F97-9FC2-302507204C78}"
           DTS:CreationName="" />
         <DTS:FlatFileColumn
           DTS:ColumnType="Delimited"
@@ -40,7 +40,7 @@
           DTS:DataType="129"
           DTS:TextQualified="True"
           DTS:ObjectName="PNAICS"
-          DTS:DTSID="{0258DD33-BCF0-4A78-BC0C-9C6310207985}"
+          DTS:DTSID="{949189A5-5E15-4F44-A8BE-33E55B7D75E1}"
           DTS:CreationName="" />
         <DTS:FlatFileColumn
           DTS:ColumnType="Delimited"
@@ -49,7 +49,7 @@
           DTS:DataType="129"
           DTS:TextQualified="True"
           DTS:ObjectName="PNAICS description"
-          DTS:DTSID="{DC88F344-0FF4-4D6B-89D2-4C969BF529CD}"
+          DTS:DTSID="{2F546DA4-8384-4BB1-96DE-F58595C23A25}"
           DTS:CreationName="" />
         <DTS:FlatFileColumn
           DTS:ColumnType="Delimited"
@@ -58,7 +58,7 @@
           DTS:DataType="129"
           DTS:TextQualified="True"
           DTS:ObjectName="GeoName"
-          DTS:DTSID="{0453F6B6-C061-4660-AB07-3FBFCE997178}"
+          DTS:DTSID="{3A279B41-F507-4728-8674-4CF89D1098CA}"
           DTS:CreationName="" />
         <DTS:FlatFileColumn
           DTS:ColumnType="Delimited"
@@ -67,7 +67,7 @@
           DTS:DataType="129"
           DTS:TextQualified="True"
           DTS:ObjectName="Year"
-          DTS:DTSID="{0CC0D86A-0D43-4758-990E-2916131C746F}"
+          DTS:DTSID="{C161BB20-E140-4D2C-A703-1EE4C1EEF2D2}"
           DTS:CreationName="" />
         <DTS:FlatFileColumn
           DTS:ColumnType="Delimited"
@@ -75,7 +75,7 @@
           DTS:DataType="5"
           DTS:TextQualified="True"
           DTS:ObjectName="Value"
-          DTS:DTSID="{0BFDE608-2103-4873-8CE8-C55F4CA27F34}"
+          DTS:DTSID="{E76A4D7A-17BB-4817-BE47-71836A016A9A}"
           DTS:CreationName="" />
       </DTS:FlatFileColumns>
     </DTS:ConnectionManager>
