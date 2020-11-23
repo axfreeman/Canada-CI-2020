@@ -11,8 +11,8 @@
   DTS:LocaleID="2057"
   DTS:ObjectName="ImportData"
   DTS:PackageType="5"
-  DTS:VersionBuild="103"
-  DTS:VersionGUID="{F80B7BB6-02D6-47C3-BDE2-42D14646099F}">
+  DTS:VersionBuild="104"
+  DTS:VersionGUID="{02565984-2C67-4FDC-9564-026E0F917D8B}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -11970,11 +11970,7 @@
           Id="Package\Copy temporary P &amp; H data into fact file"
           TopLeft="198.5,423.5" />
         <NodeLayout
-          Size="336.5,42"
-          Id="Package\Load Not-Annualised LFS Monthly into fact OLTP Table"
-          TopLeft="45.9444444297273,230.636361971374" />
-        <NodeLayout
-          Size="283.5,42.5"
+          Size="275,42"
           Id="Package\Load GDP Data Into ioicc_flat OLTP Table"
           TopLeft="406.944444429727,27.636361971374" />
         <NodeLayout
@@ -11986,6 +11982,10 @@
           Id="Package\Load LFS Annualised into fact OLTP table"
           TopLeft="458.5,231.5" />
         <NodeLayout
+          Size="336.5,42"
+          Id="Package\Load Not-Annualised LFS Monthly into fact OLTP Table"
+          TopLeft="45.9444444297273,230.636361971374" />
+        <NodeLayout
           Size="259,42"
           Id="Package\Preprocess P and H huge raw data file"
           TopLeft="207,334.5" />
@@ -11995,30 +11995,30 @@
           TopLeft="56.9444444297273,109.636361971374" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="548.694444429727,70.136361971374">
+          TopLeft="544.444444429727,69.636361971374">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-366,39.5"
+              EndConnector="-361.75,40"
               Start="0,0"
-              End="-366,32">
+              End="-361.75,32.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,15.75" />
+                    End="0,16" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,15.75"
-                    Point2="0,19.75"
-                    Point3="-4,19.75" />
+                    Point1="0,16"
+                    Point2="0,20"
+                    Point3="-4,20" />
                   <mssgle:LineSegment
-                    End="-362,19.75" />
+                    End="-357.75,20" />
                   <mssgle:CubicBezierSegment
-                    Point1="-362,19.75"
-                    Point2="-366,19.75"
-                    Point3="-366,23.75" />
+                    Point1="-357.75,20"
+                    Point2="-361.75,20"
+                    Point3="-361.75,24" />
                   <mssgle:LineSegment
-                    End="-366,32" />
+                    End="-361.75,32.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -12168,7 +12168,7 @@
     design-time-name="Package\Copy temporary P &amp; H data into fact file">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="156,42"
           Id="Package\Copy temporary P &amp; H data into fact file\Fact OLTP Table"
@@ -12212,9 +12212,7 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -12248,9 +12246,7 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -12283,157 +12279,22 @@
     </Properties>
   </PipelineComponentMetadata>
   <TaskHost
-    design-time-name="Package\Load Not-Annualised LFS Monthly into fact OLTP Table">
-    <LayoutInfo>
-      <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="156,42"
-          Id="Package\Load Not-Annualised LFS Monthly into fact OLTP Table\Fact OLTP Table"
-          TopLeft="558,327.5" />
-        <NodeLayout
-          Size="259,42.5"
-          Id="Package\Load Not-Annualised LFS Monthly into fact OLTP Table\Add Source, shorten Year and PNAICS"
-          TopLeft="210,185" />
-        <EdgeLayout
-          Id="Package\Load Not-Annualised LFS Monthly into fact OLTP Table.Paths[Derived Column Output]"
-          TopLeft="339.5,227.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="296.5,100"
-              Start="0,0"
-              End="296.5,92.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,46" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,46"
-                    Point2="0,50"
-                    Point3="4,50" />
-                  <mssgle:LineSegment
-                    End="292.5,50" />
-                  <mssgle:CubicBezierSegment
-                    Point1="292.5,50"
-                    Point2="296.5,50"
-                    Point3="296.5,54" />
-                  <mssgle:LineSegment
-                    End="296.5,92.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="190.5,42"
-          Id="Package\Load Not-Annualised LFS Monthly into fact OLTP Table\LFS monthly annualised"
-          TopLeft="180.4,39.6" />
-        <NodeLayout
-          Size="115,42"
-          Id="Package\Load Not-Annualised LFS Monthly into fact OLTP Table\Unpivot"
-          TopLeft="445.2,98.8" />
-        <EdgeLayout
-          Id="Package\Load Not-Annualised LFS Monthly into fact OLTP Table.Paths[Flat File Source Output]"
-          TopLeft="370.9,60.6">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="74.3,59.2"
-              Start="0,0"
-              End="66.8,59.2">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="33.15,0" />
-                  <mssgle:CubicBezierSegment
-                    Point1="33.15,0"
-                    Point2="37.15,0"
-                    Point3="37.15,4" />
-                  <mssgle:LineSegment
-                    End="37.15,55.2" />
-                  <mssgle:CubicBezierSegment
-                    Point1="37.15,55.2"
-                    Point2="37.15,59.2"
-                    Point3="41.15,59.2" />
-                  <mssgle:LineSegment
-                    End="66.8,59.2" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Load Not-Annualised LFS Monthly into fact OLTP Table.Paths[Unpivot Output]"
-          TopLeft="502.7,140.8">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-163.2,44.2"
-              Start="0,0"
-              End="-163.2,36.7">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,18.1" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,18.1"
-                    Point2="0,22.1"
-                    Point3="-4,22.1" />
-                  <mssgle:LineSegment
-                    End="-159.2,22.1" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-159.2,22.1"
-                    Point2="-163.2,22.1"
-                    Point3="-163.2,26.1" />
-                  <mssgle:LineSegment
-                    End="-163.2,36.7" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-      </GraphLayout>
-    </LayoutInfo>
-  </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\Load Not-Annualised LFS Monthly into fact OLTP Table\Fact OLTP Table">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <TaskHost
     design-time-name="Package\Load GDP Data Into ioicc_flat OLTP Table">
     <LayoutInfo>
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="260,42"
-          Id="Package\Load GDP Data Into ioicc_flat OLTP Table\Add Year and Source, Shorten PNAICS"
-          TopLeft="462,117" />
+          Size="144,42"
+          Id="Package\Load GDP Data Into ioicc_flat OLTP Table\GDP 2020 csv"
+          TopLeft="159.285714285714,58.5714285714286" />
         <NodeLayout
           Size="154.5,42.5"
           Id="Package\Load GDP Data Into ioicc_flat OLTP Table\IOICC Flat table"
           TopLeft="277,258" />
+        <NodeLayout
+          Size="260,42"
+          Id="Package\Load GDP Data Into ioicc_flat OLTP Table\Add Year and Source, Shorten PNAICS"
+          TopLeft="462,117" />
         <EdgeLayout
           Id="Package\Load GDP Data Into ioicc_flat OLTP Table.Paths[Derived Column Output]"
           TopLeft="592,159">
@@ -12468,10 +12329,6 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="144,42"
-          Id="Package\Load GDP Data Into ioicc_flat OLTP Table\GDP 2020 csv"
-          TopLeft="159.285714285714,58.5714285714286" />
         <EdgeLayout
           Id="Package\Load GDP Data Into ioicc_flat OLTP Table.Paths[Flat File Source Output]"
           TopLeft="303.285714285714,79.5714285714286">
@@ -12655,9 +12512,9 @@
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="115,42"
-          Id="Package\Load LFS Annualised into fact OLTP table\Unpivot"
-          TopLeft="584.4,58.8" />
+          Size="150,42"
+          Id="Package\Load LFS Annualised into fact OLTP table\LFS Annualised"
+          TopLeft="188.4,57" />
         <NodeLayout
           Size="192.5,42"
           Id="Package\Load LFS Annualised into fact OLTP table\Add Source and PNAICS"
@@ -12666,40 +12523,10 @@
           Size="156,42"
           Id="Package\Load LFS Annualised into fact OLTP table\Fact OLTP Table"
           TopLeft="503.5,291" />
-        <EdgeLayout
-          Id="Package\Load LFS Annualised into fact OLTP table.Paths[Derived Column Output]"
-          TopLeft="202.916666666667,230.666666666667">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="378.583333333333,60.333333333333"
-              Start="0,0"
-              End="378.583333333333,52.833333333333">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,26.1666666666665" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,26.1666666666665"
-                    Point2="0,30.1666666666665"
-                    Point3="4,30.1666666666665" />
-                  <mssgle:LineSegment
-                    End="374.583333333333,30.1666666666665" />
-                  <mssgle:CubicBezierSegment
-                    Point1="374.583333333333,30.1666666666665"
-                    Point2="378.583333333333,30.1666666666665"
-                    Point3="378.583333333333,34.1666666666665" />
-                  <mssgle:LineSegment
-                    End="378.583333333333,52.833333333333" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
+        <NodeLayout
+          Size="115,42"
+          Id="Package\Load LFS Annualised into fact OLTP table\Unpivot"
+          TopLeft="584.4,58.8" />
         <EdgeLayout
           Id="Package\Load LFS Annualised into fact OLTP table.Paths[Unpivot Output]"
           TopLeft="641.9,100.8">
@@ -12734,10 +12561,6 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="150,42"
-          Id="Package\Load LFS Annualised into fact OLTP table\LFS Annualised"
-          TopLeft="188.4,57" />
         <EdgeLayout
           Id="Package\Load LFS Annualised into fact OLTP table.Paths[Flat File Source Output]"
           TopLeft="338.4,78.9">
@@ -12760,11 +12583,184 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load LFS Annualised into fact OLTP table.Paths[Derived Column Output]"
+          TopLeft="202.916666666667,230.666666666667">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="378.583333333333,60.333333333333"
+              Start="0,0"
+              End="378.583333333333,52.833333333333">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,26.1666666666665" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,26.1666666666665"
+                    Point2="0,30.1666666666665"
+                    Point3="4,30.1666666666665" />
+                  <mssgle:LineSegment
+                    End="374.583333333333,30.1666666666665" />
+                  <mssgle:CubicBezierSegment
+                    Point1="374.583333333333,30.1666666666665"
+                    Point2="378.583333333333,30.1666666666665"
+                    Point3="378.583333333333,34.1666666666665" />
+                  <mssgle:LineSegment
+                    End="378.583333333333,52.833333333333" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
     design-time-name="Package\Load LFS Annualised into fact OLTP table\Fact OLTP Table">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Load Not-Annualised LFS Monthly into fact OLTP Table">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="156,42"
+          Id="Package\Load Not-Annualised LFS Monthly into fact OLTP Table\Fact OLTP Table"
+          TopLeft="558,327.5" />
+        <NodeLayout
+          Size="259,42.5"
+          Id="Package\Load Not-Annualised LFS Monthly into fact OLTP Table\Add Source, shorten Year and PNAICS"
+          TopLeft="210,185" />
+        <NodeLayout
+          Size="190.5,42"
+          Id="Package\Load Not-Annualised LFS Monthly into fact OLTP Table\LFS monthly annualised"
+          TopLeft="180.4,39.6" />
+        <NodeLayout
+          Size="115,42"
+          Id="Package\Load Not-Annualised LFS Monthly into fact OLTP Table\Unpivot"
+          TopLeft="445.2,98.8" />
+        <EdgeLayout
+          Id="Package\Load Not-Annualised LFS Monthly into fact OLTP Table.Paths[Unpivot Output]"
+          TopLeft="502.7,140.8">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-163.2,44.2"
+              Start="0,0"
+              End="-163.2,36.7">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,18.1" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,18.1"
+                    Point2="0,22.1"
+                    Point3="-4,22.1" />
+                  <mssgle:LineSegment
+                    End="-159.2,22.1" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-159.2,22.1"
+                    Point2="-163.2,22.1"
+                    Point3="-163.2,26.1" />
+                  <mssgle:LineSegment
+                    End="-163.2,36.7" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Not-Annualised LFS Monthly into fact OLTP Table.Paths[Flat File Source Output]"
+          TopLeft="370.9,60.6">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="74.3,59.2"
+              Start="0,0"
+              End="66.8,59.2">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="33.15,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="33.15,0"
+                    Point2="37.15,0"
+                    Point3="37.15,4" />
+                  <mssgle:LineSegment
+                    End="37.15,55.2" />
+                  <mssgle:CubicBezierSegment
+                    Point1="37.15,55.2"
+                    Point2="37.15,59.2"
+                    Point3="41.15,59.2" />
+                  <mssgle:LineSegment
+                    End="66.8,59.2" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Load Not-Annualised LFS Monthly into fact OLTP Table.Paths[Derived Column Output]"
+          TopLeft="339.5,227.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="296.5,100"
+              Start="0,0"
+              End="296.5,92.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,46" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,46"
+                    Point2="0,50"
+                    Point3="4,50" />
+                  <mssgle:LineSegment
+                    End="292.5,50" />
+                  <mssgle:CubicBezierSegment
+                    Point1="292.5,50"
+                    Point2="296.5,50"
+                    Point3="296.5,54" />
+                  <mssgle:LineSegment
+                    End="296.5,92.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Load Not-Annualised LFS Monthly into fact OLTP Table\Fact OLTP Table">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -13174,7 +13170,7 @@
     design-time-name="Package\Transfer ioicc_flat data to fact Table">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="211.5,42.5"
           Id="Package\Transfer ioicc_flat data to fact Table\ioicc_flat_to_fact_converter"
@@ -13214,9 +13210,7 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
