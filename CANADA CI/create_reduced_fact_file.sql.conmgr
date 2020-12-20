@@ -1,0 +1,10 @@
+﻿<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="create_reduced_fact_file.sql"
+  DTS:DTSID="{2318AFDC-C134-46A5-9BED-28914B70070C}"
+  DTS:CreationName="FILE">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectionString="C:\Users\afree\Documents\Github\Canada-CI\SCRIPTS\create_reduced_fact_file.sql" />
+  </DTS:ObjectData>
+</DTS:ConnectionManager>

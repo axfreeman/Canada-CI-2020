@@ -1,0 +1,220 @@
+{
+  "name": "CI-AS",
+  "compatibilityLevel": 1500,
+  "model": {
+    "culture": "en-GB",
+    "dataSources": [
+      {
+        "type": "structured",
+        "name": "SQL/DESKTOP-KSAPEQM;CANADA_CI_OLTP",
+        "connectionDetails": {
+          "protocol": "tds",
+          "address": {
+            "server": "DESKTOP-KSAPEQM",
+            "database": "CANADA_CI_OLTP"
+          },
+          "authentication": null,
+          "query": null
+        },
+        "credential": {
+          "AuthenticationKind": "ServiceAccount",
+          "kind": "SQL",
+          "path": "desktop-ksapeqm;CANADA_CI_OLTP",
+          "EncryptConnection": false
+        }
+      }
+    ],
+    "tables": [
+      {
+        "name": "fact",
+        "columns": [
+          {
+            "name": "factpk",
+            "dataType": "int64",
+            "isHidden": true,
+            "sourceColumn": "factpk"
+          },
+          {
+            "name": "source",
+            "dataType": "string",
+            "sourceColumn": "source"
+          },
+          {
+            "name": "indicator",
+            "dataType": "string",
+            "sourceColumn": "indicator"
+          },
+          {
+            "name": "pnaics_id",
+            "dataType": "string",
+            "isHidden": true,
+            "sourceColumn": "pnaics_id"
+          },
+          {
+            "name": "pnaics_description",
+            "dataType": "string",
+            "sourceColumn": "pnaics_description"
+          },
+          {
+            "name": "geo_name_id",
+            "dataType": "string",
+            "isHidden": true,
+            "sourceColumn": "geo_name_id"
+          },
+          {
+            "name": "redacted",
+            "dataType": "string",
+            "sourceColumn": "redacted"
+          },
+          {
+            "name": "date",
+            "dataType": "dateTime",
+            "sourceColumn": "date"
+          },
+          {
+            "name": "value",
+            "dataType": "double",
+            "isHidden": true,
+            "sourceColumn": "value"
+          },
+          {
+            "type": "calculated",
+            "name": "Year",
+            "dataType": "int64",
+            "isDataTypeInferred": true,
+            "expression": "year([date])"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/DESKTOP-KSAPEQM;CANADA_CI_OLTP\",",
+                "    dbo_fact = Source{[Schema=\"dbo\",Item=\"fact\"]}[Data]",
+                "in",
+                "    dbo_fact"
+              ]
+            }
+          }
+        ],
+        "measures": [
+          {
+            "name": "item",
+            "expression": "sum('fact'[value])"
+          }
+        ],
+        "hierarchies": [
+          {
+            "name": "Dates",
+            "levels": [
+              {
+                "name": "date",
+                "ordinal": 0,
+                "column": "date"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "Geography",
+        "columns": [
+          {
+            "name": "geo_name_id",
+            "dataType": "string",
+            "isHidden": true,
+            "sourceColumn": "geo_name_id"
+          },
+          {
+            "name": "Province",
+            "dataType": "string",
+            "sourceColumn": "standardised_province"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/DESKTOP-KSAPEQM;CANADA_CI_OLTP\",",
+                "    dbo_dim_geography = Source{[Schema=\"dbo\",Item=\"dim_geography\"]}[Data]",
+                "in",
+                "    dbo_dim_geography"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "Industries",
+        "columns": [
+          {
+            "name": "pnaics_id",
+            "dataType": "string",
+            "sourceColumn": "pnaics_id"
+          },
+          {
+            "name": "Main Industry",
+            "dataType": "string",
+            "sourceColumn": "main_industry"
+          },
+          {
+            "name": "Creative Sector",
+            "dataType": "string",
+            "sourceColumn": "creative_sector"
+          },
+          {
+            "name": "description",
+            "dataType": "string",
+            "sourceColumn": "description"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "Partition",
+            "dataView": "full",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = #\"SQL/DESKTOP-KSAPEQM;CANADA_CI_OLTP\",",
+                "    dbo_dim_industry_with_descriptions = Source{[Schema=\"dbo\",Item=\"dim_industry_with_descriptions\"]}[Data]",
+                "in",
+                "    dbo_dim_industry_with_descriptions"
+              ]
+            }
+          }
+        ]
+      }
+    ],
+    "relationships": [
+      {
+        "name": "a97add22-eb12-4443-a779-2c3b1ca87084",
+        "fromTable": "fact",
+        "fromColumn": "geo_name_id",
+        "toTable": "Geography",
+        "toColumn": "geo_name_id"
+      },
+      {
+        "name": "af21ee6c-f921-44f5-9261-68834c816916",
+        "fromTable": "fact",
+        "fromColumn": "pnaics_id",
+        "toTable": "Industries",
+        "toColumn": "pnaics_id"
+      }
+    ],
+    "annotations": [
+      {
+        "name": "ClientCompatibilityLevel",
+        "value": "600"
+      }
+    ]
+  }
+}

@@ -11,8 +11,8 @@
   DTS:LocaleID="2057"
   DTS:ObjectName="Import Maps"
   DTS:PackageType="5"
-  DTS:VersionBuild="175"
-  DTS:VersionGUID="{127F4644-6CA8-4F77-B91D-817C470D885B}">
+  DTS:VersionBuild="176"
+  DTS:VersionGUID="{21CD083B-8460-4E99-B85C-B75CF47ACBD3}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -296,6 +296,10 @@
                       dataType="wstr"
                       length="255"
                       name="geo_name_id" />
+                    <externalMetadataColumn
+                      refId="Package\Import dim_geography Table\dim_geography OLTP Table.Inputs[OLE DB Destination Input].ExternalColumns[geo_id]"
+                      dataType="i2"
+                      name="geo_id" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
