@@ -10,7 +10,6 @@
         <WinAuthDomain />
         <ServerName>DESKTOP-9EATJT9\OLTP</ServerName>
         <PathOnServer>/SSISDB/CI Canada/CANADA CI</PathOnServer>
-        <StartObjectID>Create Tables and Views.dtsx</StartObjectID>
         <UserIDs />
         <UserPasswords />
         <OfflineMode>false</OfflineMode>

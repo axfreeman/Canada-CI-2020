@@ -11,11 +11,23 @@
   DTS:LocaleID="2057"
   DTS:ObjectName="ImportData"
   DTS:PackageType="5"
-  DTS:VersionBuild="159"
-  DTS:VersionGUID="{5CC1602C-0C89-427C-90EB-1F6EBAF6AB31}">
+  DTS:VersionBuild="161"
+  DTS:VersionGUID="{25102A78-B33D-4E81-9695-D9AC2743C56A}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[create_data_tables_and_views.sql]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{72C4F7BC-6EFD-4468-8E36-FB7A51613C5D}"
+      DTS:ObjectName="create_data_tables_and_views.sql">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">@[$Project::Root]+"\\SCRIPTS\\create_data_tables_and_views.sql"</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="C:\Users\afree\Documents\Github\Canada-CI\SCRIPTS\create_data_tables_and_views.sql" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
     <DTS:ConnectionManager
       DTS:refId="Package.ConnectionManagers[Flat File Connection Manager]"
       DTS:CreationName="FLATFILE"
@@ -3525,6 +3537,23 @@
               startId="Package\Copy temporary P &amp; H data into fact file\Temporary P &amp; H view.Outputs[OLE DB Source Output]" />
           </paths>
         </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\create_data_tables_and_views"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{A888C707-38C9-4086-9666-92DB9576B6A4}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="create_data_tables_and_views"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{7C609DE3-B60F-43F3-9132-B532B5CB115C}"
+          SQLTask:SqlStmtSourceType="FileConnection"
+          SQLTask:SqlStatementSource="create_data_tables_and_views.sql" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
@@ -22762,6 +22791,14 @@
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 5"
       DTS:To="Package\Copy temporary P &amp; H data into fact file" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 6]"
+      DTS:CreationName=""
+      DTS:DTSID="{59A3C982-84F1-4369-8A57-C730537B1232}"
+      DTS:From="Package\create_data_tables_and_views"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 6"
+      DTS:To="Package\Load GDP Data Into ioicc_flat OLTP Table" />
   </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
 <!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
@@ -22778,57 +22815,45 @@
         <NodeLayout
           Size="267.5,42"
           Id="Package\Copy temporary P &amp; H data into fact file"
-          TopLeft="596.5,362" />
+          TopLeft="449,412" />
         <NodeLayout
           Size="275,42"
           Id="Package\Load GDP Data Into ioicc_flat OLTP Table"
-          TopLeft="406.944444429727,27.636361971374" />
+          TopLeft="90.444444429727,170.136361971374" />
         <NodeLayout
           Size="265,42.5"
           Id="Package\Load LFS Annual into fact OLTP Table"
-          TopLeft="404.944444429727,111.136361971374" />
+          TopLeft="716.444444429727,282.136361971374" />
         <NodeLayout
           Size="225.5,42"
           Id="Package\Load Monthly All-Provinces LFS"
-          TopLeft="790,111.5" />
+          TopLeft="414,285.5" />
         <NodeLayout
           Size="271.5,42"
           Id="Package\Load Monthly MANCAN LFS to November"
-          TopLeft="475.5,212" />
+          TopLeft="80,288.5" />
         <NodeLayout
           Size="259,42"
           Id="Package\Preprocess P and H huge raw data file"
-          TopLeft="196.5,360" />
+          TopLeft="89,415" />
         <NodeLayout
           Size="251.5,42.5"
           Id="Package\Transfer ioicc_flat data to fact Table"
-          TopLeft="56.9444444297273,109.636361971374" />
+          TopLeft="726.444444429727,170.636361971374" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="544.444444429727,69.636361971374">
+          TopLeft="365.444444429727,191.511361971374">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-361.75,40"
+              EndConnector="361,0"
               Start="0,0"
-              End="-361.75,32.5">
+              End="353.5,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,16" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,16"
-                    Point2="0,20"
-                    Point3="-4,20" />
-                  <mssgle:LineSegment
-                    End="-357.75,20" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-357.75,20"
-                    Point2="-361.75,20"
-                    Point3="-361.75,24" />
-                  <mssgle:LineSegment
-                    End="-361.75,32.5" />
+                    End="353.5,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -22839,18 +22864,18 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="308.444444429727,131.636361971374">
+          TopLeft="850.569444429727,213.136361971374">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="96.5000000000001,0"
+              EndConnector="0,69"
               Start="0,0"
-              End="89.0000000000001,0">
+              End="0,61.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="89.0000000000001,0" />
+                    End="0,61.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -22861,18 +22886,18 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 2]"
-          TopLeft="669.944444429727,132.443180985687">
+          TopLeft="716.444444429727,304.943180985687">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="120.055555570273,0"
+              EndConnector="-76.944444429727,0"
               Start="0,0"
-              End="112.555555570273,0">
+              End="-69.444444429727,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="112.555555570273,0" />
+                    End="-69.444444429727,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -22883,30 +22908,18 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 3]"
-          TopLeft="902.75,153.5">
+          TopLeft="414,308">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-291.5,58.5"
+              EndConnector="-62.5,0"
               Start="0,0"
-              End="-291.5,51">
+              End="-55,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,25.25" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,25.25"
-                    Point2="0,29.25"
-                    Point3="-4,29.25" />
-                  <mssgle:LineSegment
-                    End="-287.5,29.25" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-287.5,29.25"
-                    Point2="-291.5,29.25"
-                    Point3="-291.5,33.25" />
-                  <mssgle:LineSegment
-                    End="-291.5,51" />
+                    End="-55,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -22917,30 +22930,18 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 4]"
-          TopLeft="611.25,254">
+          TopLeft="217.125,330.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-285.25,106"
+              EndConnector="0,84.5"
               Start="0,0"
-              End="-285.25,98.5">
+              End="0,77">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,49" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,49"
-                    Point2="0,53"
-                    Point3="-4,53" />
-                  <mssgle:LineSegment
-                    End="-281.25,53" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-281.25,53"
-                    Point2="-285.25,53"
-                    Point3="-285.25,57" />
-                  <mssgle:LineSegment
-                    End="-285.25,98.5" />
+                    End="0,77" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -22951,18 +22952,56 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 5]"
-          TopLeft="455.5,382">
+          TopLeft="348,434.5">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="141,0"
+              EndConnector="101,0"
               Start="0,0"
-              End="133.5,0">
+              End="93.5,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="133.5,0" />
+                    End="93.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="223.5,42"
+          Id="Package\create_data_tables_and_views"
+          TopLeft="381.5,30" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 6]"
+          TopLeft="493.25,72">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-265.305555570273,98.136361971374"
+              Start="0,0"
+              End="-265.305555570273,90.636361971374">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,45.068180985687" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,45.068180985687"
+                    Point2="0,49.068180985687"
+                    Point3="-4,49.068180985687" />
+                  <mssgle:LineSegment
+                    End="-261.305555570273,49.068180985687" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-261.305555570273,49.068180985687"
+                    Point2="-265.305555570273,49.068180985687"
+                    Point3="-265.305555570273,53.068180985687" />
+                  <mssgle:LineSegment
+                    End="-265.305555570273,90.636361971374" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -22978,7 +23017,7 @@
     design-time-name="Package\Copy temporary P &amp; H data into fact file">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="156,42"
           Id="Package\Copy temporary P &amp; H data into fact file\Fact OLTP Table"
@@ -23022,7 +23061,9 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -23056,7 +23097,9 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -24120,7 +24163,9 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -24358,7 +24403,9 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -24448,9 +24495,9 @@
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="155,42.5"
-          Id="Package\Transfer ioicc_flat data to fact Table\fact OLTP table"
-          TopLeft="210.666666666667,212.333333333333" />
+          Size="172,42"
+          Id="Package\Transfer ioicc_flat data to fact Table\Flat File Destination"
+          TopLeft="668.8,171.2" />
         <NodeLayout
           Size="211.5,42.5"
           Id="Package\Transfer ioicc_flat data to fact Table\ioicc_flat_to_fact_converter"
@@ -24459,120 +24506,14 @@
           Size="155,42"
           Id="Package\Transfer ioicc_flat data to fact Table\Conditional Split"
           TopLeft="360.8,131.2" />
-        <EdgeLayout
-          Id="Package\Transfer ioicc_flat data to fact Table.Paths[OLE DB Source Output]"
-          TopLeft="317.75,83.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="120.55,47.7"
-              Start="0,0"
-              End="120.55,40.2">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,19.85" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,19.85"
-                    Point2="0,23.85"
-                    Point3="4,23.85" />
-                  <mssgle:LineSegment
-                    End="116.55,23.85" />
-                  <mssgle:CubicBezierSegment
-                    Point1="116.55,23.85"
-                    Point2="120.55,23.85"
-                    Point3="120.55,27.85" />
-                  <mssgle:LineSegment
-                    End="120.55,40.2" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Transfer ioicc_flat data to fact Table.Paths[2012 Dollars]"
-          TopLeft="413.8,173.2">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-125.633333333333,39.133333333333"
-              Start="0,0"
-              End="-125.633333333333,31.633333333333">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,11.8932311621965" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,11.8932311621965"
-                    Point2="0,15.8932311621965"
-                    Point3="-4,15.8932311621965" />
-                  <mssgle:LineSegment
-                    End="-121.633333333333,15.8932311621965" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-121.633333333333,15.8932311621965"
-                    Point2="-125.633333333333,15.8932311621965"
-                    Point3="-125.633333333333,19.8932311621966" />
-                  <mssgle:LineSegment
-                    End="-125.633333333333,31.633333333333" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-90.9917838541665,20.8932311621966,56.350234375,9.7490234375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
         <NodeLayout
           Size="204,42"
           Id="Package\Transfer ioicc_flat data to fact Table\fact OLTP (current dollars)"
           TopLeft="500,310" />
-        <EdgeLayout
-          Id="Package\Transfer ioicc_flat data to fact Table.Paths[Current Dollars]"
-          TopLeft="462.8,173.2">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="139.2,136.8"
-              Start="0,0"
-              End="139.2,129.3">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,51.5586206896552" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,51.5586206896552"
-                    Point2="0,55.5586206896552"
-                    Point3="4,55.5586206896552" />
-                  <mssgle:LineSegment
-                    End="135.2,55.5586206896552" />
-                  <mssgle:CubicBezierSegment
-                    Point1="135.2,55.5586206896552"
-                    Point2="139.2,55.5586206896552"
-                    Point3="139.2,59.5586206896552" />
-                  <mssgle:LineSegment
-                    End="139.2,129.3" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="35.7549023437499,60.5586206896552,67.6901953125,9.7490234375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
         <NodeLayout
-          Size="172,42"
-          Id="Package\Transfer ioicc_flat data to fact Table\Flat File Destination"
-          TopLeft="668.8,171.2" />
+          Size="155,42.5"
+          Id="Package\Transfer ioicc_flat data to fact Table\fact OLTP table"
+          TopLeft="210.666666666667,212.333333333333" />
         <EdgeLayout
           Id="Package\Transfer ioicc_flat data to fact Table.Paths[Conditional Split Error Output]"
           TopLeft="515.8,152.2">
@@ -24609,11 +24550,130 @@
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Transfer ioicc_flat data to fact Table.Paths[2012 Dollars]"
+          TopLeft="413.8,173.2">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-125.633333333333,39.133333333333"
+              Start="0,0"
+              End="-125.633333333333,31.633333333333">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,11.8932311621965" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,11.8932311621965"
+                    Point2="0,15.8932311621965"
+                    Point3="-4,15.8932311621965" />
+                  <mssgle:LineSegment
+                    End="-121.633333333333,15.8932311621965" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-121.633333333333,15.8932311621965"
+                    Point2="-125.633333333333,15.8932311621965"
+                    Point3="-125.633333333333,19.8932311621966" />
+                  <mssgle:LineSegment
+                    End="-125.633333333333,31.633333333333" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-90.9917838541665,20.8932311621965,56.350234375,9.7490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Transfer ioicc_flat data to fact Table.Paths[OLE DB Source Output]"
+          TopLeft="317.75,83.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="120.55,47.7"
+              Start="0,0"
+              End="120.55,40.2">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,19.85" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,19.85"
+                    Point2="0,23.85"
+                    Point3="4,23.85" />
+                  <mssgle:LineSegment
+                    End="116.55,23.85" />
+                  <mssgle:CubicBezierSegment
+                    Point1="116.55,23.85"
+                    Point2="120.55,23.85"
+                    Point3="120.55,27.85" />
+                  <mssgle:LineSegment
+                    End="120.55,40.2" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Transfer ioicc_flat data to fact Table.Paths[Current Dollars]"
+          TopLeft="462.8,173.2">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="139.2,136.8"
+              Start="0,0"
+              End="139.2,129.3">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,51.5586206896552" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,51.5586206896552"
+                    Point2="0,55.5586206896552"
+                    Point3="4,55.5586206896552" />
+                  <mssgle:LineSegment
+                    End="135.2,55.5586206896552" />
+                  <mssgle:CubicBezierSegment
+                    Point1="135.2,55.5586206896552"
+                    Point2="139.2,55.5586206896552"
+                    Point3="139.2,59.5586206896552" />
+                  <mssgle:LineSegment
+                    End="139.2,129.3" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="35.75490234375,60.5586206896552,67.6901953125,9.7490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
     design-time-name="Package\Transfer ioicc_flat data to fact Table\fact OLTP table">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Transfer ioicc_flat data to fact Table\fact OLTP (current dollars)">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -24635,19 +24695,6 @@
         <Name>TableInfoObjectType</Name>
         <Value
           type="q2:string">View</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Transfer ioicc_flat data to fact Table\fact OLTP (current dollars)">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
       </Property>
     </Properties>
   </PipelineComponentMetadata>

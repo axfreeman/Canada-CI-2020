@@ -11,11 +11,23 @@
   DTS:LocaleID="2057"
   DTS:ObjectName="Import Maps"
   DTS:PackageType="5"
-  DTS:VersionBuild="176"
-  DTS:VersionGUID="{21CD083B-8460-4E99-B85C-B75CF47ACBD3}">
+  DTS:VersionBuild="181"
+  DTS:VersionGUID="{815AB6C3-A891-422D-B179-BEC2B2A87D28}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[create_metadata_tables.sql]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{C8EB908D-F6F8-4698-B18A-537CD14C7BB9}"
+      DTS:ObjectName="create_metadata_tables.sql">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">@[$Project::Root]+"\\SCRIPTS\\create_metadata_tables.sql"</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="C:\Users\afree\Documents\Github\Canada-CI\SCRIPTS\create_metadata_tables.sql" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
     <DTS:ConnectionManager
       DTS:refId="Package.ConnectionManagers[industry_descriptions.csv]"
       DTS:CreationName="FLATFILE"
@@ -66,6 +78,23 @@
   </DTS:ConnectionManagers>
   <DTS:Variables />
   <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\create_metadata_tables"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{087D0064-7F2A-48FE-A81C-8BC64A12E215}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="create_metadata_tables"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{7C609DE3-B60F-43F3-9132-B532B5CB115C}"
+          SQLTask:SqlStmtSourceType="FileConnection"
+          SQLTask:SqlStatementSource="create_metadata_tables.sql" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
     <DTS:Executable
       DTS:refId="Package\Import dim_geography Table"
       DTS:CreationName="Microsoft.Pipeline"
@@ -432,7 +461,7 @@
                       cachedLength="255"
                       cachedName="creative_sector"
                       externalMetadataColumnId="Package\Import dim_industry Table\dim_industry OLTP Table.Inputs[OLE DB Destination Input].ExternalColumns[creative_sector]"
-                      lineageId="Package\Import dim_industry Table\Flat File Source.Outputs[Flat File Source Output].Columns[creative_sector]" />
+                      lineageId="Package\Import dim_industry Table\new_dim_industry.Outputs[Flat File Source Output].Columns[creative_sector]" />
                     <inputColumn
                       refId="Package\Import dim_industry Table\dim_industry OLTP Table.Inputs[OLE DB Destination Input].Columns[short_naics6]"
                       cachedDataType="wstr"
@@ -474,7 +503,7 @@
                       cachedLength="255"
                       cachedName="main_industry"
                       externalMetadataColumnId="Package\Import dim_industry Table\dim_industry OLTP Table.Inputs[OLE DB Destination Input].ExternalColumns[main_industry]"
-                      lineageId="Package\Import dim_industry Table\Flat File Source.Outputs[Flat File Source Output].Columns[main_industry]" />
+                      lineageId="Package\Import dim_industry Table\new_dim_industry.Outputs[Flat File Source Output].Columns[main_industry]" />
                     <inputColumn
                       refId="Package\Import dim_industry Table\dim_industry OLTP Table.Inputs[OLE DB Destination Input].Columns[short_pnaics]"
                       cachedDataType="wstr"
@@ -482,6 +511,20 @@
                       cachedName="short_pnaics"
                       externalMetadataColumnId="Package\Import dim_industry Table\dim_industry OLTP Table.Inputs[OLE DB Destination Input].ExternalColumns[pnaics_id]"
                       lineageId="Package\Import dim_industry Table\Shorten NAICS codes.Outputs[Derived Column Output].Columns[short_pnaics]" />
+                    <inputColumn
+                      refId="Package\Import dim_industry Table\dim_industry OLTP Table.Inputs[OLE DB Destination Input].Columns[Description]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Description"
+                      externalMetadataColumnId="Package\Import dim_industry Table\dim_industry OLTP Table.Inputs[OLE DB Destination Input].ExternalColumns[naics_description]"
+                      lineageId="Package\Import dim_industry Table\new_dim_industry.Outputs[Flat File Source Output].Columns[Description]" />
+                    <inputColumn
+                      refId="Package\Import dim_industry Table\dim_industry OLTP Table.Inputs[OLE DB Destination Input].Columns[short_naics_aggregation_level]"
+                      cachedDataType="wstr"
+                      cachedLength="15"
+                      cachedName="short_naics_aggregation_level"
+                      externalMetadataColumnId="Package\Import dim_industry Table\dim_industry OLTP Table.Inputs[OLE DB Destination Input].ExternalColumns[naics_aggregation_level]"
+                      lineageId="Package\Import dim_industry Table\Shorten NAICS codes.Outputs[Derived Column Output].Columns[short_naics_aggregation_level]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -525,6 +568,16 @@
                       dataType="wstr"
                       length="7"
                       name="pnaics_id" />
+                    <externalMetadataColumn
+                      refId="Package\Import dim_industry Table\dim_industry OLTP Table.Inputs[OLE DB Destination Input].ExternalColumns[naics_aggregation_level]"
+                      dataType="wstr"
+                      length="15"
+                      name="naics_aggregation_level" />
+                    <externalMetadataColumn
+                      refId="Package\Import dim_industry Table\dim_industry OLTP Table.Inputs[OLE DB Destination Input].ExternalColumns[naics_description]"
+                      dataType="wstr"
+                      length="255"
+                      name="naics_description" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -554,12 +607,12 @@
               </outputs>
             </component>
             <component
-              refId="Package\Import dim_industry Table\Flat File Source"
+              refId="Package\Import dim_industry Table\new_dim_industry"
               componentClassID="Microsoft.FlatFileSource"
               contactInfo="Flat File Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
               description="Flat File Source"
               localeId="2057"
-              name="Flat File Source"
+              name="new_dim_industry"
               usesDispositions="true"
               version="1">
               <properties>
@@ -574,24 +627,24 @@
               </properties>
               <connections>
                 <connection
-                  refId="Package\Import dim_industry Table\Flat File Source.Connections[FlatFileConnection]"
-                  connectionManagerID="{E4C25A5A-8A6C-4E9B-9041-C27BE299883E}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[dim_industry.csv]"
+                  refId="Package\Import dim_industry Table\new_dim_industry.Connections[FlatFileConnection]"
+                  connectionManagerID="{B393123E-3A82-4999-86BC-97052D9CE6FF}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Extended_dim_industry]"
                   name="FlatFileConnection" />
               </connections>
               <outputs>
                 <output
-                  refId="Package\Import dim_industry Table\Flat File Source.Outputs[Flat File Source Output]"
+                  refId="Package\Import dim_industry Table\new_dim_industry.Outputs[Flat File Source Output]"
                   name="Flat File Source Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Import dim_industry Table\Flat File Source.Outputs[Flat File Source Output].Columns[pnaics]"
+                      refId="Package\Import dim_industry Table\new_dim_industry.Outputs[Flat File Source Output].Columns[pnaics]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Import dim_industry Table\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[pnaics]"
+                      externalMetadataColumnId="Package\Import dim_industry Table\new_dim_industry.Outputs[Flat File Source Output].ExternalColumns[pnaics]"
                       length="255"
-                      lineageId="Package\Import dim_industry Table\Flat File Source.Outputs[Flat File Source Output].Columns[pnaics]"
+                      lineageId="Package\Import dim_industry Table\new_dim_industry.Outputs[Flat File Source Output].Columns[pnaics]"
                       name="pnaics"
                       truncationRowDisposition="FailComponent">
                       <properties>
@@ -606,13 +659,13 @@
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\Import dim_industry Table\Flat File Source.Outputs[Flat File Source Output].Columns[naics6]"
+                      refId="Package\Import dim_industry Table\new_dim_industry.Outputs[Flat File Source Output].Columns[naics6]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Import dim_industry Table\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[naics6]"
+                      externalMetadataColumnId="Package\Import dim_industry Table\new_dim_industry.Outputs[Flat File Source Output].ExternalColumns[naics6]"
                       length="255"
-                      lineageId="Package\Import dim_industry Table\Flat File Source.Outputs[Flat File Source Output].Columns[naics6]"
+                      lineageId="Package\Import dim_industry Table\new_dim_industry.Outputs[Flat File Source Output].Columns[naics6]"
                       name="naics6"
                       truncationRowDisposition="FailComponent">
                       <properties>
@@ -627,13 +680,13 @@
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\Import dim_industry Table\Flat File Source.Outputs[Flat File Source Output].Columns[naics5]"
+                      refId="Package\Import dim_industry Table\new_dim_industry.Outputs[Flat File Source Output].Columns[naics5]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Import dim_industry Table\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[naics5]"
+                      externalMetadataColumnId="Package\Import dim_industry Table\new_dim_industry.Outputs[Flat File Source Output].ExternalColumns[naics5]"
                       length="255"
-                      lineageId="Package\Import dim_industry Table\Flat File Source.Outputs[Flat File Source Output].Columns[naics5]"
+                      lineageId="Package\Import dim_industry Table\new_dim_industry.Outputs[Flat File Source Output].Columns[naics5]"
                       name="naics5"
                       truncationRowDisposition="FailComponent">
                       <properties>
@@ -648,13 +701,13 @@
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\Import dim_industry Table\Flat File Source.Outputs[Flat File Source Output].Columns[naics4]"
+                      refId="Package\Import dim_industry Table\new_dim_industry.Outputs[Flat File Source Output].Columns[naics4]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Import dim_industry Table\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[naics4]"
+                      externalMetadataColumnId="Package\Import dim_industry Table\new_dim_industry.Outputs[Flat File Source Output].ExternalColumns[naics4]"
                       length="255"
-                      lineageId="Package\Import dim_industry Table\Flat File Source.Outputs[Flat File Source Output].Columns[naics4]"
+                      lineageId="Package\Import dim_industry Table\new_dim_industry.Outputs[Flat File Source Output].Columns[naics4]"
                       name="naics4"
                       truncationRowDisposition="FailComponent">
                       <properties>
@@ -669,13 +722,13 @@
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\Import dim_industry Table\Flat File Source.Outputs[Flat File Source Output].Columns[naics3]"
+                      refId="Package\Import dim_industry Table\new_dim_industry.Outputs[Flat File Source Output].Columns[naics3]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Import dim_industry Table\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[naics3]"
+                      externalMetadataColumnId="Package\Import dim_industry Table\new_dim_industry.Outputs[Flat File Source Output].ExternalColumns[naics3]"
                       length="255"
-                      lineageId="Package\Import dim_industry Table\Flat File Source.Outputs[Flat File Source Output].Columns[naics3]"
+                      lineageId="Package\Import dim_industry Table\new_dim_industry.Outputs[Flat File Source Output].Columns[naics3]"
                       name="naics3"
                       truncationRowDisposition="FailComponent">
                       <properties>
@@ -690,13 +743,13 @@
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\Import dim_industry Table\Flat File Source.Outputs[Flat File Source Output].Columns[naics2]"
+                      refId="Package\Import dim_industry Table\new_dim_industry.Outputs[Flat File Source Output].Columns[naics2]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Import dim_industry Table\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[naics2]"
+                      externalMetadataColumnId="Package\Import dim_industry Table\new_dim_industry.Outputs[Flat File Source Output].ExternalColumns[naics2]"
                       length="255"
-                      lineageId="Package\Import dim_industry Table\Flat File Source.Outputs[Flat File Source Output].Columns[naics2]"
+                      lineageId="Package\Import dim_industry Table\new_dim_industry.Outputs[Flat File Source Output].Columns[naics2]"
                       name="naics2"
                       truncationRowDisposition="FailComponent">
                       <properties>
@@ -711,13 +764,13 @@
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\Import dim_industry Table\Flat File Source.Outputs[Flat File Source Output].Columns[creative_sector]"
+                      refId="Package\Import dim_industry Table\new_dim_industry.Outputs[Flat File Source Output].Columns[creative_sector]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Import dim_industry Table\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[creative_sector]"
+                      externalMetadataColumnId="Package\Import dim_industry Table\new_dim_industry.Outputs[Flat File Source Output].ExternalColumns[creative_sector]"
                       length="255"
-                      lineageId="Package\Import dim_industry Table\Flat File Source.Outputs[Flat File Source Output].Columns[creative_sector]"
+                      lineageId="Package\Import dim_industry Table\new_dim_industry.Outputs[Flat File Source Output].Columns[creative_sector]"
                       name="creative_sector"
                       truncationRowDisposition="FailComponent">
                       <properties>
@@ -732,14 +785,77 @@
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\Import dim_industry Table\Flat File Source.Outputs[Flat File Source Output].Columns[main_industry]"
+                      refId="Package\Import dim_industry Table\new_dim_industry.Outputs[Flat File Source Output].Columns[main_industry]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Import dim_industry Table\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[main_industry]"
+                      externalMetadataColumnId="Package\Import dim_industry Table\new_dim_industry.Outputs[Flat File Source Output].ExternalColumns[main_industry]"
                       length="255"
-                      lineageId="Package\Import dim_industry Table\Flat File Source.Outputs[Flat File Source Output].Columns[main_industry]"
+                      lineageId="Package\Import dim_industry Table\new_dim_industry.Outputs[Flat File Source Output].Columns[main_industry]"
                       name="main_industry"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Import dim_industry Table\new_dim_industry.Outputs[Flat File Source Output].Columns[NAICS aggregation level]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import dim_industry Table\new_dim_industry.Outputs[Flat File Source Output].ExternalColumns[NAICS aggregation level]"
+                      length="255"
+                      lineageId="Package\Import dim_industry Table\new_dim_industry.Outputs[Flat File Source Output].Columns[NAICS aggregation level]"
+                      name="NAICS aggregation level"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Import dim_industry Table\new_dim_industry.Outputs[Flat File Source Output].Columns[Check]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import dim_industry Table\new_dim_industry.Outputs[Flat File Source Output].ExternalColumns[Check]"
+                      length="255"
+                      lineageId="Package\Import dim_industry Table\new_dim_industry.Outputs[Flat File Source Output].Columns[Check]"
+                      name="Check"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Import dim_industry Table\new_dim_industry.Outputs[Flat File Source Output].Columns[Description]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import dim_industry Table\new_dim_industry.Outputs[Flat File Source Output].ExternalColumns[Description]"
+                      length="255"
+                      lineageId="Package\Import dim_industry Table\new_dim_industry.Outputs[Flat File Source Output].Columns[Description]"
+                      name="Description"
                       truncationRowDisposition="FailComponent">
                       <properties>
                         <property
@@ -756,69 +872,84 @@
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\Import dim_industry Table\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[pnaics]"
+                      refId="Package\Import dim_industry Table\new_dim_industry.Outputs[Flat File Source Output].ExternalColumns[pnaics]"
                       dataType="wstr"
                       length="255"
                       name="pnaics" />
                     <externalMetadataColumn
-                      refId="Package\Import dim_industry Table\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[naics6]"
+                      refId="Package\Import dim_industry Table\new_dim_industry.Outputs[Flat File Source Output].ExternalColumns[naics6]"
                       dataType="wstr"
                       length="255"
                       name="naics6" />
                     <externalMetadataColumn
-                      refId="Package\Import dim_industry Table\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[naics5]"
+                      refId="Package\Import dim_industry Table\new_dim_industry.Outputs[Flat File Source Output].ExternalColumns[naics5]"
                       dataType="wstr"
                       length="255"
                       name="naics5" />
                     <externalMetadataColumn
-                      refId="Package\Import dim_industry Table\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[naics4]"
+                      refId="Package\Import dim_industry Table\new_dim_industry.Outputs[Flat File Source Output].ExternalColumns[naics4]"
                       dataType="wstr"
                       length="255"
                       name="naics4" />
                     <externalMetadataColumn
-                      refId="Package\Import dim_industry Table\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[naics3]"
+                      refId="Package\Import dim_industry Table\new_dim_industry.Outputs[Flat File Source Output].ExternalColumns[naics3]"
                       dataType="wstr"
                       length="255"
                       name="naics3" />
                     <externalMetadataColumn
-                      refId="Package\Import dim_industry Table\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[naics2]"
+                      refId="Package\Import dim_industry Table\new_dim_industry.Outputs[Flat File Source Output].ExternalColumns[naics2]"
                       dataType="wstr"
                       length="255"
                       name="naics2" />
                     <externalMetadataColumn
-                      refId="Package\Import dim_industry Table\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[creative_sector]"
+                      refId="Package\Import dim_industry Table\new_dim_industry.Outputs[Flat File Source Output].ExternalColumns[creative_sector]"
                       dataType="wstr"
                       length="255"
                       name="creative_sector" />
                     <externalMetadataColumn
-                      refId="Package\Import dim_industry Table\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[main_industry]"
+                      refId="Package\Import dim_industry Table\new_dim_industry.Outputs[Flat File Source Output].ExternalColumns[main_industry]"
                       dataType="wstr"
                       length="255"
                       name="main_industry" />
+                    <externalMetadataColumn
+                      refId="Package\Import dim_industry Table\new_dim_industry.Outputs[Flat File Source Output].ExternalColumns[NAICS aggregation level]"
+                      dataType="wstr"
+                      length="255"
+                      name="NAICS aggregation level" />
+                    <externalMetadataColumn
+                      refId="Package\Import dim_industry Table\new_dim_industry.Outputs[Flat File Source Output].ExternalColumns[Check]"
+                      dataType="wstr"
+                      length="255"
+                      name="Check" />
+                    <externalMetadataColumn
+                      refId="Package\Import dim_industry Table\new_dim_industry.Outputs[Flat File Source Output].ExternalColumns[Description]"
+                      dataType="wstr"
+                      length="255"
+                      name="Description" />
                   </externalMetadataColumns>
                 </output>
                 <output
-                  refId="Package\Import dim_industry Table\Flat File Source.Outputs[Flat File Source Error Output]"
+                  refId="Package\Import dim_industry Table\new_dim_industry.Outputs[Flat File Source Error Output]"
                   isErrorOut="true"
                   name="Flat File Source Error Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Import dim_industry Table\Flat File Source.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      refId="Package\Import dim_industry Table\new_dim_industry.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
                       codePage="65001"
                       dataType="text"
                       description="Flat File Source Error Output Column"
-                      lineageId="Package\Import dim_industry Table\Flat File Source.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      lineageId="Package\Import dim_industry Table\new_dim_industry.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
                       name="Flat File Source Error Output Column" />
                     <outputColumn
-                      refId="Package\Import dim_industry Table\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      refId="Package\Import dim_industry Table\new_dim_industry.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\Import dim_industry Table\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      lineageId="Package\Import dim_industry Table\new_dim_industry.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\Import dim_industry Table\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      refId="Package\Import dim_industry Table\new_dim_industry.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\Import dim_industry Table\Flat File Source.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      lineageId="Package\Import dim_industry Table\new_dim_industry.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -844,37 +975,43 @@
                       cachedDataType="wstr"
                       cachedLength="255"
                       cachedName="pnaics"
-                      lineageId="Package\Import dim_industry Table\Flat File Source.Outputs[Flat File Source Output].Columns[pnaics]" />
+                      lineageId="Package\Import dim_industry Table\new_dim_industry.Outputs[Flat File Source Output].Columns[pnaics]" />
                     <inputColumn
                       refId="Package\Import dim_industry Table\Shorten NAICS codes.Inputs[Derived Column Input].Columns[naics6]"
                       cachedDataType="wstr"
                       cachedLength="255"
                       cachedName="naics6"
-                      lineageId="Package\Import dim_industry Table\Flat File Source.Outputs[Flat File Source Output].Columns[naics6]" />
+                      lineageId="Package\Import dim_industry Table\new_dim_industry.Outputs[Flat File Source Output].Columns[naics6]" />
                     <inputColumn
                       refId="Package\Import dim_industry Table\Shorten NAICS codes.Inputs[Derived Column Input].Columns[naics5]"
                       cachedDataType="wstr"
                       cachedLength="255"
                       cachedName="naics5"
-                      lineageId="Package\Import dim_industry Table\Flat File Source.Outputs[Flat File Source Output].Columns[naics5]" />
+                      lineageId="Package\Import dim_industry Table\new_dim_industry.Outputs[Flat File Source Output].Columns[naics5]" />
                     <inputColumn
                       refId="Package\Import dim_industry Table\Shorten NAICS codes.Inputs[Derived Column Input].Columns[naics4]"
                       cachedDataType="wstr"
                       cachedLength="255"
                       cachedName="naics4"
-                      lineageId="Package\Import dim_industry Table\Flat File Source.Outputs[Flat File Source Output].Columns[naics4]" />
+                      lineageId="Package\Import dim_industry Table\new_dim_industry.Outputs[Flat File Source Output].Columns[naics4]" />
                     <inputColumn
                       refId="Package\Import dim_industry Table\Shorten NAICS codes.Inputs[Derived Column Input].Columns[naics2]"
                       cachedDataType="wstr"
                       cachedLength="255"
                       cachedName="naics2"
-                      lineageId="Package\Import dim_industry Table\Flat File Source.Outputs[Flat File Source Output].Columns[naics2]" />
+                      lineageId="Package\Import dim_industry Table\new_dim_industry.Outputs[Flat File Source Output].Columns[naics2]" />
                     <inputColumn
                       refId="Package\Import dim_industry Table\Shorten NAICS codes.Inputs[Derived Column Input].Columns[naics3]"
                       cachedDataType="wstr"
                       cachedLength="255"
                       cachedName="naics3"
-                      lineageId="Package\Import dim_industry Table\Flat File Source.Outputs[Flat File Source Output].Columns[naics3]" />
+                      lineageId="Package\Import dim_industry Table\new_dim_industry.Outputs[Flat File Source Output].Columns[naics3]" />
+                    <inputColumn
+                      refId="Package\Import dim_industry Table\Shorten NAICS codes.Inputs[Derived Column Input].Columns[NAICS aggregation level]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="NAICS aggregation level"
+                      lineageId="Package\Import dim_industry Table\new_dim_industry.Outputs[Flat File Source Output].Columns[NAICS aggregation level]" />
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
@@ -901,7 +1038,7 @@
                           containsID="true"
                           dataType="System.String"
                           description="Derived Column Expression"
-                          name="Expression">[LEFT](#{Package\Import dim_industry Table\Flat File Source.Outputs[Flat File Source Output].Columns[pnaics]},7)</property>
+                          name="Expression">[LEFT](#{Package\Import dim_industry Table\new_dim_industry.Outputs[Flat File Source Output].Columns[pnaics]},7)</property>
                         <property
                           containsID="true"
                           dataType="System.String"
@@ -924,7 +1061,7 @@
                           containsID="true"
                           dataType="System.String"
                           description="Derived Column Expression"
-                          name="Expression">[LEFT](#{Package\Import dim_industry Table\Flat File Source.Outputs[Flat File Source Output].Columns[naics6]},7)</property>
+                          name="Expression">[LEFT](#{Package\Import dim_industry Table\new_dim_industry.Outputs[Flat File Source Output].Columns[naics6]},7)</property>
                         <property
                           containsID="true"
                           dataType="System.String"
@@ -947,7 +1084,7 @@
                           containsID="true"
                           dataType="System.String"
                           description="Derived Column Expression"
-                          name="Expression">[LEFT](#{Package\Import dim_industry Table\Flat File Source.Outputs[Flat File Source Output].Columns[naics5]},7)</property>
+                          name="Expression">[LEFT](#{Package\Import dim_industry Table\new_dim_industry.Outputs[Flat File Source Output].Columns[naics5]},7)</property>
                         <property
                           containsID="true"
                           dataType="System.String"
@@ -970,7 +1107,7 @@
                           containsID="true"
                           dataType="System.String"
                           description="Derived Column Expression"
-                          name="Expression">[LEFT](#{Package\Import dim_industry Table\Flat File Source.Outputs[Flat File Source Output].Columns[naics4]},7)</property>
+                          name="Expression">[LEFT](#{Package\Import dim_industry Table\new_dim_industry.Outputs[Flat File Source Output].Columns[naics4]},7)</property>
                         <property
                           containsID="true"
                           dataType="System.String"
@@ -993,7 +1130,7 @@
                           containsID="true"
                           dataType="System.String"
                           description="Derived Column Expression"
-                          name="Expression">[LEFT](#{Package\Import dim_industry Table\Flat File Source.Outputs[Flat File Source Output].Columns[naics2]},7)</property>
+                          name="Expression">[LEFT](#{Package\Import dim_industry Table\new_dim_industry.Outputs[Flat File Source Output].Columns[naics2]},7)</property>
                         <property
                           containsID="true"
                           dataType="System.String"
@@ -1016,13 +1153,36 @@
                           containsID="true"
                           dataType="System.String"
                           description="Derived Column Expression"
-                          name="Expression">[LEFT](#{Package\Import dim_industry Table\Flat File Source.Outputs[Flat File Source Output].Columns[naics3]},7)</property>
+                          name="Expression">[LEFT](#{Package\Import dim_industry Table\new_dim_industry.Outputs[Flat File Source Output].Columns[naics3]},7)</property>
                         <property
                           containsID="true"
                           dataType="System.String"
                           description="Derived Column Friendly Expression"
                           expressionType="Notify"
                           name="FriendlyExpression">LEFT(naics3,7)</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Import dim_industry Table\Shorten NAICS codes.Outputs[Derived Column Output].Columns[short_naics_aggregation_level]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="15"
+                      lineageId="Package\Import dim_industry Table\Shorten NAICS codes.Outputs[Derived Column Output].Columns[short_naics_aggregation_level]"
+                      name="short_naics_aggregation_level"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[LEFT](#{Package\Import dim_industry Table\new_dim_industry.Outputs[Flat File Source Output].Columns[NAICS aggregation level]},15)</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">LEFT([NAICS aggregation level],15)</property>
                       </properties>
                     </outputColumn>
                   </outputColumns>
@@ -1064,7 +1224,7 @@
               refId="Package\Import dim_industry Table.Paths[Flat File Source Output]"
               endId="Package\Import dim_industry Table\Shorten NAICS codes.Inputs[Derived Column Input]"
               name="Flat File Source Output"
-              startId="Package\Import dim_industry Table\Flat File Source.Outputs[Flat File Source Output]" />
+              startId="Package\Import dim_industry Table\new_dim_industry.Outputs[Flat File Source Output]" />
           </paths>
         </pipeline>
       </DTS:ObjectData>
@@ -2604,6 +2764,14 @@
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint 3"
       DTS:To="Package\Import dim_geography Table" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 4]"
+      DTS:CreationName=""
+      DTS:DTSID="{76CE7CB4-428C-44C7-AFCF-ADA657135A2D}"
+      DTS:From="Package\create_metadata_tables"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 4"
+      DTS:To="Package\Import dim_industry Table" />
   </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
 <!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
@@ -2618,28 +2786,32 @@
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
+          Size="192,42"
+          Id="Package\create_metadata_tables"
+          TopLeft="144,3" />
+        <NodeLayout
           Size="218.5,42.5"
           Id="Package\Import dim_geography Table"
-          TopLeft="286.460318458624,137.389840998783" />
+          TopLeft="285.960318458624,200.889840998783" />
         <NodeLayout
           Size="204.5,42"
           Id="Package\Import dim_industry Table"
-          TopLeft="35.2735061696018,38.487012647306" />
+          TopLeft="34.7735061696018,101.987012647306" />
         <NodeLayout
           Size="219.5,42.5"
           Id="Package\Import dim_occupation Table"
-          TopLeft="28.4273572153623,137.172378213611" />
+          TopLeft="27.9273572153623,200.672378213611" />
         <NodeLayout
           Size="215.5,42.5"
           Id="Package\Import industry_descriptions"
-          TopLeft="165.888888991909,259.454544084131" />
+          TopLeft="165.388888991909,322.954544084131" />
         <NodeLayout
           Size="234.5,42.5"
           Id="Package\Import ioicc_splitter OLTP Table"
-          TopLeft="270.614164576193,45.226564950444" />
+          TopLeft="270.114164576193,108.726564950444" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="239.773506169602,62.981788798875">
+          TopLeft="239.273506169602,126.481788798875">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -2661,7 +2833,7 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="395.710318458624,179.889840998783">
+          TopLeft="395.210318458624,243.389840998783">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -2695,7 +2867,7 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 2]"
-          TopLeft="387.75702171905,87.512279236158">
+          TopLeft="387.25702171905,151.012279236158">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -2729,7 +2901,7 @@
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 3]"
-          TopLeft="247.855928643934,158.423966749054">
+          TopLeft="247.355928643934,221.923966749054">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -2749,6 +2921,40 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 4]"
+          TopLeft="240,45">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-102.976493830398,56.987012647306"
+              Start="0,0"
+              End="-102.976493830398,49.487012647306">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,24.493506323653" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,24.493506323653"
+                    Point2="0,28.493506323653"
+                    Point3="-4,28.493506323653" />
+                  <mssgle:LineSegment
+                    End="-98.9764938303982,28.493506323653" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-98.9764938303982,28.493506323653"
+                    Point2="-102.976493830398,28.493506323653"
+                    Point3="-102.976493830398,32.493506323653" />
+                  <mssgle:LineSegment
+                    End="-102.976493830398,49.487012647306" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </Package>
@@ -2756,7 +2962,7 @@
     design-time-name="Package\Import dim_geography Table">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="215.5,42.5"
           Id="Package\Import dim_geography Table\dim_geography OLTP Table"
@@ -2796,7 +3002,9 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -2821,16 +3029,42 @@
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="178.5,42.5"
-          Id="Package\Import dim_industry Table\Shorten NAICS codes"
-          TopLeft="123.615370993078,108.103030155031" />
+          Size="165,42"
+          Id="Package\Import dim_industry Table\new_dim_industry"
+          TopLeft="130,22" />
         <NodeLayout
           Size="202.5,42.5"
           Id="Package\Import dim_industry Table\dim_industry OLTP Table"
-          TopLeft="119.465934003975,220.486988561576" />
+          TopLeft="119.465934003975,233.986988561576" />
+        <NodeLayout
+          Size="178.5,42.5"
+          Id="Package\Import dim_industry Table\Shorten NAICS codes"
+          TopLeft="123.615370993078,121.603030155031" />
+        <EdgeLayout
+          Id="Package\Import dim_industry Table.Paths[Flat File Source Output]"
+          TopLeft="212.682685496539,64">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,57.603030155031"
+              Start="0,0"
+              End="0,50.103030155031">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,50.103030155031" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <EdgeLayout
           Id="Package\Import dim_industry Table.Paths[Derived Column Output]"
-          TopLeft="216.683509641384,150.388744440745">
+          TopLeft="216.683509641384,163.888744440745">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -2842,44 +3076,6 @@
                   Capacity="5">
                   <mssgle:LineSegment
                     End="0,62.5982441208307" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="151,42"
-          Id="Package\Import dim_industry Table\Flat File Source"
-          TopLeft="460.5,39.5" />
-        <EdgeLayout
-          Id="Package\Import dim_industry Table.Paths[Flat File Source Output]"
-          TopLeft="536,81.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-323.134629006922,26.603030155031"
-              Start="0,0"
-              End="-323.134629006922,19.103030155031">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,9.3015150775155" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,9.3015150775155"
-                    Point2="0,13.3015150775155"
-                    Point3="-4,13.3015150775155" />
-                  <mssgle:LineSegment
-                    End="-319.134629006922,13.3015150775155" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-319.134629006922,13.3015150775155"
-                    Point2="-323.134629006922,13.3015150775155"
-                    Point3="-323.134629006922,17.3015150775155" />
-                  <mssgle:LineSegment
-                    End="-323.134629006922,19.103030155031" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -2908,7 +3104,11 @@
     design-time-name="Package\Import dim_occupation Table">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="188.5,42"
+          Id="Package\Import dim_occupation Table\dim_occupation csv file"
+          TopLeft="139.6,37.2" />
         <NodeLayout
           Size="193,42.5"
           Id="Package\Import dim_occupation Table\Shorten anocs, creative"
@@ -2948,13 +3148,11 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
-        <NodeLayout
-          Size="188.5,42"
-          Id="Package\Import dim_occupation Table\dim_occupation csv file"
-          TopLeft="139.6,37.2" />
         <EdgeLayout
           Id="Package\Import dim_occupation Table.Paths[Flat File Source Output]"
           TopLeft="233.85,79.2">
@@ -2986,7 +3184,9 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -3009,7 +3209,7 @@
     design-time-name="Package\Import industry_descriptions">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="145.5,42.5"
           Id="Package\Import industry_descriptions\Shorten naics"
@@ -3018,28 +3218,6 @@
           Size="243,42.5"
           Id="Package\Import industry_descriptions\industry_descriptions OLTP Table"
           TopLeft="256.333333333333,207.333333333333" />
-        <EdgeLayout
-          Id="Package\Import industry_descriptions.Paths[Derived Column Output]"
-          TopLeft="377.625,168.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,38.8333333333333"
-              Start="0,0"
-              End="0,31.3333333333333">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,31.3333333333333" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
         <NodeLayout
           Size="214,42"
           Id="Package\Import industry_descriptions\industry_descriptions csv file"
@@ -3075,7 +3253,33 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Import industry_descriptions.Paths[Derived Column Output]"
+          TopLeft="377.625,168.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,38.8333333333333"
+              Start="0,0"
+              End="0,31.3333333333333">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,31.3333333333333" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -3098,7 +3302,7 @@
     design-time-name="Package\Import ioicc_splitter OLTP Table">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="183.5,42.5"
           Id="Package\Import ioicc_splitter OLTP Table\Shorten pnaics codes"
@@ -3107,40 +3311,6 @@
           Size="200.5,42.5"
           Id="Package\Import ioicc_splitter OLTP Table\ioicc_splitter OLTP Table"
           TopLeft="80,211.5" />
-        <EdgeLayout
-          Id="Package\Import ioicc_splitter OLTP Table.Paths[Derived Column Output]"
-          TopLeft="488.75,178.5">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="-308.5,33"
-              Start="0,0"
-              End="-308.5,25.5">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,12.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,12.5"
-                    Point2="0,16.5"
-                    Point3="-4,16.5" />
-                  <mssgle:LineSegment
-                    End="-304.5,16.5" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-304.5,16.5"
-                    Point2="-308.5,16.5"
-                    Point3="-308.5,20.5" />
-                  <mssgle:LineSegment
-                    End="-308.5,25.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
         <NodeLayout
           Size="191.5,42"
           Id="Package\Import ioicc_splitter OLTP Table\ioicc_splitter csv flat file"
@@ -3176,7 +3346,45 @@
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Import ioicc_splitter OLTP Table.Paths[Derived Column Output]"
+          TopLeft="488.75,178.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-308.5,33"
+              Start="0,0"
+              End="-308.5,25.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,12.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,12.5"
+                    Point2="0,16.5"
+                    Point3="-4,16.5" />
+                  <mssgle:LineSegment
+                    End="-304.5,16.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-304.5,16.5"
+                    Point2="-308.5,16.5"
+                    Point3="-308.5,20.5" />
+                  <mssgle:LineSegment
+                    End="-308.5,25.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
