@@ -1,0 +1,5 @@
+06/03/2021 09:47:41	Medium	Web Add-In Runtime Logging Session Started			
+06/03/2021 09:47:41	Monitorable	Manifest	Extension point list has no supported extension points for this client		
+06/03/2021 09:47:41	Monitorable	Manifest	Extension point list has no supported extension points for this client		
+06/03/2021 09:47:41	Monitorable	Manifest	Issue encountered while parsing manifest, add-in ID : b8fb1407-490b-42c2-89e7-261035439e6e, Location : Error at element "VersionOverrides" : Manifest override with unsupported requirements or no supported extension points ignored: http://schemas.microsoft.com/office/taskpaneappversionoverrides, VersionOverridesV1_0, Line=42, CharPosition=7		
+06/03/2021 09:47:41	Monitorable	Manifest	Issue encountered while parsing manifest, add-in ID : b8fb1407-490b-42c2-89e7-261035439e6e, Location : Error at element "VersionOverrides" : Manifest override with unsupported requirements or no supported extension points ignored: http://schemas.microsoft.com/office/taskpaneappversionoverrides, VersionOverridesV1_0, Line=42, CharPosition=7		

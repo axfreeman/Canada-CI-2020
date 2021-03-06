@@ -1,0 +1,125 @@
+﻿<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="GDP input errors"
+  DTS:DTSID="{5A0AB802-C48C-4A77-BE3B-851A1463AA9E}"
+  DTS:Description="Log file for errors in the Statcan GDP file"
+  DTS:CreationName="FLATFILE">
+  <DTS:PropertyExpression
+    DTS:Name="ConnectionString">@[$Project::Root]+"\\ERRORS\\GDP-errors.txt"</DTS:PropertyExpression>
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:Format="Delimited"
+      DTS:LocaleID="2057"
+      DTS:HeaderRowDelimiter="_x000D__x000A_"
+      DTS:ColumnNamesInFirstDataRow="True"
+      DTS:RowDelimiter=""
+      DTS:TextQualifier="_x003C_none_x003E_"
+      DTS:CodePage="1252"
+      DTS:ConnectionString="C:\Users\afree\Documents\Github\Canada-CI\ERRORS\GDP-errors.txt">
+      <DTS:FlatFileColumns>
+        <DTS:FlatFileColumn
+          DTS:ColumnType="Delimited"
+          DTS:ColumnDelimiter="_x002C_"
+          DTS:MaximumWidth="7"
+          DTS:DataType="130"
+          DTS:TextQualified="True"
+          DTS:ObjectName="pnaics_target"
+          DTS:DTSID="{433878CD-761E-495F-BF5D-FAB226B33D4F}"
+          DTS:CreationName="" />
+        <DTS:FlatFileColumn
+          DTS:ColumnType="Delimited"
+          DTS:ColumnDelimiter="_x002C_"
+          DTS:MaximumWidth="255"
+          DTS:DataType="130"
+          DTS:TextQualified="True"
+          DTS:ObjectName="source"
+          DTS:DTSID="{B0422927-CD41-448F-A4CC-A8B5F6C4700C}"
+          DTS:CreationName="" />
+        <DTS:FlatFileColumn
+          DTS:ColumnType="Delimited"
+          DTS:ColumnDelimiter="_x002C_"
+          DTS:MaximumWidth="256"
+          DTS:DataType="130"
+          DTS:TextQualified="True"
+          DTS:ObjectName="indicator"
+          DTS:DTSID="{26220260-AB56-4677-96A1-25FAE17A94DF}"
+          DTS:CreationName="" />
+        <DTS:FlatFileColumn
+          DTS:ColumnType="Delimited"
+          DTS:ColumnDelimiter="_x002C_"
+          DTS:DataType="5"
+          DTS:TextQualified="True"
+          DTS:ObjectName="split_value"
+          DTS:DTSID="{BE2A0A2A-9E16-4F16-92F8-F4837B45C519}"
+          DTS:CreationName="" />
+        <DTS:FlatFileColumn
+          DTS:ColumnType="Delimited"
+          DTS:ColumnDelimiter="_x002C_"
+          DTS:DataType="5"
+          DTS:TextQualified="True"
+          DTS:ObjectName="coefficient"
+          DTS:DTSID="{A729179A-C701-42EB-A333-B9F817506413}"
+          DTS:CreationName="" />
+        <DTS:FlatFileColumn
+          DTS:ColumnType="Delimited"
+          DTS:ColumnDelimiter="_x002C_"
+          DTS:DataType="5"
+          DTS:TextQualified="True"
+          DTS:ObjectName="value"
+          DTS:DTSID="{FA720F6B-AA2F-4ACB-9611-9A59C3AFB52C}"
+          DTS:CreationName="" />
+        <DTS:FlatFileColumn
+          DTS:ColumnType="Delimited"
+          DTS:ColumnDelimiter="_x002C_"
+          DTS:MaximumWidth="255"
+          DTS:DataType="130"
+          DTS:TextQualified="True"
+          DTS:ObjectName="naics_description"
+          DTS:DTSID="{2A3D9D71-185A-4EF7-9CAC-11AAFF97598A}"
+          DTS:CreationName="" />
+        <DTS:FlatFileColumn
+          DTS:ColumnType="Delimited"
+          DTS:ColumnDelimiter="_x002C_"
+          DTS:MaximumWidth="8"
+          DTS:DataType="130"
+          DTS:TextQualified="True"
+          DTS:ObjectName="pnaics_id"
+          DTS:DTSID="{0F84C78F-20BD-4969-96E1-F14250647042}"
+          DTS:CreationName="" />
+        <DTS:FlatFileColumn
+          DTS:ColumnType="Delimited"
+          DTS:ColumnDelimiter="_x002C_"
+          DTS:MaximumWidth="255"
+          DTS:DataType="130"
+          DTS:TextQualified="True"
+          DTS:ObjectName="geo_name_id"
+          DTS:DTSID="{272B2346-D952-4390-A1A6-820CAEB2E11E}"
+          DTS:CreationName="" />
+        <DTS:FlatFileColumn
+          DTS:ColumnType="Delimited"
+          DTS:ColumnDelimiter="_x002C_"
+          DTS:DataType="133"
+          DTS:TextQualified="True"
+          DTS:ObjectName="date"
+          DTS:DTSID="{573830AC-AC76-4175-9394-12F91314D76D}"
+          DTS:CreationName="" />
+        <DTS:FlatFileColumn
+          DTS:ColumnType="Delimited"
+          DTS:ColumnDelimiter="_x002C_"
+          DTS:DataType="3"
+          DTS:TextQualified="True"
+          DTS:ObjectName="ErrorCode"
+          DTS:DTSID="{EF30FECB-F55D-41BF-BE4D-83834D561E1F}"
+          DTS:CreationName="" />
+        <DTS:FlatFileColumn
+          DTS:ColumnType="Delimited"
+          DTS:ColumnDelimiter="_x000D__x000A_"
+          DTS:DataType="3"
+          DTS:TextQualified="True"
+          DTS:ObjectName="ErrorColumn"
+          DTS:DTSID="{E56EC9A6-F592-48CE-9722-417FAAB9AEBA}"
+          DTS:CreationName="" />
+      </DTS:FlatFileColumns>
+    </DTS:ConnectionManager>
+  </DTS:ObjectData>
+</DTS:ConnectionManager>

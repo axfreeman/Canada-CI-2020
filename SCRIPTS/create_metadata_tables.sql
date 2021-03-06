@@ -1,4 +1,5 @@
-USE canada_ci_oltp -- the Geography dimension. Creates a standard geography that is valid throughout the time period covered
+USE canada_ci_oltp 
+-- the Geography dimension. Creates a standard geography that is valid throughout the time period covered
 -- Mostly the same as today's province names with a couple of quirks, notably, all the
 -- Northern provinces are amalgamated, because they don't exist throughout the whole period covered.
 -- the Geo Names table. Gets converted to the ROLAP DimGeo table. Probably redundant
@@ -22,9 +23,11 @@ GO
     naics3 nvarchar(7) NULL,
     naics2 nvarchar(7) NULL,
     creative_sector nvarchar (255) NULL,
+	early_warning_cultural_creative nvarchar (255) NULL,
+	proximity nvarchar(255) NULL,
+	four_digit_intensity float,
     main_industry nvarchar(255) NULL,
 	naics_aggregation_level nvarchar(15) NULL,
-	naics_description nvarchar(255) NULL
   )
 GO
   DROP TABLE IF EXISTS dim_occupations
@@ -43,5 +46,19 @@ GO
   CREATE TABLE industry_descriptions(
     naics6 nvarchar(6) NULL,
     description nvarchar(255) NULL
+  )
+GO
+
+ -- Concordance mapping IOICC to naics.
+  -- Covers both Anaics4 and Anaics2 mappings, which are mapped from different codes
+  -- ie we don't map the same IOICC code to both Anaics2 and Anaics4.
+  DROP TABLE IF EXISTS ioicc_splitter
+GO
+  CREATE TABLE ioicc_splitter (
+    pnaics_source nvarchar (7) NOT NULL,
+    coefficient float NULL,
+    pnaics_target nvarchar (7) NULL,
+    source_description nvarchar (255) NULL,
+    target_description nvarchar (255) NULL
   )
 GO
