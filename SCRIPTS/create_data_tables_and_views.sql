@@ -119,7 +119,7 @@ FROM  dbo.dim_industry INNER JOIN
          dbo.industry_descriptions ON dbo.dim_industry.naics2 = dbo.industry_descriptions.naics6
 GO
 
-  -- This is the most detailed view, listing every record in the fact file beside its province,
+ /* -- This is the most detailed view, listing every record in the fact file beside its province,
   -- date, industry, creative sector and main industry.
   -- See the 'industries_summary' view, which groups by creative sector and main industry
  
@@ -140,6 +140,7 @@ FROM  dbo.fact LEFT OUTER JOIN
          dbo.[Descriptions Full] ON dbo.fact.pnaics_id = dbo.[Descriptions Full].pnaics_id LEFT OUTER JOIN
          dbo.dim_geography ON dbo.fact.geo_name_id = dbo.dim_geography.geo_name_id
 GO
+*/
 
 -- Combines the Fact File with the Descriptions Full and dimGeography views, to create a complete flat file with everything in it
 CREATE OR ALTER VIEW [dbo].[Fact Full]
@@ -160,6 +161,8 @@ SELECT
  dbo.dim_industry.creative_sector, 
  dbo.dim_industry.early_warning_cultural_creative,
  dbo.dim_industry.four_digit_intensity,
+ dbo.dim_industry.primary_csa_domain,
+ dbo.dim_industry.primary_csa_subdomain,
  dbo.dim_geography.standardised_province
 FROM  dbo.dim_industry RIGHT OUTER JOIN
          dbo.fact ON dbo.dim_industry.pnaics_id = dbo.fact.pnaics_id LEFT OUTER JOIN

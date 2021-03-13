@@ -26,6 +26,8 @@ GO
 	early_warning_cultural_creative nvarchar (255) NULL,
 	proximity nvarchar(255) NULL,
 	four_digit_intensity float,
+	primary_csa_domain nvarchar(255) NULL,
+	primary_csa_subdomain nvarchar(255) NULL,
     main_industry nvarchar(255) NULL,
 	naics_aggregation_level nvarchar(15) NULL,
   )

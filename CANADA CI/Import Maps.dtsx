@@ -11,8 +11,8 @@
   DTS:LocaleID="2057"
   DTS:ObjectName="Import Maps"
   DTS:PackageType="5"
-  DTS:VersionBuild="194"
-  DTS:VersionGUID="{E7B62F60-745B-4AE8-8FBD-5D6DEF946FF1}">
+  DTS:VersionBuild="200"
+  DTS:VersionGUID="{92EDE265-47BB-4B4A-9CA2-4A448917B31D}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -36,151 +36,6 @@
       <DTS:ObjectData>
         <DTS:ConnectionManager
           DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\afree\Documents\Github\Canada-CI\SOURCE DATA\MAPPING.xlsx;Extended Properties=&quot;EXCEL 12.0 XML;HDR=YES&quot;;" />
-      </DTS:ObjectData>
-    </DTS:ConnectionManager>
-    <DTS:ConnectionManager
-      DTS:refId="Package.ConnectionManagers[DimIndustry CSV file]"
-      DTS:CreationName="FLATFILE"
-      DTS:DTSID="{B42103C9-26C4-45A3-BFD0-85640B5600AF}"
-      DTS:ObjectName="DimIndustry CSV file">
-      <DTS:ObjectData>
-        <DTS:ConnectionManager
-          DTS:Format="Delimited"
-          DTS:LocaleID="2057"
-          DTS:HeaderRowDelimiter="_x000D__x000A_"
-          DTS:ColumnNamesInFirstDataRow="True"
-          DTS:RowDelimiter=""
-          DTS:TextQualifier="_x0022_"
-          DTS:CodePage="65001"
-          DTS:ConnectionString="C:\Users\afree\Documents\Github\Canada-CI\SOURCE DATA\dim_industry.csv">
-          <DTS:FlatFileColumns>
-            <DTS:FlatFileColumn
-              DTS:ColumnType="Delimited"
-              DTS:ColumnDelimiter="_x002C_"
-              DTS:MaximumWidth="7"
-              DTS:DataType="130"
-              DTS:TextQualified="True"
-              DTS:ObjectName="pnaics"
-              DTS:DTSID="{97A9A315-2F11-427A-8A7D-E3D6DEC50752}"
-              DTS:CreationName="" />
-            <DTS:FlatFileColumn
-              DTS:ColumnType="Delimited"
-              DTS:ColumnDelimiter="_x002C_"
-              DTS:MaximumWidth="7"
-              DTS:DataType="130"
-              DTS:TextQualified="True"
-              DTS:ObjectName="naics6"
-              DTS:DTSID="{F25BA3F0-C80E-454D-AE80-82B244DAF3E3}"
-              DTS:CreationName="" />
-            <DTS:FlatFileColumn
-              DTS:ColumnType="Delimited"
-              DTS:ColumnDelimiter="_x002C_"
-              DTS:MaximumWidth="7"
-              DTS:DataType="130"
-              DTS:TextQualified="True"
-              DTS:ObjectName="naics5"
-              DTS:DTSID="{E042C863-B42C-4049-9B6F-721C5C7D9C8F}"
-              DTS:CreationName="" />
-            <DTS:FlatFileColumn
-              DTS:ColumnType="Delimited"
-              DTS:ColumnDelimiter="_x002C_"
-              DTS:MaximumWidth="7"
-              DTS:DataType="130"
-              DTS:TextQualified="True"
-              DTS:ObjectName="naics4"
-              DTS:DTSID="{7A2D9D70-0534-4829-8B29-6D12CCBF020B}"
-              DTS:CreationName="" />
-            <DTS:FlatFileColumn
-              DTS:ColumnType="Delimited"
-              DTS:ColumnDelimiter="_x002C_"
-              DTS:MaximumWidth="7"
-              DTS:DataType="130"
-              DTS:TextQualified="True"
-              DTS:ObjectName="naics3"
-              DTS:DTSID="{747D46A1-7674-41A6-A7CA-EB128D2CBAD4}"
-              DTS:CreationName="" />
-            <DTS:FlatFileColumn
-              DTS:ColumnType="Delimited"
-              DTS:ColumnDelimiter="_x002C_"
-              DTS:MaximumWidth="7"
-              DTS:DataType="130"
-              DTS:TextQualified="True"
-              DTS:ObjectName="naics2"
-              DTS:DTSID="{17BB564C-BC0D-47C1-966D-052F6313FDFF}"
-              DTS:CreationName="" />
-            <DTS:FlatFileColumn
-              DTS:ColumnType="Delimited"
-              DTS:ColumnDelimiter="_x002C_"
-              DTS:MaximumWidth="255"
-              DTS:DataType="130"
-              DTS:TextQualified="True"
-              DTS:ObjectName="creative_sector"
-              DTS:DTSID="{61BCE226-43A4-4EC4-9017-FE815280245A}"
-              DTS:CreationName="" />
-            <DTS:FlatFileColumn
-              DTS:ColumnType="Delimited"
-              DTS:ColumnDelimiter="_x002C_"
-              DTS:MaximumWidth="255"
-              DTS:DataType="130"
-              DTS:TextQualified="True"
-              DTS:ObjectName="early_warning_cultural_creative"
-              DTS:DTSID="{86C02489-4028-4F9F-89BB-A3816925DC01}"
-              DTS:CreationName="" />
-            <DTS:FlatFileColumn
-              DTS:ColumnType="Delimited"
-              DTS:ColumnDelimiter="_x002C_"
-              DTS:MaximumWidth="255"
-              DTS:DataType="130"
-              DTS:TextQualified="True"
-              DTS:ObjectName="proximity_restricted"
-              DTS:DTSID="{78A2E913-F1E9-4499-B97E-7C1BC7D541DD}"
-              DTS:CreationName="" />
-            <DTS:FlatFileColumn
-              DTS:ColumnType="Delimited"
-              DTS:ColumnDelimiter="_x002C_"
-              DTS:DataType="5"
-              DTS:TextQualified="True"
-              DTS:ObjectName="four_digit_intensity"
-              DTS:DTSID="{B5E4F7DA-E8B4-424F-8796-ED34839CB6EC}"
-              DTS:CreationName="" />
-            <DTS:FlatFileColumn
-              DTS:ColumnType="Delimited"
-              DTS:ColumnDelimiter="_x002C_"
-              DTS:MaximumWidth="255"
-              DTS:DataType="130"
-              DTS:TextQualified="True"
-              DTS:ObjectName="main_industry"
-              DTS:DTSID="{F5199D37-6274-4C55-889F-8BB605E68F93}"
-              DTS:CreationName="" />
-            <DTS:FlatFileColumn
-              DTS:ColumnType="Delimited"
-              DTS:ColumnDelimiter="_x002C_"
-              DTS:MaximumWidth="255"
-              DTS:DataType="130"
-              DTS:TextQualified="True"
-              DTS:ObjectName="NAICS aggregation level"
-              DTS:DTSID="{85A79F49-8691-492F-93EC-A996C6DE4E8B}"
-              DTS:CreationName="" />
-            <DTS:FlatFileColumn
-              DTS:ColumnType="Delimited"
-              DTS:ColumnDelimiter="_x002C_"
-              DTS:MaximumWidth="255"
-              DTS:DataType="130"
-              DTS:TextQualified="True"
-              DTS:ObjectName="Check"
-              DTS:DTSID="{FFB37CE8-0592-4B0B-A060-ABC9C8CC71D7}"
-              DTS:CreationName="" />
-            <DTS:FlatFileColumn
-              DTS:ColumnType="Delimited"
-              DTS:ColumnDelimiter="_x000D__x000A_"
-              DTS:MaximumWidth="255"
-              DTS:DataType="130"
-              DTS:TextQualified="True"
-              DTS:ObjectName="Description"
-              DTS:DTSID="{F9CEDC1F-63DF-460F-BE1F-5C075036CFAF}"
-              DTS:CreationName="" />
-          </DTS:FlatFileColumns>
-        </DTS:ConnectionManager>
       </DTS:ObjectData>
     </DTS:ConnectionManager>
     <DTS:ConnectionManager
@@ -341,6 +196,16 @@
               DTS:CreationName="" />
           </DTS:FlatFileColumns>
         </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Excel Connection Manager]"
+      DTS:CreationName="EXCEL"
+      DTS:DTSID="{1578B72B-5F87-47ED-AA1B-90F43089DD1B}"
+      DTS:ObjectName="Excel Connection Manager">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\afree\Documents\Github\Canada-CI\SOURCE DATA\MAPPING.xlsx;Extended Properties=&quot;EXCEL 12.0 XML;HDR=YES&quot;;" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
     <DTS:ConnectionManager
@@ -969,8 +834,8 @@
               <connections>
                 <connection
                   refId="Package\Import dim_industry Table\dimIndustry in Mappings.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[DimIndustry]"
-                  connectionManagerRefId="Package.ConnectionManagers[DimIndustry]"
+                  connectionManagerID="Package.ConnectionManagers[Excel Connection Manager]"
+                  connectionManagerRefId="Package.ConnectionManagers[Excel Connection Manager]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -1118,6 +983,26 @@
                       lineageId="Package\Import dim_industry Table\dimIndustry in Mappings.Outputs[Excel Source Output].Columns[Description]"
                       name="Description"
                       truncationRowDisposition="RedirectRow" />
+                    <outputColumn
+                      refId="Package\Import dim_industry Table\dimIndustry in Mappings.Outputs[Excel Source Output].Columns[primary_csa_domain]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import dim_industry Table\dimIndustry in Mappings.Outputs[Excel Source Output].ExternalColumns[primary_csa_domain]"
+                      length="255"
+                      lineageId="Package\Import dim_industry Table\dimIndustry in Mappings.Outputs[Excel Source Output].Columns[primary_csa_domain]"
+                      name="primary_csa_domain"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import dim_industry Table\dimIndustry in Mappings.Outputs[Excel Source Output].Columns[primary_csa_subdomain]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import dim_industry Table\dimIndustry in Mappings.Outputs[Excel Source Output].ExternalColumns[primary_csa_subdomain]"
+                      length="255"
+                      lineageId="Package\Import dim_industry Table\dimIndustry in Mappings.Outputs[Excel Source Output].Columns[primary_csa_subdomain]"
+                      name="primary_csa_subdomain"
+                      truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -1190,6 +1075,16 @@
                       dataType="wstr"
                       length="255"
                       name="Description" />
+                    <externalMetadataColumn
+                      refId="Package\Import dim_industry Table\dimIndustry in Mappings.Outputs[Excel Source Output].ExternalColumns[primary_csa_domain]"
+                      dataType="wstr"
+                      length="255"
+                      name="primary_csa_domain" />
+                    <externalMetadataColumn
+                      refId="Package\Import dim_industry Table\dimIndustry in Mappings.Outputs[Excel Source Output].ExternalColumns[primary_csa_subdomain]"
+                      dataType="wstr"
+                      length="255"
+                      name="primary_csa_subdomain" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -1256,6 +1151,18 @@
                       dataType="r8"
                       lineageId="Package\Import dim_industry Table\dimIndustry in Mappings.Outputs[Excel Source Error Output].Columns[four_digit_intensity]"
                       name="four_digit_intensity" />
+                    <outputColumn
+                      refId="Package\Import dim_industry Table\dimIndustry in Mappings.Outputs[Excel Source Error Output].Columns[primary_csa_domain]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Import dim_industry Table\dimIndustry in Mappings.Outputs[Excel Source Error Output].Columns[primary_csa_domain]"
+                      name="primary_csa_domain" />
+                    <outputColumn
+                      refId="Package\Import dim_industry Table\dimIndustry in Mappings.Outputs[Excel Source Error Output].Columns[primary_csa_subdomain]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Import dim_industry Table\dimIndustry in Mappings.Outputs[Excel Source Error Output].Columns[primary_csa_subdomain]"
+                      name="primary_csa_subdomain" />
                     <outputColumn
                       refId="Package\Import dim_industry Table\dimIndustry in Mappings.Outputs[Excel Source Error Output].Columns[main_industry]"
                       dataType="wstr"
@@ -1452,6 +1359,20 @@
                       cachedName="early_warning_cultural_creative"
                       externalMetadataColumnId="Package\Import dim_industry Table\dim_industry OLTP Table.Inputs[OLE DB Destination Input].ExternalColumns[early_warning_cultural_creative]"
                       lineageId="Package\Import dim_industry Table\dimIndustry in Mappings.Outputs[Excel Source Output].Columns[early_warning_cultural_creative]" />
+                    <inputColumn
+                      refId="Package\Import dim_industry Table\dim_industry OLTP Table.Inputs[OLE DB Destination Input].Columns[primary_csa_domain]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="primary_csa_domain"
+                      externalMetadataColumnId="Package\Import dim_industry Table\dim_industry OLTP Table.Inputs[OLE DB Destination Input].ExternalColumns[primary_csa_domain]"
+                      lineageId="Package\Import dim_industry Table\dimIndustry in Mappings.Outputs[Excel Source Output].Columns[primary_csa_domain]" />
+                    <inputColumn
+                      refId="Package\Import dim_industry Table\dim_industry OLTP Table.Inputs[OLE DB Destination Input].Columns[primary_csa_subdomain]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="primary_csa_subdomain"
+                      externalMetadataColumnId="Package\Import dim_industry Table\dim_industry OLTP Table.Inputs[OLE DB Destination Input].ExternalColumns[primary_csa_subdomain]"
+                      lineageId="Package\Import dim_industry Table\dimIndustry in Mappings.Outputs[Excel Source Output].Columns[primary_csa_subdomain]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -1514,6 +1435,16 @@
                       refId="Package\Import dim_industry Table\dim_industry OLTP Table.Inputs[OLE DB Destination Input].ExternalColumns[four_digit_intensity]"
                       dataType="r8"
                       name="four_digit_intensity" />
+                    <externalMetadataColumn
+                      refId="Package\Import dim_industry Table\dim_industry OLTP Table.Inputs[OLE DB Destination Input].ExternalColumns[primary_csa_domain]"
+                      dataType="wstr"
+                      length="255"
+                      name="primary_csa_domain" />
+                    <externalMetadataColumn
+                      refId="Package\Import dim_industry Table\dim_industry OLTP Table.Inputs[OLE DB Destination Input].ExternalColumns[primary_csa_subdomain]"
+                      dataType="wstr"
+                      length="255"
+                      name="primary_csa_subdomain" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -3619,6 +3550,10 @@
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
+          Size="178.5,42.5"
+          Id="Package\Import dim_industry Table\Shorten NAICS codes"
+          TopLeft="122.115370993078,117.603030155031" />
+        <NodeLayout
           Size="195.5,42"
           Id="Package\Import dim_industry Table\dimIndustry in Mappings"
           TopLeft="112.5,13" />
@@ -3627,35 +3562,9 @@
           Id="Package\Import dim_industry Table\dim_industry OLTP Table"
           TopLeft="108.965934003975,233.486988561576" />
         <NodeLayout
-          Size="178.5,42.5"
-          Id="Package\Import dim_industry Table\Shorten NAICS codes"
-          TopLeft="122.115370993078,117.603030155031" />
-        <NodeLayout
           Size="168.5,42"
           Id="Package\Import dim_industry Table\DimIndustry Errors"
           TopLeft="591,69.5" />
-        <EdgeLayout
-          Id="Package\Import dim_industry Table.Paths[Excel Source Output]"
-          TopLeft="210.807685496539,55">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,62.603030155031"
-              Start="0,0"
-              End="0,55.103030155031">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,55.103030155031" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
         <EdgeLayout
           Id="Package\Import dim_industry Table.Paths[Excel Source Error Output]"
           TopLeft="308,34">
@@ -3712,6 +3621,30 @@
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Import dim_industry Table.Paths[Excel Source Output]"
+          TopLeft="210.807685496539,55">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,62.603030155031"
+              Start="0,0"
+              End="0,55.103030155031">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,55.103030155031" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-8,19.5515150775155,16,16"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
