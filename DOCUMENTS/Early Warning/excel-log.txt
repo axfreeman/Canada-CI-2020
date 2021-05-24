@@ -1,2 +1,0 @@
-08/03/2021 11:38:49	Medium	Web Add-In Runtime Logging Session Started			
-08/03/2021 11:38:49	Monitorable	Manifest	Issue encountered while parsing manifest, add-in ID : b8fb1407-490b-42c2-89e7-261035439e6e, Location : Error at element "VersionOverrides" : Manifest override with unsupported requirements or no supported extension points ignored: http://schemas.microsoft.com/office/taskpaneappversionoverrides, VersionOverridesV1_0, Line=42, CharPosition=7		

@@ -11,8 +11,8 @@
   DTS:LocaleID="2057"
   DTS:ObjectName="Import Maps"
   DTS:PackageType="5"
-  DTS:VersionBuild="200"
-  DTS:VersionGUID="{92EDE265-47BB-4B4A-9CA2-4A448917B31D}">
+  DTS:VersionBuild="217"
+  DTS:VersionGUID="{6C14317B-7F8E-4D1E-8B31-C2AE27031C53}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -29,183 +29,13 @@
       </DTS:ObjectData>
     </DTS:ConnectionManager>
     <DTS:ConnectionManager
-      DTS:refId="Package.ConnectionManagers[DimIndustry]"
-      DTS:CreationName="EXCEL"
-      DTS:DTSID="{0B2F9EB4-179B-4FE9-8E48-064C197DCCF0}"
-      DTS:ObjectName="DimIndustry">
-      <DTS:ObjectData>
-        <DTS:ConnectionManager
-          DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\afree\Documents\Github\Canada-CI\SOURCE DATA\MAPPING.xlsx;Extended Properties=&quot;EXCEL 12.0 XML;HDR=YES&quot;;" />
-      </DTS:ObjectData>
-    </DTS:ConnectionManager>
-    <DTS:ConnectionManager
-      DTS:refId="Package.ConnectionManagers[DimIndustry Errors]"
-      DTS:CreationName="FLATFILE"
-      DTS:DTSID="{44E535E9-9C6F-449A-9F93-B097C8D6901D}"
-      DTS:ObjectName="DimIndustry Errors">
-      <DTS:ObjectData>
-        <DTS:ConnectionManager
-          DTS:Format="Delimited"
-          DTS:LocaleID="2057"
-          DTS:HeaderRowDelimiter="_x000D__x000A_"
-          DTS:RowDelimiter=""
-          DTS:TextQualifier="_x003C_none_x003E_"
-          DTS:CodePage="1252"
-          DTS:ConnectionString="C:\Users\afree\Documents\Github\Canada-CI\ERRORS\DimIndustry Errors.txt">
-          <DTS:FlatFileColumns>
-            <DTS:FlatFileColumn
-              DTS:ColumnType="Delimited"
-              DTS:ColumnDelimiter="_x002C_"
-              DTS:MaximumWidth="255"
-              DTS:DataType="130"
-              DTS:TextQualified="True"
-              DTS:ObjectName="pnaics"
-              DTS:DTSID="{2E160C6D-D132-436D-978B-F8B9DEFC1474}"
-              DTS:CreationName="" />
-            <DTS:FlatFileColumn
-              DTS:ColumnType="Delimited"
-              DTS:ColumnDelimiter="_x002C_"
-              DTS:MaximumWidth="255"
-              DTS:DataType="130"
-              DTS:TextQualified="True"
-              DTS:ObjectName="naics6"
-              DTS:DTSID="{502E6548-1C78-4603-8AC5-CC9105444AB4}"
-              DTS:CreationName="" />
-            <DTS:FlatFileColumn
-              DTS:ColumnType="Delimited"
-              DTS:ColumnDelimiter="_x002C_"
-              DTS:MaximumWidth="255"
-              DTS:DataType="130"
-              DTS:TextQualified="True"
-              DTS:ObjectName="naics5"
-              DTS:DTSID="{21CC846F-3A72-4060-B899-4FC230A7CDAA}"
-              DTS:CreationName="" />
-            <DTS:FlatFileColumn
-              DTS:ColumnType="Delimited"
-              DTS:ColumnDelimiter="_x002C_"
-              DTS:MaximumWidth="255"
-              DTS:DataType="130"
-              DTS:TextQualified="True"
-              DTS:ObjectName="naics4"
-              DTS:DTSID="{FDE901F9-D8D9-42A4-9188-6B258731E01B}"
-              DTS:CreationName="" />
-            <DTS:FlatFileColumn
-              DTS:ColumnType="Delimited"
-              DTS:ColumnDelimiter="_x002C_"
-              DTS:MaximumWidth="255"
-              DTS:DataType="130"
-              DTS:TextQualified="True"
-              DTS:ObjectName="naics3"
-              DTS:DTSID="{F84D1C90-663A-49AD-859B-4490C680D292}"
-              DTS:CreationName="" />
-            <DTS:FlatFileColumn
-              DTS:ColumnType="Delimited"
-              DTS:ColumnDelimiter="_x002C_"
-              DTS:MaximumWidth="255"
-              DTS:DataType="130"
-              DTS:TextQualified="True"
-              DTS:ObjectName="naics2"
-              DTS:DTSID="{C3FC9A88-9411-4595-8745-7C8903B982ED}"
-              DTS:CreationName="" />
-            <DTS:FlatFileColumn
-              DTS:ColumnType="Delimited"
-              DTS:ColumnDelimiter="_x002C_"
-              DTS:MaximumWidth="255"
-              DTS:DataType="130"
-              DTS:TextQualified="True"
-              DTS:ObjectName="creative_sector"
-              DTS:DTSID="{8B8C548C-C615-4D8E-8C20-C24A2E006EBE}"
-              DTS:CreationName="" />
-            <DTS:FlatFileColumn
-              DTS:ColumnType="Delimited"
-              DTS:ColumnDelimiter="_x002C_"
-              DTS:MaximumWidth="255"
-              DTS:DataType="130"
-              DTS:TextQualified="True"
-              DTS:ObjectName="early_warning_cultural_creative"
-              DTS:DTSID="{635F09A3-B6D6-4C77-B50A-1E14BA33A5A0}"
-              DTS:CreationName="" />
-            <DTS:FlatFileColumn
-              DTS:ColumnType="Delimited"
-              DTS:ColumnDelimiter="_x002C_"
-              DTS:MaximumWidth="255"
-              DTS:DataType="130"
-              DTS:TextQualified="True"
-              DTS:ObjectName="proximity_restricted"
-              DTS:DTSID="{9687C03E-ED2F-4FC9-B190-270131C790F9}"
-              DTS:CreationName="" />
-            <DTS:FlatFileColumn
-              DTS:ColumnType="Delimited"
-              DTS:ColumnDelimiter="_x002C_"
-              DTS:DataType="5"
-              DTS:TextQualified="True"
-              DTS:ObjectName="four_digit_intensity"
-              DTS:DTSID="{70C495B5-23B7-4C10-9F70-139355D72BEF}"
-              DTS:CreationName="" />
-            <DTS:FlatFileColumn
-              DTS:ColumnType="Delimited"
-              DTS:ColumnDelimiter="_x002C_"
-              DTS:MaximumWidth="255"
-              DTS:DataType="130"
-              DTS:TextQualified="True"
-              DTS:ObjectName="main_industry"
-              DTS:DTSID="{1A3E57FF-A712-4965-83CD-2DFAAE43E5EA}"
-              DTS:CreationName="" />
-            <DTS:FlatFileColumn
-              DTS:ColumnType="Delimited"
-              DTS:ColumnDelimiter="_x002C_"
-              DTS:MaximumWidth="255"
-              DTS:DataType="130"
-              DTS:TextQualified="True"
-              DTS:ObjectName="NAICS aggregation level"
-              DTS:DTSID="{D0FC169B-B067-4B29-8119-F6651F3FC059}"
-              DTS:CreationName="" />
-            <DTS:FlatFileColumn
-              DTS:ColumnType="Delimited"
-              DTS:ColumnDelimiter="_x002C_"
-              DTS:MaximumWidth="255"
-              DTS:DataType="130"
-              DTS:TextQualified="True"
-              DTS:ObjectName="Check"
-              DTS:DTSID="{8D37502C-0CC8-4157-82AF-3D6A73EB1517}"
-              DTS:CreationName="" />
-            <DTS:FlatFileColumn
-              DTS:ColumnType="Delimited"
-              DTS:ColumnDelimiter="_x002C_"
-              DTS:MaximumWidth="255"
-              DTS:DataType="130"
-              DTS:TextQualified="True"
-              DTS:ObjectName="Description"
-              DTS:DTSID="{49C99C06-DEC6-4B5E-A7A8-63CA6EECC911}"
-              DTS:CreationName="" />
-            <DTS:FlatFileColumn
-              DTS:ColumnType="Delimited"
-              DTS:ColumnDelimiter="_x002C_"
-              DTS:DataType="3"
-              DTS:TextQualified="True"
-              DTS:ObjectName="ErrorCode"
-              DTS:DTSID="{B9098558-3015-476A-9334-1E5A0DB3212F}"
-              DTS:CreationName="" />
-            <DTS:FlatFileColumn
-              DTS:ColumnType="Delimited"
-              DTS:ColumnDelimiter="_x000D__x000A_"
-              DTS:DataType="3"
-              DTS:TextQualified="True"
-              DTS:ObjectName="ErrorColumn"
-              DTS:DTSID="{976F3D4E-5736-4475-B884-462B7EB3A11C}"
-              DTS:CreationName="" />
-          </DTS:FlatFileColumns>
-        </DTS:ConnectionManager>
-      </DTS:ObjectData>
-    </DTS:ConnectionManager>
-    <DTS:ConnectionManager
       DTS:refId="Package.ConnectionManagers[Excel Connection Manager]"
       DTS:CreationName="EXCEL"
-      DTS:DTSID="{1578B72B-5F87-47ED-AA1B-90F43089DD1B}"
+      DTS:DTSID="{60677AF6-028E-4313-BDCF-A9CB537843AF}"
       DTS:ObjectName="Excel Connection Manager">
       <DTS:ObjectData>
         <DTS:ConnectionManager
-          DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\afree\Documents\Github\Canada-CI\SOURCE DATA\MAPPING.xlsx;Extended Properties=&quot;EXCEL 12.0 XML;HDR=YES&quot;;" />
+          DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\afree\Documents\Github\Canada-CI\SOURCE DATA\MAPPING.xlsx;Extended Properties=&quot;Excel 12.0 XML;HDR=YES&quot;;" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
     <DTS:ConnectionManager
@@ -564,232 +394,505 @@
           version="1">
           <components>
             <component
-              refId="Package\Import dim_industry Table\DimIndustry Errors"
-              componentClassID="Microsoft.FlatFileDestination"
-              contactInfo="Flat File Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
-              description="Flat File Destination"
-              localeId="2057"
-              name="DimIndustry Errors">
-              <properties>
-                <property
-                  dataType="System.Boolean"
-                  description="Specifies whether the data will overwrite or append to the destination file."
-                  name="Overwrite">true</property>
-                <property
-                  dataType="System.Null"
-                  description="Specifies the text to write to the destination file before any data is written."
-                  expressionType="Notify"
-                  name="Header" />
-                <property
-                  dataType="System.Boolean"
-                  description="When text qualifier is enabled, specifies whether the text qualifier in the data written to the destination file will be escaped or not."
-                  name="EscapeQualifier">false</property>
-              </properties>
-              <connections>
-                <connection
-                  refId="Package\Import dim_industry Table\DimIndustry Errors.Connections[FlatFileConnection]"
-                  connectionManagerID="Package.ConnectionManagers[DimIndustry Errors]"
-                  connectionManagerRefId="Package.ConnectionManagers[DimIndustry Errors]"
-                  name="FlatFileConnection" />
-              </connections>
+              refId="Package\Import dim_industry Table\Derived Column"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Derived Column"
+              usesDispositions="true">
               <inputs>
                 <input
-                  refId="Package\Import dim_industry Table\DimIndustry Errors.Inputs[Flat File Destination Input]"
-                  hasSideEffects="true"
-                  name="Flat File Destination Input">
+                  refId="Package\Import dim_industry Table\Derived Column.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Import dim_industry Table\DimIndustry Errors.Inputs[Flat File Destination Input].Columns[pnaics]"
+                      refId="Package\Import dim_industry Table\Derived Column.Inputs[Derived Column Input].Columns[pnaics]"
                       cachedDataType="wstr"
                       cachedLength="255"
                       cachedName="pnaics"
-                      externalMetadataColumnId="Package\Import dim_industry Table\DimIndustry Errors.Inputs[Flat File Destination Input].ExternalColumns[pnaics]"
-                      lineageId="Package\Import dim_industry Table\dimIndustry in Mappings.Outputs[Excel Source Error Output].Columns[pnaics]" />
+                      lineageId="Package\Import dim_industry Table\dimIndustry in Mappings.Outputs[Excel Source Output].Columns[pnaics]" />
                     <inputColumn
-                      refId="Package\Import dim_industry Table\DimIndustry Errors.Inputs[Flat File Destination Input].Columns[naics6]"
+                      refId="Package\Import dim_industry Table\Derived Column.Inputs[Derived Column Input].Columns[naics6]"
                       cachedDataType="wstr"
                       cachedLength="255"
                       cachedName="naics6"
-                      externalMetadataColumnId="Package\Import dim_industry Table\DimIndustry Errors.Inputs[Flat File Destination Input].ExternalColumns[naics6]"
-                      lineageId="Package\Import dim_industry Table\dimIndustry in Mappings.Outputs[Excel Source Error Output].Columns[naics6]" />
+                      lineageId="Package\Import dim_industry Table\dimIndustry in Mappings.Outputs[Excel Source Output].Columns[naics6]" />
                     <inputColumn
-                      refId="Package\Import dim_industry Table\DimIndustry Errors.Inputs[Flat File Destination Input].Columns[naics5]"
+                      refId="Package\Import dim_industry Table\Derived Column.Inputs[Derived Column Input].Columns[naics5]"
                       cachedDataType="wstr"
                       cachedLength="255"
                       cachedName="naics5"
-                      externalMetadataColumnId="Package\Import dim_industry Table\DimIndustry Errors.Inputs[Flat File Destination Input].ExternalColumns[naics5]"
-                      lineageId="Package\Import dim_industry Table\dimIndustry in Mappings.Outputs[Excel Source Error Output].Columns[naics5]" />
+                      lineageId="Package\Import dim_industry Table\dimIndustry in Mappings.Outputs[Excel Source Output].Columns[naics5]" />
                     <inputColumn
-                      refId="Package\Import dim_industry Table\DimIndustry Errors.Inputs[Flat File Destination Input].Columns[naics4]"
+                      refId="Package\Import dim_industry Table\Derived Column.Inputs[Derived Column Input].Columns[naics4]"
                       cachedDataType="wstr"
                       cachedLength="255"
                       cachedName="naics4"
-                      externalMetadataColumnId="Package\Import dim_industry Table\DimIndustry Errors.Inputs[Flat File Destination Input].ExternalColumns[naics4]"
-                      lineageId="Package\Import dim_industry Table\dimIndustry in Mappings.Outputs[Excel Source Error Output].Columns[naics4]" />
+                      lineageId="Package\Import dim_industry Table\dimIndustry in Mappings.Outputs[Excel Source Output].Columns[naics4]" />
                     <inputColumn
-                      refId="Package\Import dim_industry Table\DimIndustry Errors.Inputs[Flat File Destination Input].Columns[naics3]"
+                      refId="Package\Import dim_industry Table\Derived Column.Inputs[Derived Column Input].Columns[naics3]"
                       cachedDataType="wstr"
                       cachedLength="255"
                       cachedName="naics3"
-                      externalMetadataColumnId="Package\Import dim_industry Table\DimIndustry Errors.Inputs[Flat File Destination Input].ExternalColumns[naics3]"
-                      lineageId="Package\Import dim_industry Table\dimIndustry in Mappings.Outputs[Excel Source Error Output].Columns[naics3]" />
+                      lineageId="Package\Import dim_industry Table\dimIndustry in Mappings.Outputs[Excel Source Output].Columns[naics3]" />
                     <inputColumn
-                      refId="Package\Import dim_industry Table\DimIndustry Errors.Inputs[Flat File Destination Input].Columns[naics2]"
+                      refId="Package\Import dim_industry Table\Derived Column.Inputs[Derived Column Input].Columns[naics2]"
                       cachedDataType="wstr"
                       cachedLength="255"
                       cachedName="naics2"
-                      externalMetadataColumnId="Package\Import dim_industry Table\DimIndustry Errors.Inputs[Flat File Destination Input].ExternalColumns[naics2]"
-                      lineageId="Package\Import dim_industry Table\dimIndustry in Mappings.Outputs[Excel Source Error Output].Columns[naics2]" />
+                      lineageId="Package\Import dim_industry Table\dimIndustry in Mappings.Outputs[Excel Source Output].Columns[naics2]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Import dim_industry Table\Derived Column.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Import dim_industry Table\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Import dim_industry Table\Derived Column.Outputs[Derived Column Output].Columns[pnaics short]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="7"
+                      lineageId="Package\Import dim_industry Table\Derived Column.Outputs[Derived Column Output].Columns[pnaics short]"
+                      name="pnaics short"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[LEFT](#{Package\Import dim_industry Table\dimIndustry in Mappings.Outputs[Excel Source Output].Columns[pnaics]},7)</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">LEFT(pnaics,7)</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Import dim_industry Table\Derived Column.Outputs[Derived Column Output].Columns[naics6 short]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="7"
+                      lineageId="Package\Import dim_industry Table\Derived Column.Outputs[Derived Column Output].Columns[naics6 short]"
+                      name="naics6 short"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[LEFT](#{Package\Import dim_industry Table\dimIndustry in Mappings.Outputs[Excel Source Output].Columns[naics6]},7)</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">LEFT(naics6,7)</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Import dim_industry Table\Derived Column.Outputs[Derived Column Output].Columns[naics5 short]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="7"
+                      lineageId="Package\Import dim_industry Table\Derived Column.Outputs[Derived Column Output].Columns[naics5 short]"
+                      name="naics5 short"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[LEFT](#{Package\Import dim_industry Table\dimIndustry in Mappings.Outputs[Excel Source Output].Columns[naics5]},7)</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">LEFT(naics5,7)</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Import dim_industry Table\Derived Column.Outputs[Derived Column Output].Columns[naics4 short]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="7"
+                      lineageId="Package\Import dim_industry Table\Derived Column.Outputs[Derived Column Output].Columns[naics4 short]"
+                      name="naics4 short"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[LEFT](#{Package\Import dim_industry Table\dimIndustry in Mappings.Outputs[Excel Source Output].Columns[naics4]},7)</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">LEFT(naics4,7)</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Import dim_industry Table\Derived Column.Outputs[Derived Column Output].Columns[naics3 short]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="7"
+                      lineageId="Package\Import dim_industry Table\Derived Column.Outputs[Derived Column Output].Columns[naics3 short]"
+                      name="naics3 short"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[LEFT](#{Package\Import dim_industry Table\dimIndustry in Mappings.Outputs[Excel Source Output].Columns[naics3]},7)</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">LEFT(naics3,7)</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Import dim_industry Table\Derived Column.Outputs[Derived Column Output].Columns[naics2 short]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="7"
+                      lineageId="Package\Import dim_industry Table\Derived Column.Outputs[Derived Column Output].Columns[naics2 short]"
+                      name="naics2 short"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[LEFT](#{Package\Import dim_industry Table\dimIndustry in Mappings.Outputs[Excel Source Output].Columns[naics2]},7)</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">LEFT(naics2,7)</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Import dim_industry Table\Derived Column.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Import dim_industry Table\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Import dim_industry Table\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Import dim_industry Table\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Import dim_industry Table\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Import dim_industry Table\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Import dim_industry Table\dim industry"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="dim industry"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[dim_industry]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Import dim_industry Table\dim industry.Connections[OleDbConnection]"
+                  connectionManagerID="{7C609DE3-B60F-43F3-9132-B532B5CB115C}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[OLTP]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Import dim_industry Table\dim industry.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
                     <inputColumn
-                      refId="Package\Import dim_industry Table\DimIndustry Errors.Inputs[Flat File Destination Input].Columns[creative_sector]"
+                      refId="Package\Import dim_industry Table\dim industry.Inputs[OLE DB Destination Input].Columns[EW_creative]"
                       cachedDataType="wstr"
                       cachedLength="255"
-                      cachedName="creative_sector"
-                      externalMetadataColumnId="Package\Import dim_industry Table\DimIndustry Errors.Inputs[Flat File Destination Input].ExternalColumns[creative_sector]"
-                      lineageId="Package\Import dim_industry Table\dimIndustry in Mappings.Outputs[Excel Source Error Output].Columns[creative_sector]" />
+                      cachedName="EW_creative"
+                      externalMetadataColumnId="Package\Import dim_industry Table\dim industry.Inputs[OLE DB Destination Input].ExternalColumns[EW_creative]"
+                      lineageId="Package\Import dim_industry Table\dimIndustry in Mappings.Outputs[Excel Source Output].Columns[EW_creative]" />
                     <inputColumn
-                      refId="Package\Import dim_industry Table\DimIndustry Errors.Inputs[Flat File Destination Input].Columns[early_warning_cultural_creative]"
+                      refId="Package\Import dim_industry Table\dim industry.Inputs[OLE DB Destination Input].Columns[EW_cultural]"
                       cachedDataType="wstr"
                       cachedLength="255"
-                      cachedName="early_warning_cultural_creative"
-                      externalMetadataColumnId="Package\Import dim_industry Table\DimIndustry Errors.Inputs[Flat File Destination Input].ExternalColumns[early_warning_cultural_creative]"
-                      lineageId="Package\Import dim_industry Table\dimIndustry in Mappings.Outputs[Excel Source Error Output].Columns[early_warning_cultural_creative]" />
+                      cachedName="EW_cultural"
+                      externalMetadataColumnId="Package\Import dim_industry Table\dim industry.Inputs[OLE DB Destination Input].ExternalColumns[EW_cultural]"
+                      lineageId="Package\Import dim_industry Table\dimIndustry in Mappings.Outputs[Excel Source Output].Columns[EW_cultural]" />
                     <inputColumn
-                      refId="Package\Import dim_industry Table\DimIndustry Errors.Inputs[Flat File Destination Input].Columns[proximity_restricted]"
+                      refId="Package\Import dim_industry Table\dim industry.Inputs[OLE DB Destination Input].Columns[primary_csa_domain]"
                       cachedDataType="wstr"
                       cachedLength="255"
-                      cachedName="proximity_restricted"
-                      externalMetadataColumnId="Package\Import dim_industry Table\DimIndustry Errors.Inputs[Flat File Destination Input].ExternalColumns[proximity_restricted]"
-                      lineageId="Package\Import dim_industry Table\dimIndustry in Mappings.Outputs[Excel Source Error Output].Columns[proximity_restricted]" />
+                      cachedName="primary_csa_domain"
+                      externalMetadataColumnId="Package\Import dim_industry Table\dim industry.Inputs[OLE DB Destination Input].ExternalColumns[primary_csa_domain]"
+                      lineageId="Package\Import dim_industry Table\dimIndustry in Mappings.Outputs[Excel Source Output].Columns[primary_csa_domain]" />
                     <inputColumn
-                      refId="Package\Import dim_industry Table\DimIndustry Errors.Inputs[Flat File Destination Input].Columns[four_digit_intensity]"
+                      refId="Package\Import dim_industry Table\dim industry.Inputs[OLE DB Destination Input].Columns[primary_csa_subdomain]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="primary_csa_subdomain"
+                      externalMetadataColumnId="Package\Import dim_industry Table\dim industry.Inputs[OLE DB Destination Input].ExternalColumns[primary_csa_subdomain]"
+                      lineageId="Package\Import dim_industry Table\dimIndustry in Mappings.Outputs[Excel Source Output].Columns[primary_csa_subdomain]" />
+                    <inputColumn
+                      refId="Package\Import dim_industry Table\dim industry.Inputs[OLE DB Destination Input].Columns[four_digit_intensity]"
                       cachedDataType="r8"
                       cachedName="four_digit_intensity"
-                      externalMetadataColumnId="Package\Import dim_industry Table\DimIndustry Errors.Inputs[Flat File Destination Input].ExternalColumns[four_digit_intensity]"
-                      lineageId="Package\Import dim_industry Table\dimIndustry in Mappings.Outputs[Excel Source Error Output].Columns[four_digit_intensity]" />
+                      externalMetadataColumnId="Package\Import dim_industry Table\dim industry.Inputs[OLE DB Destination Input].ExternalColumns[four_digit_intensity]"
+                      lineageId="Package\Import dim_industry Table\dimIndustry in Mappings.Outputs[Excel Source Output].Columns[four_digit_intensity]" />
                     <inputColumn
-                      refId="Package\Import dim_industry Table\DimIndustry Errors.Inputs[Flat File Destination Input].Columns[main_industry]"
+                      refId="Package\Import dim_industry Table\dim industry.Inputs[OLE DB Destination Input].Columns[main_industry]"
                       cachedDataType="wstr"
                       cachedLength="255"
                       cachedName="main_industry"
-                      externalMetadataColumnId="Package\Import dim_industry Table\DimIndustry Errors.Inputs[Flat File Destination Input].ExternalColumns[main_industry]"
-                      lineageId="Package\Import dim_industry Table\dimIndustry in Mappings.Outputs[Excel Source Error Output].Columns[main_industry]" />
+                      externalMetadataColumnId="Package\Import dim_industry Table\dim industry.Inputs[OLE DB Destination Input].ExternalColumns[main_industry]"
+                      lineageId="Package\Import dim_industry Table\dimIndustry in Mappings.Outputs[Excel Source Output].Columns[main_industry]" />
                     <inputColumn
-                      refId="Package\Import dim_industry Table\DimIndustry Errors.Inputs[Flat File Destination Input].Columns[NAICS aggregation level]"
+                      refId="Package\Import dim_industry Table\dim industry.Inputs[OLE DB Destination Input].Columns[pnaics short]"
+                      cachedDataType="wstr"
+                      cachedLength="7"
+                      cachedName="pnaics short"
+                      externalMetadataColumnId="Package\Import dim_industry Table\dim industry.Inputs[OLE DB Destination Input].ExternalColumns[pnaics_id]"
+                      lineageId="Package\Import dim_industry Table\Derived Column.Outputs[Derived Column Output].Columns[pnaics short]" />
+                    <inputColumn
+                      refId="Package\Import dim_industry Table\dim industry.Inputs[OLE DB Destination Input].Columns[NESTA Creative]"
                       cachedDataType="wstr"
                       cachedLength="255"
-                      cachedName="NAICS aggregation level"
-                      externalMetadataColumnId="Package\Import dim_industry Table\DimIndustry Errors.Inputs[Flat File Destination Input].ExternalColumns[NAICS aggregation level]"
-                      lineageId="Package\Import dim_industry Table\dimIndustry in Mappings.Outputs[Excel Source Error Output].Columns[NAICS aggregation level]" />
+                      cachedName="NESTA Creative"
+                      externalMetadataColumnId="Package\Import dim_industry Table\dim industry.Inputs[OLE DB Destination Input].ExternalColumns[NESTA_creative]"
+                      lineageId="Package\Import dim_industry Table\dimIndustry in Mappings.Outputs[Excel Source Output].Columns[NESTA Creative]" />
                     <inputColumn
-                      refId="Package\Import dim_industry Table\DimIndustry Errors.Inputs[Flat File Destination Input].Columns[Check]"
+                      refId="Package\Import dim_industry Table\dim industry.Inputs[OLE DB Destination Input].Columns[proximity_restricted]"
                       cachedDataType="wstr"
                       cachedLength="255"
-                      cachedName="Check"
-                      externalMetadataColumnId="Package\Import dim_industry Table\DimIndustry Errors.Inputs[Flat File Destination Input].ExternalColumns[Check]"
-                      lineageId="Package\Import dim_industry Table\dimIndustry in Mappings.Outputs[Excel Source Error Output].Columns[Check]" />
+                      cachedName="proximity_restricted"
+                      externalMetadataColumnId="Package\Import dim_industry Table\dim industry.Inputs[OLE DB Destination Input].ExternalColumns[proximity]"
+                      lineageId="Package\Import dim_industry Table\dimIndustry in Mappings.Outputs[Excel Source Output].Columns[proximity_restricted]" />
                     <inputColumn
-                      refId="Package\Import dim_industry Table\DimIndustry Errors.Inputs[Flat File Destination Input].Columns[Description]"
+                      refId="Package\Import dim_industry Table\dim industry.Inputs[OLE DB Destination Input].Columns[naics6 short]"
                       cachedDataType="wstr"
-                      cachedLength="255"
-                      cachedName="Description"
-                      externalMetadataColumnId="Package\Import dim_industry Table\DimIndustry Errors.Inputs[Flat File Destination Input].ExternalColumns[Description]"
-                      lineageId="Package\Import dim_industry Table\dimIndustry in Mappings.Outputs[Excel Source Error Output].Columns[Description]" />
+                      cachedLength="7"
+                      cachedName="naics6 short"
+                      externalMetadataColumnId="Package\Import dim_industry Table\dim industry.Inputs[OLE DB Destination Input].ExternalColumns[naics6]"
+                      lineageId="Package\Import dim_industry Table\Derived Column.Outputs[Derived Column Output].Columns[naics6 short]" />
                     <inputColumn
-                      refId="Package\Import dim_industry Table\DimIndustry Errors.Inputs[Flat File Destination Input].Columns[ErrorCode]"
-                      cachedDataType="i4"
-                      cachedName="ErrorCode"
-                      externalMetadataColumnId="Package\Import dim_industry Table\DimIndustry Errors.Inputs[Flat File Destination Input].ExternalColumns[ErrorCode]"
-                      lineageId="Package\Import dim_industry Table\dimIndustry in Mappings.Outputs[Excel Source Error Output].Columns[ErrorCode]" />
+                      refId="Package\Import dim_industry Table\dim industry.Inputs[OLE DB Destination Input].Columns[naics5 short]"
+                      cachedDataType="wstr"
+                      cachedLength="7"
+                      cachedName="naics5 short"
+                      externalMetadataColumnId="Package\Import dim_industry Table\dim industry.Inputs[OLE DB Destination Input].ExternalColumns[naics5]"
+                      lineageId="Package\Import dim_industry Table\Derived Column.Outputs[Derived Column Output].Columns[naics5 short]" />
                     <inputColumn
-                      refId="Package\Import dim_industry Table\DimIndustry Errors.Inputs[Flat File Destination Input].Columns[ErrorColumn]"
-                      cachedDataType="i4"
-                      cachedName="ErrorColumn"
-                      externalMetadataColumnId="Package\Import dim_industry Table\DimIndustry Errors.Inputs[Flat File Destination Input].ExternalColumns[ErrorColumn]"
-                      lineageId="Package\Import dim_industry Table\dimIndustry in Mappings.Outputs[Excel Source Error Output].Columns[ErrorColumn]" />
+                      refId="Package\Import dim_industry Table\dim industry.Inputs[OLE DB Destination Input].Columns[naics4 short]"
+                      cachedDataType="wstr"
+                      cachedLength="7"
+                      cachedName="naics4 short"
+                      externalMetadataColumnId="Package\Import dim_industry Table\dim industry.Inputs[OLE DB Destination Input].ExternalColumns[naics4]"
+                      lineageId="Package\Import dim_industry Table\Derived Column.Outputs[Derived Column Output].Columns[naics4 short]" />
+                    <inputColumn
+                      refId="Package\Import dim_industry Table\dim industry.Inputs[OLE DB Destination Input].Columns[naics3 short]"
+                      cachedDataType="wstr"
+                      cachedLength="7"
+                      cachedName="naics3 short"
+                      externalMetadataColumnId="Package\Import dim_industry Table\dim industry.Inputs[OLE DB Destination Input].ExternalColumns[naics3]"
+                      lineageId="Package\Import dim_industry Table\Derived Column.Outputs[Derived Column Output].Columns[naics3 short]" />
+                    <inputColumn
+                      refId="Package\Import dim_industry Table\dim industry.Inputs[OLE DB Destination Input].Columns[naics2 short]"
+                      cachedDataType="wstr"
+                      cachedLength="7"
+                      cachedName="naics2 short"
+                      externalMetadataColumnId="Package\Import dim_industry Table\dim industry.Inputs[OLE DB Destination Input].ExternalColumns[naics2]"
+                      lineageId="Package\Import dim_industry Table\Derived Column.Outputs[Derived Column Output].Columns[naics2 short]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\Import dim_industry Table\DimIndustry Errors.Inputs[Flat File Destination Input].ExternalColumns[pnaics]"
+                      refId="Package\Import dim_industry Table\dim industry.Inputs[OLE DB Destination Input].ExternalColumns[pnaics_id]"
                       dataType="wstr"
-                      length="255"
-                      name="pnaics" />
+                      length="7"
+                      name="pnaics_id" />
                     <externalMetadataColumn
-                      refId="Package\Import dim_industry Table\DimIndustry Errors.Inputs[Flat File Destination Input].ExternalColumns[naics6]"
+                      refId="Package\Import dim_industry Table\dim industry.Inputs[OLE DB Destination Input].ExternalColumns[naics6]"
                       dataType="wstr"
-                      length="255"
+                      length="7"
                       name="naics6" />
                     <externalMetadataColumn
-                      refId="Package\Import dim_industry Table\DimIndustry Errors.Inputs[Flat File Destination Input].ExternalColumns[naics5]"
+                      refId="Package\Import dim_industry Table\dim industry.Inputs[OLE DB Destination Input].ExternalColumns[naics5]"
                       dataType="wstr"
-                      length="255"
+                      length="7"
                       name="naics5" />
                     <externalMetadataColumn
-                      refId="Package\Import dim_industry Table\DimIndustry Errors.Inputs[Flat File Destination Input].ExternalColumns[naics4]"
+                      refId="Package\Import dim_industry Table\dim industry.Inputs[OLE DB Destination Input].ExternalColumns[naics4]"
                       dataType="wstr"
-                      length="255"
+                      length="7"
                       name="naics4" />
                     <externalMetadataColumn
-                      refId="Package\Import dim_industry Table\DimIndustry Errors.Inputs[Flat File Destination Input].ExternalColumns[naics3]"
+                      refId="Package\Import dim_industry Table\dim industry.Inputs[OLE DB Destination Input].ExternalColumns[naics3]"
                       dataType="wstr"
-                      length="255"
+                      length="7"
                       name="naics3" />
                     <externalMetadataColumn
-                      refId="Package\Import dim_industry Table\DimIndustry Errors.Inputs[Flat File Destination Input].ExternalColumns[naics2]"
+                      refId="Package\Import dim_industry Table\dim industry.Inputs[OLE DB Destination Input].ExternalColumns[naics2]"
                       dataType="wstr"
-                      length="255"
+                      length="7"
                       name="naics2" />
                     <externalMetadataColumn
-                      refId="Package\Import dim_industry Table\DimIndustry Errors.Inputs[Flat File Destination Input].ExternalColumns[creative_sector]"
+                      refId="Package\Import dim_industry Table\dim industry.Inputs[OLE DB Destination Input].ExternalColumns[NESTA_creative]"
                       dataType="wstr"
                       length="255"
-                      name="creative_sector" />
+                      name="NESTA_creative" />
                     <externalMetadataColumn
-                      refId="Package\Import dim_industry Table\DimIndustry Errors.Inputs[Flat File Destination Input].ExternalColumns[early_warning_cultural_creative]"
+                      refId="Package\Import dim_industry Table\dim industry.Inputs[OLE DB Destination Input].ExternalColumns[EW_creative]"
                       dataType="wstr"
                       length="255"
-                      name="early_warning_cultural_creative" />
+                      name="EW_creative" />
                     <externalMetadataColumn
-                      refId="Package\Import dim_industry Table\DimIndustry Errors.Inputs[Flat File Destination Input].ExternalColumns[proximity_restricted]"
+                      refId="Package\Import dim_industry Table\dim industry.Inputs[OLE DB Destination Input].ExternalColumns[EW_cultural]"
                       dataType="wstr"
                       length="255"
-                      name="proximity_restricted" />
+                      name="EW_cultural" />
                     <externalMetadataColumn
-                      refId="Package\Import dim_industry Table\DimIndustry Errors.Inputs[Flat File Destination Input].ExternalColumns[four_digit_intensity]"
+                      refId="Package\Import dim_industry Table\dim industry.Inputs[OLE DB Destination Input].ExternalColumns[proximity]"
+                      dataType="wstr"
+                      length="255"
+                      name="proximity" />
+                    <externalMetadataColumn
+                      refId="Package\Import dim_industry Table\dim industry.Inputs[OLE DB Destination Input].ExternalColumns[four_digit_intensity]"
                       dataType="r8"
                       name="four_digit_intensity" />
                     <externalMetadataColumn
-                      refId="Package\Import dim_industry Table\DimIndustry Errors.Inputs[Flat File Destination Input].ExternalColumns[main_industry]"
+                      refId="Package\Import dim_industry Table\dim industry.Inputs[OLE DB Destination Input].ExternalColumns[primary_csa_domain]"
+                      dataType="wstr"
+                      length="255"
+                      name="primary_csa_domain" />
+                    <externalMetadataColumn
+                      refId="Package\Import dim_industry Table\dim industry.Inputs[OLE DB Destination Input].ExternalColumns[primary_csa_subdomain]"
+                      dataType="wstr"
+                      length="255"
+                      name="primary_csa_subdomain" />
+                    <externalMetadataColumn
+                      refId="Package\Import dim_industry Table\dim industry.Inputs[OLE DB Destination Input].ExternalColumns[main_industry]"
                       dataType="wstr"
                       length="255"
                       name="main_industry" />
                     <externalMetadataColumn
-                      refId="Package\Import dim_industry Table\DimIndustry Errors.Inputs[Flat File Destination Input].ExternalColumns[NAICS aggregation level]"
+                      refId="Package\Import dim_industry Table\dim industry.Inputs[OLE DB Destination Input].ExternalColumns[naics_aggregation_level]"
                       dataType="wstr"
-                      length="255"
-                      name="NAICS aggregation level" />
-                    <externalMetadataColumn
-                      refId="Package\Import dim_industry Table\DimIndustry Errors.Inputs[Flat File Destination Input].ExternalColumns[Check]"
-                      dataType="wstr"
-                      length="255"
-                      name="Check" />
-                    <externalMetadataColumn
-                      refId="Package\Import dim_industry Table\DimIndustry Errors.Inputs[Flat File Destination Input].ExternalColumns[Description]"
-                      dataType="wstr"
-                      length="255"
-                      name="Description" />
-                    <externalMetadataColumn
-                      refId="Package\Import dim_industry Table\DimIndustry Errors.Inputs[Flat File Destination Input].ExternalColumns[ErrorCode]"
-                      dataType="i4"
-                      name="ErrorCode" />
-                    <externalMetadataColumn
-                      refId="Package\Import dim_industry Table\DimIndustry Errors.Inputs[Flat File Destination Input].ExternalColumns[ErrorColumn]"
-                      dataType="i4"
-                      name="ErrorColumn" />
+                      length="15"
+                      name="naics_aggregation_level" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
+              <outputs>
+                <output
+                  refId="Package\Import dim_industry Table\dim industry.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Import dim_industry Table\dim industry.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Import dim_industry Table\dim industry.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Import dim_industry Table\dim industry.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Import dim_industry Table\dim industry.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Import dim_industry Table\dim industry.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
             </component>
             <component
               refId="Package\Import dim_industry Table\dimIndustry in Mappings"
@@ -848,141 +951,102 @@
                       refId="Package\Import dim_industry Table\dimIndustry in Mappings.Outputs[Excel Source Output].Columns[pnaics]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="RedirectRow"
+                      errorRowDisposition="FailComponent"
                       externalMetadataColumnId="Package\Import dim_industry Table\dimIndustry in Mappings.Outputs[Excel Source Output].ExternalColumns[pnaics]"
                       length="255"
                       lineageId="Package\Import dim_industry Table\dimIndustry in Mappings.Outputs[Excel Source Output].Columns[pnaics]"
                       name="pnaics"
-                      truncationRowDisposition="RedirectRow" />
+                      truncationRowDisposition="FailComponent" />
                     <outputColumn
                       refId="Package\Import dim_industry Table\dimIndustry in Mappings.Outputs[Excel Source Output].Columns[naics6]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="RedirectRow"
+                      errorRowDisposition="FailComponent"
                       externalMetadataColumnId="Package\Import dim_industry Table\dimIndustry in Mappings.Outputs[Excel Source Output].ExternalColumns[naics6]"
                       length="255"
                       lineageId="Package\Import dim_industry Table\dimIndustry in Mappings.Outputs[Excel Source Output].Columns[naics6]"
                       name="naics6"
-                      truncationRowDisposition="RedirectRow" />
+                      truncationRowDisposition="FailComponent" />
                     <outputColumn
                       refId="Package\Import dim_industry Table\dimIndustry in Mappings.Outputs[Excel Source Output].Columns[naics5]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="RedirectRow"
+                      errorRowDisposition="FailComponent"
                       externalMetadataColumnId="Package\Import dim_industry Table\dimIndustry in Mappings.Outputs[Excel Source Output].ExternalColumns[naics5]"
                       length="255"
                       lineageId="Package\Import dim_industry Table\dimIndustry in Mappings.Outputs[Excel Source Output].Columns[naics5]"
                       name="naics5"
-                      truncationRowDisposition="RedirectRow" />
+                      truncationRowDisposition="FailComponent" />
                     <outputColumn
                       refId="Package\Import dim_industry Table\dimIndustry in Mappings.Outputs[Excel Source Output].Columns[naics4]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="RedirectRow"
+                      errorRowDisposition="FailComponent"
                       externalMetadataColumnId="Package\Import dim_industry Table\dimIndustry in Mappings.Outputs[Excel Source Output].ExternalColumns[naics4]"
                       length="255"
                       lineageId="Package\Import dim_industry Table\dimIndustry in Mappings.Outputs[Excel Source Output].Columns[naics4]"
                       name="naics4"
-                      truncationRowDisposition="RedirectRow" />
+                      truncationRowDisposition="FailComponent" />
                     <outputColumn
                       refId="Package\Import dim_industry Table\dimIndustry in Mappings.Outputs[Excel Source Output].Columns[naics3]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="RedirectRow"
+                      errorRowDisposition="FailComponent"
                       externalMetadataColumnId="Package\Import dim_industry Table\dimIndustry in Mappings.Outputs[Excel Source Output].ExternalColumns[naics3]"
                       length="255"
                       lineageId="Package\Import dim_industry Table\dimIndustry in Mappings.Outputs[Excel Source Output].Columns[naics3]"
                       name="naics3"
-                      truncationRowDisposition="RedirectRow" />
+                      truncationRowDisposition="FailComponent" />
                     <outputColumn
                       refId="Package\Import dim_industry Table\dimIndustry in Mappings.Outputs[Excel Source Output].Columns[naics2]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="RedirectRow"
+                      errorRowDisposition="FailComponent"
                       externalMetadataColumnId="Package\Import dim_industry Table\dimIndustry in Mappings.Outputs[Excel Source Output].ExternalColumns[naics2]"
                       length="255"
                       lineageId="Package\Import dim_industry Table\dimIndustry in Mappings.Outputs[Excel Source Output].Columns[naics2]"
                       name="naics2"
-                      truncationRowDisposition="RedirectRow" />
+                      truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Import dim_industry Table\dimIndustry in Mappings.Outputs[Excel Source Output].Columns[creative_sector]"
+                      refId="Package\Import dim_industry Table\dimIndustry in Mappings.Outputs[Excel Source Output].Columns[NESTA Creative]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="RedirectRow"
-                      externalMetadataColumnId="Package\Import dim_industry Table\dimIndustry in Mappings.Outputs[Excel Source Output].ExternalColumns[creative_sector]"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import dim_industry Table\dimIndustry in Mappings.Outputs[Excel Source Output].ExternalColumns[NESTA Creative]"
                       length="255"
-                      lineageId="Package\Import dim_industry Table\dimIndustry in Mappings.Outputs[Excel Source Output].Columns[creative_sector]"
-                      name="creative_sector"
-                      truncationRowDisposition="RedirectRow" />
+                      lineageId="Package\Import dim_industry Table\dimIndustry in Mappings.Outputs[Excel Source Output].Columns[NESTA Creative]"
+                      name="NESTA Creative"
+                      truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Import dim_industry Table\dimIndustry in Mappings.Outputs[Excel Source Output].Columns[early_warning_cultural_creative]"
+                      refId="Package\Import dim_industry Table\dimIndustry in Mappings.Outputs[Excel Source Output].Columns[EW_creative]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="RedirectRow"
-                      externalMetadataColumnId="Package\Import dim_industry Table\dimIndustry in Mappings.Outputs[Excel Source Output].ExternalColumns[early_warning_cultural_creative]"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import dim_industry Table\dimIndustry in Mappings.Outputs[Excel Source Output].ExternalColumns[EW_creative]"
                       length="255"
-                      lineageId="Package\Import dim_industry Table\dimIndustry in Mappings.Outputs[Excel Source Output].Columns[early_warning_cultural_creative]"
-                      name="early_warning_cultural_creative"
-                      truncationRowDisposition="RedirectRow" />
+                      lineageId="Package\Import dim_industry Table\dimIndustry in Mappings.Outputs[Excel Source Output].Columns[EW_creative]"
+                      name="EW_creative"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import dim_industry Table\dimIndustry in Mappings.Outputs[Excel Source Output].Columns[EW_cultural]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import dim_industry Table\dimIndustry in Mappings.Outputs[Excel Source Output].ExternalColumns[EW_cultural]"
+                      length="255"
+                      lineageId="Package\Import dim_industry Table\dimIndustry in Mappings.Outputs[Excel Source Output].Columns[EW_cultural]"
+                      name="EW_cultural"
+                      truncationRowDisposition="FailComponent" />
                     <outputColumn
                       refId="Package\Import dim_industry Table\dimIndustry in Mappings.Outputs[Excel Source Output].Columns[proximity_restricted]"
                       dataType="wstr"
                       errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="RedirectRow"
+                      errorRowDisposition="FailComponent"
                       externalMetadataColumnId="Package\Import dim_industry Table\dimIndustry in Mappings.Outputs[Excel Source Output].ExternalColumns[proximity_restricted]"
                       length="255"
                       lineageId="Package\Import dim_industry Table\dimIndustry in Mappings.Outputs[Excel Source Output].Columns[proximity_restricted]"
                       name="proximity_restricted"
-                      truncationRowDisposition="RedirectRow" />
-                    <outputColumn
-                      refId="Package\Import dim_industry Table\dimIndustry in Mappings.Outputs[Excel Source Output].Columns[four_digit_intensity]"
-                      dataType="r8"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="RedirectRow"
-                      externalMetadataColumnId="Package\Import dim_industry Table\dimIndustry in Mappings.Outputs[Excel Source Output].ExternalColumns[four_digit_intensity]"
-                      lineageId="Package\Import dim_industry Table\dimIndustry in Mappings.Outputs[Excel Source Output].Columns[four_digit_intensity]"
-                      name="four_digit_intensity"
-                      truncationRowDisposition="RedirectRow" />
-                    <outputColumn
-                      refId="Package\Import dim_industry Table\dimIndustry in Mappings.Outputs[Excel Source Output].Columns[main_industry]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="RedirectRow"
-                      externalMetadataColumnId="Package\Import dim_industry Table\dimIndustry in Mappings.Outputs[Excel Source Output].ExternalColumns[main_industry]"
-                      length="255"
-                      lineageId="Package\Import dim_industry Table\dimIndustry in Mappings.Outputs[Excel Source Output].Columns[main_industry]"
-                      name="main_industry"
-                      truncationRowDisposition="RedirectRow" />
-                    <outputColumn
-                      refId="Package\Import dim_industry Table\dimIndustry in Mappings.Outputs[Excel Source Output].Columns[NAICS aggregation level]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="RedirectRow"
-                      externalMetadataColumnId="Package\Import dim_industry Table\dimIndustry in Mappings.Outputs[Excel Source Output].ExternalColumns[NAICS aggregation level]"
-                      length="255"
-                      lineageId="Package\Import dim_industry Table\dimIndustry in Mappings.Outputs[Excel Source Output].Columns[NAICS aggregation level]"
-                      name="NAICS aggregation level"
-                      truncationRowDisposition="RedirectRow" />
-                    <outputColumn
-                      refId="Package\Import dim_industry Table\dimIndustry in Mappings.Outputs[Excel Source Output].Columns[Check]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="RedirectRow"
-                      externalMetadataColumnId="Package\Import dim_industry Table\dimIndustry in Mappings.Outputs[Excel Source Output].ExternalColumns[Check]"
-                      length="255"
-                      lineageId="Package\Import dim_industry Table\dimIndustry in Mappings.Outputs[Excel Source Output].Columns[Check]"
-                      name="Check"
-                      truncationRowDisposition="RedirectRow" />
-                    <outputColumn
-                      refId="Package\Import dim_industry Table\dimIndustry in Mappings.Outputs[Excel Source Output].Columns[Description]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="RedirectRow"
-                      externalMetadataColumnId="Package\Import dim_industry Table\dimIndustry in Mappings.Outputs[Excel Source Output].ExternalColumns[Description]"
-                      length="255"
-                      lineageId="Package\Import dim_industry Table\dimIndustry in Mappings.Outputs[Excel Source Output].Columns[Description]"
-                      name="Description"
-                      truncationRowDisposition="RedirectRow" />
+                      truncationRowDisposition="FailComponent" />
                     <outputColumn
                       refId="Package\Import dim_industry Table\dimIndustry in Mappings.Outputs[Excel Source Output].Columns[primary_csa_domain]"
                       dataType="wstr"
@@ -1002,6 +1066,55 @@
                       length="255"
                       lineageId="Package\Import dim_industry Table\dimIndustry in Mappings.Outputs[Excel Source Output].Columns[primary_csa_subdomain]"
                       name="primary_csa_subdomain"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import dim_industry Table\dimIndustry in Mappings.Outputs[Excel Source Output].Columns[four_digit_intensity]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import dim_industry Table\dimIndustry in Mappings.Outputs[Excel Source Output].ExternalColumns[four_digit_intensity]"
+                      lineageId="Package\Import dim_industry Table\dimIndustry in Mappings.Outputs[Excel Source Output].Columns[four_digit_intensity]"
+                      name="four_digit_intensity"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import dim_industry Table\dimIndustry in Mappings.Outputs[Excel Source Output].Columns[main_industry]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import dim_industry Table\dimIndustry in Mappings.Outputs[Excel Source Output].ExternalColumns[main_industry]"
+                      length="255"
+                      lineageId="Package\Import dim_industry Table\dimIndustry in Mappings.Outputs[Excel Source Output].Columns[main_industry]"
+                      name="main_industry"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import dim_industry Table\dimIndustry in Mappings.Outputs[Excel Source Output].Columns[NAICS aggregation level]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import dim_industry Table\dimIndustry in Mappings.Outputs[Excel Source Output].ExternalColumns[NAICS aggregation level]"
+                      length="255"
+                      lineageId="Package\Import dim_industry Table\dimIndustry in Mappings.Outputs[Excel Source Output].Columns[NAICS aggregation level]"
+                      name="NAICS aggregation level"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import dim_industry Table\dimIndustry in Mappings.Outputs[Excel Source Output].Columns[Check]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import dim_industry Table\dimIndustry in Mappings.Outputs[Excel Source Output].ExternalColumns[Check]"
+                      length="255"
+                      lineageId="Package\Import dim_industry Table\dimIndustry in Mappings.Outputs[Excel Source Output].Columns[Check]"
+                      name="Check"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Import dim_industry Table\dimIndustry in Mappings.Outputs[Excel Source Output].Columns[Description]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Import dim_industry Table\dimIndustry in Mappings.Outputs[Excel Source Output].ExternalColumns[Description]"
+                      length="255"
+                      lineageId="Package\Import dim_industry Table\dimIndustry in Mappings.Outputs[Excel Source Output].Columns[Description]"
+                      name="Description"
                       truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
@@ -1037,20 +1150,35 @@
                       length="255"
                       name="naics2" />
                     <externalMetadataColumn
-                      refId="Package\Import dim_industry Table\dimIndustry in Mappings.Outputs[Excel Source Output].ExternalColumns[creative_sector]"
+                      refId="Package\Import dim_industry Table\dimIndustry in Mappings.Outputs[Excel Source Output].ExternalColumns[NESTA Creative]"
                       dataType="wstr"
                       length="255"
-                      name="creative_sector" />
+                      name="NESTA Creative" />
                     <externalMetadataColumn
-                      refId="Package\Import dim_industry Table\dimIndustry in Mappings.Outputs[Excel Source Output].ExternalColumns[early_warning_cultural_creative]"
+                      refId="Package\Import dim_industry Table\dimIndustry in Mappings.Outputs[Excel Source Output].ExternalColumns[EW_creative]"
                       dataType="wstr"
                       length="255"
-                      name="early_warning_cultural_creative" />
+                      name="EW_creative" />
+                    <externalMetadataColumn
+                      refId="Package\Import dim_industry Table\dimIndustry in Mappings.Outputs[Excel Source Output].ExternalColumns[EW_cultural]"
+                      dataType="wstr"
+                      length="255"
+                      name="EW_cultural" />
                     <externalMetadataColumn
                       refId="Package\Import dim_industry Table\dimIndustry in Mappings.Outputs[Excel Source Output].ExternalColumns[proximity_restricted]"
                       dataType="wstr"
                       length="255"
                       name="proximity_restricted" />
+                    <externalMetadataColumn
+                      refId="Package\Import dim_industry Table\dimIndustry in Mappings.Outputs[Excel Source Output].ExternalColumns[primary_csa_domain]"
+                      dataType="wstr"
+                      length="255"
+                      name="primary_csa_domain" />
+                    <externalMetadataColumn
+                      refId="Package\Import dim_industry Table\dimIndustry in Mappings.Outputs[Excel Source Output].ExternalColumns[primary_csa_subdomain]"
+                      dataType="wstr"
+                      length="255"
+                      name="primary_csa_subdomain" />
                     <externalMetadataColumn
                       refId="Package\Import dim_industry Table\dimIndustry in Mappings.Outputs[Excel Source Output].ExternalColumns[four_digit_intensity]"
                       dataType="r8"
@@ -1075,16 +1203,6 @@
                       dataType="wstr"
                       length="255"
                       name="Description" />
-                    <externalMetadataColumn
-                      refId="Package\Import dim_industry Table\dimIndustry in Mappings.Outputs[Excel Source Output].ExternalColumns[primary_csa_domain]"
-                      dataType="wstr"
-                      length="255"
-                      name="primary_csa_domain" />
-                    <externalMetadataColumn
-                      refId="Package\Import dim_industry Table\dimIndustry in Mappings.Outputs[Excel Source Output].ExternalColumns[primary_csa_subdomain]"
-                      dataType="wstr"
-                      length="255"
-                      name="primary_csa_subdomain" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -1129,28 +1247,29 @@
                       lineageId="Package\Import dim_industry Table\dimIndustry in Mappings.Outputs[Excel Source Error Output].Columns[naics2]"
                       name="naics2" />
                     <outputColumn
-                      refId="Package\Import dim_industry Table\dimIndustry in Mappings.Outputs[Excel Source Error Output].Columns[creative_sector]"
+                      refId="Package\Import dim_industry Table\dimIndustry in Mappings.Outputs[Excel Source Error Output].Columns[NESTA Creative]"
                       dataType="wstr"
                       length="255"
-                      lineageId="Package\Import dim_industry Table\dimIndustry in Mappings.Outputs[Excel Source Error Output].Columns[creative_sector]"
-                      name="creative_sector" />
+                      lineageId="Package\Import dim_industry Table\dimIndustry in Mappings.Outputs[Excel Source Error Output].Columns[NESTA Creative]"
+                      name="NESTA Creative" />
                     <outputColumn
-                      refId="Package\Import dim_industry Table\dimIndustry in Mappings.Outputs[Excel Source Error Output].Columns[early_warning_cultural_creative]"
+                      refId="Package\Import dim_industry Table\dimIndustry in Mappings.Outputs[Excel Source Error Output].Columns[EW_creative]"
                       dataType="wstr"
                       length="255"
-                      lineageId="Package\Import dim_industry Table\dimIndustry in Mappings.Outputs[Excel Source Error Output].Columns[early_warning_cultural_creative]"
-                      name="early_warning_cultural_creative" />
+                      lineageId="Package\Import dim_industry Table\dimIndustry in Mappings.Outputs[Excel Source Error Output].Columns[EW_creative]"
+                      name="EW_creative" />
+                    <outputColumn
+                      refId="Package\Import dim_industry Table\dimIndustry in Mappings.Outputs[Excel Source Error Output].Columns[EW_cultural]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Import dim_industry Table\dimIndustry in Mappings.Outputs[Excel Source Error Output].Columns[EW_cultural]"
+                      name="EW_cultural" />
                     <outputColumn
                       refId="Package\Import dim_industry Table\dimIndustry in Mappings.Outputs[Excel Source Error Output].Columns[proximity_restricted]"
                       dataType="wstr"
                       length="255"
                       lineageId="Package\Import dim_industry Table\dimIndustry in Mappings.Outputs[Excel Source Error Output].Columns[proximity_restricted]"
                       name="proximity_restricted" />
-                    <outputColumn
-                      refId="Package\Import dim_industry Table\dimIndustry in Mappings.Outputs[Excel Source Error Output].Columns[four_digit_intensity]"
-                      dataType="r8"
-                      lineageId="Package\Import dim_industry Table\dimIndustry in Mappings.Outputs[Excel Source Error Output].Columns[four_digit_intensity]"
-                      name="four_digit_intensity" />
                     <outputColumn
                       refId="Package\Import dim_industry Table\dimIndustry in Mappings.Outputs[Excel Source Error Output].Columns[primary_csa_domain]"
                       dataType="wstr"
@@ -1163,6 +1282,11 @@
                       length="255"
                       lineageId="Package\Import dim_industry Table\dimIndustry in Mappings.Outputs[Excel Source Error Output].Columns[primary_csa_subdomain]"
                       name="primary_csa_subdomain" />
+                    <outputColumn
+                      refId="Package\Import dim_industry Table\dimIndustry in Mappings.Outputs[Excel Source Error Output].Columns[four_digit_intensity]"
+                      dataType="r8"
+                      lineageId="Package\Import dim_industry Table\dimIndustry in Mappings.Outputs[Excel Source Error Output].Columns[four_digit_intensity]"
+                      name="four_digit_intensity" />
                     <outputColumn
                       refId="Package\Import dim_industry Table\dimIndustry in Mappings.Outputs[Excel Source Error Output].Columns[main_industry]"
                       dataType="wstr"
@@ -1204,546 +1328,16 @@
                 </output>
               </outputs>
             </component>
-            <component
-              refId="Package\Import dim_industry Table\dim_industry OLTP Table"
-              componentClassID="Microsoft.OLEDBDestination"
-              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
-              description="OLE DB Destination"
-              name="dim_industry OLTP Table"
-              usesDispositions="true"
-              version="4">
-              <properties>
-                <property
-                  dataType="System.Int32"
-                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
-                  name="CommandTimeout">0</property>
-                <property
-                  dataType="System.String"
-                  description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset">[dbo].[dim_industry]</property>
-                <property
-                  dataType="System.String"
-                  description="Specifies the variable that contains the name of the database object used to open a rowset."
-                  name="OpenRowsetVariable"></property>
-                <property
-                  dataType="System.String"
-                  description="The SQL command to be executed."
-                  name="SqlCommand"
-                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the column code page to use when code page information is unavailable from the data source."
-                  name="DefaultCodePage">1252</property>
-                <property
-                  dataType="System.Boolean"
-                  description="Forces the use of the DefaultCodePage property value when describing character data."
-                  name="AlwaysUseDefaultCodePage">false</property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies the mode used to access the database."
-                  name="AccessMode"
-                  typeConverter="AccessMode">3</property>
-                <property
-                  dataType="System.Boolean"
-                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
-                  name="FastLoadKeepIdentity">false</property>
-                <property
-                  dataType="System.Boolean"
-                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
-                  name="FastLoadKeepNulls">false</property>
-                <property
-                  dataType="System.String"
-                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
-                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
-                <property
-                  dataType="System.Int32"
-                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
-                  name="FastLoadMaxInsertCommitSize">2147483647</property>
-              </properties>
-              <connections>
-                <connection
-                  refId="Package\Import dim_industry Table\dim_industry OLTP Table.Connections[OleDbConnection]"
-                  connectionManagerID="{7C609DE3-B60F-43F3-9132-B532B5CB115C}:external"
-                  connectionManagerRefId="Project.ConnectionManagers[OLTP]"
-                  description="The OLE DB runtime connection used to access the database."
-                  name="OleDbConnection" />
-              </connections>
-              <inputs>
-                <input
-                  refId="Package\Import dim_industry Table\dim_industry OLTP Table.Inputs[OLE DB Destination Input]"
-                  errorOrTruncationOperation="Insert"
-                  errorRowDisposition="FailComponent"
-                  hasSideEffects="true"
-                  name="OLE DB Destination Input">
-                  <inputColumns>
-                    <inputColumn
-                      refId="Package\Import dim_industry Table\dim_industry OLTP Table.Inputs[OLE DB Destination Input].Columns[creative_sector]"
-                      cachedDataType="wstr"
-                      cachedLength="255"
-                      cachedName="creative_sector"
-                      externalMetadataColumnId="Package\Import dim_industry Table\dim_industry OLTP Table.Inputs[OLE DB Destination Input].ExternalColumns[creative_sector]"
-                      lineageId="Package\Import dim_industry Table\dimIndustry in Mappings.Outputs[Excel Source Output].Columns[creative_sector]" />
-                    <inputColumn
-                      refId="Package\Import dim_industry Table\dim_industry OLTP Table.Inputs[OLE DB Destination Input].Columns[short_naics6]"
-                      cachedDataType="wstr"
-                      cachedLength="7"
-                      cachedName="short_naics6"
-                      externalMetadataColumnId="Package\Import dim_industry Table\dim_industry OLTP Table.Inputs[OLE DB Destination Input].ExternalColumns[naics6]"
-                      lineageId="Package\Import dim_industry Table\Shorten NAICS codes.Outputs[Derived Column Output].Columns[short_naics6]" />
-                    <inputColumn
-                      refId="Package\Import dim_industry Table\dim_industry OLTP Table.Inputs[OLE DB Destination Input].Columns[short_naics5]"
-                      cachedDataType="wstr"
-                      cachedLength="7"
-                      cachedName="short_naics5"
-                      externalMetadataColumnId="Package\Import dim_industry Table\dim_industry OLTP Table.Inputs[OLE DB Destination Input].ExternalColumns[naics5]"
-                      lineageId="Package\Import dim_industry Table\Shorten NAICS codes.Outputs[Derived Column Output].Columns[short_naics5]" />
-                    <inputColumn
-                      refId="Package\Import dim_industry Table\dim_industry OLTP Table.Inputs[OLE DB Destination Input].Columns[short_naics4]"
-                      cachedDataType="wstr"
-                      cachedLength="7"
-                      cachedName="short_naics4"
-                      externalMetadataColumnId="Package\Import dim_industry Table\dim_industry OLTP Table.Inputs[OLE DB Destination Input].ExternalColumns[naics4]"
-                      lineageId="Package\Import dim_industry Table\Shorten NAICS codes.Outputs[Derived Column Output].Columns[short_naics4]" />
-                    <inputColumn
-                      refId="Package\Import dim_industry Table\dim_industry OLTP Table.Inputs[OLE DB Destination Input].Columns[short_naics2]"
-                      cachedDataType="wstr"
-                      cachedLength="7"
-                      cachedName="short_naics2"
-                      externalMetadataColumnId="Package\Import dim_industry Table\dim_industry OLTP Table.Inputs[OLE DB Destination Input].ExternalColumns[naics2]"
-                      lineageId="Package\Import dim_industry Table\Shorten NAICS codes.Outputs[Derived Column Output].Columns[short_naics2]" />
-                    <inputColumn
-                      refId="Package\Import dim_industry Table\dim_industry OLTP Table.Inputs[OLE DB Destination Input].Columns[short_naics3]"
-                      cachedDataType="wstr"
-                      cachedLength="7"
-                      cachedName="short_naics3"
-                      externalMetadataColumnId="Package\Import dim_industry Table\dim_industry OLTP Table.Inputs[OLE DB Destination Input].ExternalColumns[naics3]"
-                      lineageId="Package\Import dim_industry Table\Shorten NAICS codes.Outputs[Derived Column Output].Columns[short_naics3]" />
-                    <inputColumn
-                      refId="Package\Import dim_industry Table\dim_industry OLTP Table.Inputs[OLE DB Destination Input].Columns[main_industry]"
-                      cachedDataType="wstr"
-                      cachedLength="255"
-                      cachedName="main_industry"
-                      externalMetadataColumnId="Package\Import dim_industry Table\dim_industry OLTP Table.Inputs[OLE DB Destination Input].ExternalColumns[main_industry]"
-                      lineageId="Package\Import dim_industry Table\dimIndustry in Mappings.Outputs[Excel Source Output].Columns[main_industry]" />
-                    <inputColumn
-                      refId="Package\Import dim_industry Table\dim_industry OLTP Table.Inputs[OLE DB Destination Input].Columns[short_pnaics]"
-                      cachedDataType="wstr"
-                      cachedLength="7"
-                      cachedName="short_pnaics"
-                      externalMetadataColumnId="Package\Import dim_industry Table\dim_industry OLTP Table.Inputs[OLE DB Destination Input].ExternalColumns[pnaics_id]"
-                      lineageId="Package\Import dim_industry Table\Shorten NAICS codes.Outputs[Derived Column Output].Columns[short_pnaics]" />
-                    <inputColumn
-                      refId="Package\Import dim_industry Table\dim_industry OLTP Table.Inputs[OLE DB Destination Input].Columns[short_naics_aggregation_level]"
-                      cachedDataType="wstr"
-                      cachedLength="15"
-                      cachedName="short_naics_aggregation_level"
-                      externalMetadataColumnId="Package\Import dim_industry Table\dim_industry OLTP Table.Inputs[OLE DB Destination Input].ExternalColumns[naics_aggregation_level]"
-                      lineageId="Package\Import dim_industry Table\Shorten NAICS codes.Outputs[Derived Column Output].Columns[short_naics_aggregation_level]" />
-                    <inputColumn
-                      refId="Package\Import dim_industry Table\dim_industry OLTP Table.Inputs[OLE DB Destination Input].Columns[proximity_restricted]"
-                      cachedDataType="wstr"
-                      cachedLength="255"
-                      cachedName="proximity_restricted"
-                      externalMetadataColumnId="Package\Import dim_industry Table\dim_industry OLTP Table.Inputs[OLE DB Destination Input].ExternalColumns[proximity]"
-                      lineageId="Package\Import dim_industry Table\dimIndustry in Mappings.Outputs[Excel Source Output].Columns[proximity_restricted]" />
-                    <inputColumn
-                      refId="Package\Import dim_industry Table\dim_industry OLTP Table.Inputs[OLE DB Destination Input].Columns[four_digit_intensity]"
-                      cachedDataType="r8"
-                      cachedName="four_digit_intensity"
-                      externalMetadataColumnId="Package\Import dim_industry Table\dim_industry OLTP Table.Inputs[OLE DB Destination Input].ExternalColumns[four_digit_intensity]"
-                      lineageId="Package\Import dim_industry Table\dimIndustry in Mappings.Outputs[Excel Source Output].Columns[four_digit_intensity]" />
-                    <inputColumn
-                      refId="Package\Import dim_industry Table\dim_industry OLTP Table.Inputs[OLE DB Destination Input].Columns[early_warning_cultural_creative]"
-                      cachedDataType="wstr"
-                      cachedLength="255"
-                      cachedName="early_warning_cultural_creative"
-                      externalMetadataColumnId="Package\Import dim_industry Table\dim_industry OLTP Table.Inputs[OLE DB Destination Input].ExternalColumns[early_warning_cultural_creative]"
-                      lineageId="Package\Import dim_industry Table\dimIndustry in Mappings.Outputs[Excel Source Output].Columns[early_warning_cultural_creative]" />
-                    <inputColumn
-                      refId="Package\Import dim_industry Table\dim_industry OLTP Table.Inputs[OLE DB Destination Input].Columns[primary_csa_domain]"
-                      cachedDataType="wstr"
-                      cachedLength="255"
-                      cachedName="primary_csa_domain"
-                      externalMetadataColumnId="Package\Import dim_industry Table\dim_industry OLTP Table.Inputs[OLE DB Destination Input].ExternalColumns[primary_csa_domain]"
-                      lineageId="Package\Import dim_industry Table\dimIndustry in Mappings.Outputs[Excel Source Output].Columns[primary_csa_domain]" />
-                    <inputColumn
-                      refId="Package\Import dim_industry Table\dim_industry OLTP Table.Inputs[OLE DB Destination Input].Columns[primary_csa_subdomain]"
-                      cachedDataType="wstr"
-                      cachedLength="255"
-                      cachedName="primary_csa_subdomain"
-                      externalMetadataColumnId="Package\Import dim_industry Table\dim_industry OLTP Table.Inputs[OLE DB Destination Input].ExternalColumns[primary_csa_subdomain]"
-                      lineageId="Package\Import dim_industry Table\dimIndustry in Mappings.Outputs[Excel Source Output].Columns[primary_csa_subdomain]" />
-                  </inputColumns>
-                  <externalMetadataColumns
-                    isUsed="True">
-                    <externalMetadataColumn
-                      refId="Package\Import dim_industry Table\dim_industry OLTP Table.Inputs[OLE DB Destination Input].ExternalColumns[naics6]"
-                      dataType="wstr"
-                      length="7"
-                      name="naics6" />
-                    <externalMetadataColumn
-                      refId="Package\Import dim_industry Table\dim_industry OLTP Table.Inputs[OLE DB Destination Input].ExternalColumns[naics5]"
-                      dataType="wstr"
-                      length="7"
-                      name="naics5" />
-                    <externalMetadataColumn
-                      refId="Package\Import dim_industry Table\dim_industry OLTP Table.Inputs[OLE DB Destination Input].ExternalColumns[naics4]"
-                      dataType="wstr"
-                      length="7"
-                      name="naics4" />
-                    <externalMetadataColumn
-                      refId="Package\Import dim_industry Table\dim_industry OLTP Table.Inputs[OLE DB Destination Input].ExternalColumns[naics3]"
-                      dataType="wstr"
-                      length="7"
-                      name="naics3" />
-                    <externalMetadataColumn
-                      refId="Package\Import dim_industry Table\dim_industry OLTP Table.Inputs[OLE DB Destination Input].ExternalColumns[naics2]"
-                      dataType="wstr"
-                      length="7"
-                      name="naics2" />
-                    <externalMetadataColumn
-                      refId="Package\Import dim_industry Table\dim_industry OLTP Table.Inputs[OLE DB Destination Input].ExternalColumns[creative_sector]"
-                      dataType="wstr"
-                      length="255"
-                      name="creative_sector" />
-                    <externalMetadataColumn
-                      refId="Package\Import dim_industry Table\dim_industry OLTP Table.Inputs[OLE DB Destination Input].ExternalColumns[main_industry]"
-                      dataType="wstr"
-                      length="255"
-                      name="main_industry" />
-                    <externalMetadataColumn
-                      refId="Package\Import dim_industry Table\dim_industry OLTP Table.Inputs[OLE DB Destination Input].ExternalColumns[pnaics_id]"
-                      dataType="wstr"
-                      length="7"
-                      name="pnaics_id" />
-                    <externalMetadataColumn
-                      refId="Package\Import dim_industry Table\dim_industry OLTP Table.Inputs[OLE DB Destination Input].ExternalColumns[naics_aggregation_level]"
-                      dataType="wstr"
-                      length="15"
-                      name="naics_aggregation_level" />
-                    <externalMetadataColumn
-                      refId="Package\Import dim_industry Table\dim_industry OLTP Table.Inputs[OLE DB Destination Input].ExternalColumns[early_warning_cultural_creative]"
-                      dataType="wstr"
-                      length="255"
-                      name="early_warning_cultural_creative" />
-                    <externalMetadataColumn
-                      refId="Package\Import dim_industry Table\dim_industry OLTP Table.Inputs[OLE DB Destination Input].ExternalColumns[proximity]"
-                      dataType="wstr"
-                      length="255"
-                      name="proximity" />
-                    <externalMetadataColumn
-                      refId="Package\Import dim_industry Table\dim_industry OLTP Table.Inputs[OLE DB Destination Input].ExternalColumns[four_digit_intensity]"
-                      dataType="r8"
-                      name="four_digit_intensity" />
-                    <externalMetadataColumn
-                      refId="Package\Import dim_industry Table\dim_industry OLTP Table.Inputs[OLE DB Destination Input].ExternalColumns[primary_csa_domain]"
-                      dataType="wstr"
-                      length="255"
-                      name="primary_csa_domain" />
-                    <externalMetadataColumn
-                      refId="Package\Import dim_industry Table\dim_industry OLTP Table.Inputs[OLE DB Destination Input].ExternalColumns[primary_csa_subdomain]"
-                      dataType="wstr"
-                      length="255"
-                      name="primary_csa_subdomain" />
-                  </externalMetadataColumns>
-                </input>
-              </inputs>
-              <outputs>
-                <output
-                  refId="Package\Import dim_industry Table\dim_industry OLTP Table.Outputs[OLE DB Destination Error Output]"
-                  exclusionGroup="1"
-                  isErrorOut="true"
-                  name="OLE DB Destination Error Output"
-                  synchronousInputId="Package\Import dim_industry Table\dim_industry OLTP Table.Inputs[OLE DB Destination Input]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\Import dim_industry Table\dim_industry OLTP Table.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
-                      dataType="i4"
-                      lineageId="Package\Import dim_industry Table\dim_industry OLTP Table.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
-                      name="ErrorCode"
-                      specialFlags="1" />
-                    <outputColumn
-                      refId="Package\Import dim_industry Table\dim_industry OLTP Table.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
-                      dataType="i4"
-                      lineageId="Package\Import dim_industry Table\dim_industry OLTP Table.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
-                      name="ErrorColumn"
-                      specialFlags="2" />
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-              </outputs>
-            </component>
-            <component
-              refId="Package\Import dim_industry Table\Shorten NAICS codes"
-              componentClassID="Microsoft.DerivedColumn"
-              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
-              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
-              name="Shorten NAICS codes"
-              usesDispositions="true">
-              <inputs>
-                <input
-                  refId="Package\Import dim_industry Table\Shorten NAICS codes.Inputs[Derived Column Input]"
-                  description="Input to the Derived Column Transformation"
-                  name="Derived Column Input">
-                  <inputColumns>
-                    <inputColumn
-                      refId="Package\Import dim_industry Table\Shorten NAICS codes.Inputs[Derived Column Input].Columns[pnaics]"
-                      cachedDataType="wstr"
-                      cachedLength="255"
-                      cachedName="pnaics"
-                      lineageId="Package\Import dim_industry Table\dimIndustry in Mappings.Outputs[Excel Source Output].Columns[pnaics]" />
-                    <inputColumn
-                      refId="Package\Import dim_industry Table\Shorten NAICS codes.Inputs[Derived Column Input].Columns[naics6]"
-                      cachedDataType="wstr"
-                      cachedLength="255"
-                      cachedName="naics6"
-                      lineageId="Package\Import dim_industry Table\dimIndustry in Mappings.Outputs[Excel Source Output].Columns[naics6]" />
-                    <inputColumn
-                      refId="Package\Import dim_industry Table\Shorten NAICS codes.Inputs[Derived Column Input].Columns[naics5]"
-                      cachedDataType="wstr"
-                      cachedLength="255"
-                      cachedName="naics5"
-                      lineageId="Package\Import dim_industry Table\dimIndustry in Mappings.Outputs[Excel Source Output].Columns[naics5]" />
-                    <inputColumn
-                      refId="Package\Import dim_industry Table\Shorten NAICS codes.Inputs[Derived Column Input].Columns[naics4]"
-                      cachedDataType="wstr"
-                      cachedLength="255"
-                      cachedName="naics4"
-                      lineageId="Package\Import dim_industry Table\dimIndustry in Mappings.Outputs[Excel Source Output].Columns[naics4]" />
-                    <inputColumn
-                      refId="Package\Import dim_industry Table\Shorten NAICS codes.Inputs[Derived Column Input].Columns[naics2]"
-                      cachedDataType="wstr"
-                      cachedLength="255"
-                      cachedName="naics2"
-                      lineageId="Package\Import dim_industry Table\dimIndustry in Mappings.Outputs[Excel Source Output].Columns[naics2]" />
-                    <inputColumn
-                      refId="Package\Import dim_industry Table\Shorten NAICS codes.Inputs[Derived Column Input].Columns[naics3]"
-                      cachedDataType="wstr"
-                      cachedLength="255"
-                      cachedName="naics3"
-                      lineageId="Package\Import dim_industry Table\dimIndustry in Mappings.Outputs[Excel Source Output].Columns[naics3]" />
-                    <inputColumn
-                      refId="Package\Import dim_industry Table\Shorten NAICS codes.Inputs[Derived Column Input].Columns[NAICS aggregation level]"
-                      cachedDataType="wstr"
-                      cachedLength="255"
-                      cachedName="NAICS aggregation level"
-                      lineageId="Package\Import dim_industry Table\dimIndustry in Mappings.Outputs[Excel Source Output].Columns[NAICS aggregation level]" />
-                  </inputColumns>
-                  <externalMetadataColumns />
-                </input>
-              </inputs>
-              <outputs>
-                <output
-                  refId="Package\Import dim_industry Table\Shorten NAICS codes.Outputs[Derived Column Output]"
-                  description="Default Output of the Derived Column Transformation"
-                  exclusionGroup="1"
-                  name="Derived Column Output"
-                  synchronousInputId="Package\Import dim_industry Table\Shorten NAICS codes.Inputs[Derived Column Input]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\Import dim_industry Table\Shorten NAICS codes.Outputs[Derived Column Output].Columns[short_pnaics]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Computation"
-                      errorRowDisposition="FailComponent"
-                      length="7"
-                      lineageId="Package\Import dim_industry Table\Shorten NAICS codes.Outputs[Derived Column Output].Columns[short_pnaics]"
-                      name="short_pnaics"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Expression"
-                          name="Expression">[LEFT](#{Package\Import dim_industry Table\dimIndustry in Mappings.Outputs[Excel Source Output].Columns[pnaics]},7)</property>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Friendly Expression"
-                          expressionType="Notify"
-                          name="FriendlyExpression">LEFT(pnaics,7)</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\Import dim_industry Table\Shorten NAICS codes.Outputs[Derived Column Output].Columns[short_naics6]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Computation"
-                      errorRowDisposition="FailComponent"
-                      length="7"
-                      lineageId="Package\Import dim_industry Table\Shorten NAICS codes.Outputs[Derived Column Output].Columns[short_naics6]"
-                      name="short_naics6"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Expression"
-                          name="Expression">[LEFT](#{Package\Import dim_industry Table\dimIndustry in Mappings.Outputs[Excel Source Output].Columns[naics6]},7)</property>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Friendly Expression"
-                          expressionType="Notify"
-                          name="FriendlyExpression">LEFT(naics6,7)</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\Import dim_industry Table\Shorten NAICS codes.Outputs[Derived Column Output].Columns[short_naics5]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Computation"
-                      errorRowDisposition="FailComponent"
-                      length="7"
-                      lineageId="Package\Import dim_industry Table\Shorten NAICS codes.Outputs[Derived Column Output].Columns[short_naics5]"
-                      name="short_naics5"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Expression"
-                          name="Expression">[LEFT](#{Package\Import dim_industry Table\dimIndustry in Mappings.Outputs[Excel Source Output].Columns[naics5]},7)</property>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Friendly Expression"
-                          expressionType="Notify"
-                          name="FriendlyExpression">LEFT(naics5,7)</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\Import dim_industry Table\Shorten NAICS codes.Outputs[Derived Column Output].Columns[short_naics4]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Computation"
-                      errorRowDisposition="FailComponent"
-                      length="7"
-                      lineageId="Package\Import dim_industry Table\Shorten NAICS codes.Outputs[Derived Column Output].Columns[short_naics4]"
-                      name="short_naics4"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Expression"
-                          name="Expression">[LEFT](#{Package\Import dim_industry Table\dimIndustry in Mappings.Outputs[Excel Source Output].Columns[naics4]},7)</property>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Friendly Expression"
-                          expressionType="Notify"
-                          name="FriendlyExpression">LEFT(naics4,7)</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\Import dim_industry Table\Shorten NAICS codes.Outputs[Derived Column Output].Columns[short_naics2]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Computation"
-                      errorRowDisposition="FailComponent"
-                      length="7"
-                      lineageId="Package\Import dim_industry Table\Shorten NAICS codes.Outputs[Derived Column Output].Columns[short_naics2]"
-                      name="short_naics2"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Expression"
-                          name="Expression">[LEFT](#{Package\Import dim_industry Table\dimIndustry in Mappings.Outputs[Excel Source Output].Columns[naics2]},7)</property>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Friendly Expression"
-                          expressionType="Notify"
-                          name="FriendlyExpression">LEFT(naics2,7)</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\Import dim_industry Table\Shorten NAICS codes.Outputs[Derived Column Output].Columns[short_naics3]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Computation"
-                      errorRowDisposition="FailComponent"
-                      length="7"
-                      lineageId="Package\Import dim_industry Table\Shorten NAICS codes.Outputs[Derived Column Output].Columns[short_naics3]"
-                      name="short_naics3"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Expression"
-                          name="Expression">[LEFT](#{Package\Import dim_industry Table\dimIndustry in Mappings.Outputs[Excel Source Output].Columns[naics3]},7)</property>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Friendly Expression"
-                          expressionType="Notify"
-                          name="FriendlyExpression">LEFT(naics3,7)</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\Import dim_industry Table\Shorten NAICS codes.Outputs[Derived Column Output].Columns[short_naics_aggregation_level]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Computation"
-                      errorRowDisposition="FailComponent"
-                      length="15"
-                      lineageId="Package\Import dim_industry Table\Shorten NAICS codes.Outputs[Derived Column Output].Columns[short_naics_aggregation_level]"
-                      name="short_naics_aggregation_level"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Expression"
-                          name="Expression">[LEFT](#{Package\Import dim_industry Table\dimIndustry in Mappings.Outputs[Excel Source Output].Columns[NAICS aggregation level]},15)</property>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Friendly Expression"
-                          expressionType="Notify"
-                          name="FriendlyExpression">LEFT([NAICS aggregation level],15)</property>
-                      </properties>
-                    </outputColumn>
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-                <output
-                  refId="Package\Import dim_industry Table\Shorten NAICS codes.Outputs[Derived Column Error Output]"
-                  description="Error Output of the Derived Column Transformation"
-                  exclusionGroup="1"
-                  isErrorOut="true"
-                  name="Derived Column Error Output"
-                  synchronousInputId="Package\Import dim_industry Table\Shorten NAICS codes.Inputs[Derived Column Input]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\Import dim_industry Table\Shorten NAICS codes.Outputs[Derived Column Error Output].Columns[ErrorCode]"
-                      dataType="i4"
-                      lineageId="Package\Import dim_industry Table\Shorten NAICS codes.Outputs[Derived Column Error Output].Columns[ErrorCode]"
-                      name="ErrorCode"
-                      specialFlags="1" />
-                    <outputColumn
-                      refId="Package\Import dim_industry Table\Shorten NAICS codes.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
-                      dataType="i4"
-                      lineageId="Package\Import dim_industry Table\Shorten NAICS codes.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
-                      name="ErrorColumn"
-                      specialFlags="2" />
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-              </outputs>
-            </component>
           </components>
           <paths>
             <path
               refId="Package\Import dim_industry Table.Paths[Derived Column Output]"
-              endId="Package\Import dim_industry Table\dim_industry OLTP Table.Inputs[OLE DB Destination Input]"
+              endId="Package\Import dim_industry Table\dim industry.Inputs[OLE DB Destination Input]"
               name="Derived Column Output"
-              startId="Package\Import dim_industry Table\Shorten NAICS codes.Outputs[Derived Column Output]" />
-            <path
-              refId="Package\Import dim_industry Table.Paths[Excel Source Error Output]"
-              endId="Package\Import dim_industry Table\DimIndustry Errors.Inputs[Flat File Destination Input]"
-              name="Excel Source Error Output"
-              startId="Package\Import dim_industry Table\dimIndustry in Mappings.Outputs[Excel Source Error Output]" />
+              startId="Package\Import dim_industry Table\Derived Column.Outputs[Derived Column Output]" />
             <path
               refId="Package\Import dim_industry Table.Paths[Excel Source Output]"
-              endId="Package\Import dim_industry Table\Shorten NAICS codes.Inputs[Derived Column Input]"
+              endId="Package\Import dim_industry Table\Derived Column.Inputs[Derived Column Input]"
               name="Excel Source Output"
               startId="Package\Import dim_industry Table\dimIndustry in Mappings.Outputs[Excel Source Output]" />
           </paths>
@@ -3548,73 +3142,41 @@
     design-time-name="Package\Import dim_industry Table">
     <LayoutInfo>
       <GraphLayout
-        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
-        <NodeLayout
-          Size="178.5,42.5"
-          Id="Package\Import dim_industry Table\Shorten NAICS codes"
-          TopLeft="122.115370993078,117.603030155031" />
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="195.5,42"
           Id="Package\Import dim_industry Table\dimIndustry in Mappings"
-          TopLeft="112.5,13" />
+          TopLeft="113.5,11" />
         <NodeLayout
-          Size="202.5,42.5"
-          Id="Package\Import dim_industry Table\dim_industry OLTP Table"
-          TopLeft="108.965934003975,233.486988561576" />
-        <NodeLayout
-          Size="168.5,42"
-          Id="Package\Import dim_industry Table\DimIndustry Errors"
-          TopLeft="591,69.5" />
+          Size="154,42"
+          Id="Package\Import dim_industry Table\Derived Column"
+          TopLeft="273.5,141" />
         <EdgeLayout
-          Id="Package\Import dim_industry Table.Paths[Excel Source Error Output]"
-          TopLeft="308,34">
+          Id="Package\Import dim_industry Table.Paths[Excel Source Output]"
+          TopLeft="211.25,53">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="283,56.5"
+              EndConnector="139.25,88"
               Start="0,0"
-              End="275.5,56.5">
+              End="139.25,80.5">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="137.5,0" />
+                    End="0,40" />
                   <mssgle:CubicBezierSegment
-                    Point1="137.5,0"
-                    Point2="141.5,0"
-                    Point3="141.5,4" />
+                    Point1="0,40"
+                    Point2="0,44"
+                    Point3="4,44" />
                   <mssgle:LineSegment
-                    End="141.5,52.5" />
+                    End="135.25,44" />
                   <mssgle:CubicBezierSegment
-                    Point1="141.5,52.5"
-                    Point2="141.5,56.5"
-                    Point3="145.5,56.5" />
+                    Point1="135.25,44"
+                    Point2="139.25,44"
+                    Point3="139.25,48" />
                   <mssgle:LineSegment
-                    End="275.5,56.5" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="83.64861328125,-17.609375,115.7027734375,11.609375"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\Import dim_industry Table.Paths[Derived Column Output]"
-          TopLeft="210.790652498526,160.103030155031">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="0,73.383958406545"
-              Start="0,0"
-              End="0,65.883958406545">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,65.883958406545" />
+                    End="139.25,80.5" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -3623,59 +3185,47 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <NodeLayout
+          Size="137.5,42"
+          Id="Package\Import dim_industry Table\dim industry"
+          TopLeft="502.5,293.5" />
         <EdgeLayout
-          Id="Package\Import dim_industry Table.Paths[Excel Source Output]"
-          TopLeft="210.807685496539,55">
+          Id="Package\Import dim_industry Table.Paths[Derived Column Output]"
+          TopLeft="350.5,183">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,62.603030155031"
+              EndConnector="220.75,110.5"
               Start="0,0"
-              End="0,55.103030155031">
+              End="220.75,103">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,55.103030155031" />
+                    End="0,51.25" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,51.25"
+                    Point2="0,55.25"
+                    Point3="4,55.25" />
+                  <mssgle:LineSegment
+                    End="216.75,55.25" />
+                  <mssgle:CubicBezierSegment
+                    Point1="216.75,55.25"
+                    Point2="220.75,55.25"
+                    Point3="220.75,59.25" />
+                  <mssgle:LineSegment
+                    End="220.75,103" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="-8,19.5515150775155,16,16"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
-  <PipelineComponentMetadata
-    design-time-name="Package\Import dim_industry Table\dimIndustry in Mappings">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
-  <PipelineComponentMetadata
-    design-time-name="Package\Import dim_industry Table\dim_industry OLTP Table">
-    <Properties>
-      <Property>
-        <Name>DataSourceViewID</Name>
-      </Property>
-      <Property>
-        <Name>TableInfoObjectType</Name>
-        <Value
-          type="q2:string">Table</Value>
-      </Property>
-    </Properties>
-  </PipelineComponentMetadata>
   <TaskHost
     design-time-name="Package\Import dim_occupation Table">
     <LayoutInfo>
@@ -3968,6 +3518,32 @@
   </TaskHost>
   <PipelineComponentMetadata
     design-time-name="Package\Import ioicc_splitter OLTP Table\ioicc_splitter OLTP Table">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Import dim_industry Table\dimIndustry in Mappings">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Import dim_industry Table\dim industry">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>

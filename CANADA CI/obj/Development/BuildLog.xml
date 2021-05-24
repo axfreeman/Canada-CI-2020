@@ -2,13 +2,13 @@
 <BuildLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <ProjectInfo>
     <Name>CANADA CI</Name>
-    <LastWriteTime>2021-03-08T09:27:31.0407222Z</LastWriteTime>
+    <LastWriteTime>2021-05-24T03:21:45.1796942Z</LastWriteTime>
     <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
   </ProjectInfo>
   <LastBuildInfos>
     <ProjectBuildItemInfo>
       <Name>Import Maps.dtsx</Name>
-      <LastWriteTime>2021-03-08T09:33:57.6393366Z</LastWriteTime>
+      <LastWriteTime>2021-03-17T22:01:05.137863Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
@@ -19,6 +19,11 @@
     <ProjectBuildItemInfo>
       <Name>Create Reduced Fact File.dtsx</Name>
       <LastWriteTime>2020-12-20T09:56:05.5255908Z</LastWriteTime>
+      <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
+    </ProjectBuildItemInfo>
+    <ProjectBuildItemInfo>
+      <Name>Import Reduced Data.dtsx</Name>
+      <LastWriteTime>2021-05-24T03:21:45.1437916Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
   </LastBuildInfos>
